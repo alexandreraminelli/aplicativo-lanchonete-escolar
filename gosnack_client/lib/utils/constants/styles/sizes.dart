@@ -21,4 +21,20 @@ class Sizes {
   static const double radiusMd = 12.0;
   static const double radiusLg = 14.0;
   static const double radiusFull = 100.0;
+
+  // -- Typography ---------------------------------------------------------- //
+  static const double fontXs = 12.0;
+  static const double fontSm = 14.0;
+  static const double fontMd = 16.0;
+  static const double fontLg = 18.0;
+
+  static const double leadingXs = 16.0;
+  static const double leadingSm = 20.0;
+  static const double leadingMd = 24.0;
+  static const double leadingLg = 28.0;
+
+  // -- Border -------------------------------------------------------------- //
+  static const double borderSm = 1.0;
+  static const double borderMd = 2.0;
+  static const double borderLg = 3.0;
 }
