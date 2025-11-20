@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gosnack_client/utils/theme/theme.dart';
 
 /// Widget raiz da aplicação.
 /// Define temas, rotas e bindings globais.
@@ -10,8 +11,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       // Tema
       themeMode: ThemeMode.system, // tema padrão: sistema
-      // TODO: theme: ,
-      // TODO: darkTheme: ,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
 
       // TODO: Bindings gerais da aplicação
 
