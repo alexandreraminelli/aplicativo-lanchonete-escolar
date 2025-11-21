@@ -71,8 +71,8 @@ flutter:
   fonts:
     - family: Plus Jakarta Sans
       fonts:
-        - asset: assets\fonts\PlusJakartaSans-VariableFont_wght.ttf
-        - asset: assets\fonts\PlusJakartaSans-Italic-VariableFont_wght.ttf
+        - asset: assets/fonts/PlusJakartaSans-VariableFont_wght.ttf
+        - asset: assets/fonts/PlusJakartaSans-Italic-VariableFont_wght.ttf
           style: italic
 
   #
