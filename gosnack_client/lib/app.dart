@@ -30,6 +30,35 @@ class App extends StatelessWidget {
               Text("Texto padrão 123", style: TextStyle(fontSize: 30.0)),
               const Divider(),
 
+              ElevatedButton(
+                onPressed: () {},
+                child: Text("Botão Primário 123"),
+              ),
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.home_outlined),
+                label: Text("Botão Primário com Ícone"),
+              ),
+
+              FilledButton(
+                onPressed: () {},
+                child: Text("Botão Secundário 123"),
+              ),
+              FilledButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.home_outlined),
+                label: Text("Botão Secundário com Ícone"),
+              ),
+
+              OutlinedButton(onPressed: () {}, child: Text("Botão Borda 123")),
+              OutlinedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.home_outlined),
+                label: Text("Botão Borda com Ícone"),
+              ),
+
+              const Divider(),
+
               // Display Styles
               Text(
                 'Display Large 123',
