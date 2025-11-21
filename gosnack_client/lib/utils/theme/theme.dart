@@ -6,33 +6,50 @@ import 'package:gosnack_client/utils/theme/base/text_theme.dart';
 class AppTheme {
   AppTheme._(); // Construtor privado para evitar instanciação
 
-  /// Tema da aplicação no modo claro.
-  static final ThemeData lightTheme = ThemeData(
+  /// Tema base com as propriedades compartilhadas entre o modo claro e escuro.
+  static ThemeData _baseTheme({
+    // Cores
+    required Brightness brightness,
+    required Color scaffoldBackgroundColor,
+    // Tipografia
+    required TextTheme textTheme,
+    // Widgets
+  }) => ThemeData(
     useMaterial3: true,
-    brightness: Brightness.light,
 
     // -- Cores
+    brightness: brightness,
     primaryColor: AppColors.primary,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: scaffoldBackgroundColor,
 
     // -- Tipografia
     fontFamily: AppTextTheme.defaultFont,
+    textTheme: textTheme,
+
+    // -- Widgets do Material Design
+  );
+
+  /* ------------------------------------------------------------------------ */
+  /// Tema da aplicação no modo claro.
+  static final ThemeData lightTheme = _baseTheme(
+    // -- Cores
+    brightness: Brightness.light,
+    scaffoldBackgroundColor: Colors.white,
+
+    // -- Tipografia
     textTheme: AppTextTheme.lightTextTheme,
 
     // -- Widgets do Material Design
   );
 
+  /* ------------------------------------------------------------------------ */
   /// Tema da aplicação no modo escuro.
-  static final ThemeData darkTheme = ThemeData(
-    useMaterial3: true,
+  static final ThemeData darkTheme = _baseTheme(
+    // -- Cores (dark)
     brightness: Brightness.dark,
-
-    // -- Cores
-    primaryColor: AppColors.primary,
     scaffoldBackgroundColor: Colors.black,
 
     // -- Tipografia
-    fontFamily: AppTextTheme.defaultFont,
     textTheme: AppTextTheme.darkTextTheme,
 
     // -- Widgets do Material Design
