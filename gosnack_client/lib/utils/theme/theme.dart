@@ -15,7 +15,7 @@ class AppTheme {
     scaffoldBackgroundColor: Colors.white,
 
     // -- Tipografia
-    // TODO: Font-family
+    fontFamily: "Plus Jakarta Sans",
 
     // -- Widgets do Material Design
   );
@@ -30,7 +30,7 @@ class AppTheme {
     scaffoldBackgroundColor: Colors.black,
 
     // -- Tipografia
-    // TODO: Font-family
+    fontFamily: "Plus Jakarta Sans",
 
     // -- Widgets do Material Design
   );
