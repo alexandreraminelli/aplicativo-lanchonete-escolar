@@ -69,7 +69,7 @@ flutter:
 
   # Local Fonts
   fonts:
-    - family: Plus Jakarta Sans
+    - family: PlusJakartaSans
       fonts:
         - asset: assets/fonts/PlusJakartaSans-VariableFont_wght.ttf
         - asset: assets/fonts/PlusJakartaSans-Italic-VariableFont_wght.ttf
