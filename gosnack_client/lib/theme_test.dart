@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gosnack_client/utils/constants/styles/spacing.dart';
 
 class ThemeWidgetsTest extends StatelessWidget {
   const ThemeWidgetsTest({super.key});
@@ -24,25 +25,76 @@ class ThemeWidgetsTest extends StatelessWidget {
           const Divider(),
 
           ElevatedButton(onPressed: () {}, child: Text("Botão Primário 123")),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Text("Botão Primário 123"),
+            ),
+          ),
           ElevatedButton.icon(
             onPressed: () {},
             icon: Icon(Icons.home_outlined),
             label: Text("Botão Primário com Ícone"),
           ),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton.icon(
+              onPressed: () {},
+              icon: Icon(Icons.home_outlined),
+              label: Text("Botão Primário com Ícone"),
+            ),
+          ),
+          // Apenas ícone
+          ElevatedButton(onPressed: () {}, child: Icon(Icons.home_outlined)),
 
           FilledButton(onPressed: () {}, child: Text("Botão Secundário 123")),
+          SizedBox(
+            width: double.infinity,
+            child: FilledButton(
+              onPressed: () {},
+              child: Text("Botão Secundário 123"),
+            ),
+          ),
           FilledButton.icon(
             onPressed: () {},
             icon: Icon(Icons.home_outlined),
             label: Text("Botão Secundário com Ícone"),
           ),
+          SizedBox(
+            width: double.infinity,
+            child: FilledButton.icon(
+              onPressed: () {},
+              icon: Icon(Icons.home_outlined),
+              label: Text("Botão Secundário com Ícone"),
+            ),
+          ),
+          // Apenas ícone
+          FilledButton(onPressed: () {}, child: Icon(Icons.home_outlined)),
 
           OutlinedButton(onPressed: () {}, child: Text("Botão Borda 123")),
+          SizedBox(
+            width: double.infinity,
+            child: OutlinedButton(
+              onPressed: () {},
+              child: Text("Botão Borda 123"),
+            ),
+          ),
           OutlinedButton.icon(
             onPressed: () {},
             icon: Icon(Icons.home_outlined),
             label: Text("Botão Borda com Ícone"),
           ),
+          SizedBox(
+            width: double.infinity,
+            child: OutlinedButton.icon(
+              onPressed: () {},
+              icon: Icon(Icons.home_outlined),
+              label: Text("Botão Borda com Ícone"),
+            ),
+          ),
+          // Apenas ícone
+          OutlinedButton(onPressed: () {}, child: Icon(Icons.home_outlined)),
 
           const Divider(),
 

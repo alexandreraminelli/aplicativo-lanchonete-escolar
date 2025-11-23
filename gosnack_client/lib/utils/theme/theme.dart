@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gosnack_client/utils/constants/styles/colors.dart';
+import 'package:gosnack_client/utils/theme/widgets/elevated_button_theme.dart';
 
 /// Tema da aplicação.
 class AppTheme {
@@ -13,6 +14,7 @@ class AppTheme {
     required Brightness brightness,
     required Color scaffoldBackgroundColor,
     // Widgets
+    required ElevatedButtonThemeData elevatedButtonTheme,
   }) {
     final base = ThemeData(
       useMaterial3: true,
@@ -26,6 +28,7 @@ class AppTheme {
       fontFamily: defaultFont,
 
       // -- Widgets do Material Design
+      elevatedButtonTheme: elevatedButtonTheme,
     );
 
     return base.copyWith(
@@ -41,6 +44,8 @@ class AppTheme {
     scaffoldBackgroundColor: Colors.white,
 
     // -- Widgets do Material Design
+    // Botões
+    elevatedButtonTheme: AppElevatedButtonTheme.lightElevatedButtonTheme,
   );
 
   /* ------------------------------------------------------------------------ */
@@ -51,5 +56,7 @@ class AppTheme {
     scaffoldBackgroundColor: Colors.black,
 
     // -- Widgets do Material Design
+    // Botões
+    elevatedButtonTheme: AppElevatedButtonTheme.darkElevatedButtonTheme,
   );
 }
