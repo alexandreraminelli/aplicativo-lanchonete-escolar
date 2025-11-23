@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gosnack_client/utils/constants/styles/colors.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:gosnack_client/utils/constants/styles/spacing.dart';
-import 'package:gosnack_client/utils/theme/theme.dart';
+import 'package:gosnack_client/utils/theme/base/typography.dart';
 
 /// Tema personalizado para ElevatedButton.
 /// Usado como botão primário na aplicação.
@@ -21,11 +21,7 @@ class AppElevatedButtonTheme {
       // Padding
       padding: KSpacing.buttonPaddingMd,
       // Tipografia
-      textStyle: const TextStyle(
-        fontFamily: AppTheme.defaultFont,
-        fontSize: 16.0,
-        fontWeight: FontWeight.normal,
-      ),
+      textStyle: AppTypography.buttonTextStyleMd,
       // Cantos arredondados
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(KSizes.sm),

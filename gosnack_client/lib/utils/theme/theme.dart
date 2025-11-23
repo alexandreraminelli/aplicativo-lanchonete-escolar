@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gosnack_client/utils/constants/styles/colors.dart';
-import 'package:gosnack_client/utils/theme/widgets/elevated_button_theme.dart';
+import 'package:gosnack_client/utils/theme/base/typography.dart';
+import 'package:gosnack_client/utils/theme/widgets_theme/buttons_theme/elevated_button_theme.dart';
+import 'package:gosnack_client/utils/theme/widgets_theme/buttons_theme/filled_button_theme.dart';
 
 /// Tema da aplicação.
 class AppTheme {
   AppTheme._(); // Construtor privado para evitar instanciação
-
-  static const String defaultFont = "PlusJakartaSans";
 
   /// Tema base com as propriedades compartilhadas entre o modo claro e escuro.
   static ThemeData _baseTheme({
@@ -15,6 +15,7 @@ class AppTheme {
     required Color scaffoldBackgroundColor,
     // Widgets
     required ElevatedButtonThemeData elevatedButtonTheme,
+    required FilledButtonThemeData filledButtonTheme,
   }) {
     final base = ThemeData(
       useMaterial3: true,
@@ -25,14 +26,15 @@ class AppTheme {
       scaffoldBackgroundColor: scaffoldBackgroundColor,
 
       // -- Tipografia
-      fontFamily: defaultFont,
+      fontFamily: AppTypography.defaultFont,
 
       // -- Widgets do Material Design
       elevatedButtonTheme: elevatedButtonTheme,
+      filledButtonTheme: filledButtonTheme,
     );
 
     return base.copyWith(
-      textTheme: base.textTheme.apply(fontFamily: defaultFont),
+      textTheme: base.textTheme.apply(fontFamily: AppTypography.defaultFont),
     );
   }
 
@@ -46,6 +48,7 @@ class AppTheme {
     // -- Widgets do Material Design
     // Botões
     elevatedButtonTheme: AppElevatedButtonTheme.lightElevatedButtonTheme,
+    filledButtonTheme: AppFilledButtonTheme.lightFilledButtonTheme,
   );
 
   /* ------------------------------------------------------------------------ */
@@ -58,5 +61,6 @@ class AppTheme {
     // -- Widgets do Material Design
     // Botões
     elevatedButtonTheme: AppElevatedButtonTheme.darkElevatedButtonTheme,
+    filledButtonTheme: AppFilledButtonTheme.darkFilledButtonTheme,
   );
 }
