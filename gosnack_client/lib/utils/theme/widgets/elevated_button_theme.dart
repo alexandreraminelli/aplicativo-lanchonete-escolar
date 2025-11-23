@@ -14,8 +14,8 @@ class AppElevatedButtonTheme {
     style: ElevatedButton.styleFrom(
       elevation: 1, // sombra
       // Cores
-      backgroundColor: AppColors.primary,
-      foregroundColor: AppColors.primaryForeground,
+      backgroundColor: KColors.primary,
+      foregroundColor: KColors.primaryForeground,
       disabledBackgroundColor: Colors.grey,
       disabledForegroundColor: Colors.white70,
       // Padding
@@ -28,7 +28,7 @@ class AppElevatedButtonTheme {
       ),
       // Cantos arredondados
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Sizes.sm),
+        borderRadius: BorderRadius.circular(KSizes.sm),
       ),
     ),
   );

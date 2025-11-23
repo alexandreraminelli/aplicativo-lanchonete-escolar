@@ -21,7 +21,7 @@ class AppTheme {
 
       // -- Cores
       brightness: brightness,
-      primaryColor: AppColors.primary,
+      primaryColor: KColors.primary,
       scaffoldBackgroundColor: scaffoldBackgroundColor,
 
       // -- Tipografia

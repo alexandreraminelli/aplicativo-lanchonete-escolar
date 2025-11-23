@@ -1,6 +1,6 @@
 /// Valores constantes de tamanhos para dimensões, espaçamentos,
 /// cantos arredondados, tamanhos de fontes, etc.
-class Sizes {
+class KSizes {
   // -- Espaçamentos e dimensões -------------------------------------------- //
   static const double xs = 8.0;
   static const double sm = 12.0;

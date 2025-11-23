@@ -7,7 +7,7 @@ class KSpacing {
 
   // -- Buttons ------------------------------------------------------------- //
   static const EdgeInsets buttonPaddingMd = EdgeInsets.symmetric(
-    horizontal: Sizes.md,
-    vertical: Sizes.sm,
+    horizontal: KSizes.md,
+    vertical: KSizes.sm,
   );
 }

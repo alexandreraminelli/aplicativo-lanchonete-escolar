@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gosnack_client/utils/constants/styles/spacing.dart';
 
 class ThemeWidgetsTest extends StatelessWidget {
   const ThemeWidgetsTest({super.key});

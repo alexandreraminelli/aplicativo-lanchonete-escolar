@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 /// Constantes das cores utilizadas na aplicação.
-class AppColors {
-  AppColors._(); // Construtor privado para evitar instanciação
+class KColors {
+  KColors._(); // Construtor privado para evitar instanciação
 
   // -- Shade scales --------------------------------------------------------- //
 
