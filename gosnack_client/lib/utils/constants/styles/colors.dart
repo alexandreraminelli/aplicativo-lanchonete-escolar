@@ -71,4 +71,10 @@ class AppColors {
   static const Color success = success500;
   static const Color warning = warning500;
   static const Color danger = danger500;
+
+  static const Color primaryForeground = Colors.white;
+  static const Color secondaryForeground = Colors.white;
+  static const Color successForeground = Colors.black;
+  static const Color warningForeground = Colors.black;
+  static const Color dangerForeground = Colors.white;
 }
