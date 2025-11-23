@@ -3,6 +3,7 @@ import 'package:gosnack_client/utils/constants/styles/colors.dart';
 import 'package:gosnack_client/utils/theme/base/typography.dart';
 import 'package:gosnack_client/utils/theme/widgets_theme/buttons_theme/elevated_button_theme.dart';
 import 'package:gosnack_client/utils/theme/widgets_theme/buttons_theme/filled_button_theme.dart';
+import 'package:gosnack_client/utils/theme/widgets_theme/buttons_theme/outlined_button_theme.dart';
 
 /// Tema da aplicação.
 class AppTheme {
@@ -13,9 +14,11 @@ class AppTheme {
     // Cores
     required Brightness brightness,
     required Color scaffoldBackgroundColor,
+
     // Widgets
     required ElevatedButtonThemeData elevatedButtonTheme,
     required FilledButtonThemeData filledButtonTheme,
+    required OutlinedButtonThemeData outlinedButtonTheme,
   }) {
     final base = ThemeData(
       useMaterial3: true,
@@ -31,6 +34,7 @@ class AppTheme {
       // -- Widgets do Material Design
       elevatedButtonTheme: elevatedButtonTheme,
       filledButtonTheme: filledButtonTheme,
+      outlinedButtonTheme: outlinedButtonTheme,
     );
 
     return base.copyWith(
@@ -49,6 +53,7 @@ class AppTheme {
     // Botões
     elevatedButtonTheme: AppElevatedButtonTheme.lightElevatedButtonTheme,
     filledButtonTheme: AppFilledButtonTheme.lightFilledButtonTheme,
+    outlinedButtonTheme: AppOutlinedButtonTheme.lightOutlinedButtonTheme,
   );
 
   /* ------------------------------------------------------------------------ */
@@ -62,5 +67,6 @@ class AppTheme {
     // Botões
     elevatedButtonTheme: AppElevatedButtonTheme.darkElevatedButtonTheme,
     filledButtonTheme: AppFilledButtonTheme.darkFilledButtonTheme,
+    outlinedButtonTheme: AppOutlinedButtonTheme.darkOutlinedButtonTheme,
   );
 }
