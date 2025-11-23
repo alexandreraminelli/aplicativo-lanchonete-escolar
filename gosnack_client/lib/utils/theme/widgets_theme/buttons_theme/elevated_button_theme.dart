@@ -26,6 +26,8 @@ class AppElevatedButtonTheme {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(KSizes.sm),
       ),
+      // Ícone
+      iconSize: KSizes.lg,
     ),
   );
 

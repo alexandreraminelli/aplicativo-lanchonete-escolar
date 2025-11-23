@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 
 /// Tipografia base do aplicativo.
 class AppTypography {
@@ -10,7 +11,7 @@ class AppTypography {
   // -- Button Text Styles -------------------------------------------------- //
   static const TextStyle buttonTextStyleMd = TextStyle(
     fontFamily: AppTypography.defaultFont,
-    fontSize: 16.0,
+    fontSize: KSizes.fontMd,
     fontWeight: FontWeight.w500,
   );
 }
