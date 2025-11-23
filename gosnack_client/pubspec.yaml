@@ -13,6 +13,34 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Gerenciamento de estado
+  get: ^4.7.2 # Gerenciamento de estado reativo e navegação
+  get_storage: ^2.1.1 # Armazenamento de dados localmente
+
+  # Widgets e elementos de UI
+  cached_network_image: ^3.4.1 # Armazena imagens da internet em cache
+  carousel_slider: ^5.1.1 # Carrousel de Widgets
+  flutter_native_splash: ^2.4.7 # Splash Screen (tela de carregamento) nativa
+  flutter_rating_bar: ^4.0.1 # Avaliação por estrelas
+  hugeicons: ^1.1.1 # Ícones
+  lottie: ^3.3.2 # Renderizar animações Lottie
+  shimmer: ^3.0.0 # Efeito de brilho para skeleton
+  smooth_page_indicator: ^1.2.1 # Indicadores de página para carrosséis
+
+  # Utils
+  connectivity_plus: ^7.0.0 # Verificar conexão com a Internet
+  http: ^1.6.0 # Requisições HTTP
+  intl: ^0.20.2 # Internacionalização e formatação de datas, números e moedas
+  image_picker: ^1.2.1 # Seleção de imagens da galeria ou câmera
+  logger: ^2.6.2 # Logs formatados
+  url_launcher: ^6.3.2 # Abrir URLs no navegador ou outros apps
+
+  # Firebase
+  cloud_firestore: ^6.1.0
+  firebase_auth: ^6.1.2
+  firebase_core: ^4.2.1
+  firebase_storage: ^13.0.4
+
 # Dependências de desenvolvimento
 dev_dependencies:
   flutter_test:
