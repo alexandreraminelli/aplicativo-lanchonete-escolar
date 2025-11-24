@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:gosnack_client/app.dart';
 
 /// Ponto de entrada da aplicação.
 void main() {
-  // TODO: Widgets Binding
+  // Widgets Binding
   // Garante que o Flutter esteja inicializado corretamente antes de executar o app
+  final WidgetsBinding widgetsBindings =
+      WidgetsFlutterBinding.ensureInitialized();
 
   // TODO: Iniciar armazenamento local do GetX
   // Garante que o armazenamento local esteja pronto antes de prosseguir
 
-  // TODO: Preservar Splash Screen enquanto os demais itens são inicializados
+  // Preservar Splash Screen enquanto os demais itens são inicializados
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBindings);
 
   // TODO: Iniciar Firebase
 
