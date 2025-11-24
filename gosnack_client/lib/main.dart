@@ -15,6 +15,8 @@ void main() {
   // Preservar Splash Screen enquanto os demais itens são inicializados
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBindings);
 
+  FlutterNativeSplash.remove(); // TODO: mover para outra classe
+
   // TODO: Iniciar Firebase
 
   // Executa a aplicação Flutter
