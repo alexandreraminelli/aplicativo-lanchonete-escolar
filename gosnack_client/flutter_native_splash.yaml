@@ -1,0 +1,34 @@
+# Configuração da Splash Screen (Tela de Inicialização)
+# Gerar Native Splash Screen: dart run flutter_native_splash:create
+# Remover Native Splash Screen: dart run flutter_native_splash:remove
+
+flutter_native_splash:
+  # Plataformas para oferecer suporte
+  android: true
+  ios: true
+  web: false
+
+  # Background-color
+  color: "#FAFAFA"
+  color_dark: "#18181B"
+
+  # Logo
+  image: assets/logos/favicon.png
+  # Branding
+  branding: assets/logos/branding_black.png
+  branding_dark: assets/logos/branding_white.png
+
+  # Configurações específicas
+  android_12:
+    # Background-color
+    color: "#FAFAFA"
+    color_dark: "#18181B"
+
+    # Logo
+    image: assets/logos/favicon.png
+    # Branding
+    branding: assets/logos/branding_black.png
+    branding_dark: assets/logos/branding_white.png
+
+    # Cor do círculo da logo
+    icon_background_color: "#FAFAFA"
