@@ -14,9 +14,11 @@ flutter_native_splash:
 
   # Logo
   image: assets/logos/favicon.png
+
   # Branding
   branding: assets/logos/branding_black.png
   branding_dark: assets/logos/branding_white.png
+  branding_bottom_padding: 36
 
   # Configurações específicas
   android_12:
@@ -26,9 +28,11 @@ flutter_native_splash:
 
     # Logo
     image: assets/logos/favicon.png
+
     # Branding
     branding: assets/logos/branding_black.png
     branding_dark: assets/logos/branding_white.png
+    branding_bottom_padding: 36
 
     # Cor do círculo da logo
     icon_background_color: "#FAFAFA"
