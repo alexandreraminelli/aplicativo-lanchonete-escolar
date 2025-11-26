@@ -18,7 +18,7 @@ class ThemeWidgetsTest extends StatelessWidget {
           ),
           Text(
             'Teste explícito — fontFamily',
-            style: TextStyle(fontFamily: 'PlusJakartaSans', fontSize: 24),
+            style: TextStyle(fontFamily: 'Figtree', fontSize: 24),
           ),
 
           const Divider(),
