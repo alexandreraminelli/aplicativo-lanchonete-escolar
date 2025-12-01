@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:gosnack_client/routes/app_routes.dart';
+import 'package:gosnack_client/utils/bindings/general_bindings.dart';
 import 'package:gosnack_client/utils/theme/theme.dart';
 
 /// Widget raiz da aplicação.
@@ -16,7 +17,8 @@ class App extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
 
-      // TODO: Bindings gerais da aplicação
+      // Bindings gerais da aplicação
+      initialBinding: GeneralBindings(),
 
       // Rotas
       getPages: AppRoutes.pages,
