@@ -16,7 +16,8 @@ class App extends StatelessWidget {
 
       // TODO: Bindings gerais da aplicação
 
-      // TODO: Rotas
+      // Rotas
+      getPages: AppRoutes.pages,
 
       // TODO: Tela de carregamento até decidir qual tela mostrar
       home: const Scaffold(body: Center(child: Text('GoSnack'))),
