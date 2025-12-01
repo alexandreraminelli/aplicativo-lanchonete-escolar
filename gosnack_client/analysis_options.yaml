@@ -3,7 +3,7 @@ include: package:flutter_lints/flutter.yaml
 linter:
   rules:
     avoid_print: false # evita prints
-    avoid_redundant_argument_values: true # avisa se o valor passado no argumento é igual seu valor padrão
+    avoid_redundant_argument_values: false # avisa se o valor passado no argumento é igual seu valor padrão
     avoid_unnecessary_containers: true # evita containers desnecessários
     unnecessary_this: true # evita 'this.' desnecessários
     unnecessary_late: true # evita 'late' desnecessário
