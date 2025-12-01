@@ -54,6 +54,7 @@ flutter:
 
   # Local assets
   assets:
+    - assets/animations/ # Animações Lottie
     - assets/logos/ # Logos do aplicativo
 
   # Local Fonts
