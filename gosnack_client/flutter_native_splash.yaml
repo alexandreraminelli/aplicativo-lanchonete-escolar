@@ -10,7 +10,7 @@ flutter_native_splash:
 
   # Background-color
   color: "#FAFAFA"
-  color_dark: "#18181B"
+  color_dark: "#000000"
 
   # Logo
   image: assets/logos/favicon.png
@@ -24,7 +24,7 @@ flutter_native_splash:
   android_12:
     # Background-color
     color: "#FAFAFA"
-    color_dark: "#18181B"
+    color_dark: "#000000"
 
     # Logo
     image: assets/logos/favicon.png
