@@ -5,7 +5,7 @@ import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 class KSpacing {
   KSpacing._(); // Construtor privado para evitar instanciação
 
-  // -- Espaçamentos Gerais ------------------------------------------------- //
+  // -- Todos os Cantos --- ------------------------------------------------- //
   static const EdgeInsets allXs = EdgeInsets.all(KSizes.xs);
   static const EdgeInsets allSm = EdgeInsets.all(KSizes.sm);
   static const EdgeInsets allMd = EdgeInsets.all(KSizes.md);
@@ -19,6 +19,87 @@ class KSpacing {
   static const EdgeInsets allXl7 = EdgeInsets.all(KSizes.xl7);
   static const EdgeInsets allXl8 = EdgeInsets.all(KSizes.xl8);
   static const EdgeInsets allXl9 = EdgeInsets.all(KSizes.xl9);
+
+  // -- Apenas Eixos Horizontais e Verticais -------------------------------- //
+  static const EdgeInsets horizontalXs = EdgeInsets.symmetric(
+    horizontal: KSizes.xs,
+  );
+  static const EdgeInsets horizontalSm = EdgeInsets.symmetric(
+    horizontal: KSizes.sm,
+  );
+  static const EdgeInsets horizontalMd = EdgeInsets.symmetric(
+    horizontal: KSizes.md,
+  );
+  static const EdgeInsets horizontalLg = EdgeInsets.symmetric(
+    horizontal: KSizes.lg,
+  );
+  static const EdgeInsets horizontalXl = EdgeInsets.symmetric(
+    horizontal: KSizes.xl,
+  );
+  static const EdgeInsets horizontalXl2 = EdgeInsets.symmetric(
+    horizontal: KSizes.xl2,
+  );
+  static const EdgeInsets horizontalXl3 = EdgeInsets.symmetric(
+    horizontal: KSizes.xl3,
+  );
+  static const EdgeInsets horizontalXl4 = EdgeInsets.symmetric(
+    horizontal: KSizes.xl4,
+  );
+  static const EdgeInsets horizontalXl5 = EdgeInsets.symmetric(
+    horizontal: KSizes.xl5,
+  );
+  static const EdgeInsets horizontalXl6 = EdgeInsets.symmetric(
+    horizontal: KSizes.xl6,
+  );
+  static const EdgeInsets horizontalXl7 = EdgeInsets.symmetric(
+    horizontal: KSizes.xl7,
+  );
+  static const EdgeInsets horizontalXl8 = EdgeInsets.symmetric(
+    horizontal: KSizes.xl8,
+  );
+  static const EdgeInsets horizontalXl9 = EdgeInsets.symmetric(
+    horizontal: KSizes.xl9,
+  );
+
+  static const EdgeInsets verticalXs = EdgeInsets.symmetric(
+    vertical: KSizes.xs,
+  );
+  static const EdgeInsets verticalSm = EdgeInsets.symmetric(
+    vertical: KSizes.sm,
+  );
+  static const EdgeInsets verticalMd = EdgeInsets.symmetric(
+    vertical: KSizes.md,
+  );
+  static const EdgeInsets verticalLg = EdgeInsets.symmetric(
+    vertical: KSizes.lg,
+  );
+  static const EdgeInsets verticalXl = EdgeInsets.symmetric(
+    vertical: KSizes.xl,
+  );
+  static const EdgeInsets verticalXl2 = EdgeInsets.symmetric(
+    vertical: KSizes.xl2,
+  );
+  static const EdgeInsets verticalXl3 = EdgeInsets.symmetric(
+    vertical: KSizes.xl3,
+  );
+  static const EdgeInsets verticalXl4 = EdgeInsets.symmetric(
+    vertical: KSizes.xl4,
+  );
+  static const EdgeInsets verticalXl5 = EdgeInsets.symmetric(
+    vertical: KSizes.xl5,
+  );
+  static const EdgeInsets verticalXl6 = EdgeInsets.symmetric(
+    vertical: KSizes.xl6,
+  );
+  static const EdgeInsets verticalXl7 = EdgeInsets.symmetric(
+    vertical: KSizes.xl7,
+  );
+  static const EdgeInsets verticalXl8 = EdgeInsets.symmetric(
+    vertical: KSizes.xl8,
+  );
+  static const EdgeInsets verticalXl9 = EdgeInsets.symmetric(
+    vertical: KSizes.xl9,
+  );
 
   // -- Buttons ------------------------------------------------------------- //
   static const EdgeInsets buttonPaddingMd = EdgeInsets.symmetric(
