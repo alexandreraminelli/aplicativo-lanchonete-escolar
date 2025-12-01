@@ -16,8 +16,8 @@ flutter_native_splash:
   image: assets/logos/favicon.png
 
   # Branding
-  branding: assets/logos/branding_black.png
-  branding_dark: assets/logos/branding_white.png
+  branding: assets/logos/splash/branding_black.png
+  branding_dark: assets/logos/splash/branding_white.png
   branding_bottom_padding: 36
 
   # Configurações específicas
@@ -30,8 +30,8 @@ flutter_native_splash:
     image: assets/logos/favicon.png
 
     # Branding
-    branding: assets/logos/branding_black.png
-    branding_dark: assets/logos/branding_white.png
+    branding: assets/logos/splash/branding_black.png
+    branding_dark: assets/logos/splash/branding_white.png
     branding_bottom_padding: 36
 
     # Cor do círculo da logo
