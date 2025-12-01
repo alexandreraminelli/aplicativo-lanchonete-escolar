@@ -22,6 +22,7 @@ dependencies:
   carousel_slider: ^5.1.1 # Carrousel de Widgets
   flutter_native_splash: ^2.4.7 # Splash Screen (tela de carregamento) nativa
   flutter_rating_bar: ^4.0.1 # Avaliação por estrelas
+  flutter_svg: ^2.2.3 # Renderizar arquivos SVG
   hugeicons: ^1.1.1 # Ícones
   lottie: ^3.3.2 # Renderizar animações Lottie
   shimmer: ^3.0.0 # Efeito de brilho para skeleton
