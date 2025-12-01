@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gosnack_client/theme_test.dart';
 import 'package:gosnack_client/utils/theme/theme.dart';
 
 /// Widget raiz da aplicação.
@@ -20,7 +19,7 @@ class App extends StatelessWidget {
       // TODO: Rotas
 
       // TODO: Tela de carregamento até decidir qual tela mostrar
-      home: Scaffold(body: ThemeWidgetsTest()),
+      home: const Scaffold(body: Center(child: Text('GoSnack'))),
     );
   }
 }
