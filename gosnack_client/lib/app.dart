@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:gosnack_client/routes/app_routes.dart';
 import 'package:gosnack_client/utils/theme/theme.dart';
 
 /// Widget raiz da aplicação.
@@ -8,7 +10,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       // Tema
       themeMode: ThemeMode.system, // tema padrão: sistema
       theme: AppTheme.lightTheme,
