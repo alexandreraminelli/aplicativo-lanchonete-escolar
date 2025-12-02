@@ -1,7 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:gosnack_client/app.dart';
+
+import 'firebase_options.dart';
 
 /// Ponto de entrada da aplicação.
 void main() async {
@@ -19,7 +22,11 @@ void main() async {
 
   FlutterNativeSplash.remove(); // TODO: mover para outra classe
 
-  // TODO: Iniciar Firebase
+  // Iniciar Firebase
+  await Firebase.initializeApp(
+    // carregar configurações do firebase_options.dart
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   // Executa a aplicação Flutter
   runApp(const App());
