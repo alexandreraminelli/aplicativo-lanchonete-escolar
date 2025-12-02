@@ -23,8 +23,6 @@ void main() async {
   // Preservar Splash Screen enquanto os demais itens são inicializados
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBindings);
 
-  FlutterNativeSplash.remove(); // TODO: mover para outra classe
-
   // Iniciar Firebase
   await Firebase.initializeApp(
     // carregar configurações do firebase_options.dart
