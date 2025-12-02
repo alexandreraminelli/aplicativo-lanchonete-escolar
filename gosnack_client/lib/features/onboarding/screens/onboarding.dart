@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gosnack_client/utils/constants/styles/colors.dart';
+import 'package:gosnack_client/features/onboarding/screens/widgets/form_unit_and_snackbar.dart';
+import 'package:gosnack_client/features/onboarding/screens/widgets/onboarding_page.dart';
+import 'package:gosnack_client/utils/constants/content/animations_strings.dart';
+import 'package:gosnack_client/utils/constants/content/text_strings.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -41,17 +44,36 @@ class OnBoardingScreen extends StatelessWidget {
       child: const Text("Continuar"),
     );
 
+    /// Carousel de página de onboarding.
+    final onBoardingPageView = PageView(
+      children: const [
+        // -- Páginas de OnBoarding
+        OnBoardingPage(
+          animation: KAnimations.servingDome,
+          title: KTexts.onBoardingTitle1,
+          subTitle: KTexts.onBoardingSubTitle1,
+        ),
+        OnBoardingPage(
+          animation: KAnimations.customerMenuOptions,
+          title: KTexts.onBoardingTitle2,
+          subTitle: KTexts.onBoardingSubTitle2,
+        ),
+        OnBoardingPage(
+          animation: KAnimations.pickingUpOrder,
+          title: KTexts.onBoardingTitle3,
+          subTitle: KTexts.onBoardingSubTitle3,
+        ),
+        // -- Form de Unidade e Lanchonete
+        FormUnitAndSnackbar(),
+      ],
+    );
+
     // -- Scaffold
     return Scaffold(
       // -- AppBar
 
       // -- Body
-      body: Center(
-        child: Text(
-          "OnBoarding Screen",
-          style: Theme.of(context).textTheme.headlineSmall,
-        ),
-      ),
+      body: onBoardingPageView,
       // -- Indicador e Botão
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(
