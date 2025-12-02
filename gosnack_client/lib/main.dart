@@ -1,8 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:gosnack_client/app.dart';
+import 'package:gosnack_client/data/repositories/authentication/authentication_repository.dart';
 
 import 'firebase_options.dart';
 
@@ -26,7 +29,11 @@ void main() async {
   await Firebase.initializeApp(
     // carregar configurações do firebase_options.dart
     options: DefaultFirebaseOptions.currentPlatform,
-  );
+  ).then((FirebaseApp value) {
+    // Iniciar Repositório de Autenticação após Firebase estar pronto
+    // Garante que o repositório esteja disponível globalmente antes do app ser executado
+    Get.put(AuthenticationRepository());
+  });
 
   // Executa a aplicação Flutter
   runApp(const App());
