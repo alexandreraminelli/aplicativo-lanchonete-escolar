@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 /// Funções auxiliares diversas.
 /// Helper functions para várias usos.
-class THelperFunctions {
+class HelperFunctions {
   /// Obter a safe area superior do dispositivo.
   static double getTopSafeArea(BuildContext context) {
     return MediaQuery.of(context).viewPadding.top;
