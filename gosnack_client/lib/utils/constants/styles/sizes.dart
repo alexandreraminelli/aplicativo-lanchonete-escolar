@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 /// Valores constantes de tamanhos para dimensões, espaçamentos,
 /// cantos arredondados, tamanhos de fontes, etc.
 class KSizes {
@@ -15,6 +17,8 @@ class KSizes {
   static const double xl7 = 384.0;
   static const double xl8 = 512.0;
   static const double xl9 = 640.0;
+
+  static const double horizontalScreenPadding = 16.0;
 
   // -- Border Radius ------------------------------------------------------- //
   static const double radiusSm = 8.0;
@@ -37,4 +41,11 @@ class KSizes {
   static const double borderSm = 1.0;
   static const double borderMd = 2.0;
   static const double borderLg = 3.0;
+
+  // -- Buttons ------------------------------------------------------------- //
+
+  // Square buttons
+  static const Size squareButtonSm = Size(40, 40);
+  static const Size squareButtonMd = Size(48, 48);
+  static const Size squareButtonLg = Size(56, 56);
 }
