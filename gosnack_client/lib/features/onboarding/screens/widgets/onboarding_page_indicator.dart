@@ -23,7 +23,7 @@ class OnBoardingPageIndicator extends StatelessWidget {
       count: 4, // quantidade de páginas
       // Animação do indicador
       effect: ExpandingDotsEffect(
-        dotHeight: KSizes.xs, // espessura
+        dotHeight: KSizes.xs2, // espessura
         dotColor: isDark ? KColors.content4dark : KColors.content4light,
         activeDotColor: isDark ? KColors.content1light : KColors.content1dark,
       ),

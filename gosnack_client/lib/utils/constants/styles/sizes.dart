@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 /// cantos arredondados, tamanhos de fontes, etc.
 class KSizes {
   // -- Espaçamentos e dimensões -------------------------------------------- //
+  static const double xs3 = 4.0;
+  static const double xs2 = 6.0;
   static const double xs = 8.0;
   static const double sm = 12.0;
   static const double md = 16.0;
