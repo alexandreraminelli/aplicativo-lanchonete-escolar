@@ -67,6 +67,9 @@ class KColors {
   static const Color danger900 = Color(0xFF310413);
 
   // -- Base ---------------------------------------------------------------- //
+  static const Color white = Colors.white;
+  static const Color black = Colors.black;
+
   static const Color primary = primary500;
   static const Color success = success500;
   static const Color warning = warning500;
@@ -77,4 +80,6 @@ class KColors {
   static const Color successForeground = Colors.black;
   static const Color warningForeground = Colors.black;
   static const Color dangerForeground = Colors.white;
+
+  // -- Defaults ------------------------------------------------------------ //
 }

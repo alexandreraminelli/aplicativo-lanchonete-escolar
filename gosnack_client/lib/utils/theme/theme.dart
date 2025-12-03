@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gosnack_client/utils/constants/styles/colors.dart';
+import 'package:gosnack_client/utils/theme/base/color_scheme.dart';
 import 'package:gosnack_client/utils/theme/base/typography.dart';
 import 'package:gosnack_client/utils/theme/widgets_theme/buttons_theme/elevated_button_theme.dart';
 import 'package:gosnack_client/utils/theme/widgets_theme/buttons_theme/filled_button_theme.dart';
@@ -12,8 +12,7 @@ class AppTheme {
   /// Tema base com as propriedades compartilhadas entre o modo claro e escuro.
   static ThemeData _baseTheme({
     // Cores
-    required Brightness brightness,
-    required Color scaffoldBackgroundColor,
+    required ColorScheme colorScheme,
 
     // Widgets
     required ElevatedButtonThemeData elevatedButtonTheme,
@@ -24,9 +23,7 @@ class AppTheme {
       useMaterial3: true,
 
       // -- Cores
-      brightness: brightness,
-      primaryColor: KColors.primary,
-      scaffoldBackgroundColor: scaffoldBackgroundColor,
+      colorScheme: colorScheme,
 
       // -- Tipografia
       fontFamily: AppTypography.defaultFont,
@@ -45,12 +42,11 @@ class AppTheme {
   /* ------------------------------------------------------------------------ */
   /// Tema da aplicação no modo claro.
   static final ThemeData lightTheme = _baseTheme(
-    // -- Cores
-    brightness: Brightness.light,
-    scaffoldBackgroundColor: Colors.white,
+    // -- Cores (light)
+    colorScheme: AppColorScheme.light,
 
     // -- Widgets do Material Design
-    // Botões
+    // Botões (light)
     elevatedButtonTheme: AppElevatedButtonTheme.lightElevatedButtonTheme,
     filledButtonTheme: AppFilledButtonTheme.lightFilledButtonTheme,
     outlinedButtonTheme: AppOutlinedButtonTheme.lightOutlinedButtonTheme,
@@ -60,11 +56,10 @@ class AppTheme {
   /// Tema da aplicação no modo escuro.
   static final ThemeData darkTheme = _baseTheme(
     // -- Cores (dark)
-    brightness: Brightness.dark,
-    scaffoldBackgroundColor: Colors.black,
+    colorScheme: AppColorScheme.dark,
 
     // -- Widgets do Material Design
-    // Botões
+    // Botões (dark)
     elevatedButtonTheme: AppElevatedButtonTheme.darkElevatedButtonTheme,
     filledButtonTheme: AppFilledButtonTheme.darkFilledButtonTheme,
     outlinedButtonTheme: AppOutlinedButtonTheme.darkOutlinedButtonTheme,
