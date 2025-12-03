@@ -45,7 +45,7 @@ class OnBoardingPage extends StatelessWidget {
 
     // -- Widget Principal
     return Padding(
-      padding: KSpacing.horizontalMd,
+      padding: KSpacing.horizontalScreenPadding, // espaçamento
       child: Column(
         children: [
           const SizedBox(height: KSizes.xl4),

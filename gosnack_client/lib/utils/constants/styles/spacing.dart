@@ -20,7 +20,7 @@ class KSpacing {
   static const EdgeInsets allXl8 = EdgeInsets.all(KSizes.xl8);
   static const EdgeInsets allXl9 = EdgeInsets.all(KSizes.xl9);
 
-  // -- Apenas Eixos Horizontais e Verticais -------------------------------- //
+  // -- Apenas Eixo Horizontal ---------------------------------------------- //
   static const EdgeInsets horizontalXs = EdgeInsets.symmetric(
     horizontal: KSizes.xs,
   );
@@ -61,6 +61,11 @@ class KSpacing {
     horizontal: KSizes.xl9,
   );
 
+  static const EdgeInsets horizontalScreenPadding = EdgeInsets.symmetric(
+    horizontal: KSizes.horizontalScreenPadding,
+  );
+
+  // -- Apenas Eixo Vertical ------------------------------------------------ //
   static const EdgeInsets verticalXs = EdgeInsets.symmetric(
     vertical: KSizes.xs,
   );

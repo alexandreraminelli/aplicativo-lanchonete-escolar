@@ -18,7 +18,7 @@ class KSizes {
   static const double xl8 = 512.0;
   static const double xl9 = 640.0;
 
-  static const double horizontalScreenPadding = 16.0;
+  static const double horizontalScreenPadding = md;
 
   // -- Border Radius ------------------------------------------------------- //
   static const double radiusSm = 8.0;
