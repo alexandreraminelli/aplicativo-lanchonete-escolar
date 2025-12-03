@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/state_manager.dart';
 import 'package:gosnack_client/common/widgets/appbar/main_appbar.dart';
+import 'package:gosnack_client/features/onboarding/controllers/onboarding_controller.dart';
 import 'package:gosnack_client/features/onboarding/screens/widgets/form_unit_and_snackbar.dart';
 import 'package:gosnack_client/features/onboarding/screens/widgets/onboarding_page.dart';
+import 'package:gosnack_client/features/onboarding/screens/widgets/onboarding_page_indicator.dart';
 import 'package:gosnack_client/utils/constants/content/animations_strings.dart';
 import 'package:gosnack_client/utils/constants/content/text_strings.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
@@ -18,6 +22,8 @@ class OnBoardingScreen extends StatelessWidget {
   // -- Build Method -------------------------------------------------------- //
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(OnBoardingController());
+
     // -- Widgets internos
 
     /// Botão de avançar para a próxima página.
@@ -47,6 +53,8 @@ class OnBoardingScreen extends StatelessWidget {
 
     /// Carousel de página de onboarding.
     final onBoardingPageView = PageView(
+      controller: controller.pageController,
+      // -- Lista de páginas
       children: const [
         // -- Páginas de OnBoarding
         OnBoardingPage(
@@ -79,11 +87,21 @@ class OnBoardingScreen extends StatelessWidget {
 
       // -- Indicador e Botão
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: KSizes.horizontalScreenPadding,
-          vertical: KSizes.xl2,
+        // padding
+        padding: const EdgeInsets.only(
+          left: KSizes.horizontalScreenPadding,
+          right: KSizes.horizontalScreenPadding,
+          top: KSizes.xs,
+          bottom: KSizes.xl2,
         ),
-        child: nextButton,
+        child: Column(
+          mainAxisSize: MainAxisSize.min, // height-fit
+          spacing: KSizes.md, // gap
+          children: [
+            const OnBoardingPageIndicator(), // indicador
+            nextButton, // botão de continuar
+          ],
+        ),
       ),
     );
   }
