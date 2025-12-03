@@ -81,5 +81,14 @@ class KColors {
   static const Color warningForeground = Colors.black;
   static const Color dangerForeground = Colors.white;
 
-  // -- Defaults ------------------------------------------------------------ //
+  // -- Content scale ------------------------------------------------------- //
+  static const Color content1light = white;
+  static const Color content2light = zinc100;
+  static const Color content3light = zinc200;
+  static const Color content4light = zinc300;
+
+  static const Color content1dark = zinc900;
+  static const Color content2dark = zinc800;
+  static const Color content3dark = zinc700;
+  static const Color content4dark = zinc600;
 }
