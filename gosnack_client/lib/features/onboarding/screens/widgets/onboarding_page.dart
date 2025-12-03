@@ -33,28 +33,32 @@ class OnBoardingPage extends StatelessWidget {
     final titleWidget = Text(
       title,
       textAlign: TextAlign.center,
-      style: textTheme.headlineLarge!.copyWith(fontWeight: FontWeight.bold),
+      style: textTheme.headlineMedium!.copyWith(fontWeight: FontWeight.bold),
     );
 
     /// Subtítulo do onBoarding
     final subtitleWidget = Text(
       subTitle,
       textAlign: TextAlign.center,
-      style: textTheme.bodyMedium,
+      style: textTheme.bodyLarge,
     );
 
     // -- Widget Principal
-    return Padding(
-      padding: KSpacing.horizontalScreenPadding, // espaçamento
-      child: Column(
-        children: [
-          const SizedBox(height: KSizes.xl),
-          lottieAnimation,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: KSpacing.horizontalSm, // espaçamento
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            lottieAnimation, // animação
 
-          titleWidget,
-          const SizedBox(height: KSizes.sm),
-          subtitleWidget,
-        ],
+            titleWidget, // título
+            const SizedBox(height: KSizes.sm),
+            subtitleWidget, // subtítulo
+
+            const SizedBox(height: KSizes.xl2),
+          ],
+        ),
       ),
     );
   }
