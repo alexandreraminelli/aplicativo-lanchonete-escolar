@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gosnack_client/common/widgets/appbar/main_appbar.dart';
 import 'package:gosnack_client/features/onboarding/screens/widgets/form_unit_and_snackbar.dart';
 import 'package:gosnack_client/features/onboarding/screens/widgets/onboarding_page.dart';
 import 'package:gosnack_client/utils/constants/content/animations_strings.dart';
@@ -71,9 +72,11 @@ class OnBoardingScreen extends StatelessWidget {
     // -- Scaffold
     return Scaffold(
       // -- AppBar
+      appBar: const MainAppbar(),
 
       // -- Body
       body: onBoardingPageView,
+
       // -- Indicador e Botão
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(
