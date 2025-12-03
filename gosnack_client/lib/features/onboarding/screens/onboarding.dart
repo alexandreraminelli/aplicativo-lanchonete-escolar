@@ -4,12 +4,12 @@ import 'package:get/state_manager.dart';
 import 'package:gosnack_client/common/widgets/appbar/main_appbar.dart';
 import 'package:gosnack_client/features/onboarding/controllers/onboarding_controller.dart';
 import 'package:gosnack_client/features/onboarding/screens/widgets/form_unit_and_snackbar.dart';
+import 'package:gosnack_client/features/onboarding/screens/widgets/onboarding_buttons.dart';
 import 'package:gosnack_client/features/onboarding/screens/widgets/onboarding_page.dart';
 import 'package:gosnack_client/features/onboarding/screens/widgets/onboarding_page_indicator.dart';
 import 'package:gosnack_client/utils/constants/content/animations_strings.dart';
 import 'package:gosnack_client/utils/constants/content/text_strings.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
-import 'package:hugeicons/hugeicons.dart';
 
 /// **Tela de OnBoarding (Boas-Vindas)**.
 ///
@@ -25,31 +25,6 @@ class OnBoardingScreen extends StatelessWidget {
     final controller = Get.put(OnBoardingController());
 
     // -- Widgets internos
-
-    /// Botão de avançar para a próxima página.
-    final nextButton = Row(
-      children: [
-        const Spacer(),
-        ElevatedButton(
-          onPressed: () {
-            // TODO: avançar para a próxima página
-          },
-          style: ElevatedButton.styleFrom(
-            minimumSize: KSizes.squareButtonLg,
-            padding: EdgeInsets.zero,
-          ),
-          child: const HugeIcon(icon: HugeIcons.strokeRoundedArrowRight01),
-        ),
-      ],
-    );
-
-    /// Botão de continuar para a tela de login.
-    final continueButton = ElevatedButton(
-      onPressed: () {
-        // TODO: ir para a tela de login
-      },
-      child: const Text("Continuar"),
-    );
 
     /// Carousel de página de onboarding.
     final onBoardingPageView = PageView(
@@ -77,32 +52,33 @@ class OnBoardingScreen extends StatelessWidget {
       ],
     );
 
-    // -- Scaffold
+    /// Rodapé da OnBoarding Screen.
+    const onBoardingFooter = Padding(
+      // padding
+      padding: EdgeInsets.only(
+        left: KSizes.horizontalScreenPadding,
+        right: KSizes.horizontalScreenPadding,
+        top: KSizes.xs,
+        bottom: KSizes.xl2,
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min, // height-fit
+        spacing: KSizes.lg, // gap
+        children: [
+          OnBoardingPageIndicator(), // indicador
+          OnBoardingButtons(), // botão de continuar
+        ],
+      ),
+    );
+
+    // -- Widget principal
     return Scaffold(
       // -- AppBar
       appBar: const MainAppbar(),
-
       // -- Body
       body: onBoardingPageView,
-
       // -- Indicador e Botão
-      bottomNavigationBar: Padding(
-        // padding
-        padding: const EdgeInsets.only(
-          left: KSizes.horizontalScreenPadding,
-          right: KSizes.horizontalScreenPadding,
-          top: KSizes.xs,
-          bottom: KSizes.xl2,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min, // height-fit
-          spacing: KSizes.md, // gap
-          children: [
-            const OnBoardingPageIndicator(), // indicador
-            nextButton, // botão de continuar
-          ],
-        ),
-      ),
+      bottomNavigationBar: onBoardingFooter,
     );
   }
 }

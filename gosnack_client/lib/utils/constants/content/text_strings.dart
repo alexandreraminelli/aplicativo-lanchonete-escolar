@@ -3,6 +3,7 @@ class KTexts {
   const KTexts._(); // evitar instanciação
 
   // -- Global Texts -------------------------------------------------------- //
+  static const String continueT = "Continuar";
 
   // -- OnBoarding Screen Texts --------------------------------------------- //
   static const String onBoardingTitle1 = "Bem-vindo ao GoSnack";
