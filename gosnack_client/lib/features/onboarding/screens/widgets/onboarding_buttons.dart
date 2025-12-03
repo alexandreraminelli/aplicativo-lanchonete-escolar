@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gosnack_client/features/onboarding/controllers/onboarding_controller.dart';
 import 'package:gosnack_client/utils/constants/content/text_strings.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -11,6 +12,8 @@ class OnBoardingButtons extends StatelessWidget {
   // -- Build Method -------------------------------------------------------- //
   @override
   Widget build(BuildContext context) {
+    final controller = OnBoardingController.instance;
+
     // -- Widgets internos
 
     /// Botão de avançar para a próxima página.
@@ -18,9 +21,8 @@ class OnBoardingButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end, // no final da página
       children: [
         ElevatedButton(
-          onPressed: () {
-            // TODO: avançar para a próxima página
-          },
+          // avançar para a próxima
+          onPressed: () => controller.nextPage(),
           // formato quadrado
           style: ElevatedButton.styleFrom(
             minimumSize: KSizes.squareButtonLg,
@@ -33,7 +35,7 @@ class OnBoardingButtons extends StatelessWidget {
 
     /// Botão de continuar para a tela de login.
     final continueButton = SizedBox(
-      width: double.infinity,
+      width: double.infinity, // width full
       child: ElevatedButton(
         onPressed: () {
           // TODO: ir para a tela de login

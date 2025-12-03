@@ -29,6 +29,8 @@ class OnBoardingScreen extends StatelessWidget {
     /// Carousel de página de onboarding.
     final onBoardingPageView = PageView(
       controller: controller.pageController,
+      onPageChanged: controller.updatePageIndicator,
+
       // -- Lista de páginas
       children: const [
         // -- Páginas de OnBoarding

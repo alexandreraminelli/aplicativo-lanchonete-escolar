@@ -16,4 +16,20 @@ class OnBoardingController extends GetxController {
   final pageController = PageController();
 
   // -- Public Methods ------------------------------------------------------ //
+
+  /// Avança para a próxima página do OnBoarding.
+  void nextPage() {
+    // evitar bugs de avançar para página não existente
+    if (currentPageIndex.value <= 3) {
+      final int page = currentPageIndex.value + 1;
+      pageController.animateToPage(
+        page,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  /// Atualizar o índice da página.
+  void updatePageIndicator(index) => currentPageIndex.value = index;
 }
