@@ -6,6 +6,7 @@ class KTexts {
   static const String continueT = "Continuar";
 
   // -- OnBoarding Screen Texts --------------------------------------------- //
+  // Pages
   static const String onBoardingTitle1 = "Bem-vindo ao GoSnack\n";
   static const String onBoardingSubTitle1 =
       "O jeito mais rápido e fácil de pedir seus lanches dentro do colégio. Evite filas e aproveite seus intervalos ao máximo!";
@@ -15,4 +16,9 @@ class KTexts {
   static const String onBoardingTitle3 = "Pague e Retire Sem Complicações";
   static const String onBoardingSubTitle3 =
       "Finalize o pedido pelo app e retire quando estiver pronto. Rápido, seguro e sem filas!";
+
+  // Form unit and snackbar
+  static const String onBoardingFormTitle = "Vamos Começar";
+  static const String onBoardingFormSubtitle =
+      "Selecione a unidade onde você está e uma lanchonete para ver o cardápio";
 }

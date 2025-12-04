@@ -39,9 +39,8 @@ class OnBoardingButtons extends StatelessWidget {
     final continueButton = SizedBox(
       width: double.infinity, // width full
       child: ElevatedButton(
-        onPressed: () {
-          // TODO: ir para a tela de login
-        },
+        // TODO: ir para a tela de login (quando for estiver preenchido)
+        onPressed: null,
         child: const Text(KTexts.continueT),
       ),
     );
