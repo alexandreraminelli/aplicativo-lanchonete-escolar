@@ -15,12 +15,17 @@ class OnBoardingController extends GetxController {
   /// Classe controladora no pacote do Material Design.
   final pageController = PageController();
 
+  // -- Getters ------------------------------------------------------------- //
+
+  /// Se está na última página do OnBoarding.
+  bool get isLastPage => currentPageIndex.value == 3;
+
   // -- Public Methods ------------------------------------------------------ //
 
   /// Avança para a próxima página do OnBoarding.
   void nextPage() {
     // evitar bugs de avançar para página não existente
-    if (currentPageIndex.value <= 3) {
+    if (!isLastPage) {
       final int page = currentPageIndex.value + 1;
       pageController.animateToPage(
         page,
@@ -31,5 +36,5 @@ class OnBoardingController extends GetxController {
   }
 
   /// Atualizar o índice da página.
-  void updatePageIndicator(index) => currentPageIndex.value = index;
+  void updatePageIndicator(int index) => currentPageIndex.value = index;
 }
