@@ -6,6 +6,7 @@ import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 /// Botões de próxima página e continuar na OnBoarding Screen.
+/// Exibe o botão de próxima página ou o botão de continuar na última.
 class OnBoardingButtons extends StatelessWidget {
   // -- Public Constructor -------------------------------------------------- //
   const OnBoardingButtons({super.key});
