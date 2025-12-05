@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gosnack_client/utils/constants/styles/colors.dart';
 import 'package:gosnack_client/utils/constants/styles/shape.dart';
+import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:gosnack_client/utils/theme/widgets_theme/inputs/input_decoration_theme.dart';
 
 /// Tema do DropdownMenu da aplicação.
@@ -17,7 +18,18 @@ class AppDropdownMenuTheme {
     // Cantos arredondados
     shape: WidgetStatePropertyAll(KShape.borderRadiusLg),
 
+    // Espaço entre o campo e o menu
+    alignment: const AlignmentDirectional(
+      -1.0, // corrigir alinhamento horizontal
+      1.25, // espaço vertical de 12px
+    ),
     // Limitar width máxima
+    maximumSize: const WidgetStatePropertyAll(
+      Size(
+        KSizes.xl7, // width limitada
+        double.infinity, // height livre
+      ),
+    ),
   );
 
   /// Tema do MenuStyle no modo claro.
