@@ -111,4 +111,14 @@ class KSpacing {
     horizontal: KSizes.md,
     vertical: KSizes.sm,
   );
+
+  // -- Inputs -------------------------------------------------------------- //
+  static const EdgeInsets inputPaddingSm = EdgeInsets.symmetric(
+    horizontal: 12.0,
+    vertical: 8.0,
+  );
+  static const EdgeInsets inputPaddingLg = EdgeInsets.symmetric(
+    horizontal: 12.0,
+    vertical: 10.0,
+  );
 }

@@ -5,6 +5,8 @@ import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 class KBorder {
   KBorder._(); // evitar instanciação
 
+  static const double defaultWidth = 2.0;
+
   // -- Border Radius ------------------------------------------------------- //
   static const BorderRadius borderRadiusSm = BorderRadius.all(
     Radius.circular(KSizes.radiusSm),

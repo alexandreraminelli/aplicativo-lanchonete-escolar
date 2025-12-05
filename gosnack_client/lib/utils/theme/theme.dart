@@ -4,6 +4,8 @@ import 'package:gosnack_client/utils/theme/base/typography.dart';
 import 'package:gosnack_client/utils/theme/widgets_theme/buttons_theme/elevated_button_theme.dart';
 import 'package:gosnack_client/utils/theme/widgets_theme/buttons_theme/filled_button_theme.dart';
 import 'package:gosnack_client/utils/theme/widgets_theme/buttons_theme/outlined_button_theme.dart';
+import 'package:gosnack_client/utils/theme/widgets_theme/inputs/dropdown_menu_theme.dart';
+import 'package:gosnack_client/utils/theme/widgets_theme/inputs/input_decoration_theme.dart';
 
 /// Tema da aplicação.
 class AppTheme {
@@ -15,9 +17,13 @@ class AppTheme {
     required ColorScheme colorScheme,
 
     // Widgets
+    // Buttons
     required ElevatedButtonThemeData elevatedButtonTheme,
     required FilledButtonThemeData filledButtonTheme,
     required OutlinedButtonThemeData outlinedButtonTheme,
+    // Inputs
+    required InputDecorationThemeData inputDecorationTheme,
+    required DropdownMenuThemeData dropdownMenuTheme,
   }) {
     final base = ThemeData(
       useMaterial3: true,
@@ -29,9 +35,13 @@ class AppTheme {
       fontFamily: AppTypography.defaultFont,
 
       // -- Widgets do Material Design
+      // Buttons
       elevatedButtonTheme: elevatedButtonTheme,
       filledButtonTheme: filledButtonTheme,
       outlinedButtonTheme: outlinedButtonTheme,
+      // Inputs
+      inputDecorationTheme: inputDecorationTheme,
+      dropdownMenuTheme: dropdownMenuTheme,
     );
 
     return base.copyWith(
@@ -46,10 +56,14 @@ class AppTheme {
     colorScheme: AppColorScheme.light,
 
     // -- Widgets do Material Design
-    // Botões (light)
+    // Buttons (light)
     elevatedButtonTheme: AppElevatedButtonTheme.lightElevatedButtonTheme,
     filledButtonTheme: AppFilledButtonTheme.lightFilledButtonTheme,
     outlinedButtonTheme: AppOutlinedButtonTheme.lightOutlinedButtonTheme,
+
+    // Inputs (light)
+    inputDecorationTheme: AppInputDecorationTheme.light,
+    dropdownMenuTheme: AppDropdownMenuTheme.light,
   );
 
   /* ------------------------------------------------------------------------ */
@@ -59,9 +73,12 @@ class AppTheme {
     colorScheme: AppColorScheme.dark,
 
     // -- Widgets do Material Design
-    // Botões (dark)
+    // Buttons (dark)
     elevatedButtonTheme: AppElevatedButtonTheme.darkElevatedButtonTheme,
     filledButtonTheme: AppFilledButtonTheme.darkFilledButtonTheme,
     outlinedButtonTheme: AppOutlinedButtonTheme.darkOutlinedButtonTheme,
+    // Inputs (dark)
+    inputDecorationTheme: AppInputDecorationTheme.dark,
+    dropdownMenuTheme: AppDropdownMenuTheme.dark,
   );
 }
