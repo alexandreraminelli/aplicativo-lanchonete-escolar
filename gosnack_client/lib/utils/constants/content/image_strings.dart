@@ -1,5 +1,7 @@
 /// Strings com os caminhos para arquivos de imagens na pasta `assets/`.
 class KImages {
+  KImages._(); // evitar instanciação
+
   // -- Logos --------------------------------------------------------------- //
   static const String favicon = "assets/logos/favicon.png";
   static const String logoWhite = "assets/logos/logo_white.png";

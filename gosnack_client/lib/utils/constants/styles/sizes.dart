@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 /// Valores constantes de tamanhos para dimensões, espaçamentos,
 /// cantos arredondados, tamanhos de fontes, etc.
 class KSizes {
+  KSizes._(); // evitar instanciação
+
   // -- Espaçamentos e dimensões -------------------------------------------- //
   static const double xs3 = 4.0;
   static const double xs2 = 6.0;

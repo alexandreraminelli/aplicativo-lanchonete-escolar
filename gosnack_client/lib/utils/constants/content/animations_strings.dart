@@ -1,5 +1,7 @@
 /// Strings com os caminhos para as animações Lottie na pasta `assets/animations/`
 class KAnimations {
+  KAnimations._(); // evitar instanciação
+
   /// Pasta base de assets de animações
   static const _animationsPath = "assets/animations";
 
