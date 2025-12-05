@@ -27,9 +27,33 @@ class OnBoardingFormUnitAndSnackbar extends StatelessWidget {
     /// Campos do formulário de unidade e lanchonete.
     const selectUnitAndSnackbarForm = Form(
       child: Column(
+        spacing: KSizes.spacingBtwFields,
         children: [
           // TODO: Form de unidade e lanchonete
-          Placeholder(),
+          // -- Select Unidade
+          DropdownMenu(
+            label: Text("Unidade"),
+            width: double.infinity,
+            // TODO: Obter lanchonetes do controlador
+            dropdownMenuEntries: [
+              DropdownMenuEntry(value: 'unit1', label: 'Unidade 1'),
+              DropdownMenuEntry(value: 'unit2', label: 'Unidade 2'),
+              DropdownMenuEntry(value: 'unit3', label: 'Unidade 3'),
+              DropdownMenuEntry(value: 'unit4', label: 'Unidade 4'),
+            ],
+          ),
+
+          // -- Select Lanchonete
+          DropdownMenu(
+            label: Text("Lanchonete"),
+            width: double.infinity,
+            // TODO: Obter lanchonetes do controlador
+            dropdownMenuEntries: [
+              DropdownMenuEntry(value: "snackbar1", label: "Lanchonete 1"),
+              DropdownMenuEntry(value: "snackbar2", label: "Lanchonete 2"),
+              DropdownMenuEntry(value: "snackbar3", label: "Lanchonete 3"),
+            ],
+          ),
         ],
       ),
     );
