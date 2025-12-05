@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gosnack_client/utils/constants/styles/colors.dart';
+import 'package:gosnack_client/utils/constants/styles/shape.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:gosnack_client/utils/constants/styles/spacing.dart';
 import 'package:gosnack_client/utils/theme/base/typography.dart';
@@ -23,9 +24,7 @@ class AppElevatedButtonTheme {
       // Tipografia
       textStyle: AppTypography.buttonTextStyleMd,
       // Cantos arredondados
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(KSizes.sm),
-      ),
+      shape: KShape.borderRadiusMd,
       // Ícone
       iconSize: KSizes.lg,
     ),
