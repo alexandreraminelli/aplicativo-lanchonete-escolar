@@ -21,6 +21,7 @@ class AppInputDecorationTheme {
 
   /// Tema base de InputDecorationTheme com propriedades compartilhadas no modo claro e escuro.
   static InputDecorationThemeData _base({
+    required Color backgroundColor,
     required Color borderColor,
     required Color focusedBorder,
     required Color textColor,
@@ -34,7 +35,9 @@ class AppInputDecorationTheme {
       // borda de erro em foco
       color: KColors.warning,
     ),
-
+    // Cores
+    filled: true,
+    fillColor: backgroundColor, // background
     // Padding
     contentPadding: KSpacing.inputPaddingLg,
 
@@ -44,15 +47,17 @@ class AppInputDecorationTheme {
 
   /// Tema de input para o modo claro.
   static final InputDecorationThemeData light = _base(
+    backgroundColor: KColors.zinc50,
     borderColor: KColors.zinc200,
     focusedBorder: KColors.black,
-    textColor: KColors.white,
+    textColor: KColors.zinc600,
   );
 
   /// Tema de input para o modo escuro.
   static final InputDecorationThemeData dark = _base(
-    borderColor: KColors.zinc800,
+    backgroundColor: KColors.zinc900,
+    borderColor: KColors.zinc700,
     focusedBorder: KColors.white,
-    textColor: KColors.white,
+    textColor: KColors.zinc300,
   );
 }
