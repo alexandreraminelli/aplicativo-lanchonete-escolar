@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gosnack_client/utils/helpers/helper_functions.dart';
 import 'package:gosnack_client/utils/theme/widgets_theme/inputs/dropdown_menu_theme.dart';
+import 'package:hugeicons/hugeicons.dart';
 
 /// Widget personalizado para o Dropdown Menu.
 class AppDropdownMenu<T> extends StatelessWidget {
@@ -26,14 +27,25 @@ class AppDropdownMenu<T> extends StatelessWidget {
 
     // -- Widget principal
     return DropdownMenu(
-      label: Text(label), // rótulo
-      width: double.infinity, // largura total
       // Passar context para calcular a width do menu
       menuStyle: isDark
           ? AppDropdownMenuTheme.darkMenuStyle(context)
           : AppDropdownMenuTheme.lightMenuStyle(context),
-      // Itens do menu
+
+      label: Text(label), // rótulo
+      width: double.infinity, // largura total
+      // -- Itens do menu
       dropdownMenuEntries: dropdownMenuEntries,
+
+      // -- Ícones de setas
+      trailingIcon: const HugeIcon(
+        // aberto
+        icon: HugeIcons.strokeRoundedArrowDown01,
+      ),
+      selectedTrailingIcon: const HugeIcon(
+        // fechado
+        icon: HugeIcons.strokeRoundedArrowUp01,
+      ),
     );
   }
 }
