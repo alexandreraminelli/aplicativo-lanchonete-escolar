@@ -9,7 +9,8 @@ class AppDropdownMenuTheme {
   AppDropdownMenuTheme._(); // evitar instanciação
 
   /// Tema base do MenuStyle do DropdownMenu.
-  static MenuStyle _baseMenuStyle({
+  static MenuStyle _baseMenuStyle(
+    BuildContext? context, {
     required Color background,
     required Color foreground,
   }) => MenuStyle(
@@ -24,22 +25,28 @@ class AppDropdownMenuTheme {
       1.25, // espaço vertical de 12px
     ),
     // Limitar width máxima
-    maximumSize: const WidgetStatePropertyAll(
+    maximumSize: WidgetStatePropertyAll(
       Size(
-        KSizes.xl7, // width limitada
+        // max-width calculada de acordo com o tamanho da tela
+        ((context != null)
+            ? (MediaQuery.of(context).size.width -
+                  KSizes.horizontalScreenPadding * 2)
+            : KSizes.xl7),
         double.infinity, // height livre
       ),
     ),
   );
 
   /// Tema do MenuStyle no modo claro.
-  static final MenuStyle _lightMenuStyle = _baseMenuStyle(
+  static MenuStyle lightMenuStyle(BuildContext? context) => _baseMenuStyle(
+    context,
     background: KColors.content1light,
     foreground: KColors.content1dark,
   );
 
   /// Tema do MenuStyle no modo escuro.
-  static final MenuStyle _darkMenuStyle = _baseMenuStyle(
+  static MenuStyle darkMenuStyle(BuildContext? context) => _baseMenuStyle(
+    context,
     background: KColors.content1dark,
     foreground: KColors.content1light,
   );
@@ -56,12 +63,12 @@ class AppDropdownMenuTheme {
   /// Tema do DropdownMenu no modo claro.
   static final DropdownMenuThemeData light = _base(
     inputDecorationTheme: AppInputDecorationTheme.light,
-    menuStyle: _lightMenuStyle,
+    menuStyle: lightMenuStyle(null),
   );
 
   /// Tema do DropdownMenu no modo escuro.
   static final DropdownMenuThemeData dark = _base(
     inputDecorationTheme: AppInputDecorationTheme.dark,
-    menuStyle: _darkMenuStyle,
+    menuStyle: darkMenuStyle(null),
   );
 }

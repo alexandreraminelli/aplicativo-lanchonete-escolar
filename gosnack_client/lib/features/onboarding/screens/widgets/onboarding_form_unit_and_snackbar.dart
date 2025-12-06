@@ -4,6 +4,8 @@ import 'package:gosnack_client/features/onboarding/controllers/onboarding_contro
 import 'package:gosnack_client/utils/constants/content/text_strings.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:gosnack_client/utils/constants/styles/spacing.dart';
+import 'package:gosnack_client/utils/helpers/helper_functions.dart';
+import 'package:gosnack_client/utils/theme/widgets_theme/inputs/dropdown_menu_theme.dart';
 
 /// Formulário no final do OnBoarding para selecionar uma unidade e lanchonete.
 class OnBoardingFormUnitAndSnackbar extends StatelessWidget {
@@ -13,6 +15,7 @@ class OnBoardingFormUnitAndSnackbar extends StatelessWidget {
   // -- Build Method -------------------------------------------------------- //
   @override
   Widget build(BuildContext context) {
+    final isDark = HelperFunctions.isDarkMode(context);
     // -- Controladores
     final onBoardingController = OnBoardingController.instance;
 
@@ -25,17 +28,21 @@ class OnBoardingFormUnitAndSnackbar extends StatelessWidget {
     );
 
     /// Campos do formulário de unidade e lanchonete.
-    const selectUnitAndSnackbarForm = Form(
+    final selectUnitAndSnackbarForm = Form(
       child: Column(
         spacing: KSizes.spacingBtwFields,
         children: [
           // TODO: Form de unidade e lanchonete
           // -- Select Unidade
           DropdownMenu(
-            label: Text("Unidade"),
-            width: double.infinity,
+            label: const Text("Unidade"),
+            // Passar context para calcular a width do menu
+            menuStyle: isDark
+                ? AppDropdownMenuTheme.darkMenuStyle(context)
+                : AppDropdownMenuTheme.lightMenuStyle(context),
+            width: double.infinity, // largura total
             // TODO: Obter lanchonetes do controlador
-            dropdownMenuEntries: [
+            dropdownMenuEntries: const [
               DropdownMenuEntry(value: 'unit1', label: 'Unidade 1'),
               DropdownMenuEntry(value: 'unit2', label: 'Unidade 2'),
               DropdownMenuEntry(value: 'unit3', label: 'Unidade 3'),
@@ -45,10 +52,14 @@ class OnBoardingFormUnitAndSnackbar extends StatelessWidget {
 
           // -- Select Lanchonete
           DropdownMenu(
-            label: Text("Lanchonete"),
-            width: double.infinity,
+            label: const Text("Lanchonete"),
+            // Passar context para calcular a width do menu
+            menuStyle: isDark
+                ? AppDropdownMenuTheme.darkMenuStyle(context)
+                : AppDropdownMenuTheme.lightMenuStyle(context),
+            width: double.infinity, // largura total
             // TODO: Obter lanchonetes do controlador
-            dropdownMenuEntries: [
+            dropdownMenuEntries: const [
               DropdownMenuEntry(value: "snackbar1", label: "Lanchonete 1"),
               DropdownMenuEntry(value: "snackbar2", label: "Lanchonete 2"),
               DropdownMenuEntry(value: "snackbar3", label: "Lanchonete 3"),
@@ -59,15 +70,17 @@ class OnBoardingFormUnitAndSnackbar extends StatelessWidget {
     );
 
     // -- Widget principal
-    return const Padding(
-      padding: KSpacing.horizontalScreenPadding,
-      child: Column(
-        children: [
-          SizedBox(height: KSizes.xl2),
-          formHeader, // header
-          SizedBox(height: KSizes.xl),
-          selectUnitAndSnackbarForm, // form
-        ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: KSpacing.horizontalScreenPadding,
+        child: Column(
+          children: [
+            const SizedBox(height: KSizes.xl2),
+            formHeader, // header
+            const SizedBox(height: KSizes.xl),
+            selectUnitAndSnackbarForm, // form
+          ],
+        ),
       ),
     );
   }
