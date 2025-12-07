@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:gosnack_client/utils/helpers/helper_functions.dart';
-import 'package:gosnack_client/utils/theme/widgets_theme/inputs/dropdown_menu_theme.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 /// Widget personalizado para o Dropdown Menu.
@@ -23,14 +23,24 @@ class AppDropdownMenu<T> extends StatelessWidget {
   // -- Build Method -------------------------------------------------------- //
   @override
   Widget build(BuildContext context) {
-    final isDark = HelperFunctions.isDarkMode(context);
+    // -- Usar context para calcular a largura
+    // obter estilo do menu
+    final themeMenuStyle = Theme.of(context).dropdownMenuTheme.menuStyle;
+    final customMenuStyle = themeMenuStyle?.copyWith(
+      maximumSize: WidgetStatePropertyAll(
+        Size(
+          // max-width: subtrair padding padrão da tela
+          HelperFunctions.screenWidth(context) -
+              (KSizes.horizontalScreenPadding * 2),
+          double.infinity, // height livre
+        ),
+      ),
+    );
 
     // -- Widget principal
     return DropdownMenu(
       // Passar context para calcular a width do menu
-      menuStyle: isDark
-          ? AppDropdownMenuTheme.darkMenuStyle(context)
-          : AppDropdownMenuTheme.lightMenuStyle(context),
+      menuStyle: customMenuStyle,
 
       label: Text(label), // rótulo
       width: double.infinity, // largura total
