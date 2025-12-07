@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gosnack_client/utils/constants/styles/colors.dart';
 import 'package:gosnack_client/utils/constants/styles/shape.dart';
-import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:gosnack_client/utils/constants/styles/spacing.dart';
 import 'package:gosnack_client/utils/theme/base/typography.dart';
 

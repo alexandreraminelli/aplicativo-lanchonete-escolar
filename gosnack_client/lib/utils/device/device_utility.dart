@@ -33,7 +33,7 @@ class DeviceUtils {
   }
 
   /// Ativar ou desativar o modo de tela cheia.
-  static void setFullScreen(bool enable) {
+  static void setFullScreen({required bool enable}) {
     SystemChrome.setEnabledSystemUIMode(
       enable ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge,
     );
