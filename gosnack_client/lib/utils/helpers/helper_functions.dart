@@ -16,16 +16,16 @@ class HelperFunctions {
   }
 
   /// Mostrar um SnackBar com a mensagem fornecida.
-  static void showSnackBar(String message) {
+  static void showSnackBar(BuildContext context, String message) {
     ScaffoldMessenger.of(
-      Get.context!,
+      context,
     ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   /// Mostrar um alert dialog com título e mensagem fornecidos.
-  static void showAlert(String title, String message) {
+  static void showAlert(BuildContext context, String title, String message) {
     showDialog(
-      context: Get.context!,
+      context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(title),
@@ -61,18 +61,18 @@ class HelperFunctions {
   }
 
   /// Obter o tamanho da tela do dispositivo.
-  static Size screenSize() {
-    return MediaQuery.of(Get.context!).size;
+  static Size screenSize(BuildContext context) {
+    return MediaQuery.of(context).size;
   }
 
   // Obter a altura da tela do dispositivo.
-  static double screenHeight() {
-    return MediaQuery.of(Get.context!).size.height;
+  static double screenHeight(BuildContext context) {
+    return MediaQuery.of(context).size.height;
   }
 
   /// Obter a largura da tela do dispositivo.
-  static double screenWidth() {
-    return MediaQuery.of(Get.context!).size.width;
+  static double screenWidth(BuildContext context) {
+    return MediaQuery.of(context).size.width;
   }
 
   /// Formatar a data fornecida no formato especificado.
