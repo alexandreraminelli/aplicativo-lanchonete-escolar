@@ -22,42 +22,92 @@ class AppInputDecorationTheme {
   /// Tema base de InputDecorationTheme com propriedades compartilhadas no modo claro e escuro.
   static InputDecorationThemeData _base({
     required Color backgroundColor,
+    required Color disabledBackgroundColor,
     required Color borderColor,
-    required Color focusedBorder,
+    required Color disabledBorderColor,
     required Color textColor,
-  }) => InputDecorationThemeData(
-    // Bordas
-    border: _inputBorder(color: borderColor), // borda padrão
-    enabledBorder: _inputBorder(color: borderColor), // borda habilidade
-    focusedBorder: _inputBorder(color: focusedBorder), // borda em foco
-    errorBorder: _inputBorder(color: KColors.danger), // borda de erro
-    focusedErrorBorder: _inputBorder(
-      // borda de erro em foco
-      color: KColors.warning,
-    ),
-    // Cores
-    filled: true,
-    fillColor: backgroundColor, // background
-    // Padding
-    contentPadding: KSpacing.inputPaddingLg,
+    required Color disabledTextColor,
+  }) {
+    /// Cor de foreground. Varia no estado habilitado e desabilitado.
+    final foregroundColor = WidgetStateColor.resolveWith(
+      (Set<WidgetState> states) =>
+          states.contains(WidgetState.disabled) ? disabledTextColor : textColor,
+    );
 
-    // Tipografia do label
-    labelStyle: TextStyle(fontWeight: FontWeight.w600, color: textColor),
-  );
+    /// TextStyle com cor que varia no estado habilitado e desabilitado.
+    final textStyleColor = WidgetStateTextStyle.resolveWith(
+      (Set<WidgetState> states) => TextStyle(
+        // Cor do texto habilitada ou desabilitada
+        color: states.contains(WidgetState.disabled)
+            ? disabledTextColor
+            : textColor,
+      ),
+    );
+
+    /// TextStyle para label.
+    final labelTextStyle = WidgetStateTextStyle.resolveWith(
+      (Set<WidgetState> states) => TextStyle(
+        fontWeight: FontWeight.w600,
+        // Cor do texto habilitada ou desabilitada
+        color: states.contains(WidgetState.disabled)
+            ? disabledTextColor
+            : textColor,
+      ),
+    );
+
+    return InputDecorationThemeData(
+      // -- Bordas
+      border: _inputBorder(color: borderColor), // borda padrão
+      enabledBorder: _inputBorder(color: borderColor), // borda habilitado
+      // borda desabilitada
+      disabledBorder: _inputBorder(color: disabledBorderColor),
+      focusedBorder: _inputBorder(color: KColors.primary), // borda em foco
+      errorBorder: _inputBorder(color: KColors.danger), // borda de erro
+      // borda de erro em foco
+      focusedErrorBorder: _inputBorder(color: KColors.danger),
+
+      // -- Cores
+      // background
+      filled: true,
+      fillColor: WidgetStateColor.resolveWith(
+        (Set<WidgetState> states) => states.contains(WidgetState.disabled)
+            ? disabledBackgroundColor
+            : backgroundColor,
+      ),
+      // -- Espaçamento
+      contentPadding: KSpacing.inputPaddingLg,
+
+      // -- Texto do Label
+      // label
+      labelStyle: labelTextStyle,
+      floatingLabelStyle: labelTextStyle,
+      // -- Texto do valor
+      hintStyle: textStyleColor,
+
+      // -- Ícones
+      // Cor dos ícones
+      prefixIconColor: foregroundColor,
+      suffixIconColor: foregroundColor,
+    );
+  }
 
   /// Tema de input para o modo claro.
   static final InputDecorationThemeData light = _base(
-    backgroundColor: KColors.zinc50,
-    borderColor: KColors.zinc200,
-    focusedBorder: KColors.black,
-    textColor: KColors.zinc600,
+    backgroundColor: KColors.white,
+    disabledBackgroundColor: KColors.zinc50,
+    borderColor: KColors.zinc400,
+    disabledBorderColor: KColors.zinc200,
+    textColor: KColors.zinc700,
+    disabledTextColor: KColors.zinc400,
   );
 
   /// Tema de input para o modo escuro.
   static final InputDecorationThemeData dark = _base(
-    backgroundColor: KColors.zinc900,
-    borderColor: KColors.zinc700,
-    focusedBorder: KColors.white,
+    backgroundColor: KColors.black,
+    disabledBackgroundColor: KColors.zinc900,
+    borderColor: KColors.zinc500,
+    disabledBorderColor: KColors.zinc700,
     textColor: KColors.zinc300,
+    disabledTextColor: KColors.zinc600,
   );
 }
