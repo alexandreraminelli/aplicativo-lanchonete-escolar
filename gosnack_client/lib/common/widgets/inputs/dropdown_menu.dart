@@ -9,6 +9,7 @@ class AppDropdownMenu<T> extends StatelessWidget {
   const AppDropdownMenu({
     required this.dropdownMenuEntries,
     required this.label,
+    this.enabled = true,
     super.key,
   });
 
@@ -16,6 +17,9 @@ class AppDropdownMenu<T> extends StatelessWidget {
 
   /// Lista de itens DropdownMenuEntry.
   final List<DropdownMenuEntry<T>> dropdownMenuEntries;
+
+  /// Se o Dropdown Menu está habilitado.
+  final bool enabled;
 
   /// Rótulo do Dropdown Menu.
   final String label;
@@ -44,6 +48,8 @@ class AppDropdownMenu<T> extends StatelessWidget {
 
       label: Text(label), // rótulo
       width: double.infinity, // largura total
+
+      enabled: enabled, // se está habilitado
       // -- Itens do menu
       dropdownMenuEntries: dropdownMenuEntries,
 

@@ -44,6 +44,7 @@ class OnBoardingFormUnitAndSnackbar extends StatelessWidget {
           // -- Select Lanchonete
           AppDropdownMenu(
             label: "Lanchonete",
+            enabled: false,
             dropdownMenuEntries: [
               DropdownMenuEntry(value: "snackbar1", label: "Lanchonete 1"),
               DropdownMenuEntry(value: "snackbar2", label: "Lanchonete 2"),
@@ -55,7 +56,7 @@ class OnBoardingFormUnitAndSnackbar extends StatelessWidget {
     );
 
     // -- Widget principal
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       child: Padding(
         padding: KSpacing.horizontalScreenPadding,
         child: Column(
