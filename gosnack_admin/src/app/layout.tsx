@@ -1,6 +1,6 @@
+import "@/src/styles/globals.css" // estilos CSS
 import type { Metadata } from "next"
 import { Figtree } from "next/font/google" // fonte
-import "./globals.css"
 
 /**
  * Fonte padrão do app: Figtree.
