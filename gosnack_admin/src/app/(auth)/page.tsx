@@ -17,12 +17,20 @@ export default function LoginPage() {
         <div className="flex flex-col gap-6">
           <Card className="overflow-hidden p-0">
             <CardContent className="grid p-0 md:grid-cols-2">
+              {/* TODO: Header com logo e ModeToggle */}
+
               {/* Formulário de login */}
               <AuthForm className="p-6 md:p-8" />
 
               {/* Imagem */}
               <div className="bg-muted relative hidden md:block">
-                <Image src={IMAGES.loginBg} alt="Cantina escolar" width={560} height={560} />
+                <Image
+                  src={IMAGES.loginBg}
+                  alt="Cantina escolar"
+                  // Ajustar imagem
+                  fill
+                  className="object-cover"
+                />
               </div>
             </CardContent>
           </Card>
