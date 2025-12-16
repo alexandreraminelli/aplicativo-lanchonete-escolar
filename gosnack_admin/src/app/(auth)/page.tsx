@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/src/components/ui/card"
-import AuthForm from "../../components/custom/forms/AuthForm"
+import AuthForm from "../../components/forms/AuthForm"
 import Image from "next/image"
 
 /**

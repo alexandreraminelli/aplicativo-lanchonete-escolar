@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GoSnack Admin
 
-## Getting Started
+<!-- TODO: Índice -->
 
-First, run the development server:
+<!-- TODO: Descrição do projeto -->
+
+<!-- TODO: listar tecnologias utilizadas -->
+
+## 📁 Estruturas de Pastas
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+gosnack_admin/
+├───public/                 # Arquivos estáticos acessíveis publicamente
+│   ├───images/             # Arquivos de imagens (ilustrações, background, etc)
+│   │   └───.../
+│   └───logos/              # Arquivos SVG da logo do app
+│
+├───src/                    # Código fonte do projeto
+│   ├───app/                # Rotas do App Router do Next.js
+│   │   ├───(auth)/         # Rotas de autenticação
+│   │   │   └───.../
+│   │   ├───(private)/      # Rotas privadas
+│   │   │   └───.../
+│   │   ├───icon.svg        # Ícone favicon do app
+│   │   └───layout.tsx      # Layout root do app
+│   │
+│   ├───components/         # Componentes do projeto
+│   │   ├───common/         # Componentes reutilizáveis em diversas partes do app
+│   │   ├───forms/          # Componentes de formulário
+│   │   ├───layout/         # Componentes de layout (ex: Header, Sidebar, Footer)
+│   │   │   └───.../
+│   │   ├───providers/      # Provedores de contexto do React
+│   │   └───ui/             # Componentes da biblioteca Shadcn
+│   │
+│   ├───constants/          # Valores constantes do projeto
+│   │   ├───texts/          # Constantes de strings de texto
+│   │   │   └───.../
+│   │   ├───images.ts       # Constantes de strings de paths de imagens
+│   │   └───routes.ts       # Constantes de strings de rotas
+│   ├───enums/              # Enumerações reutilizáveis do projeto
+│   ├───hooks/              # Hooks personalizados do React
+│   ├───lib/                # Biblioteca de funções e configurações gerais
+│   │   └───firebase/       # Funções do Firebase
+│   ├───services/           # Serviços de comunicação com APIs e back-end
+│   ├───styles/             # Arquivos de estilos globais e temas
+│   │   └───globals.css     # Configuração do Tailwind CSS e variáveis do Shadcn
+│   ├───types/              # Tipagens TypeScript globais
+│   └───utils/              # Funções utilitárias
+│       ├───formatters/     # Funções de formatação (ex: moeda, data, etc)
+│       ├───helpers/        # Funções auxiliares
+│       └───validators/     # Funções de validação
+│
+├───.gitignore              # Arquivos e pastas ignorados pelo Git
+├───components.json         # Configuração do Shadcn
+├───eslint.config.mjs       # Configuração do ESLint
+├───next.config.js          # Configuração do Next.js
+├───package.json            # Dependências e scripts do projeto
+├───pnpm-lock.yaml          # Arquivo de bloqueio do pnpm
+├───pnpm-workspace.yaml     # Configuração do workspace do pnpm
+├───postcss.config.js       # Configuração do PostCSS
+├───README.md               # Documentação do projeto
+└───tsconfig.json           # Configuração do TypeScript
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
