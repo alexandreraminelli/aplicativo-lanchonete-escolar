@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/src/components/ui/card"
 import AuthForm from "../../components/forms/AuthForm"
 import Image from "next/image"
+import { IMAGES } from "@/src/constants/images"
 
 /**
  * Página de autenticação.
@@ -21,7 +22,7 @@ export default function LoginPage() {
 
               {/* Imagem */}
               <div className="bg-muted relative hidden md:block">
-                <Image src="/images/photos/login-bg.jpg" alt="Cantina escolar" width={560} height={560} />
+                <Image src={IMAGES.loginBg} alt="Cantina escolar" width={560} height={560} />
               </div>
             </CardContent>
           </Card>
