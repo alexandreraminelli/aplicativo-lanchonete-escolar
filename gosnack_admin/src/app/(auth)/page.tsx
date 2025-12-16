@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/src/components/ui/card"
-import LoginForm from "./_components/LoginForm"
+import AuthForm from "../../components/custom/forms/AuthForm"
 import Image from "next/image"
 
 /**
@@ -17,7 +17,7 @@ export default function LoginPage() {
           <Card className="overflow-hidden p-0">
             <CardContent className="grid p-0 md:grid-cols-2">
               {/* Formulário de login */}
-              <LoginForm className="p-6 md:p-8" />
+              <AuthForm className="p-6 md:p-8" />
 
               {/* Imagem */}
               <div className="bg-muted relative hidden md:block">
