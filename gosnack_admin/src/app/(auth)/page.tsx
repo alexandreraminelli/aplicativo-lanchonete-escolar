@@ -25,7 +25,7 @@ export default function LoginPage() {
               {/* TODO: Header com logo e ModeToggle */}
 
               {/* Formulário de login */}
-              <AuthForm className="p-6 md:p-8" />
+              <AuthForm type="sign-in" className="p-6 md:p-8" />
 
               {/* Imagem */}
               <aside className="bg-muted relative hidden md:block">

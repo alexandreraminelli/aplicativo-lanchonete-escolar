@@ -7,11 +7,15 @@ import { Input } from "../ui/input"
 
 /** Props de `LoginForm`. */
 interface Props {
+  /** Tipo de formulário (criar conta ou login). */
+  type: "sign-in" | "sign-up"
+
+  /** Classes CSS adicionais. */
   className?: ClassValue
 }
 
 /** Formulário de autenticação. */
-export default function AuthForm({ className, ...props }: Props) {
+export default function AuthForm({ type, className, ...props }: Props) {
   return (
     <form className={cn("", className)} {...props}>
       <FieldGroup>
