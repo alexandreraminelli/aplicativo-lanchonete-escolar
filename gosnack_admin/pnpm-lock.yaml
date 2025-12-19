@@ -47,6 +47,9 @@ importers:
       react-firebase-hooks:
         specifier: ^5.1.1
         version: 5.1.1(firebase@12.7.0)(react@19.2.0)
+      react-hook-form:
+        specifier: ^7.68.0
+        version: 7.68.0(react@19.2.0)
       tailwind-merge:
         specifier: ^3.4.0
         version: 3.4.0
@@ -2314,6 +2317,12 @@ packages:
     peerDependencies:
       firebase: '>= 9.0.0'
       react: '>= 16.8.0'
+
+  react-hook-form@7.68.0:
+    resolution: {integrity: sha512-oNN3fjrZ/Xo40SWlHf1yCjlMK417JxoSJVUXQjGdvdRCU07NTFei1i1f8ApUAts+IVh14e4EdakeLEA+BEAs/Q==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -5132,6 +5141,10 @@ snapshots:
   react-firebase-hooks@5.1.1(firebase@12.7.0)(react@19.2.0):
     dependencies:
       firebase: 12.7.0
+      react: 19.2.0
+
+  react-hook-form@7.68.0(react@19.2.0):
+    dependencies:
       react: 19.2.0
 
   react-is@16.13.1: {}
