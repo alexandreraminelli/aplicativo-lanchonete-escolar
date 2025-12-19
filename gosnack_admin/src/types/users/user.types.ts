@@ -15,7 +15,18 @@ export type UserId = string
  * - **employee**: funcionário da lanchonete. Responsável por preparar e entregar pedidos.
  * - **client**: usuário comum que realiza pedidos (aluno ou professor).
  */
-export type UserRole = "admin" | "manager" | "employee" | "client"
+export const USER_ROLES = ["admin", "manager", "employee", "client"] as const
+
+/**
+ * Tipos literais dos papéis de usuários no sistema.
+ *
+ * Papéis disponíveis:
+ * - **admin**: administrador do sistema. Responsável por gerenciar unidades e lanchonetes.
+ * - **manager**: gerente da lanchonete. Responsável por gerenciar funcionários, produtos e pedidos.
+ * - **employee**: funcionário da lanchonete. Responsável por preparar e entregar pedidos.
+ * - **client**: usuário comum que realiza pedidos (aluno ou professor).
+ */
+export type UserRole = (typeof USER_ROLES)[number]
 
 /** Tipo de cliente: aluno ou professor. */
 export type ClientType = "student" | "teacher"
