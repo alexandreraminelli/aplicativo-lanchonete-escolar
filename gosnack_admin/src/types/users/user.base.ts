@@ -24,5 +24,5 @@ export interface BaseUser {
   /** Data de criação da conta. */
   createdAt: Timestamp
   /** Data da última atualização dos dados do usuário. */
-  updatedAt: Timestamp
+  updatedAt?: Timestamp
 }
