@@ -2,6 +2,7 @@ import "@/src/styles/globals.css" // estilos CSS
 import type { Metadata } from "next"
 import { Figtree } from "next/font/google" // fonte
 import { ThemeProvider } from "@/src/components/providers/theme-provider"
+import { Toaster } from "sonner"
 
 /**
  * Fonte padrão do app: Figtree.
@@ -42,7 +43,8 @@ export default function RootLayout({
           {/* Componente filho */}
           {children}
 
-          {/* TODO: Sonner/Toast para notificações */}
+          {/* Sonner/Toast para notificações */}
+          <Toaster richColors theme="system" position="top-right" />
         </ThemeProvider>
       </body>
     </html>
