@@ -1,19 +1,10 @@
+import { AUTH_TEXTS } from "@/src/constants/texts/auth.texts"
 import { auth, firestore } from "@/src/lib/firebase/clientApp"
-import { UserRole } from "@/src/types/users/user.types"
+import { UserModel } from "@/src/types/users/user.model"
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { doc, setDoc, Timestamp } from "firebase/firestore"
 import { FirestoreCollections } from "../firestore/collections"
-import { UserModel } from "@/src/types/users/user.model"
-import { AUTH_TEXTS } from "@/src/constants/texts/auth.texts"
-
-/** Dados de entrada para criar uma conta. */
-interface SignUpInput {
-  email: string
-  password: string
-  firstName: string
-  lastName: string
-  role: UserRole
-}
+import { SignInInput, SignUpInput } from "./authInput.types"
 
 /**
  * Registra um novo usuário no Firebase Authentication e cria seu documento no Firestore.
@@ -50,14 +41,6 @@ export async function signUpUser({ email, password, firstName, lastName, role }:
     // Retornar mensagem de erro
     return { success: false, message: AUTH_TEXTS.signUpError }
   }
-}
-
-/**
- * Dados de entrada para efetuar o login.
- */
-interface SignInInput {
-  email: string
-  password: string
 }
 
 /**
