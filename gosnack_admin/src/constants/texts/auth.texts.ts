@@ -33,7 +33,12 @@ export const AUTH_TEXTS = {
   passwordDigit: "A senha deve conter pelo menos um número.",
   passwordSpecialChar: "A senha deve conter pelo menos um caractere especial.",
 
+  /* Mensagens de operações bem-sucedida. */
+  signUpSuccess: "Conta criada com sucesso! Essa conta já pode ser usada para fazer login.",
+  signInSuccess: "Login realizado com sucesso!",
+
   /* Mensagens de erro genéricas */
+  errorTitle: "Erro na Autenticação!",
   signUpError: "Ocorreu um erro e não foi possível criar a conta. Tente novamente mais tarde.",
   signInError: "Ocorreu um erro e não foi possível realizar a autenticação. Tente novamente mais tarde.",
 } as const
