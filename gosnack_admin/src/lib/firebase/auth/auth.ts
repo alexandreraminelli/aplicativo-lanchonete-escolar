@@ -55,9 +55,6 @@ export async function signInUser({ email, password }: SignInInput) {
     return { success: true, userId: userCredential.user.uid }
   } catch {
     // Retornar mensagem de erro
-    return {
-      success: false,
-      message: AUTH_TEXTS.signInError,
-    }
+    return { success: false, message: AUTH_TEXTS.signInError }
   }
 }

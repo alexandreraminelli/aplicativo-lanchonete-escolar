@@ -78,8 +78,7 @@ export default function AuthForm({ type, className, ...props }: Props) {
           toast.success(AUTH_TEXTS.signUpSuccess) // notificação
           form.reset() // limpar form
         } else {
-          // Problema no cadastro
-          toast.error(AUTH_TEXTS.errorTitle, { description: result.message })
+          throw result.message // Problema no cadastro
         }
       } else {
         // Login
@@ -90,8 +89,7 @@ export default function AuthForm({ type, className, ...props }: Props) {
           toast.success(AUTH_TEXTS.signInSuccess) // notificação
           router.push(ROUTES.dashboard) // redirecionamento
         } else {
-          // Problema no login
-          toast.error(AUTH_TEXTS.errorTitle, { description: result.message })
+          throw result.message // Problema no login
         }
       }
     } catch (error) {
