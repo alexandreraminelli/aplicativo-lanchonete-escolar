@@ -1,11 +1,14 @@
 /** Constantes de textos para autenticação. */
 export const AUTH_TEXTS = {
   /* Campos de usuário */
-  email: "E-mail institucional",
+  email: "E-mail",
   password: "Senha",
   firstName: "Primeiro nome",
   lastName: "Sobrenome",
   role: "Tipo de usuário",
+
+  /* Formato do e-mail */
+  emailFormat: "nome.sobrenome@colegioipsum.edu.br",
 
   /* Papéis dos usuários */
   clientRole: "Cliente",
@@ -16,6 +19,7 @@ export const AUTH_TEXTS = {
   /* Botões de ação */
   forgotPassword: "Esqueceu a senha?",
   loginSubmit: "Entrar",
+  signUpSubmit: "Criar Conta",
 
   /* Login Page */
   loginTitle: "GoSnack: Painel de Controle",

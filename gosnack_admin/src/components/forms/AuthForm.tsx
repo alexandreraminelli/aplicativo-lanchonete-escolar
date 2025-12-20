@@ -1,18 +1,22 @@
+"use client"
+
 import { Field, FieldGroup, FieldLabel } from "@/src/components/ui/field"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/src/components/ui/form"
+import { ROUTES } from "@/src/constants/routes"
 import { AUTH_TEXTS } from "@/src/constants/texts/auth.texts"
+import { signInUser, signUpUser } from "@/src/lib/firebase/auth/auth"
+import { SignInInput, SignUpInput } from "@/src/lib/firebase/auth/authInput.types"
 import { cn } from "@/src/lib/utils"
 import { signInSchema, signUpSchema } from "@/src/utils/validation/schemas/authSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { type ClassValue } from "clsx"
 import { useRouter } from "next/navigation"
 import { SubmitHandler, useForm, useWatch } from "react-hook-form"
+import { toast } from "sonner"
 import z from "zod"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
-import { signInUser, signUpUser } from "@/src/lib/firebase/auth/auth"
-import { SignInInput, SignUpInput } from "@/src/lib/firebase/auth/authInput.types"
-import { toast } from "sonner"
-import { ROUTES } from "@/src/constants/routes"
+import { LoaderCircle } from "lucide-react"
 
 /** Tipagem dos dados do form de criar conta. */
 type SignUpFormData = z.infer<typeof signUpSchema>
@@ -91,35 +95,64 @@ export default function AuthForm({ type, className, ...props }: Props) {
   }
 
   return (
-    <form className={cn("", className)} {...props}>
-      <FieldGroup>
-        <AuthFormHeader />
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(handleSubmit)} // função para lidar com o envio
+        className={cn("", className)}
+        {...props}
+      >
+        <FieldGroup>
+          {/* Header */}
+          <AuthFormHeader />
 
-        {/* Campo de e-mail */}
-        <Field>
-          <FieldLabel htmlFor="email">{AUTH_TEXTS.email}</FieldLabel>
-          <Input id="email" type="email" placeholder="m@example.com" required />
-        </Field>
+          {/* Campo E-mail */}
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{AUTH_TEXTS.email}</FormLabel>
+                <FormControl>
+                  <Input type="email" placeholder={AUTH_TEXTS.emailFormat} autoComplete="email" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        {/* Campo de senha */}
-        {/* TODO: criar componente de senha com botão de mostrar/ocultar */}
-        <Field>
-          <div className="flex items-center">
-            <FieldLabel htmlFor="password">{AUTH_TEXTS.password}</FieldLabel>
-            {/* Botão de esqueceu a senha */}
-            <Button type="button" variant="link" className="ml-auto text-sm py-0 h-fit">
-              {AUTH_TEXTS.forgotPassword}
-            </Button>
-          </div>
-          <Input id="password" type="password" required />
-        </Field>
+          {/* Campo Senha */}
 
-        {/* Botão de enviar */}
-        <Field>
-          <Button>{AUTH_TEXTS.loginSubmit}</Button>
-        </Field>
-      </FieldGroup>
-    </form>
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <div className="flex items-center">
+                  <FormLabel>{AUTH_TEXTS.password}</FormLabel>
+                  {/* Botão de esqueceu a senha */}
+                  <Button type="button" variant="link" className="ml-auto text-sm py-0 h-fit">
+                    {AUTH_TEXTS.forgotPassword}
+                  </Button>
+                </div>
+                <FormControl>
+                  {
+                    // TODO: criar componente de senha com botão de mostrar/ocultar
+                  }
+                  <Input type="password" placeholder="********" autoComplete="current-password" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Botão de enviar */}
+          <Button size="lg" type="submit" disabled={form.formState.isSubmitting}>
+            {form.formState.isSubmitting && <LoaderCircle className="animate-spin" />} {/* Ícone de carregamento */}
+            {isSignUp ? AUTH_TEXTS.signUpSubmit : AUTH_TEXTS.loginSubmit}
+          </Button>
+        </FieldGroup>
+      </form>
+    </Form>
   )
 }
 
