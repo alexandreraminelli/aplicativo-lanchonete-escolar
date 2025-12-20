@@ -7,6 +7,12 @@ export const AUTH_TEXTS = {
   lastName: "Sobrenome",
   role: "Tipo de usuário",
 
+  /* Papéis dos usuários */
+  clientRole: "Cliente",
+  employeeRole: "Funcionário da Lanchonete",
+  managerRole: "Gerente de Lanchonete",
+  adminRole: "Administrador",
+
   /* Botões de ação */
   forgotPassword: "Esqueceu a senha?",
   loginSubmit: "Entrar",
@@ -26,4 +32,8 @@ export const AUTH_TEXTS = {
   passwordCase: "A senha deve conter letras maiúsculas e minúsculas.",
   passwordDigit: "A senha deve conter pelo menos um número.",
   passwordSpecialChar: "A senha deve conter pelo menos um caractere especial.",
+
+  /* Mensagens de erro genéricas */
+  signUpError: "Ocorreu um erro e não foi possível criar a conta. Tente novamente mais tarde.",
+  signInError: "Ocorreu um erro e não foi possível realizar a autenticação. Tente novamente mais tarde.",
 } as const
