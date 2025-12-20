@@ -77,6 +77,9 @@ export default function AuthForm({ type, className, ...props }: Props) {
           // Cadastro bem-sucedido
           toast.success(AUTH_TEXTS.signUpSuccess) // notificação
           form.reset() // limpar form
+        } else {
+          // Problema no cadastro
+          toast.error(AUTH_TEXTS.errorTitle, { description: result.message })
         }
       } else {
         // Login
@@ -86,6 +89,9 @@ export default function AuthForm({ type, className, ...props }: Props) {
           // Login bem-sucedido
           toast.success(AUTH_TEXTS.signInSuccess) // notificação
           router.push(ROUTES.dashboard) // redirecionamento
+        } else {
+          // Problema no login
+          toast.error(AUTH_TEXTS.errorTitle, { description: result.message })
         }
       }
     } catch (error) {
