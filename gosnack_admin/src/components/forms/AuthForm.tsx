@@ -1,7 +1,10 @@
 "use client"
 
-import { Field, FieldGroup, FieldLabel } from "@/src/components/ui/field"
+import { Button } from "@/src/components/ui/button"
+import { FieldGroup } from "@/src/components/ui/field"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/src/components/ui/form"
+import { Input } from "@/src/components/ui/input"
+import { Select, SelectContent, SelectTrigger, SelectValue } from "@/src/components/ui/select"
 import { ROUTES } from "@/src/constants/routes"
 import { AUTH_TEXTS } from "@/src/constants/texts/auth.texts"
 import { signInUser, signUpUser } from "@/src/lib/firebase/auth/auth"
@@ -10,13 +13,11 @@ import { cn } from "@/src/lib/utils"
 import { signInSchema, signUpSchema } from "@/src/utils/validation/schemas/authSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { type ClassValue } from "clsx"
+import { LoaderCircle } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { SubmitHandler, useForm, useWatch } from "react-hook-form"
 import { toast } from "sonner"
 import z from "zod"
-import { Button } from "../ui/button"
-import { Input } from "../ui/input"
-import { LoaderCircle } from "lucide-react"
 
 /** Tipagem dos dados do form de criar conta. */
 type SignUpFormData = z.infer<typeof signUpSchema>
@@ -109,6 +110,40 @@ export default function AuthForm({ type, className, ...props }: Props) {
           {/* Header */}
           <AuthFormHeader />
 
+          {/* Campo Nome */}
+          {isSignUp && (
+            <FormField
+              control={form.control}
+              name="firstName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{AUTH_TEXTS.firstName}</FormLabel>
+                  <FormControl>
+                    <Input type="text" autoComplete="name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
+
+          {/* Campo sobrenome */}
+          {isSignUp && (
+            <FormField
+              control={form.control}
+              name="lastName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{AUTH_TEXTS.lastName}</FormLabel>
+                  <FormControl>
+                    <Input type="text" autoComplete="family-name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
+
           {/* Campo E-mail */}
           <FormField
             control={form.control}
@@ -148,6 +183,8 @@ export default function AuthForm({ type, className, ...props }: Props) {
               </FormItem>
             )}
           />
+
+          {/* Tipo de Usuário */}
 
           {/* Botão de enviar */}
           <Button size="lg" type="submit" disabled={form.formState.isSubmitting}>
