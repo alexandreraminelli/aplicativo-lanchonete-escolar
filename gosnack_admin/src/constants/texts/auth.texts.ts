@@ -1,3 +1,5 @@
+import { UserRole } from "@/src/types/users/user.types"
+
 /** Constantes de textos para autenticação. */
 export const AUTH_TEXTS = {
   /* Campos de usuário */
@@ -11,10 +13,12 @@ export const AUTH_TEXTS = {
   emailFormat: "nome.sobrenome@colegioipsum.edu.br",
 
   /* Papéis dos usuários */
-  clientRole: "Cliente",
-  employeeRole: "Funcionário da Lanchonete",
-  managerRole: "Gerente de Lanchonete",
-  adminRole: "Administrador",
+  roles: {
+    client: "Cliente",
+    employee: "Funcionário da Lanchonete",
+    manager: "Gerente de Lanchonete",
+    admin: "Administrador",
+  } satisfies Record<UserRole, string>,
 
   /* Botões de ação */
   forgotPassword: "Esqueceu a senha?",

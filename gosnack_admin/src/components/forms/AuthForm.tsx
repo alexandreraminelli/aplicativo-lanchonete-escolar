@@ -4,12 +4,13 @@ import { Button } from "@/src/components/ui/button"
 import { FieldGroup } from "@/src/components/ui/field"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/src/components/ui/form"
 import { Input } from "@/src/components/ui/input"
-import { Select, SelectContent, SelectTrigger, SelectValue } from "@/src/components/ui/select"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/src/components/ui/select"
 import { ROUTES } from "@/src/constants/routes"
 import { AUTH_TEXTS } from "@/src/constants/texts/auth.texts"
 import { signInUser, signUpUser } from "@/src/lib/firebase/auth/auth"
 import { SignInInput, SignUpInput } from "@/src/lib/firebase/auth/authInput.types"
 import { cn } from "@/src/lib/utils"
+import { USER_ROLES } from "@/src/types/users/user.types"
 import { signInSchema, signUpSchema } from "@/src/utils/validation/schemas/authSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { type ClassValue } from "clsx"
@@ -185,6 +186,30 @@ export default function AuthForm({ type, className, ...props }: Props) {
           />
 
           {/* Tipo de Usuário */}
+          {isSignUp && (
+            <FormField
+              control={form.control}
+              name="role"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{AUTH_TEXTS.role}</FormLabel>
+                  <Select value={field.value} onValueChange={field.onChange}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder={AUTH_TEXTS.role} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {USER_ROLES.map((role) => (
+                        <SelectItem key={role} value={role}>
+                          {AUTH_TEXTS.roles[role]}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
 
           {/* Botão de enviar */}
           <Button size="lg" type="submit" disabled={form.formState.isSubmitting}>
