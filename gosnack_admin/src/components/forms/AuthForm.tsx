@@ -178,7 +178,7 @@ export default function AuthForm({ type, className, ...props }: Props) {
                   {
                     // TODO: criar componente de senha com botão de mostrar/ocultar
                   }
-                  <Input type="password" placeholder="********" autoComplete="current-password" {...field} />
+                  <Input type="password" placeholder="********" autoComplete={isSignUp ? "new-password" : "current-password"} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
