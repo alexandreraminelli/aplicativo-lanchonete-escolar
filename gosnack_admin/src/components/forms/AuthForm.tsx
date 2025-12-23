@@ -1,5 +1,6 @@
 "use client"
 
+import PasswordInput from "@/src/components/common/inputs/PasswordInput"
 import { Button } from "@/src/components/ui/button"
 import { FieldGroup } from "@/src/components/ui/field"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/src/components/ui/form"
@@ -27,24 +28,13 @@ type SignInFormData = z.infer<typeof signInSchema>
 /** Tipagem do formulário (Union Type). */
 type FormData = SignUpFormData | SignInFormData
 
-/** Props comuns para ambos os tipos de formulário. */
-interface BaseProps {
+/** Props para o `AuthForm`. */
+interface Props {
+  /** Tipo de formulário: criar conta ou login. */
+  type: "sign-up" | "sign-in"
   /** Classes CSS adicionais. */
   className?: ClassValue
 }
-/** Props de `AuthForm`. */
-type Props = BaseProps &
-  (
-    | {
-        // Props para criar conta
-        type: "sign-up"
-        // onSubmit: (data: z.infer<typeof signUpSchema>) => Promise<SignUpResult>
-      }
-    | {
-        // Props para login
-        type: "sign-in"
-      }
-  )
 
 /** Formulário de autenticação. */
 export default function AuthForm({ type, className, ...props }: Props) {
@@ -161,7 +151,6 @@ export default function AuthForm({ type, className, ...props }: Props) {
           />
 
           {/* Campo Senha */}
-
           <FormField
             control={form.control}
             name="password"
@@ -178,7 +167,7 @@ export default function AuthForm({ type, className, ...props }: Props) {
                   {
                     // TODO: criar componente de senha com botão de mostrar/ocultar
                   }
-                  <Input type="password" placeholder="********" autoComplete={isSignUp ? "new-password" : "current-password"} {...field} />
+                  <PasswordInput isSignUp={isSignUp} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

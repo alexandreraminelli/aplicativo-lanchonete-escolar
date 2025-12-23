@@ -25,6 +25,9 @@ export const AUTH_TEXTS = {
   loginSubmit: "Entrar",
   signUpSubmit: "Criar Conta",
 
+  hidePassword: "Ocultar senha",
+  showPassword: "Mostrar senha",
+
   /* Login Page */
   loginTitle: "GoSnack: Painel de Controle",
   loginSubtitle: "Acesse o sistema para gerenciar pedidos e produtos.",
