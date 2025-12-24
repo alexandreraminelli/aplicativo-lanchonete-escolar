@@ -16,6 +16,7 @@ import { signInSchema, signUpSchema } from "@/src/utils/validation/schemas/authS
 import { zodResolver } from "@hookform/resolvers/zod"
 import { type ClassValue } from "clsx"
 import { LoaderCircle } from "lucide-react"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { SubmitHandler, useForm, useWatch } from "react-hook-form"
 import { toast } from "sonner"
@@ -156,17 +157,13 @@ export default function AuthForm({ type, className, ...props }: Props) {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <div className="flex items-center">
+                <div className="flex items-center justify-between">
                   <FormLabel>{AUTH_TEXTS.password}</FormLabel>
+
                   {/* Botão de esqueceu a senha */}
-                  <Button type="button" variant="link" className="ml-auto text-sm py-0 h-fit">
-                    {AUTH_TEXTS.forgotPassword}
-                  </Button>
+                  {!isSignUp && <ForgotPasswordButton />}
                 </div>
                 <FormControl>
-                  {
-                    // TODO: criar componente de senha com botão de mostrar/ocultar
-                  }
                   <PasswordInput isSignUp={isSignUp} {...field} />
                 </FormControl>
                 <FormMessage />
@@ -218,5 +215,14 @@ function AuthFormHeader() {
       <h1 className="text-2xl font-bold">{AUTH_TEXTS.loginTitle}</h1>
       <p className="text-muted-foreground text-balance">{AUTH_TEXTS.loginSubtitle}</p>
     </header>
+  )
+}
+
+/** Botão de Esqueci a Senha. */
+function ForgotPasswordButton() {
+  return (
+    <Button type="button" variant="link" className="text-sm p-0 h-fit">
+      <Link href={ROUTES.forgotPassword}>{AUTH_TEXTS.forgotPassword}</Link>
+    </Button>
   )
 }
