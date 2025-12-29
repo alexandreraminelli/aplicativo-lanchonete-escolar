@@ -6,6 +6,9 @@ import { onAuthStateChanged } from "firebase/auth"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { LoaderCircleIcon } from "lucide-react"
+import { SidebarProvider } from "@/src/components/ui/sidebar"
+import { AppSidebar } from "@/src/components/layout/sidebar/AppSidebar"
+import AppHeader from "@/src/components/layout/AppHeader"
 
 /**
  * Layout das páginas privadas.
@@ -38,5 +41,15 @@ export default function PrivateLayout({ children }: { children: React.ReactNode 
   }
 
   // Componente principal
-  return <>{children}</>
+  return (
+    <div>
+      <SidebarProvider className="flex flex-col">
+        <AppHeader /> {/* Cabeçalho */}
+        <div className="flex flex-1">
+          <AppSidebar /> {/* Sidebar */}
+          {children} {/* Conteúdo das páginas */}
+        </div>
+      </SidebarProvider>
+    </div>
+  )
 }
