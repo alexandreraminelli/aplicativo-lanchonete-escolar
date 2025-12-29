@@ -1,5 +1,4 @@
 import { AUTH_ERROR_MESSAGES } from "@/src/constants/texts/auth-errors.texts"
-import { AUTH_TEXTS } from "@/src/constants/texts/auth.texts"
 import { AuthError } from "firebase/auth"
 
 /**
