@@ -1,7 +1,7 @@
 import { AUTH_TEXTS } from "@/src/constants/texts/auth.texts"
 import { auth, firestore } from "@/src/lib/firebase/clientApp"
 import { UserModel } from "@/src/types/users/user.model"
-import { AuthError, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth"
+import { AuthError, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth"
 import { doc, setDoc, Timestamp } from "firebase/firestore"
 import { FirestoreCollections } from "../firestore/collections"
 import { SignInInput, SignUpInput } from "./authInput.types"
@@ -60,4 +60,11 @@ export async function signInUser({ email, password }: SignInInput) {
     const message = getAuthErrorMessage(error as AuthError, AUTH_TEXTS.signInError)
     return { success: false, message: message }
   }
+}
+
+/**
+ * Desconecta o usuário atualmente autenticado.
+ */
+export async function signOutUser(){
+  await signOut(auth)
 }
