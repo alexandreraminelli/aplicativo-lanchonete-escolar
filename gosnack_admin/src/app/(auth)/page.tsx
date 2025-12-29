@@ -1,9 +1,16 @@
-import { Card, CardContent } from "@/src/components/ui/card"
-import AuthForm from "../../components/forms/AuthForm"
-import Image from "next/image"
-import { IMAGES } from "@/src/constants/images"
 import Logo from "@/src/components/common/logos/Logo"
 import { ModeToggle } from "@/src/components/layout/ModeToggle"
+import { Card, CardContent } from "@/src/components/ui/card"
+import { IMAGES } from "@/src/constants/images"
+import { PAGE_METADATA } from "@/src/constants/metadata"
+import { Metadata } from "next"
+import Image from "next/image"
+import AuthForm from "../../components/forms/AuthForm"
+
+/** Metadados da página de login. */
+export const metadata: Metadata = {
+  title: PAGE_METADATA.login.title,
+}
 
 /**
  * Página de autenticação.
