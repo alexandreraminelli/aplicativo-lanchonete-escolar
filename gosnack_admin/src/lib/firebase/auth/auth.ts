@@ -1,10 +1,11 @@
 import { AUTH_TEXTS } from "@/src/constants/texts/auth.texts"
 import { auth, firestore } from "@/src/lib/firebase/clientApp"
 import { UserModel } from "@/src/types/users/user.model"
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth"
+import { AuthError, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { doc, setDoc, Timestamp } from "firebase/firestore"
 import { FirestoreCollections } from "../firestore/collections"
 import { SignInInput, SignUpInput } from "./authInput.types"
+import { getAuthErrorMessage } from "./errors/get-auth-error-message"
 
 /**
  * Registra um novo usuário no Firebase Authentication e cria seu documento no Firestore.
@@ -37,9 +38,10 @@ export async function signUpUser({ email, password, firstName, lastName, role }:
 
     // Retornar sucesso e UID novo usuário
     return { success: true, userId: userCredential.user.uid }
-  } catch {
+  } catch (error) {
     // Retornar mensagem de erro
-    return { success: false, message: AUTH_TEXTS.signUpError }
+    const message = getAuthErrorMessage(error as AuthError, AUTH_TEXTS.signUpError)
+    return { success: false, message: message }
   }
 }
 
@@ -53,8 +55,9 @@ export async function signInUser({ email, password }: SignInInput) {
 
     // Retornar sucesso e UID do usuário
     return { success: true, userId: userCredential.user.uid }
-  } catch {
+  } catch (error) {
     // Retornar mensagem de erro
-    return { success: false, message: AUTH_TEXTS.signInError }
+    const message = getAuthErrorMessage(error as AuthError, AUTH_TEXTS.signInError)
+    return { success: false, message: message }
   }
 }

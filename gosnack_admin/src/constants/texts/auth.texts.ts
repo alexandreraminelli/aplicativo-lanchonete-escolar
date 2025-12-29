@@ -49,7 +49,7 @@ export const AUTH_TEXTS = {
   signInSuccess: "Login realizado com sucesso!",
 
   /* Mensagens de erro genéricas */
-  errorTitle: "Erro na Autenticação!",
+  errorTitle: "Erro na Autenticação",
   signUpError: "Ocorreu um erro e não foi possível criar a conta. Tente novamente mais tarde.",
   signInError: "Ocorreu um erro e não foi possível realizar o login. Tente novamente mais tarde.",
 } as const
