@@ -28,6 +28,10 @@ export const AUTH_TEXTS = {
   hidePassword: "Ocultar senha",
   showPassword: "Mostrar senha",
 
+  signOut: "Sair",
+
+  myAccount: "Minha Conta",
+
   /* Login Page */
   loginTitle: "GoSnack: Painel de Controle",
   loginSubtitle: "Acesse o sistema para gerenciar pedidos e produtos.",
