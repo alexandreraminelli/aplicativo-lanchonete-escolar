@@ -6,7 +6,6 @@ import { Skeleton } from "@/src/components/ui/skeleton"
 import { AUTH_TEXTS } from "@/src/constants/texts/auth.texts"
 import { signOutUser } from "@/src/lib/firebase/auth/auth"
 import { UserModel } from "@/src/types/users/user.model"
-import { User } from "firebase/auth"
 import { ChevronRightIcon, ChevronUpIcon, LogOutIcon } from "lucide-react"
 
 /** Botão no sidebar que mostra o nome do usuário e opções de rotas para gerenciar a conta. */
@@ -25,9 +24,9 @@ export default function NavUser() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             {/* Botão */}
-            <SidebarMenuButton tooltip={`${user?.displayName} (${user?.email})`} size="lg" className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+            <SidebarMenuButton tooltip={`${userData.firstName} ${userData.lastName} (${user?.email})`} size="lg" className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
               {/* Avatar, nome e e-mail */}
-              <UserTile user={user!} userData={userData!} />
+              <UserTile userData={userData!} />
 
               {/* Seta */}
               {isMobile ? <ChevronUpIcon className="ml-auto size-4" /> : <ChevronRightIcon className="ml-auto size-4" />}
@@ -38,7 +37,7 @@ export default function NavUser() {
           <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg" side={isMobile ? "top" : "right"} align="end" sideOffset={4}>
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <UserTile user={user!} userData={userData!} />
+                <UserTile userData={userData!} />
               </div>
             </DropdownMenuLabel>
 
@@ -84,7 +83,7 @@ function NavUserSkeleton() {
 }
 
 /** Tile com avatar, nome do usuário e e-mail. */
-function UserTile({ user, userData }: { user: User; userData: UserModel }) {
+function UserTile({ userData }: { userData: UserModel }) {
   return (
     <>
       <Avatar className="size-8 rounded-lg">
@@ -97,7 +96,7 @@ function UserTile({ user, userData }: { user: User; userData: UserModel }) {
       {/* Info */}
       <div className="grid flex-1 text-left text-sm leading-tight">
         {/* TODO: Nome do usuário */}
-        <span className="truncate font-medium">{user?.displayName}</span>
+        <span className="truncate font-medium">{`${userData.firstName} ${userData.lastName}`}</span>
         {/* TODO: E-mail do usuário */}
         <span className="truncate text-xs">{userData?.email}</span>
       </div>
