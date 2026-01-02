@@ -2,6 +2,7 @@ import { useAuth } from "@/src/components/providers/auth-provider"
 import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/src/components/ui/dropdown-menu"
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/src/components/ui/sidebar"
+import { Skeleton } from "@/src/components/ui/skeleton"
 import { AUTH_TEXTS } from "@/src/constants/texts/auth.texts"
 import { signOutUser } from "@/src/lib/firebase/auth/auth"
 import { UserModel } from "@/src/types/users/user.model"
@@ -11,9 +12,12 @@ import { ChevronRightIcon, ChevronUpIcon, LogOutIcon } from "lucide-react"
 /** Botão no sidebar que mostra o nome do usuário e opções de rotas para gerenciar a conta. */
 export default function NavUser() {
   const { isMobile } = useSidebar()
+  const { user, userData, loading } = useAuth() // informação do usuário
 
-  // TODO: obter informações do usuário
-  const { user, userData } = useAuth()
+  // Skeleton durante carregamento
+  if (loading || !user || !userData) {
+    return <NavUserSkeleton />
+  }
 
   return (
     <SidebarMenu>
@@ -51,6 +55,29 @@ export default function NavUser() {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+      </SidebarMenuItem>
+    </SidebarMenu>
+  )
+}
+
+/** Skeleton do `NavUser`. */
+function NavUserSkeleton() {
+  return (
+    <SidebarMenu>
+      <SidebarMenuItem>
+        <SidebarMenuButton size="lg" disabled>
+          {/* Avatar skeleton */}
+          <Skeleton className="size-8 rounded-lg" />
+
+          {/* Text skeleton */}
+          <div className="grid flex-1 gap-1">
+            <Skeleton className="h-4 w-24" />
+            <Skeleton className="h-3 w-32" />
+          </div>
+
+          {/* Icon skeleton */}
+          <Skeleton className="ml-auto size-4" />
+        </SidebarMenuButton>
       </SidebarMenuItem>
     </SidebarMenu>
   )
