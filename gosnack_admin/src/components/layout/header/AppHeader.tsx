@@ -1,7 +1,7 @@
 import { ModeToggle } from "@/src/components/layout/header/ModeToggle"
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/src/components/ui/breadcrumb"
 import { Separator } from "@/src/components/ui/separator"
 import { SidebarTrigger } from "@/src/components/ui/sidebar"
+import HeaderBreadcrumb from "./HeaderBreadcrumb"
 
 /** Cabeçalho do aplicativo. */
 export default function AppHeader() {
@@ -16,17 +16,7 @@ export default function AppHeader() {
         {/* Breadcrumb */}
 
         {/* TODO: passar componente como prop */}
-        <Breadcrumb className="max-sm:hidden w-full">
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">Building Your Application</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+        <HeaderBreadcrumb />
 
         <Separator orientation="vertical" className="mx-2" />
 
