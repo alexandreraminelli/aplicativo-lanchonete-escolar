@@ -1,4 +1,4 @@
-import { Sidebar, SidebarContent, SidebarFooter } from "@/src/components/ui/sidebar"
+import { Sidebar, SidebarContent, SidebarFooter, SidebarSeparator } from "@/src/components/ui/sidebar"
 import NavUser from "./NavUser"
 
 /**  */
@@ -7,6 +7,8 @@ export function AppSidebar() {
     <Sidebar variant="sidebar" collapsible="icon">
       {/* Content */}
       <SidebarContent></SidebarContent>
+
+      <SidebarSeparator />
 
       {/* Footer */}
       <SidebarFooter>
