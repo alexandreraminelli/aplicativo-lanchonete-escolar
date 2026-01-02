@@ -1,39 +1,28 @@
 "use client"
 
+import FullScreenLoaderCircle from "@/src/components/common/loader/FullScreenLoaderCircle"
+import { useAuth } from "@/src/components/providers/auth-provider"
 import { ROUTES } from "@/src/constants/routes"
-import { auth } from "@/src/lib/firebase/clientApp"
-import { onAuthStateChanged } from "firebase/auth"
-import { LoaderCircleIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
 /**
  * Layout de autenticação.
  */
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
-  const [isLoading, setIsLoading] = useState(true)
+  const { user, loading } = useAuth()
 
-  // Obter usuário e controlar acesso as rotas públicas e privadas
+  // Redirecionar usuários autenticados para o dashboard
   useEffect(() => {
-    // Observar mudanças no estado de autenticação
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        router.replace(ROUTES.dashboard) // Redirecionar usuários autenticados
-      } else {
-        setIsLoading(false)
-      }
-    })
-    return () => unsubscribe() // Limpar o observador ao desmontar o componente
-  }, [router])
+    if (!loading && user) {
+      router.replace(ROUTES.dashboard)
+    }
+  }, [user, loading, router])
 
   // Tela de carregamento
-  if (isLoading) {
-    return (
-      <div className="w-dvw h-dvh flex items-center justify-center">
-        <LoaderCircleIcon className="animate-spin" />
-      </div>
-    )
+  if (loading) {
+    return <FullScreenLoaderCircle />
   }
 
   // Componente principal

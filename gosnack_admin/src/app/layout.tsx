@@ -4,6 +4,7 @@ import "@/src/styles/globals.css" // estilos CSS
 import type { Metadata } from "next"
 import { Figtree } from "next/font/google" // fonte
 import { Toaster } from "sonner"
+import { AuthProvider } from "@/src/components/providers/auth-provider"
 
 /**
  * Fonte padrão do app: Figtree.
@@ -38,18 +39,19 @@ export default function RootLayout({
       suppressHydrationWarning // suprime avisos de hidratação
     >
       <body className={`${figtree.className} antialiased h-dvh`}>
-        <ThemeProvider
-          attribute="class" // usar classes CSS para controlar o tema
-          defaultTheme="system" // padrão: corresponder ao tema do SO
-          enableSystem // detecção automática do tema do SO
-          disableTransitionOnChange // desabilitar animações (evitar flashes e tornar mudança mais suave)
-        >
-          {/* Componente filho */}
-          {children}
-
-          {/* Sonner/Toast para notificações */}
-          <Toaster richColors theme="system" position="top-right" />
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider
+            attribute="class" // usar classes CSS para controlar o tema
+            defaultTheme="system" // padrão: corresponder ao tema do SO
+            enableSystem // detecção automática do tema do SO
+            disableTransitionOnChange // desabilitar animações (evitar flashes e tornar mudança mais suave)
+          >
+            {/* Componente filho */}
+            {children}
+            {/* Sonner/Toast para notificações */}
+            <Toaster richColors theme="system" position="top-right" />
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   )

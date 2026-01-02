@@ -1,14 +1,13 @@
 "use client"
 
-import { ROUTES } from "@/src/constants/routes"
-import { auth } from "@/src/lib/firebase/clientApp"
-import { onAuthStateChanged } from "firebase/auth"
-import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
-import { LoaderCircleIcon } from "lucide-react"
-import { SidebarProvider } from "@/src/components/ui/sidebar"
-import { AppSidebar } from "@/src/components/layout/sidebar/AppSidebar"
+import FullScreenLoaderCircle from "@/src/components/common/loader/FullScreenLoaderCircle"
 import AppHeader from "@/src/components/layout/AppHeader"
+import { AppSidebar } from "@/src/components/layout/sidebar/AppSidebar"
+import { useAuth } from "@/src/components/providers/auth-provider"
+import { SidebarProvider } from "@/src/components/ui/sidebar"
+import { ROUTES } from "@/src/constants/routes"
+import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 /**
  * Layout das páginas privadas.
@@ -16,28 +15,18 @@ import AppHeader from "@/src/components/layout/AppHeader"
  */
 export default function PrivateLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
-  const [isLoading, setIsLoading] = useState(true)
+  const { user, loading } = useAuth()
 
-  // Obter usuário e controlar acesso as rotas públicas e privadas
+  // Redirecionar usuários não autenticados para o login
   useEffect(() => {
-    // Observar mudanças no estado de autenticação
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        router.push(ROUTES.login) // Redirecionar usuários não autenticados
-      } else {
-        setIsLoading(false)
-      }
-    })
-    return () => unsubscribe() // Limpar o observador ao desmontar o componente
-  }, [router])
+    if (!loading && !user) {
+      router.replace(ROUTES.login)
+    }
+  }, [user, loading, router])
 
   // Tela de carregamento
-  if (isLoading) {
-    return (
-      <div className="w-dvw h-dvh flex items-center justify-center">
-        <LoaderCircleIcon className="animate-spin" />
-      </div>
-    )
+  if (loading) {
+    return <FullScreenLoaderCircle />
   }
 
   // Componente principal
