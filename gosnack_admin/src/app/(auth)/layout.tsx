@@ -1,27 +1,34 @@
 "use client"
 
 import FullScreenLoaderCircle from "@/src/components/common/loader/FullScreenLoaderCircle"
-import { useAuth } from "@/src/components/providers/auth-provider"
 import { ROUTES } from "@/src/constants/routes"
+import { auth } from "@/src/lib/firebase/clientApp"
+import { onAuthStateChanged } from "firebase/auth"
 import { useRouter } from "next/navigation"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 /**
  * Layout de autenticação.
  */
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
-  const { user, loading } = useAuth()
+  const [isLoading, setIsLoading] = useState(true)
 
   // Redirecionar usuários autenticados para o dashboard
   useEffect(() => {
-    if (!loading && user) {
-      router.replace(ROUTES.dashboard)
-    }
-  }, [user, loading, router])
+    // Observar mudanças no estado de autenticação
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        router.replace(ROUTES.dashboard) // Redirecionar usuários autenticados
+      } else {
+        setIsLoading(false)
+      }
+    })
+    return () => unsubscribe() // Limpar o observador ao desmontar o componente
+  }, [router])
 
   // Tela de carregamento
-  if (loading) {
+  if (isLoading) {
     return <FullScreenLoaderCircle />
   }
 
