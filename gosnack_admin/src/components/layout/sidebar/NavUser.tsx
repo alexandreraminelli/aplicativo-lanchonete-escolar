@@ -1,15 +1,17 @@
 import { useAuth } from "@/src/components/providers/auth-provider"
 import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/src/components/ui/dropdown-menu"
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/src/components/ui/sidebar"
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/src/components/ui/sidebar"
 import { AUTH_TEXTS } from "@/src/constants/texts/auth.texts"
 import { signOutUser } from "@/src/lib/firebase/auth/auth"
 import { UserModel } from "@/src/types/users/user.model"
 import { User } from "firebase/auth"
-import { ChevronUpIcon, LogOutIcon } from "lucide-react"
+import { ChevronRightIcon, ChevronUpIcon, LogOutIcon } from "lucide-react"
 
 /** Botão no sidebar que mostra o nome do usuário e opções de rotas para gerenciar a conta. */
 export default function NavUser() {
+  const { isMobile } = useSidebar()
+
   // TODO: obter informações do usuário
   const { user, userData } = useAuth()
 
@@ -24,12 +26,12 @@ export default function NavUser() {
               <UserTile user={user!} userData={userData!} />
 
               {/* Seta */}
-              <ChevronUpIcon className="ml-auto size-4" />
+              {isMobile ? <ChevronUpIcon className="ml-auto size-4" /> : <ChevronRightIcon className="ml-auto size-4" />}
             </SidebarMenuButton>
           </DropdownMenuTrigger>
 
           {/* Opções ao clicar no botão de usuário */}
-          <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg" side="bottom" align="end" sideOffset={4}>
+          <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg" side={isMobile ? "top" : "right"} align="end" sideOffset={4}>
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <UserTile user={user!} userData={userData!} />
