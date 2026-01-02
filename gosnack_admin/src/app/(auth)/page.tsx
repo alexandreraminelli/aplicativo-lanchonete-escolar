@@ -1,5 +1,5 @@
 import Logo from "@/src/components/common/logos/Logo"
-import { ModeToggle } from "@/src/components/layout/ModeToggle"
+import { ModeToggle } from "@/src/components/layout/header/ModeToggle"
 import { Card, CardContent } from "@/src/components/ui/card"
 import { IMAGES } from "@/src/constants/images"
 import { PAGE_METADATA } from "@/src/constants/metadata"

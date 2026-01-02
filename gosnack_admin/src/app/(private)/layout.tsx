@@ -1,7 +1,7 @@
 "use client"
 
 import FullScreenLoaderCircle from "@/src/components/common/loader/FullScreenLoaderCircle"
-import AppHeader from "@/src/components/layout/AppHeader"
+import AppHeader from "@/src/components/layout/header/AppHeader"
 import { AppSidebar } from "@/src/components/layout/sidebar/AppSidebar"
 import { SidebarProvider } from "@/src/components/ui/sidebar"
 import { ROUTES } from "@/src/constants/routes"

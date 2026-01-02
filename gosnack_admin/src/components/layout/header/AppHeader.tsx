@@ -1,4 +1,4 @@
-import { ModeToggle } from "@/src/components/layout/ModeToggle"
+import { ModeToggle } from "@/src/components/layout/header/ModeToggle"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/src/components/ui/breadcrumb"
 import { Separator } from "@/src/components/ui/separator"
 import { SidebarTrigger } from "@/src/components/ui/sidebar"
