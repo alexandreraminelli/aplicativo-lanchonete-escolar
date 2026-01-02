@@ -1,14 +1,12 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/src/components/ui/dropdown-menu"
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/src/components/ui/sidebar"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/src/components/ui/dropdown-menu"
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/src/components/ui/sidebar"
 import { AUTH_TEXTS } from "@/src/constants/texts/auth.texts"
 import { signOutUser } from "@/src/lib/firebase/auth/auth"
-import { ChevronRightIcon, LogOutIcon, UserIcon } from "lucide-react"
+import { ChevronUpIcon, LogOutIcon } from "lucide-react"
 
 /** Botão no sidebar que mostra o nome do usuário e opções de rotas para gerenciar a conta. */
 export default function NavUser() {
-  const { isMobile } = useSidebar()
-
   // TODO: obter informações do usuário
 
   return (
@@ -32,12 +30,12 @@ export default function NavUser() {
               </div>
 
               {/* Seta */}
-              <ChevronRightIcon className="ml-auto size-4" />
+              <ChevronUpIcon className="ml-auto size-4" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
 
           {/* Opções ao clicar no botão de usuário */}
-          <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg" side={isMobile ? "bottom" : "right"} align="end" sideOffset={4}>
+          <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg" side="bottom" align="end" sideOffset={4}>
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 {/* TODO: Avatar do usuário */}
