@@ -10,7 +10,7 @@ export default function HeaderBreadcrumb() {
   // Obter breadcrumb correspondente ao caminho
   const content = breadcrumbByRoute[pathname] ?? <></>
 
-  return <Breadcrumb className="max-sm:hidden w-full">{content}</Breadcrumb>
+  return <Breadcrumb className="max-sm:hidden">{content}</Breadcrumb>
 }
 
 /* 

@@ -28,7 +28,7 @@ export function ModeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button variant="outline" size="icon">
           {/* Ícone */}
           {theme === "light" || resolvedTheme === "light" ? <SunIcon className={iconClass} /> : <MoonIcon className={iconClass} />}
 
