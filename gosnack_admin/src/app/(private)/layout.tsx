@@ -40,10 +40,12 @@ export default function PrivateLayout({ children }: { children: React.ReactNode 
   return (
     <div>
       <SidebarProvider className="flex flex-col">
-        <AppHeader /> {/* Cabeçalho */}
         <div className="flex flex-1">
           <AppSidebar /> {/* Sidebar */}
-          {children} {/* Conteúdo das páginas */}
+          <div className="flex flex-col flex-1">
+            <AppHeader /> {/* Cabeçalho */}
+            {children} {/* Conteúdo das páginas */}
+          </div>
         </div>
       </SidebarProvider>
     </div>
