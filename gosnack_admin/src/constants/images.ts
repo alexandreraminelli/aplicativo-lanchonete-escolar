@@ -1,6 +1,6 @@
 /** Constantes de path de rotas da aplicação. */
 export const IMAGES = {
-  /* Logos */
+  // Logos
   logos: {
     favicon: "/logos/favicon.svg",
     full: {
@@ -13,6 +13,12 @@ export const IMAGES = {
     },
   },
 
-  /* Login Page */
+  // Ilustrações
+  illustrations: {
+    empty: "/images/illustrations/empty.svg",
+    notFound: "/images/illustrations/not-found.svg",
+  },
+
+  // Página de login
   loginBg: "/images/photos/login-bg.jpg",
 } as const
