@@ -6,4 +6,8 @@ export const ROUTES = {
 
   // Rotas principais
   dashboard: "/dashboard",
+
+  // Rotas de unidades e lanchonetes
+  units: "/unidades",
+  snackBars: "/lanchonetes",
 } as const
