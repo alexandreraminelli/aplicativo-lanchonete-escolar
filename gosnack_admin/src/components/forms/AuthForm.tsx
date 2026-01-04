@@ -80,7 +80,7 @@ export default function AuthForm({ type, className, ...props }: Props) {
         if (result.success) {
           // Login bem-sucedido
           toast.success(AUTH_TEXTS.signInSuccess) // notificação
-          router.push(ROUTES.dashboard) // redirecionamento
+          router.push(ROUTES.home) // redirecionamento
         } else {
           throw result.message // Problema no login
         }

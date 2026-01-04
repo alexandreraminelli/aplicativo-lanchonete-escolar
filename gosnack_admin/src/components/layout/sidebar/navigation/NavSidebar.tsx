@@ -20,7 +20,7 @@ export default function NavSidebar() {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton asChild tooltip={ROUTES_TEXTS.home}>
-                <Link href={ROUTES.dashboard}>
+                <Link href={ROUTES.home}>
                   <HomeIcon />
                   <span>{ROUTES_TEXTS.home}</span>
                 </Link>

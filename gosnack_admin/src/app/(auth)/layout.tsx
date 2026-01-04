@@ -19,7 +19,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
     // Observar mudanças no estado de autenticação
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        router.replace(ROUTES.dashboard) // Redirecionar usuários autenticados
+        router.replace(ROUTES.home) // Redirecionar usuários autenticados
       } else {
         setIsLoading(false)
       }

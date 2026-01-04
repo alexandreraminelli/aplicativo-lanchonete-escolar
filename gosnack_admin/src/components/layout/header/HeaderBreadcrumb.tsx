@@ -27,7 +27,7 @@ export default function HeaderBreadcrumb() {
 
 /** Lista de componentes de breadcrumb para cada rota. */
 const breadcrumbByRoute: Record<string, ReactNode> = {
-  [ROUTES.dashboard]: (
+  [ROUTES.home]: (
     <BreadcrumbList>
       <BreadcrumbPage>{ROUTES_TEXTS.home}</BreadcrumbPage>
     </BreadcrumbList>

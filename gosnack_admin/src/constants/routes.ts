@@ -4,8 +4,8 @@ export const ROUTES = {
   login: "/",
   forgotPassword: "/recuperar-senha",
 
-  // Rotas principais
-  dashboard: "/dashboard",
+  // Rota inicial
+  home: "/dashboard",
 
   // Rotas de unidades e lanchonetes
   units: "/unidades",
