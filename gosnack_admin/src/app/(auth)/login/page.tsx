@@ -5,7 +5,7 @@ import { IMAGES } from "@/src/constants/images"
 import { PAGE_METADATA } from "@/src/constants/metadata"
 import { Metadata } from "next"
 import Image from "next/image"
-import AuthForm from "../../components/forms/AuthForm"
+import AuthForm from "../../../components/forms/AuthForm"
 
 /** Metadados da página de login. */
 export const metadata: Metadata = {

@@ -1,11 +1,11 @@
 /** Strings de rotas da aplicação. */
 export const ROUTES = {
   // Rotas de autenticação
-  login: "/",
+  login: "/login",
   forgotPassword: "/recuperar-senha",
 
   // Rota inicial
-  home: "/dashboard",
+  home: "/",
 
   // Rotas de unidades e lanchonetes
   units: "/unidades",
