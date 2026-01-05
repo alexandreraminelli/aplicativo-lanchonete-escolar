@@ -2,7 +2,7 @@ import Logo from "@/src/components/common/logos/Logo"
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarSeparator } from "@/src/components/ui/sidebar"
 import { MAIN_TEXTS } from "@/src/constants/texts/main.texts"
 import NavUser from "./NavUser"
-import NavSidebar from "./navigation/NavSidebar"
+import NavSidebar from "./NavSidebar"
 
 /** Sidebar do aplicativo. */
 export function AppSidebar() {
