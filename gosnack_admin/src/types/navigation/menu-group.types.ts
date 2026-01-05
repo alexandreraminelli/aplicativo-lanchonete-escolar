@@ -1,3 +1,4 @@
+import { UserRole } from "@/src/types/users/user.types"
 import { MenuItem } from "./menu-item.types"
 
 /** Tipagem de grupos do menu de navegação. */
@@ -6,4 +7,7 @@ export interface MenuGroup {
   label: string
   /** Items do grupo. */
   items: MenuItem[]
+
+  /** Para quais tipos de usuário o grupo será exibido. */
+  roles: UserRole[]
 }

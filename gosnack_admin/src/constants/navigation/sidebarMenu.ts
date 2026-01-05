@@ -7,6 +7,7 @@ import { ROUTES } from "./routes"
 export const SIDEBAR_MENU: MenuGroup[] = [
   {
     label: NAV_TEXTS.overview,
+    roles: ["admin", "manager", "employee"],
     items: [{ label: NAV_TEXTS.home, href: ROUTES.home, icon: HomeIcon, roles: ["admin", "manager", "employee"] }],
   },
 ]
