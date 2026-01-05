@@ -1,6 +1,6 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/src/components/ui/breadcrumb"
 import { ROUTES } from "@/src/constants/navigation/routes"
-import { ROUTES_TEXTS } from "@/src/constants/texts/routes.texts"
+import { NAV_TEXTS } from "@/src/constants/texts/navigation.texts"
 import { usePathname } from "next/navigation"
 import { ReactNode } from "react"
 
@@ -29,7 +29,7 @@ export default function HeaderBreadcrumb() {
 const breadcrumbByRoute: Record<string, ReactNode> = {
   [ROUTES.home]: (
     <BreadcrumbList>
-      <BreadcrumbPage>{ROUTES_TEXTS.home}</BreadcrumbPage>
+      <BreadcrumbPage>{NAV_TEXTS.home}</BreadcrumbPage>
     </BreadcrumbList>
   ),
 }

@@ -4,7 +4,7 @@ import { Skeleton } from "@/src/components/ui/skeleton"
 import AdminNav from "./AdminNav"
 import EmployeeNav from "./EmployeeNav"
 import ManagerNav from "./ManagerNav"
-import { ROUTES_TEXTS } from "@/src/constants/texts/routes.texts"
+import { NAV_TEXTS } from "@/src/constants/texts/navigation.texts"
 import Link from "next/link"
 import { ROUTES } from "@/src/constants/navigation/routes"
 import { HomeIcon } from "lucide-react"
@@ -15,14 +15,14 @@ export default function NavSidebar() {
     <>
       {/* Destinos em comum */}
       <SidebarGroup>
-        <SidebarGroupLabel>{ROUTES_TEXTS.overview}</SidebarGroupLabel>
+        <SidebarGroupLabel>{NAV_TEXTS.overview}</SidebarGroupLabel>
         <SidebarGroupContent>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild tooltip={ROUTES_TEXTS.home}>
+              <SidebarMenuButton asChild tooltip={NAV_TEXTS.home}>
                 <Link href={ROUTES.home}>
                   <HomeIcon />
-                  <span>{ROUTES_TEXTS.home}</span>
+                  <span>{NAV_TEXTS.home}</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
