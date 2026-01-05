@@ -4,7 +4,7 @@ import FullScreenLoaderCircle from "@/src/components/common/loader/FullScreenLoa
 import AppHeader from "@/src/components/layout/header/AppHeader"
 import { AppSidebar } from "@/src/components/layout/sidebar/AppSidebar"
 import { SidebarProvider } from "@/src/components/ui/sidebar"
-import { ROUTES } from "@/src/constants/routes"
+import { ROUTES } from "@/src/constants/navigation/routes"
 import { auth } from "@/src/lib/firebase/clientApp"
 import { onAuthStateChanged } from "firebase/auth"
 import { useRouter } from "next/navigation"

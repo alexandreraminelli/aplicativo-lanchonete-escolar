@@ -1,7 +1,7 @@
 "use client"
 
 import FullScreenLoaderCircle from "@/src/components/common/loader/FullScreenLoaderCircle"
-import { ROUTES } from "@/src/constants/routes"
+import { ROUTES } from "@/src/constants/navigation/routes"
 import { auth } from "@/src/lib/firebase/clientApp"
 import { onAuthStateChanged } from "firebase/auth"
 import { useRouter } from "next/navigation"

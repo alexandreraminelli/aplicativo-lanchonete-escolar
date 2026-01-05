@@ -6,7 +6,7 @@ import EmployeeNav from "./EmployeeNav"
 import ManagerNav from "./ManagerNav"
 import { ROUTES_TEXTS } from "@/src/constants/texts/routes.texts"
 import Link from "next/link"
-import { ROUTES } from "@/src/constants/routes"
+import { ROUTES } from "@/src/constants/navigation/routes"
 import { HomeIcon } from "lucide-react"
 
 /** Menu de navegação do sidebar. */

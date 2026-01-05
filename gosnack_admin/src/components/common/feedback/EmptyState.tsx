@@ -4,7 +4,7 @@ import { Button } from "../../ui/button"
 import { MAIN_TEXTS } from "@/src/constants/texts/main.texts"
 import { HomeIcon } from "lucide-react"
 import Link from "next/link"
-import { ROUTES } from "@/src/constants/routes"
+import { ROUTES } from "@/src/constants/navigation/routes"
 
 /** Props do componente `EmptyState`. */
 interface EmptyStateProps {

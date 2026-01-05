@@ -1,5 +1,5 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/src/components/ui/breadcrumb"
-import { ROUTES } from "@/src/constants/routes"
+import { ROUTES } from "@/src/constants/navigation/routes"
 import { ROUTES_TEXTS } from "@/src/constants/texts/routes.texts"
 import { usePathname } from "next/navigation"
 import { ReactNode } from "react"
