@@ -7,7 +7,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 export default function FullScreenLoaderCircle() {
   return (
     <div className="w-full h-full flex items-center justify-center">
-      <HugeiconsIcon icon={Loading03Icon} className="animate-spin" />
+      <HugeiconsIcon icon={Loading03Icon} className="animate-spin size-10" />
     </div>
   )
 }
