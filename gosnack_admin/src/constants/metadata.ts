@@ -14,4 +14,8 @@ export const PAGE_METADATA = {
   dashboard: {
     title: "Dashboard",
   },
+
+  units: {
+    title: "Gerenciar Unidades",
+  },
 } as const

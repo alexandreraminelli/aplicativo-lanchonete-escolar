@@ -13,23 +13,31 @@ export default function HeaderBreadcrumb() {
   return <Breadcrumb className="max-sm:hidden">{content}</Breadcrumb>
 }
 
-/* 
-<BreadcrumbList>
+/** Lista de itens reutilizáveis do breadcrumb. */
+const breadcrumbItems = {
+  homeLink: (
     <BreadcrumbItem>
-        <BreadcrumbLink href="#">Building Your Application</BreadcrumbLink>
+      <BreadcrumbLink href={ROUTES.home}>{NAV_TEXTS.home}</BreadcrumbLink>
     </BreadcrumbItem>
-    <BreadcrumbSeparator />
-    <BreadcrumbItem>
-        <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-    </BreadcrumbItem>
-</BreadcrumbList> 
-*/
+  ),
+}
 
 /** Lista de componentes de breadcrumb para cada rota. */
 const breadcrumbByRoute: Record<string, ReactNode> = {
+  // Home
   [ROUTES.home]: (
     <BreadcrumbList>
       <BreadcrumbPage>{NAV_TEXTS.home}</BreadcrumbPage>
+    </BreadcrumbList>
+  ),
+  // Unidades
+  [ROUTES.units]: (
+    <BreadcrumbList>
+      {breadcrumbItems.homeLink}
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbPage>{NAV_TEXTS.units}</BreadcrumbPage>
+      </BreadcrumbItem>
     </BreadcrumbList>
   ),
 }
