@@ -1,13 +1,20 @@
 /** Strings de rotas da aplicação. */
 export const ROUTES = {
-  // Rotas de autenticação
+  // Autenticação
   login: "/login",
   forgotPassword: "/recuperar-senha",
 
-  // Rota inicial
+  // Visão Geral
   home: "/",
 
-  // Rotas de unidades e lanchonetes
+  // Unidades e Lanchonetes
   units: "/unidades",
   snackBars: "/lanchonetes",
+
+  // Usuários e Acessos
+  users: "/usuarios",
+  admins: `/usuarios/administradores`,
+  managers: "/usuarios/gerentes",
+  employees: "/usuarios/funcionários",
+  permissions: "/usuarios/perfis-e-permissoes",
 } as const
