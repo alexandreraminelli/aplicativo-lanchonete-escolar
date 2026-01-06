@@ -2,10 +2,13 @@ import { useAuth } from "@/src/components/providers/auth-provider"
 import { SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/src/components/ui/sidebar"
 import { SIDEBAR_MENU } from "@/src/constants/navigation/sidebarMenu"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 /** Menu de navegação do sidebar. */
 export default function NavSidebar() {
-  const { userData, loading } = useAuth()
+  const pathname = usePathname() // rota atual
+
+  const { userData, loading } = useAuth() // dados do usuário
 
   // TODO: Skeleton durante carregamento
   if (loading || !userData) {
@@ -36,7 +39,11 @@ export default function NavSidebar() {
                     if (item.roles.includes(userData.role)) {
                       return (
                         <SidebarMenuItem key={itemIndex}>
-                          <SidebarMenuButton asChild tooltip={item.label}>
+                          <SidebarMenuButton
+                            asChild
+                            tooltip={item.label} // Tooltip para quando sidebar estiver colapsado
+                            isActive={pathname === item.href} // Destaque para rota ativa
+                          >
                             <Link href={item.href}>
                               {item.icon && <item.icon />}
                               <span>{item.label}</span>
