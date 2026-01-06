@@ -88,15 +88,15 @@ function NavUserSkeleton() {
 function UserTile({ userData }: { userData: UserModel }) {
   return (
     <>
-      <Avatar className="size-8 rounded-lg">
+      <Avatar>
         {/* TODO: Imagem de avatar */}
         <AvatarImage src={""} alt={""} />
         {/* Iniciais */}
-        <AvatarFallback className="rounded-lg">{`${userData.firstName.charAt(0)}${userData.lastName.charAt(0)}`}</AvatarFallback>
+        <AvatarFallback className="bg-accent-foreground text-accent">{`${userData.firstName.charAt(0)}${userData.lastName.charAt(0)}`}</AvatarFallback>
       </Avatar>
 
       {/* Info */}
-      <div className="grid flex-1 text-left text-sm leading-tight">
+      <div className="grid flex-1 text-left text-sm leading-tight text-foreground">
         {/* TODO: Nome do usuário */}
         <span className="truncate font-medium">{`${userData.firstName} ${userData.lastName}`}</span>
         {/* TODO: E-mail do usuário */}
