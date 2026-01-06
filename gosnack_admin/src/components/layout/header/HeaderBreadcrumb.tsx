@@ -1,8 +1,9 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/src/components/ui/breadcrumb"
 import { ROUTES } from "@/src/constants/navigation/routes"
 import { NAV_TEXTS } from "@/src/constants/texts/navigation.texts"
+import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ReactNode } from "react"
+import { ComponentProps, ReactNode } from "react"
 
 /** Breadcrumb do header. */
 export default function HeaderBreadcrumb() {
@@ -13,11 +14,20 @@ export default function HeaderBreadcrumb() {
   return <Breadcrumb className="max-sm:hidden">{content}</Breadcrumb>
 }
 
+/** BreadcrumbLink com o componente Link do Next.js */
+function BreadcrumbLinkNext({ children, ...props }: ComponentProps<typeof Link>) {
+  return (
+    <BreadcrumbLink asChild>
+      <Link {...props}>{children}</Link>
+    </BreadcrumbLink>
+  )
+}
+
 /** Lista de itens reutilizáveis do breadcrumb. */
 const breadcrumbItems = {
   homeLink: (
     <BreadcrumbItem>
-      <BreadcrumbLink href={ROUTES.home}>{NAV_TEXTS.home}</BreadcrumbLink>
+      <BreadcrumbLinkNext href={ROUTES.home}>{NAV_TEXTS.home}</BreadcrumbLinkNext>
     </BreadcrumbItem>
   ),
 }
