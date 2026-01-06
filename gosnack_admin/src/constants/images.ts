@@ -15,6 +15,7 @@ export const IMAGES = {
 
   // Ilustrações
   illustrations: {
+    accessDenied: "/images/illustrations/access-denied.svg",
     empty: "/images/illustrations/empty.svg",
     notFound: "/images/illustrations/not-found.svg",
   },
