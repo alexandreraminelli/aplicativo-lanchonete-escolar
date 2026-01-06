@@ -14,8 +14,9 @@ import { cn } from "@/src/lib/utils"
 import { USER_ROLES } from "@/src/types/users/user.types"
 import { signInSchema, signUpSchema } from "@/src/utils/validation/schemas/authSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Loading03Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 import { type ClassValue } from "clsx"
-import { LoaderCircle } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { SubmitHandler, useForm, useWatch } from "react-hook-form"
@@ -199,7 +200,7 @@ export default function AuthForm({ type, className, ...props }: Props) {
 
           {/* Botão de enviar */}
           <Button size="lg" type="submit" disabled={form.formState.isSubmitting}>
-            {form.formState.isSubmitting && <LoaderCircle className="animate-spin" />} {/* Ícone de carregamento */}
+            {form.formState.isSubmitting && <HugeiconsIcon icon={Loading03Icon} className="animate-spin" />} {/* Ícone de carregamento */}
             {isSignUp ? AUTH_TEXTS.signUpSubmit : AUTH_TEXTS.loginSubmit}
           </Button>
         </FieldGroup>

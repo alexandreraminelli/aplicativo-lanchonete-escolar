@@ -2,14 +2,20 @@
 
 import { Button } from "@/src/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/src/components/ui/dropdown-menu"
-import { LucideIcon, MonitorIcon, MoonIcon, SunIcon } from "lucide-react"
+import { ComputerIcon, Moon02Icon, Sun03Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react"
 import { useTheme } from "next-themes"
+
+/** Ícone do modo claro. */
+const LIGHT_THEME_ICON = Sun03Icon
+/** Ícone do modo escuro. */
+const DARK_THEME_ICON = Moon02Icon
 
 /** Tipagem do array de opções de tema. */
 interface ThemeOptionType {
   label: string
   value: string
-  icon: LucideIcon
+  icon: IconSvgElement
 }
 
 /** Botão de alternar o tema claro e escuro. */
@@ -17,12 +23,10 @@ export function ModeToggle() {
   // Controle do estado do tema
   const { theme, setTheme, resolvedTheme } = useTheme()
 
-  const iconClass = "absolute h-7 w-7"
-
   const themeOptions: ThemeOptionType[] = [
-    { label: "Sistema", value: "system", icon: MonitorIcon },
-    { label: "Claro", value: "light", icon: SunIcon },
-    { label: "Escuro", value: "dark", icon: MoonIcon },
+    { label: "Sistema", value: "system", icon: ComputerIcon },
+    { label: "Claro", value: "light", icon: LIGHT_THEME_ICON },
+    { label: "Escuro", value: "dark", icon: DARK_THEME_ICON },
   ]
 
   return (
@@ -30,7 +34,7 @@ export function ModeToggle() {
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
           {/* Ícone */}
-          {theme === "light" || resolvedTheme === "light" ? <SunIcon className={iconClass} /> : <MoonIcon className={iconClass} />}
+          <HugeiconsIcon icon={theme === "light" || resolvedTheme === "light" ? LIGHT_THEME_ICON : DARK_THEME_ICON} className="absolute h-7 w-7" />
 
           <span className="sr-only">Alterar tema</span>
         </Button>
@@ -46,7 +50,7 @@ export function ModeToggle() {
             className={theme === option.value ? "bg-accent/75" : ""} // destacar tema ativo
           >
             {/* Ícone e texto */}
-            <option.icon />
+            <HugeiconsIcon icon={option.icon} />
             {option.label}
           </DropdownMenuItem>
         ))}

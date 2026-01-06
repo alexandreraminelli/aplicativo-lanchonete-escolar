@@ -1,5 +1,5 @@
 import { UserRole } from "@/src/types/users/user.types"
-import { LucideIcon } from "lucide-react"
+import { IconSvgElement } from "@hugeicons/react"
 
 /** Tipagem do menu de navegação. */
 export interface MenuItem {
@@ -8,7 +8,7 @@ export interface MenuItem {
   /** Destino do item. */
   href: string
   /** Ícone */
-  icon?: LucideIcon
+  icon?: IconSvgElement
 
   /** Para quais tipos de usuário o item será exibido. */
   roles: UserRole[]

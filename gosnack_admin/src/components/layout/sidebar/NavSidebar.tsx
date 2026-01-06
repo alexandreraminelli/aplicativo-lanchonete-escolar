@@ -1,6 +1,7 @@
 import { useAuth } from "@/src/components/providers/auth-provider"
 import { SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/src/components/ui/sidebar"
 import { SIDEBAR_MENU } from "@/src/constants/navigation/sidebarMenu"
+import { HugeiconsIcon } from "@hugeicons/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -45,7 +46,7 @@ export default function NavSidebar() {
                             isActive={pathname === item.href} // Destaque para rota ativa
                           >
                             <Link href={item.href}>
-                              {item.icon && <item.icon />}
+                              {item.icon && <HugeiconsIcon icon={item.icon} />}
                               <span>{item.label}</span>
                             </Link>
                           </SidebarMenuButton>

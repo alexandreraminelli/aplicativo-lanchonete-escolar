@@ -3,7 +3,8 @@ import { Input } from "@/src/components/ui/input"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/src/components/ui/tooltip"
 import { AUTH_TEXTS } from "@/src/constants/texts/auth.texts"
 import { cn } from "@/src/lib/utils"
-import { EyeIcon, EyeOffIcon } from "lucide-react"
+import { ViewIcon, ViewOffSlashIcon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 import { useState } from "react"
 
 /** Props de `PasswordInput`. */
@@ -48,7 +49,7 @@ export default function PasswordInput({ isSignUp, className, ...props }: React.C
             aria-label={label}
           >
             {/* Ícone */}
-            {isVisible ? <EyeIcon /> : <EyeOffIcon />}
+            <HugeiconsIcon icon={isVisible ? ViewIcon : ViewOffSlashIcon} />
           </Button>
         </TooltipTrigger>
         {/* Texto do tooltip */}

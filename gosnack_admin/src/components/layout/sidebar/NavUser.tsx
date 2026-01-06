@@ -6,7 +6,8 @@ import { Skeleton } from "@/src/components/ui/skeleton"
 import { AUTH_TEXTS } from "@/src/constants/texts/auth.texts"
 import { signOutUser } from "@/src/lib/firebase/auth/auth"
 import { UserModel } from "@/src/types/users/user.model"
-import { ChevronRightIcon, ChevronUpIcon, LogOutIcon } from "lucide-react"
+import { ArrowRight01Icon, ArrowUp01Icon, LogoutSquare01Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
 /** Botão no sidebar que mostra o nome do usuário e opções de rotas para gerenciar a conta. */
 export default function NavUser() {
@@ -29,7 +30,7 @@ export default function NavUser() {
               <UserTile userData={userData!} />
 
               {/* Seta */}
-              {isMobile ? <ChevronUpIcon className="ml-auto size-4" /> : <ChevronRightIcon className="ml-auto size-4" />}
+              <HugeiconsIcon icon={isMobile ? ArrowUp01Icon : ArrowRight01Icon} className="ml-auto size-4" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
 
@@ -50,7 +51,8 @@ export default function NavUser() {
                 signOutUser()
               }}
             >
-              <LogOutIcon /> {AUTH_TEXTS.signOut}
+              <HugeiconsIcon icon={LogoutSquare01Icon} /> {/* Ícone */}
+              {AUTH_TEXTS.signOut} {/* Texto */}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

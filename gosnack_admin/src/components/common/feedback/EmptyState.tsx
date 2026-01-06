@@ -1,10 +1,11 @@
+import { Button } from "@/src/components/ui/button"
 import { IMAGES } from "@/src/constants/images"
-import Image from "next/image"
-import { Button } from "../../ui/button"
-import { MAIN_TEXTS } from "@/src/constants/texts/main.texts"
-import { HomeIcon } from "lucide-react"
-import Link from "next/link"
 import { ROUTES } from "@/src/constants/navigation/routes"
+import { MAIN_TEXTS } from "@/src/constants/texts/main.texts"
+import { Home09Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
+import Image from "next/image"
+import Link from "next/link"
 
 /** Props do componente `EmptyState`. */
 interface EmptyStateProps {
@@ -43,7 +44,7 @@ export default function EmptyState({ title, message, image = IMAGES.illustration
           {/* Voltar pro início */}
           <Button size="lg" asChild>
             <Link href={ROUTES.home}>
-              <HomeIcon />
+              <HugeiconsIcon icon={Home09Icon} />
               {MAIN_TEXTS.actions.backToHome}
             </Link>
           </Button>
