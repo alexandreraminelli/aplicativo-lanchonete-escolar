@@ -20,4 +20,7 @@ export const FirestoreCollections = {
 
   /** Coleção de pedidos realizados. */
   ORDERS: "orders",
+
+  /** Coleção de unidades escolares. */
+  UNITS: "units",
 } as const

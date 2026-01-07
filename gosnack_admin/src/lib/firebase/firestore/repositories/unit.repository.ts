@@ -1,0 +1,62 @@
+import { firestore } from "@/src/lib/firebase/clientApp"
+import { FirestoreCollections } from "@/src/lib/firebase/firestore/collections"
+import { UnitModel } from "@/src/types/domain/unit.types"
+import { addDoc, collection, deleteDoc, doc, DocumentData, getDoc, getDocs, QueryDocumentSnapshot, updateDoc } from "firebase/firestore"
+
+/** Repositório para operações CRUD na coleção de unidades escolares. */
+export class UnitRepository {
+  /** Referência da coleção de unidades. */
+  private static collectionRef = collection(firestore, FirestoreCollections.UNITS)
+
+  /** Cria um novo documento de unidade escolar no Firestore. */
+  static async create(data: Omit<UnitModel, "id">) {
+    // Adicionar o documento à coleção
+    const docRef = await addDoc(this.collectionRef, { name: data.name })
+    // Retornar o documento criado com o ID gerado
+    return {
+      id: docRef.id,
+      name: data.name,
+    }
+  }
+
+  /** Busca uma unidade escolar no Firestore pelo ID. */
+  static async findById(id: string): Promise<UnitModel | null> {
+    const docRef = doc(this.collectionRef, id)
+    const snapshot = await getDoc(docRef)
+
+    // Se não existir
+    if (!snapshot.exists()) return null
+
+    // Retornar a unidade encontrada
+    return this.fromFirestore(snapshot)
+  }
+
+  /** Obter uma lista de todas as unidades escolares. */
+  static async findAll(): Promise<UnitModel[]> {
+    const snapshot = await getDocs(this.collectionRef)
+
+    return snapshot.docs.map(this.fromFirestore)
+  }
+
+  /** Atualiza o documento de uma unidade no Firestore. */
+  static async update(id: string, data: Partial<Omit<UnitModel, "id">>): Promise<void> {
+    const docRef = doc(this.collectionRef, id)
+    await updateDoc(docRef, data)
+  }
+
+  /** Remove o documento de uma unidade no Firestore. */
+  static async delete(id: string): Promise<void> {
+    const docRef = doc(this.collectionRef, id)
+    await deleteDoc(docRef)
+  }
+
+  /** Converter documento do Firestore em `UnitModel`. */
+  private static fromFirestore(snapshot: QueryDocumentSnapshot<DocumentData> | Awaited<ReturnType<typeof getDoc>>): UnitModel {
+    const data = snapshot.data() as Omit<UnitModel, "id">
+
+    return {
+      id: snapshot.id,
+      name: data.name,
+    }
+  }
+}
