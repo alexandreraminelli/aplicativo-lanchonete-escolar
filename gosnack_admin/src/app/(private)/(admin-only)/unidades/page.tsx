@@ -1,4 +1,5 @@
 import { PAGE_METADATA } from "@/src/constants/metadata"
+import { UNITS_TEXTS } from "@/src/constants/texts/units.texts"
 import { Metadata } from "next"
 
 /** Metadados da página de unidades. */
@@ -10,5 +11,14 @@ export const metadata: Metadata = {
  * Página de gerenciar unidades.
  */
 export default function UnitsPage() {
-  return <h1>Gerenciar Unidades</h1>
+  return (
+    <section>
+      <header>
+        <h2 className="font-semibold text-3xl">{UNITS_TEXTS.mainPage.title}</h2>
+      </header>
+
+      {/* Lista de unidades */}
+      <main>Lista de unidades</main>
+    </section>
+  )
 }
