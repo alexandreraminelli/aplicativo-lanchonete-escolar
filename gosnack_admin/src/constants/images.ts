@@ -18,6 +18,7 @@ export const IMAGES = {
     accessDenied: "/images/illustrations/access-denied.svg",
     empty: "/images/illustrations/empty.svg",
     notFound: "/images/illustrations/not-found.svg",
+    schoolUnit: "/images/illustrations/school-unit.svg",
   },
 
   // Página de login
