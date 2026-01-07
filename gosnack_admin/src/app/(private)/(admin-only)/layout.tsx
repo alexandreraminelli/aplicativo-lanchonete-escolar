@@ -1,11 +1,8 @@
 "use client"
 
 import AccessDeniedMessage from "@/src/components/common/feedback/AccessDeniedMessage"
-import EmptyState from "@/src/components/common/feedback/EmptyState"
 import FullScreenLoaderCircle from "@/src/components/common/loader/FullScreenLoaderCircle"
 import { useAuth } from "@/src/components/providers/auth-provider"
-import { IMAGES } from "@/src/constants/images"
-import { MAIN_TEXTS } from "@/src/constants/texts/main.texts"
 
 /**
  * Layout para rotas acessíveis apenas por administradores.
