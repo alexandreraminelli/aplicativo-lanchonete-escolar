@@ -1,36 +1,17 @@
 "use client"
 
 import FullScreenLoaderCircle from "@/components/common/loader/FullScreenLoaderCircle"
-import { ROUTES } from "@/constants/navigation/routes"
-import { auth } from "@/lib/firebase/clientApp"
-import { onAuthStateChanged } from "firebase/auth"
-import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useRedirectIfAuth } from "@/hooks/auth/useRedirectIfAuth"
 
 /**
  * Layout de autenticação.
  */
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
-  const router = useRouter()
-  const [isLoading, setIsLoading] = useState(true)
-
-  // Redirecionar usuários autenticados para o dashboard
-  useEffect(() => {
-    // Observar mudanças no estado de autenticação
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        router.replace(ROUTES.home) // Redirecionar usuários autenticados
-      } else {
-        setIsLoading(false)
-      }
-    })
-    return () => unsubscribe() // Limpar o observador ao desmontar o componente
-  }, [router])
+  // Redirecionar usuários autenticados
+  const isLoading = useRedirectIfAuth()
 
   // Tela de carregamento
-  if (isLoading) {
-    return <FullScreenLoaderCircle />
-  }
+  if (isLoading) return <FullScreenLoaderCircle />
 
   // Componente principal
   return <>{children}</>

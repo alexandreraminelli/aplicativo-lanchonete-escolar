@@ -4,37 +4,18 @@ import FullScreenLoaderCircle from "@/components/common/loader/FullScreenLoaderC
 import AppHeader from "@/components/layout/header/AppHeader"
 import { AppSidebar } from "@/components/layout/sidebar/AppSidebar"
 import { SidebarProvider } from "@/components/ui/sidebar"
-import { ROUTES } from "@/constants/navigation/routes"
-import { auth } from "@/lib/firebase/clientApp"
-import { onAuthStateChanged } from "firebase/auth"
-import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useRequiredAuth } from "@/hooks/auth/useRequiredAuth"
 
 /**
  * Layout das páginas privadas.
  * Acessíveis apenas após a autenticação.
  */
 export default function PrivateLayout({ children }: { children: React.ReactNode }) {
-  const router = useRouter()
-  const [isLoading, setIsLoading] = useState(true)
-
-  // Redirecionar usuários não autenticados para o login
-  useEffect(() => {
-    // Observar mudanças no estado de autenticação
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        router.push(ROUTES.login) // Redirecionar usuários não autenticados
-      } else {
-        setIsLoading(false)
-      }
-    })
-    return () => unsubscribe() // Limpar o observador ao desmontar o componente
-  }, [router])
+  // Verificar se usuário está autenticado
+  const isLoading = useRequiredAuth()
 
   // Tela de carregamento
-  if (isLoading) {
-    return <FullScreenLoaderCircle />
-  }
+  if (isLoading) return <FullScreenLoaderCircle />
 
   // Componente principal
   return (
