@@ -4,10 +4,25 @@ export const UNITS_TEXTS = {
     title: "Gerenciar Unidades",
   },
 
+  actions: {
+    add: "Adicionar Unidade",
+    edit: "Editar Unidade",
+    delete: "Excluir Unidade",
+  },
+
+  fields: {
+    name: "Nome da unidade",
+  },
+
+  validation: {
+    name: "O nome da unidade deve ter pelo menos 5 caracteres.",
+  },
+
   error: {
     getUnits: {
       title: "Não foi possível carregar as unidades.",
       message: "Tente novamente mais tarde.",
     },
+    createUnit: "Não foi possível criar a unidade.",
   },
-}
+} as const

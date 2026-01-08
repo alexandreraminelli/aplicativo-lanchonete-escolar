@@ -6,6 +6,9 @@ export const MAIN_TEXTS = {
 
   // Botões de ação
   actions: {
+    create: "Criar",
+    edit: "Editar",
+    delete: "Excluir",
     cancel: "Cancelar",
     save: "Salvar",
 
