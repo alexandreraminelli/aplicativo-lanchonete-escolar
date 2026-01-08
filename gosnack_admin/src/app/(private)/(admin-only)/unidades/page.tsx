@@ -1,3 +1,4 @@
+import UnitCardList from "@/components/common/units/UnitCardList"
 import { PAGE_METADATA } from "@/constants/metadata"
 import { UNITS_TEXTS } from "@/constants/texts/units.texts"
 import { Metadata } from "next"
@@ -18,7 +19,9 @@ export default function UnitsPage() {
       </header>
 
       {/* Lista de unidades */}
-      <main></main>
+      <main>
+        <UnitCardList />
+      </main>
     </section>
   )
 }
