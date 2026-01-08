@@ -1,5 +1,5 @@
-import { PAGE_METADATA } from "@/src/constants/metadata"
-import { UNITS_TEXTS } from "@/src/constants/texts/units.texts"
+import { PAGE_METADATA } from "@/constants/metadata"
+import { UNITS_TEXTS } from "@/constants/texts/units.texts"
 import { Metadata } from "next"
 
 /** Metadados da página de unidades. */
@@ -18,7 +18,7 @@ export default function UnitsPage() {
       </header>
 
       {/* Lista de unidades */}
-      <main>Lista de unidades</main>
+      <main></main>
     </section>
   )
 }

@@ -1,5 +1,5 @@
-import { NAV_TEXTS } from "@/src/constants/texts/navigation.texts"
-import { MenuGroup } from "@/src/types/navigation/menu-group.types"
+import { NAV_TEXTS } from "@/constants/texts/navigation.texts"
+import { MenuGroup } from "@/types/navigation/menu-group.types"
 import { ROUTES } from "./routes"
 import { Home09Icon, Restaurant02Icon, SchoolIcon, UserGroup03Icon } from "@hugeicons/core-free-icons"
 

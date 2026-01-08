@@ -1,10 +1,10 @@
-import { ThemeProvider } from "@/src/components/providers/theme-provider"
-import { APP_METADATA } from "@/src/constants/metadata"
-import "@/src/styles/globals.css" // estilos CSS
+import { ThemeProvider } from "@/components/providers/theme-provider"
+import { APP_METADATA } from "@/constants/metadata"
+import "@/styles/globals.css" // estilos CSS
 import type { Metadata } from "next"
 import { Figtree } from "next/font/google" // fonte
 import { Toaster } from "sonner"
-import { AuthProvider } from "@/src/components/providers/auth-provider"
+import { AuthProvider } from "@/components/providers/auth-provider"
 
 /**
  * Fonte padrão do app: Figtree.

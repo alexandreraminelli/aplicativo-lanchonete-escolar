@@ -1,7 +1,7 @@
-import { AUTH_TEXTS } from "@/src/constants/texts/auth.texts"
+import { AUTH_TEXTS } from "@/constants/texts/auth.texts"
 import { z } from "zod"
 import { REGEX_PATTERNS } from "../patterns"
-import { USER_ROLES, type UserRole } from "@/src/types/users/user.types"
+import { USER_ROLES, type UserRole } from "@/types/users/user.types"
 
 /** Zod Schema para formulário de cadastro. */
 export const signUpSchema = z.object({

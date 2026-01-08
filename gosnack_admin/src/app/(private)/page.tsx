@@ -1,4 +1,4 @@
-import { PAGE_METADATA } from "@/src/constants/metadata"
+import { PAGE_METADATA } from "@/constants/metadata"
 import { Metadata } from "next"
 
 /** Metadados da página de dashboard. */

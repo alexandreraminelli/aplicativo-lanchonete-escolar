@@ -1,4 +1,4 @@
-import { UserRole } from "@/src/types/users/user.types"
+import { UserRole } from "@/types/users/user.types"
 
 /** Constantes de textos para autenticação. */
 export const AUTH_TEXTS = {

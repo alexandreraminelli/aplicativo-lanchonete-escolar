@@ -1,6 +1,6 @@
-import { firestore } from "@/src/lib/firebase/clientApp"
-import { FirestoreCollections } from "@/src/lib/firebase/firestore/collections"
-import { UnitModel } from "@/src/types/domain/unit.types"
+import { firestore } from "@/lib/firebase/clientApp"
+import { FirestoreCollections } from "@/lib/firebase/firestore/collections"
+import { UnitModel } from "@/types/domain/unit.types"
 import { addDoc, collection, deleteDoc, doc, DocumentData, getDoc, getDocs, QueryDocumentSnapshot, updateDoc } from "firebase/firestore"
 
 /** Repositório para operações CRUD na coleção de unidades escolares. */

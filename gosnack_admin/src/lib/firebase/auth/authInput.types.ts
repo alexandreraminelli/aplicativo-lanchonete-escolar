@@ -1,4 +1,4 @@
-import { UserRole } from "@/src/types/users/user.types"
+import { UserRole } from "@/types/users/user.types"
 
 /** Dados de entrada para criar uma conta. */
 export interface SignUpInput {

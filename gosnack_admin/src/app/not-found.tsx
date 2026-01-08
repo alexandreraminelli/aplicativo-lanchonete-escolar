@@ -1,7 +1,7 @@
-import PrivateLayout from "@/src/app/(private)/layout"
-import EmptyState from "@/src/components/common/feedback/EmptyState"
-import { IMAGES } from "@/src/constants/images"
-import { MAIN_TEXTS } from "@/src/constants/texts/main.texts"
+import PrivateLayout from "@/app/(private)/layout"
+import EmptyState from "@/components/common/feedback/EmptyState"
+import { IMAGES } from "@/constants/images"
+import { MAIN_TEXTS } from "@/constants/texts/main.texts"
 
 /** Página de erro 404 - Não Encontrado. */
 export default function NotFoundPage() {

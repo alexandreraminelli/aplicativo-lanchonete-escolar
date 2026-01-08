@@ -1,4 +1,4 @@
-import { UserRole } from "@/src/types/users/user.types"
+import { UserRole } from "@/types/users/user.types"
 import { IconSvgElement } from "@hugeicons/react"
 
 /** Tipagem do menu de navegação. */

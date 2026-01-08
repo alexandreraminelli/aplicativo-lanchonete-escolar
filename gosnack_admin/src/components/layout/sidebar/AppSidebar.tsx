@@ -1,6 +1,6 @@
-import Logo from "@/src/components/common/logos/Logo"
-import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarSeparator } from "@/src/components/ui/sidebar"
-import { MAIN_TEXTS } from "@/src/constants/texts/main.texts"
+import Logo from "@/components/common/logos/Logo"
+import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarSeparator } from "@/components/ui/sidebar"
+import { MAIN_TEXTS } from "@/constants/texts/main.texts"
 import NavUser from "./NavUser"
 import NavSidebar from "./NavSidebar"
 

@@ -1,6 +1,6 @@
-import { ModeToggle } from "@/src/components/layout/header/ModeToggle"
-import { Separator } from "@/src/components/ui/separator"
-import { SidebarTrigger } from "@/src/components/ui/sidebar"
+import { ModeToggle } from "@/components/layout/header/ModeToggle"
+import { Separator } from "@/components/ui/separator"
+import { SidebarTrigger } from "@/components/ui/sidebar"
 import HeaderBreadcrumb from "./HeaderBreadcrumb"
 
 /** Cabeçalho do aplicativo. */

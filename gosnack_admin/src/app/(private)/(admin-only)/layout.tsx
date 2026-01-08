@@ -1,8 +1,8 @@
 "use client"
 
-import AccessDeniedMessage from "@/src/components/common/feedback/AccessDeniedMessage"
-import FullScreenLoaderCircle from "@/src/components/common/loader/FullScreenLoaderCircle"
-import { useAuth } from "@/src/components/providers/auth-provider"
+import AccessDeniedMessage from "@/components/common/feedback/AccessDeniedMessage"
+import FullScreenLoaderCircle from "@/components/common/loader/FullScreenLoaderCircle"
+import { useAuth } from "@/components/providers/auth-provider"
 
 /**
  * Layout para rotas acessíveis apenas por administradores.

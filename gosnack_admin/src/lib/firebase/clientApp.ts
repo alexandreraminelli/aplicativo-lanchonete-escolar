@@ -1,4 +1,4 @@
-import config from "@/src/lib/config"
+import config from "@/lib/config"
 import { FirebaseOptions, initializeApp } from "firebase/app"
 import { getAuth } from "firebase/auth"
 import { getFirestore } from "firebase/firestore"

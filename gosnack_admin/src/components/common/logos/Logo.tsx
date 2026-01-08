@@ -1,5 +1,5 @@
-import { IMAGES } from "@/src/constants/images"
-import { cn } from "@/src/lib/utils"
+import { IMAGES } from "@/constants/images"
+import { cn } from "@/lib/utils"
 import Image from "next/image"
 
 /** Variação da logo. */

@@ -1,8 +1,8 @@
 "use client"
 
-import { auth, firestore } from "@/src/lib/firebase/clientApp"
-import { FirestoreCollections } from "@/src/lib/firebase/firestore/collections"
-import { UserModel } from "@/src/types/users/user.model"
+import { auth, firestore } from "@/lib/firebase/clientApp"
+import { FirestoreCollections } from "@/lib/firebase/firestore/collections"
+import { UserModel } from "@/types/users/user.model"
 import { onAuthStateChanged, User } from "firebase/auth"
 import { doc, getDoc } from "firebase/firestore"
 import { createContext, useContext, useEffect, useState } from "react"
