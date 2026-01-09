@@ -22,6 +22,14 @@ export const UNITS_TEXTS = {
     name: "O nome da unidade deve ter pelo menos 5 caracteres.",
   },
 
+  empty: {
+    title: "Nenhuma unidade encontrada",
+    message: {
+      paragraph1: "Ainda não há unidades escolares cadastradas no sistema.",
+      paragraph2: "Clique em 'Adicionar Unidade' para criar a primeira unidade.",
+    },
+  },
+
   success: {
     create: "Unidade criada com sucesso!",
     createDescription: (name: string) => `Unidade "${name}" foi criada com sucesso.`,
