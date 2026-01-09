@@ -1,10 +1,11 @@
+import { AuthProvider } from "@/components/providers/auth-provider"
+import { QueryProvider } from "@/components/providers/query-provider"
 import { ThemeProvider } from "@/components/providers/theme-provider"
 import { APP_METADATA } from "@/constants/metadata"
 import "@/styles/globals.css" // estilos CSS
 import type { Metadata } from "next"
 import { Figtree } from "next/font/google" // fonte
 import { Toaster } from "sonner"
-import { AuthProvider } from "@/components/providers/auth-provider"
 
 /**
  * Fonte padrão do app: Figtree.
@@ -39,19 +40,21 @@ export default function RootLayout({
       suppressHydrationWarning // suprime avisos de hidratação
     >
       <body className={`${figtree.className} antialiased h-dvh`}>
-        <AuthProvider>
-          <ThemeProvider
-            attribute="class" // usar classes CSS para controlar o tema
-            defaultTheme="system" // padrão: corresponder ao tema do SO
-            enableSystem // detecção automática do tema do SO
-            disableTransitionOnChange // desabilitar animações (evitar flashes e tornar mudança mais suave)
-          >
-            {/* Componente filho */}
-            {children}
-            {/* Sonner/Toast para notificações */}
-            <Toaster richColors theme="system" position="top-right" />
-          </ThemeProvider>
-        </AuthProvider>
+        <ThemeProvider
+          attribute="class" // usar classes CSS para controlar o tema
+          defaultTheme="system" // padrão: corresponder ao tema do SO
+          enableSystem // detecção automática do tema do SO
+          disableTransitionOnChange // desabilitar animações (evitar flashes e tornar mudança mais suave)
+        >
+          <QueryProvider>
+            <AuthProvider>
+              {/* Componente filho */}
+              {children}
+              {/* Sonner/Toast para notificações */}
+              <Toaster richColors theme="system" position="top-right" />
+            </AuthProvider>
+          </QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
