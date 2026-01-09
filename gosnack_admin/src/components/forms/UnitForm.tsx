@@ -28,10 +28,11 @@ interface Props {
   unit?: UnitModel
   /** ID do formulário para associar com botões externos. */
   id?: string
-  /** Função executada quando o status de carregamento mudar. */
+
+  /** Callback executado quando o status de carregamento mudar. */
   onSubmitStateChange?: (isSubmitting: boolean) => void
-  /** Função executada quando a submissão for concluída com sucesso. */
-  onSuccess?: () => void
+  /** Callback executado quando a submissão for concluída com sucesso. */
+  onSuccess?: (unit: UnitModel) => void
 }
 
 /** Formulário para criar/editar unidades escolares. */
@@ -62,6 +63,7 @@ export default function UnitForm({ mode, className, unit, id, onSubmitStateChang
         toast.success(UNITS_TEXTS.success.create, {
           description: UNITS_TEXTS.success.createDescription(result.name),
         })
+        onSuccess?.(result) // Notificar sucesso com a nova unidade
       } else {
         // Editar unidade
         await UnitRepository.update(unit!.id, data as Partial<UnitModel>)
@@ -69,9 +71,9 @@ export default function UnitForm({ mode, className, unit, id, onSubmitStateChang
         toast.success(UNITS_TEXTS.success.update, {
           description: UNITS_TEXTS.success.updateDescription(data.name),
         })
-      }
 
-      onSuccess?.() // Notificar sucesso
+        onSuccess?.({ ...unit!, ...data }) // Notificar sucesso com a unidade atualizada
+      }
     } catch (error) {
       // Mensagem de erro
       toast.error(UNITS_TEXTS.error.createUnit, { description: error instanceof Error ? error.message : String(error) })

@@ -16,10 +16,13 @@ interface Props {
   mode: FormMode
   unit?: UnitModel
   trigger: ReactNode
+
+  /** Callback executado quando a operação do form for bem-sucedida. */
+  onSuccess?: (unit: UnitModel) => void
 }
 
 /** Dialog que exibe um form de unidade. */
-export default function UnitDialog({ mode, unit, trigger }: Props) {
+export default function UnitDialog({ mode, unit, trigger, onSuccess }: Props) {
   /** Se formulário é de criar unidade. */
   const isCreate = mode === "create"
   /** ID para controlar o formulário. */
@@ -31,8 +34,9 @@ export default function UnitDialog({ mode, unit, trigger }: Props) {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   /** Função executada quando a submissão for um sucesso. */
-  const handleSuccess = () => {
+  const handleSuccess = (createdUnit: UnitModel) => {
     setOpen(false) // fechar dialog
+    onSuccess?.(createdUnit) // notificar o componente pai
   }
 
   return (

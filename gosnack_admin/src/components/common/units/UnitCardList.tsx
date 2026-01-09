@@ -18,20 +18,28 @@ export default function UnitCardList() {
   const [units, setUnits] = useState<UnitModel[]>([])
   const [loading, setLoading] = useState(true)
 
+  /** Função para buscar unidades. */
+  async function fetchUnits() {
+    setLoading(true)
+    try {
+      const allUnits = await UnitRepository.findAll()
+      setUnits(allUnits)
+    } catch {
+      toast.error(UNITS_TEXTS.error.getUnits.title, { description: UNITS_TEXTS.error.getUnits.message })
+    } finally {
+      setLoading(false)
+    }
+  }
+
   // Obter unidades do Firestore
   useEffect(() => {
-    async function fetchUnits() {
-      try {
-        const allUnits = await UnitRepository.findAll()
-        setUnits(allUnits)
-      } catch {
-        toast.error(UNITS_TEXTS.error.getUnits.title, { description: UNITS_TEXTS.error.getUnits.message })
-      } finally {
-        setLoading(false)
-      }
-    }
     fetchUnits()
   }, [])
+
+  /** Função para adicionar unidade à lista. */
+  const handleUnitAdded = (newUnit: UnitModel) => {
+    setUnits((prevUnits) => [...prevUnits, newUnit])
+  }
 
   // Skeleton durante carregamento
   if (loading) return <UnitCardListSkeleton />
@@ -43,6 +51,7 @@ export default function UnitCardList() {
         {/* Botão de adicionar unidade */}
         <UnitDialog
           mode="create"
+          onSuccess={handleUnitAdded}
           trigger={
             <Button>
               <HugeiconsIcon icon={Add01Icon} />
