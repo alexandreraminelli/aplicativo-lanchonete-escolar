@@ -24,7 +24,10 @@ export const UNITS_TEXTS = {
 
   success: {
     create: "Unidade criada com sucesso!",
+    createDescription: (name: string) => `Unidade "${name}" foi criada com sucesso.`,
+
     update: "Unidade salva com sucesso!",
+    updateDescription: (name: string) => `Unidade "${name}" atualizada com sucesso.`,
   },
 
   error: {

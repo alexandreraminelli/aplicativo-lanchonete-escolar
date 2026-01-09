@@ -59,12 +59,16 @@ export default function UnitForm({ mode, className, unit, id, onSubmitStateChang
         // Criar unidade
         const result = await UnitRepository.create(data as UnitInputModel)
 
-        toast.success(UNITS_TEXTS.success.create)
+        toast.success(UNITS_TEXTS.success.create, {
+          description: UNITS_TEXTS.success.createDescription(result.name),
+        })
       } else {
         // Editar unidade
-        const result = await UnitRepository.update(unit!.id, data as Partial<UnitModel>)
+        await UnitRepository.update(unit!.id, data as Partial<UnitModel>)
 
-        toast.success(UNITS_TEXTS.success.update)
+        toast.success(UNITS_TEXTS.success.update, {
+          description: UNITS_TEXTS.success.updateDescription(data.name),
+        })
       }
 
       onSuccess?.() // Notificar sucesso
