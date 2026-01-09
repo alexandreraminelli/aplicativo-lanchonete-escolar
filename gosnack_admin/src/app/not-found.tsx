@@ -2,9 +2,14 @@
 
 import EmptyState from "@/components/common/feedback/EmptyState"
 import FullScreenLoaderCircle from "@/components/common/loader/FullScreenLoaderCircle"
+import { Button } from "@/components/ui/button"
 import { IMAGES } from "@/constants/images"
+import { ROUTES } from "@/constants/navigation/routes"
 import { MAIN_TEXTS } from "@/constants/texts/main.texts"
 import { useRequiredAuth } from "@/hooks/auth/useRequiredAuth"
+import { Home09Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
+import Link from "next/link"
 import PrivateLayout from "./(private)/layout"
 
 /** Página de erro 404 - Não Encontrado. */
@@ -17,7 +22,15 @@ export default function NotFoundPage() {
 
   return (
     <PrivateLayout>
-      <EmptyState title={MAIN_TEXTS.notFound.title} message={Object.values(MAIN_TEXTS.notFound.message)} image={IMAGES.illustrations.notFound} />
+      <EmptyState title={MAIN_TEXTS.notFound.title} message={Object.values(MAIN_TEXTS.notFound.message)} image={IMAGES.illustrations.notFound}>
+        {/* Voltar pro início */}
+        <Button size="lg" asChild>
+          <Link href={ROUTES.home}>
+            <HugeiconsIcon icon={Home09Icon} />
+            {MAIN_TEXTS.actions.backToHome}
+          </Link>
+        </Button>
+      </EmptyState>
     </PrivateLayout>
   )
 }

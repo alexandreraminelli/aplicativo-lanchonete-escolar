@@ -8,6 +8,10 @@ import { useEffect, useState } from "react"
 import { toast } from "sonner"
 import EmptyState from "../feedback/EmptyState"
 import UnitCard from "./UnitCard"
+import UnitDialog from "./UnitDialog"
+import { Button } from "@/components/ui/button"
+import { HugeiconsIcon } from "@hugeicons/react"
+import { Add01Icon } from "@hugeicons/core-free-icons"
 
 /** Lista de cards de unidades escolares. */
 export default function UnitCardList() {
@@ -34,10 +38,23 @@ export default function UnitCardList() {
 
   // Se não houver unidades
   if (units.length === 0) {
-    return <EmptyState title={UNITS_TEXTS.empty.title} message={Object.values(UNITS_TEXTS.empty.message)} image={IMAGES.illustrations.schoolUnit} />
+    return (
+      <EmptyState title={UNITS_TEXTS.empty.title} message={Object.values(UNITS_TEXTS.empty.message)} image={IMAGES.illustrations.schoolUnit}>
+        {/* Botão de adicionar unidade */}
+        <UnitDialog
+          mode="create"
+          trigger={
+            <Button>
+              <HugeiconsIcon icon={Add01Icon} />
+              {UNITS_TEXTS.actions.add}
+            </Button>
+          }
+        />
+      </EmptyState>
+    )
   }
 
-  // Cards de
+  // Cards de unidade
   return (
     <section className="">
       {units.map((unit) => (

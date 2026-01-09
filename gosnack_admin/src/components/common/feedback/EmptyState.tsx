@@ -1,11 +1,7 @@
-import { Button } from "@/components/ui/button"
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
 import { IMAGES } from "@/constants/images"
-import { ROUTES } from "@/constants/navigation/routes"
-import { MAIN_TEXTS } from "@/constants/texts/main.texts"
-import { Home09Icon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
 import Image from "next/image"
-import Link from "next/link"
+import { ReactNode } from "react"
 
 /** Props do componente `EmptyState`. */
 interface EmptyStateProps {
@@ -15,41 +11,29 @@ interface EmptyStateProps {
   message: string[]
   /** Ilustração do erro. */
   image?: string
+
+  /** Conteúdo da mensagem (ex: botões). */
+  children?: ReactNode
 }
 
 /** Mensagem para estados vazios, como página não encontrada e consulta sem resultados. */
-export default function EmptyState({ title, message, image = IMAGES.illustrations.empty }: EmptyStateProps) {
+export default function EmptyState({ title, message, image = IMAGES.illustrations.empty, children }: EmptyStateProps) {
   return (
-    <section className="flex flex-col lg:flex-row items-center justify-center w-full gap-6 px-4 md:px-8 pt-6">
-      {/* Ilustração */}
-      <aside>
-        <Image src={image} alt="" width={384} height={384} className="max-h-full" />
-      </aside>
-
-      <div className="flex flex-col items-center lg:items-start gap-4 md:gap-6">
+    <Empty className="p-0">
+      <EmptyHeader className="max-w-2xl">
+        {/* Ilustração */}
+        <EmptyMedia>
+          <Image src={image} alt="" width={320} height={320} />
+        </EmptyMedia>
         {/* Título */}
-        <header>
-          <h1 className="font-semibold text-center lg:text-start text-3xl lg:text-4xl">{title}</h1>
-        </header>
-        {/* Mensagem */}
-        <main className="text-center lg:text-start space-y-1.5 text-base text-muted-foreground">
-          {message.map((msg, index) => (
-            <p key={index}>{msg}</p>
-          ))}
-        </main>
+        <EmptyTitle className="text-2xl lg:text-3xl mb-2">{title}</EmptyTitle>
+        {message.map((msg, index) => (
+          <EmptyDescription key={index}>{msg}</EmptyDescription>
+        ))}
+      </EmptyHeader>
 
-        {/* Botões */}
-
-        <footer>
-          {/* Voltar pro início */}
-          <Button size="lg" asChild>
-            <Link href={ROUTES.home}>
-              <HugeiconsIcon icon={Home09Icon} />
-              {MAIN_TEXTS.actions.backToHome}
-            </Link>
-          </Button>
-        </footer>
-      </div>
-    </section>
+      {/* Botões de ação */}
+      <EmptyContent>{children}</EmptyContent>
+    </Empty>
   )
 }

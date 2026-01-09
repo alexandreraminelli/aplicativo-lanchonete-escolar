@@ -26,7 +26,7 @@ export const UNITS_TEXTS = {
     title: "Nenhuma unidade encontrada",
     message: {
       paragraph1: "Ainda não há unidades escolares cadastradas no sistema.",
-      paragraph2: "Clique em 'Adicionar Unidade' para criar a primeira unidade.",
+      paragraph2: "Clique no botão abaixo para adicionar a primeira unidade.",
     },
   },
 
