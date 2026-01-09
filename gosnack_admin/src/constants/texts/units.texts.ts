@@ -10,6 +10,10 @@ export const UNITS_TEXTS = {
     delete: "Excluir Unidade",
   },
 
+  placeholder: {
+    name: "Ex: Santo André, São Bernardo do Campo - Rudge Ramos",
+  },
+
   fields: {
     name: "Nome da unidade",
   },

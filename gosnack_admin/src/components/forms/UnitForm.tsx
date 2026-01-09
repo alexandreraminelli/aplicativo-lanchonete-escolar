@@ -93,7 +93,7 @@ export default function UnitForm({ mode, className, unit, id, onSubmitStateChang
               <FormItem>
                 <FormLabel>{UNITS_TEXTS.fields.name}</FormLabel>
                 <FormControl>
-                  <Input type="text" {...field} />
+                  <Input type="text" placeholder={UNITS_TEXTS.placeholder.name} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
