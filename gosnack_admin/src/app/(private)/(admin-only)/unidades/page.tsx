@@ -1,4 +1,5 @@
 import UnitCardList from "@/components/common/units/UnitCardList"
+import UnitDialog from "@/components/common/units/UnitDialog"
 import UnitForm from "@/components/forms/UnitForm"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
@@ -23,25 +24,15 @@ export default function UnitsPage() {
         <h2 className="font-semibold text-3xl">{UNITS_TEXTS.mainPage.title}</h2>
 
         {/* Botão de adicionar unidade */}
-        <Dialog>
-          <DialogTrigger asChild>
+        <UnitDialog
+          mode="create"
+          trigger={
             <Button>
               <HugeiconsIcon icon={Add01Icon} />
               {UNITS_TEXTS.actions.add}
             </Button>
-          </DialogTrigger>
-
-          {/* Conteúdo do dialog */}
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>{UNITS_TEXTS.actions.add}</DialogTitle>
-            </DialogHeader>
-            <section className="px-4">
-              {/* Formulário de criar unidade */}
-              <UnitForm mode="create" />
-            </section>
-          </DialogContent>
-        </Dialog>
+          }
+        />
       </header>
 
       {/* Lista de unidades */}

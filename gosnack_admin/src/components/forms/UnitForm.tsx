@@ -1,6 +1,5 @@
 "use client"
 
-import { MAIN_TEXTS } from "@/constants/texts/main.texts"
 import { UNITS_TEXTS } from "@/constants/texts/units.texts"
 import { UnitRepository } from "@/lib/firebase/firestore/repositories/unit.repository"
 import { cn } from "@/lib/utils"
@@ -8,14 +7,11 @@ import { UnitInputModel, UnitModel } from "@/types/domain/unit.types"
 import { FormMode } from "@/types/form.types"
 import { unitSchema } from "@/utils/validation/schemas/unitSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Loading03Icon, Plus } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
 import { ClassValue } from "clsx"
 import { useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { toast } from "sonner"
 import z from "zod"
-import { Button } from "../ui/button"
 import { FieldGroup } from "../ui/field"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { Input } from "../ui/input"
@@ -30,10 +26,16 @@ interface Props {
 
   /** Unidade a ser editada. */
   unit?: UnitModel
+  /** ID do formulário para associar com botões externos. */
+  id?: string
+  /** Função executada quando o status de carregamento mudar. */
+  onSubmitStateChange?: (isSubmitting: boolean) => void
+  /** Função executada quando a submissão for concluída com sucesso. */
+  onSuccess?: () => void
 }
 
 /** Formulário para criar/editar unidades escolares. */
-export default function UnitForm({ mode, className, unit, ...props }: Props) {
+export default function UnitForm({ mode, className, unit, id, onSubmitStateChange, onSuccess, ...props }: Props) {
   /** Se o formulário é de criação. */
   const isCreate = mode === "create"
 
@@ -50,27 +52,34 @@ export default function UnitForm({ mode, className, unit, ...props }: Props) {
 
   /** Função executada ao submeter o formulário. */
   const handleSubmit: SubmitHandler<UnitFormData> = async (data) => {
+    onSubmitStateChange?.(true) // notificar início da submissão
+
     try {
       if (isCreate) {
         // Criar unidade
         const result = await UnitRepository.create(data as UnitInputModel)
 
-        // TODO: toast de sucesso
+        toast.success(UNITS_TEXTS.success.create)
       } else {
         // Editar unidade
         const result = await UnitRepository.update(unit!.id, data as Partial<UnitModel>)
 
-        // TODO: toast de sucesso
+        toast.success(UNITS_TEXTS.success.update)
       }
+
+      onSuccess?.() // Notificar sucesso
     } catch (error) {
       // Mensagem de erro
       toast.error(UNITS_TEXTS.error.createUnit, { description: error instanceof Error ? error.message : String(error) })
+    } finally {
+      onSubmitStateChange?.(false) // Notificar fim da submissão
     }
   }
 
   return (
     <Form {...form}>
       <form
+        id={id} // ID do form para controle externo
         onSubmit={form.handleSubmit(handleSubmit)} // função para lidar com o envio
         className={cn("", className)}
         {...props}
@@ -90,20 +99,6 @@ export default function UnitForm({ mode, className, unit, ...props }: Props) {
               </FormItem>
             )}
           />
-
-          {/* Botão de enviar */}
-          <Button
-            type="submit"
-            disabled={form.formState.isSubmitting} // desabilitar durante submissão
-          >
-            {/* Ícone de carregamento */}
-            {form.formState.isSubmitting && <HugeiconsIcon icon={Loading03Icon} className="animate-spin" />}
-
-            {/* Ícone */}
-            <HugeiconsIcon icon={Plus} />
-            {/* Rótulo do botão */}
-            {isCreate ? MAIN_TEXTS.actions.create : MAIN_TEXTS.actions.save}
-          </Button>
         </FieldGroup>
       </form>
     </Form>

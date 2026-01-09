@@ -18,6 +18,11 @@ export const UNITS_TEXTS = {
     name: "O nome da unidade deve ter pelo menos 5 caracteres.",
   },
 
+  success: {
+    create: "Unidade criada com sucesso!",
+    update: "Unidade salva com sucesso!",
+  },
+
   error: {
     getUnits: {
       title: "Não foi possível carregar as unidades.",
