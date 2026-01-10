@@ -1,7 +1,7 @@
 "use client"
 
 import { UNITS_TEXTS } from "@/constants/texts/units.texts"
-import { UnitRepository } from "@/lib/firebase/firestore/repositories/unit.repository"
+import { useCreateUnit, useUpdateUnit } from "@/hooks/queries/units/unit.mutations"
 import { cn } from "@/lib/utils"
 import { UnitInputModel, UnitModel } from "@/types/domain/unit.types"
 import { FormMode } from "@/types/form.types"
@@ -15,7 +15,6 @@ import z from "zod"
 import { FieldGroup } from "../ui/field"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { Input } from "../ui/input"
-import { useCreateUnit, useUpdateUnit } from "@/hooks/queries/units/unit.mutations"
 
 /** Tipagem dos dados do form. */
 type UnitFormData = z.infer<typeof unitSchema>

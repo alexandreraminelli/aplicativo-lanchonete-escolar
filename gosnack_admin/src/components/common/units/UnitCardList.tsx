@@ -1,18 +1,15 @@
 "use client"
 
+import { Button } from "@/components/ui/button"
 import { IMAGES } from "@/constants/images"
 import { UNITS_TEXTS } from "@/constants/texts/units.texts"
-import { UnitRepository } from "@/lib/firebase/firestore/repositories/unit.repository"
-import { UnitModel } from "@/types/domain/unit.types"
-import { useEffect, useState } from "react"
+import { useUnits } from "@/hooks/queries/units/unit.queries"
+import { Add01Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 import { toast } from "sonner"
 import EmptyState from "../feedback/EmptyState"
 import UnitCard from "./UnitCard"
 import UnitDialog from "./UnitDialog"
-import { Button } from "@/components/ui/button"
-import { HugeiconsIcon } from "@hugeicons/react"
-import { Add01Icon } from "@hugeicons/core-free-icons"
-import { useUnits } from "@/hooks/queries/units/unit.queries"
 
 /** Lista de cards de unidades escolares. */
 export default function UnitCardList() {
