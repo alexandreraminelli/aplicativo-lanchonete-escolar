@@ -12,37 +12,20 @@ import UnitDialog from "./UnitDialog"
 import { Button } from "@/components/ui/button"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { Add01Icon } from "@hugeicons/core-free-icons"
+import { useUnits } from "@/hooks/queries/units/unit.queries"
 
 /** Lista de cards de unidades escolares. */
 export default function UnitCardList() {
-  const [units, setUnits] = useState<UnitModel[]>([])
-  const [loading, setLoading] = useState(true)
-
-  /** Função para buscar unidades. */
-  async function fetchUnits() {
-    setLoading(true)
-    try {
-      const allUnits = await UnitRepository.findAll()
-      setUnits(allUnits)
-    } catch {
-      toast.error(UNITS_TEXTS.error.getUnits.title, { description: UNITS_TEXTS.error.getUnits.message })
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  // Obter unidades do Firestore
-  useEffect(() => {
-    fetchUnits()
-  }, [])
-
-  /** Função para adicionar unidade à lista. */
-  const handleUnitAdded = (newUnit: UnitModel) => {
-    setUnits((prevUnits) => [...prevUnits, newUnit])
-  }
+  // Buscar unidades usando React Query
+  const { data: units = [], isLoading, isError } = useUnits()
 
   // Skeleton durante carregamento
-  if (loading) return <UnitCardListSkeleton />
+  if (isLoading) return <UnitCardListSkeleton />
+
+  // Tratamento de erro
+  if (isError) {
+    toast.error(UNITS_TEXTS.error.getUnits.title, { description: UNITS_TEXTS.error.getUnits.message })
+  }
 
   // Se não houver unidades
   if (units.length === 0) {
@@ -51,7 +34,6 @@ export default function UnitCardList() {
         {/* Botão de adicionar unidade */}
         <UnitDialog
           mode="create"
-          onSuccess={handleUnitAdded}
           trigger={
             <Button>
               <HugeiconsIcon icon={Add01Icon} />

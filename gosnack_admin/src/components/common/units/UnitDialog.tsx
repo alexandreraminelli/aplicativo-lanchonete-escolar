@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { MAIN_TEXTS } from "@/constants/texts/main.texts"
 import { UNITS_TEXTS } from "@/constants/texts/units.texts"
+import { useCreateUnit, useUpdateUnit } from "@/hooks/queries/units/unit.mutations"
 import { UnitModel } from "@/types/domain/unit.types"
 import { FormMode } from "@/types/form.types"
 import { Loading03Icon } from "@hugeicons/core-free-icons"
@@ -28,15 +29,19 @@ export default function UnitDialog({ mode, unit, trigger, onSuccess }: Props) {
   /** ID para controlar o formulário. */
   const formId = "unit-form"
 
+  // Hooks de mutação
+  const createMutation = useCreateUnit()
+  const updateMutation = useUpdateUnit()
+
   /** Estado para controlar a abertura e fechamento do Dialog. */
   const [open, setOpen] = useState(false)
   /** Estado para informar o estado da submissão do form. */
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const isSubmitting = createMutation.isPending || updateMutation.isPending
 
   /** Função executada quando a submissão for um sucesso. */
-  const handleSuccess = (createdUnit: UnitModel) => {
+  const handleSuccess = (savedUnit: UnitModel) => {
     setOpen(false) // fechar dialog
-    onSuccess?.(createdUnit) // notificar o componente pai
+    onSuccess?.(savedUnit) // notificar o componente pai
   }
 
   return (
@@ -52,7 +57,7 @@ export default function UnitDialog({ mode, unit, trigger, onSuccess }: Props) {
         </DialogHeader>
 
         {/* Formulário */}
-        <UnitForm mode={mode} unit={unit} id={formId} onSubmitStateChange={setIsSubmitting} onSuccess={handleSuccess} />
+        <UnitForm mode={mode} unit={unit} id={formId} onSuccess={handleSuccess} />
 
         <DialogFooter>
           {/* Botão de cancelar */}

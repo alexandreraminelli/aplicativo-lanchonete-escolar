@@ -15,6 +15,7 @@ import z from "zod"
 import { FieldGroup } from "../ui/field"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { Input } from "../ui/input"
+import { useCreateUnit, useUpdateUnit } from "@/hooks/queries/units/unit.mutations"
 
 /** Tipagem dos dados do form. */
 type UnitFormData = z.infer<typeof unitSchema>
@@ -29,16 +30,18 @@ interface Props {
   /** ID do formulário para associar com botões externos. */
   id?: string
 
-  /** Callback executado quando o status de carregamento mudar. */
-  onSubmitStateChange?: (isSubmitting: boolean) => void
   /** Callback executado quando a submissão for concluída com sucesso. */
   onSuccess?: (unit: UnitModel) => void
 }
 
 /** Formulário para criar/editar unidades escolares. */
-export default function UnitForm({ mode, className, unit, id, onSubmitStateChange, onSuccess, ...props }: Props) {
+export default function UnitForm({ mode, className, unit, id, onSuccess, ...props }: Props) {
   /** Se o formulário é de criação. */
   const isCreate = mode === "create"
+
+  // Hooks de mutação do React Query
+  const createMutation = useCreateUnit()
+  const updateMutation = useUpdateUnit()
 
   /** Valores originais para comparação e destaque das alterações. */
   const [originalValues, setOriginalValues] = useState(() => ({
@@ -53,12 +56,10 @@ export default function UnitForm({ mode, className, unit, id, onSubmitStateChang
 
   /** Função executada ao submeter o formulário. */
   const handleSubmit: SubmitHandler<UnitFormData> = async (data) => {
-    onSubmitStateChange?.(true) // notificar início da submissão
-
     try {
       if (isCreate) {
         // Criar unidade
-        const result = await UnitRepository.create(data as UnitInputModel)
+        const result = await createMutation.mutateAsync(data as UnitInputModel)
 
         toast.success(UNITS_TEXTS.success.create, {
           description: UNITS_TEXTS.success.createDescription(result.name),
@@ -66,19 +67,16 @@ export default function UnitForm({ mode, className, unit, id, onSubmitStateChang
         onSuccess?.(result) // Notificar sucesso com a nova unidade
       } else {
         // Editar unidade
-        await UnitRepository.update(unit!.id, data as Partial<UnitModel>)
+        await updateMutation.mutateAsync({ id: unit!.id, data })
 
         toast.success(UNITS_TEXTS.success.update, {
           description: UNITS_TEXTS.success.updateDescription(data.name),
         })
-
-        onSuccess?.({ ...unit!, ...data }) // Notificar sucesso com a unidade atualizada
+        onSuccess?.(data as UnitModel) // Notificar sucesso com a unidade atualizada
       }
     } catch (error) {
       // Mensagem de erro
       toast.error(UNITS_TEXTS.error.createUnit, { description: error instanceof Error ? error.message : String(error) })
-    } finally {
-      onSubmitStateChange?.(false) // Notificar fim da submissão
     }
   }
 
