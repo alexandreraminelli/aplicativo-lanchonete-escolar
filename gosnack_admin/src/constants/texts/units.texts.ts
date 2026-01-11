@@ -30,6 +30,12 @@ export const UNITS_TEXTS = {
     },
   },
 
+  loading: {
+    creating: "Criando unidade...",
+    updating: "Atualizando unidade...",
+    deleting: "Excluindo unidade...",
+  },
+
   success: {
     create: "Unidade criada com sucesso!",
     createDescription: (name: string) => `Unidade "${name}" foi criada com sucesso.`,
@@ -43,6 +49,7 @@ export const UNITS_TEXTS = {
       title: "Não foi possível carregar as unidades.",
       message: "Tente novamente mais tarde.",
     },
-    createUnit: "Não foi possível criar a unidade.",
+    create: "Não foi possível criar a unidade.",
+    update: "Não foi possível atualizar a unidade.",
   },
 } as const

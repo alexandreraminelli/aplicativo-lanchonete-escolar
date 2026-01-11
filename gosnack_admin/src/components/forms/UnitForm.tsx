@@ -54,28 +54,39 @@ export default function UnitForm({ mode, className, unit, id, onSuccess, ...prop
   })
 
   /** Função executada ao submeter o formulário. */
-  const handleSubmit: SubmitHandler<UnitFormData> = async (data) => {
-    try {
-      if (isCreate) {
-        // Criar unidade
-        const result = await createMutation.mutateAsync(data as UnitInputModel)
+  const handleSubmit: SubmitHandler<UnitFormData> = (data) => {
+    // TODO: Verificar se já existe unidade com o mesmo nome
 
-        toast.success(UNITS_TEXTS.success.create, {
-          description: UNITS_TEXTS.success.createDescription(result.name),
-        })
-        onSuccess?.(result) // Notificar sucesso com a nova unidade
-      } else {
-        // Editar unidade
-        await updateMutation.mutateAsync({ id: unit!.id, data })
-
-        toast.success(UNITS_TEXTS.success.update, {
-          description: UNITS_TEXTS.success.updateDescription(data.name),
-        })
-        onSuccess?.(data as UnitModel) // Notificar sucesso com a unidade atualizada
-      }
-    } catch (error) {
-      // Mensagem de erro
-      toast.error(UNITS_TEXTS.error.createUnit, { description: error instanceof Error ? error.message : String(error) })
+    if (isCreate) {
+      // Criar unidade
+      toast.promise(
+        createMutation.mutateAsync(data as UnitInputModel), // hook
+        {
+          loading: UNITS_TEXTS.loading.creating,
+          // Sucesso
+          success: (result) => {
+            onSuccess?.(result) // Notificar sucesso com a nova unidade
+            return UNITS_TEXTS.success.create
+          },
+          // Erro
+          error: UNITS_TEXTS.error.create,
+        }
+      )
+    } else {
+      // Editar unidade
+      toast.promise(
+        updateMutation.mutateAsync({ id: unit!.id, data }), // hook
+        {
+          loading: UNITS_TEXTS.loading.updating,
+          // Sucesso
+          success: () => {
+            onSuccess?.(data as UnitModel) // Notificar sucesso com a unidade atualizada
+            return UNITS_TEXTS.success.update
+          },
+          // Erro
+          error: UNITS_TEXTS.error.update,
+        }
+      )
     }
   }
 
