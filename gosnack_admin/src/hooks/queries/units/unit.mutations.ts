@@ -1,5 +1,5 @@
 import { UnitRepository } from "@/lib/firebase/firestore/repositories/unit.repository"
-import { UnitModel } from "@/types/domain/unit.types"
+import { UnitInputModel, UnitModel } from "@/types/domain/unit.types"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { unitKeys } from "./unit.keys"
 
@@ -20,7 +20,7 @@ export function useUpdateUnit() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: ({ id, data }: { id: string; data: Partial<Omit<UnitModel, "id">> }) => UnitRepository.update(id, data),
+    mutationFn: ({ id, data }: { id: string; data: Partial<UnitInputModel> }) => UnitRepository.update(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: unitKeys.all })
     },
