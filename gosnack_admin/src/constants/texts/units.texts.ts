@@ -50,6 +50,11 @@ export const UNITS_TEXTS = {
       message: "Tente novamente mais tarde.",
     },
     create: "Não foi possível criar a unidade.",
+    duplicateName: {
+      title: "Já existe uma unidade com esse nome.",
+      description: (name: string) => `A unidade "${name}" já está cadastrada no sistema.`,
+      message: "Já existe uma unidade com esse nome. Escolha um nome diferente.",
+    },
     update: "Não foi possível atualizar a unidade.",
   },
 } as const

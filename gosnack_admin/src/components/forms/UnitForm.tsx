@@ -15,6 +15,7 @@ import z from "zod"
 import { FieldGroup } from "../ui/field"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { Input } from "../ui/input"
+import { useCheckUnitName } from "@/hooks/queries/units/unit.queries"
 
 /** Tipagem dos dados do form. */
 type UnitFormData = z.infer<typeof unitSchema>
@@ -53,9 +54,18 @@ export default function UnitForm({ mode, className, unit, id, onSuccess, ...prop
     defaultValues: originalValues, // valores iniciais
   })
 
+  // Verificar se já existe unidade com o mesmo nome
+  /** Observador do campo nome. */
+  const nameValue = form.watch("name")
+  const { data: existingUnit } = useCheckUnitName(nameValue, isCreate ? undefined : unit?.id)
+
   /** Função executada ao submeter o formulário. */
   const handleSubmit: SubmitHandler<UnitFormData> = (data) => {
-    // TODO: Verificar se já existe unidade com o mesmo nome
+    // Verificar se já existe unidade com o mesmo nome
+    if (existingUnit) {
+      toast.error(UNITS_TEXTS.error.duplicateName.title, { description: UNITS_TEXTS.error.duplicateName.description(data.name) })
+      return
+    }
 
     if (isCreate) {
       // Criar unidade
@@ -109,6 +119,7 @@ export default function UnitForm({ mode, className, unit, id, onSuccess, ...prop
                 <FormControl>
                   <Input type="text" placeholder={UNITS_TEXTS.placeholder.name} {...field} />
                 </FormControl>
+                {existingUnit && <FormMessage>{UNITS_TEXTS.error.duplicateName.message}</FormMessage>}
                 <FormMessage />
               </FormItem>
             )}

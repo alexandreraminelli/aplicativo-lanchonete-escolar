@@ -1,7 +1,7 @@
 import { firestore } from "@/lib/firebase/clientApp"
 import { FirestoreCollections } from "@/lib/firebase/firestore/collections"
 import { UnitModel } from "@/types/domain/unit.types"
-import { addDoc, collection, deleteDoc, doc, DocumentData, getDoc, getDocs, QueryDocumentSnapshot, updateDoc } from "firebase/firestore"
+import { addDoc, collection, deleteDoc, doc, DocumentData, getDoc, getDocs, query, QueryDocumentSnapshot, updateDoc, where } from "firebase/firestore"
 
 /** Repositório para operações CRUD na coleção de unidades escolares. */
 export class UnitRepository {
@@ -36,6 +36,15 @@ export class UnitRepository {
     const snapshot = await getDocs(this.collectionRef)
 
     return snapshot.docs.map(this.fromFirestore)
+  }
+
+  /** Busca uma unidade no Firestore pelo atributo `name`. */
+  static async findByName(name: string): Promise<UnitModel | null> {
+    const snapshot = await getDocs(query(this.collectionRef, where("name", "==", name)))
+
+    if (snapshot.empty) return null // se não encontrar o nome
+
+    return this.fromFirestore(snapshot.docs[0])
   }
 
   /** Atualiza o documento de uma unidade no Firestore. */
