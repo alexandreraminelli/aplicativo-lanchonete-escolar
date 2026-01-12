@@ -1,9 +1,9 @@
 import UnitCardList from "@/components/common/units/UnitCardList"
 import UnitDialog from "@/components/common/units/UnitDialog"
 import { Button } from "@/components/ui/button"
+import { ICONS } from "@/constants/icons"
 import { PAGE_METADATA } from "@/constants/metadata"
 import { UNITS_TEXTS } from "@/constants/texts/units.texts"
-import { Add01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { Metadata } from "next"
 
@@ -26,7 +26,7 @@ export default function UnitsPage() {
           mode="create"
           trigger={
             <Button>
-              <HugeiconsIcon icon={Add01Icon} />
+              <HugeiconsIcon icon={ICONS.actions.create} />
               {UNITS_TEXTS.actions.add}
             </Button>
           }

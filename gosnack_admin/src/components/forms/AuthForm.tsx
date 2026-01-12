@@ -6,6 +6,7 @@ import { FieldGroup } from "@/components/ui/field"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { ICONS } from "@/constants/icons"
 import { ROUTES } from "@/constants/navigation/routes"
 import { AUTH_TEXTS } from "@/constants/texts/auth.texts"
 import { signInUser, signUpUser } from "@/lib/firebase/auth/auth"
@@ -14,7 +15,6 @@ import { cn } from "@/lib/utils"
 import { USER_ROLES } from "@/types/users/user.types"
 import { signInSchema, signUpSchema } from "@/utils/validation/schemas/authSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Loading03Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { type ClassValue } from "clsx"
 import Link from "next/link"
@@ -200,7 +200,9 @@ export default function AuthForm({ type, className, ...props }: Props) {
 
           {/* Botão de enviar */}
           <Button size="lg" type="submit" disabled={form.formState.isSubmitting}>
-            {form.formState.isSubmitting && <HugeiconsIcon icon={Loading03Icon} className="animate-spin" />} {/* Ícone de carregamento */}
+            {form.formState.isSubmitting && <HugeiconsIcon icon={ICONS.actions.loading} className="animate-spin" />} {/* Ícone de carregamento */}
+            {/* Ícone + Texto */}
+            <HugeiconsIcon icon={ICONS.auth.login} />
             {isSignUp ? AUTH_TEXTS.signUpSubmit : AUTH_TEXTS.loginSubmit}
           </Button>
         </FieldGroup>

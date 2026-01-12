@@ -1,7 +1,7 @@
+import { ICONS } from "@/constants/icons"
+import { ROUTES } from "@/constants/navigation/routes"
 import { NAV_TEXTS } from "@/constants/texts/navigation.texts"
 import { MenuGroup } from "@/types/navigation/menu-group.types"
-import { ROUTES } from "./routes"
-import { Home09Icon, Restaurant02Icon, SchoolIcon, UserGroup03Icon } from "@hugeicons/core-free-icons"
 
 /** Menu de navegação principal do sidebar. */
 export const SIDEBAR_MENU: MenuGroup[] = [
@@ -10,7 +10,7 @@ export const SIDEBAR_MENU: MenuGroup[] = [
     label: NAV_TEXTS.overview,
     roles: ["admin", "manager", "employee"],
     items: [
-      { label: NAV_TEXTS.home, href: ROUTES.home, icon: Home09Icon, roles: ["admin", "manager", "employee"] }, // Início
+      { label: NAV_TEXTS.home, href: ROUTES.home, icon: ICONS.pages.home, roles: ["admin", "manager", "employee"] }, // Início
     ],
   },
 
@@ -19,8 +19,8 @@ export const SIDEBAR_MENU: MenuGroup[] = [
     label: NAV_TEXTS.unitsAndSnackBars,
     roles: ["admin", "manager"],
     items: [
-      { label: NAV_TEXTS.units, href: ROUTES.units, icon: SchoolIcon, roles: ["admin"] }, // Unidades
-      { label: NAV_TEXTS.snackBars, href: ROUTES.snackBars, icon: Restaurant02Icon, roles: ["admin", "manager"] }, // Lanchonetes
+      { label: NAV_TEXTS.units, href: ROUTES.units, icon: ICONS.entities.unit, roles: ["admin"] }, // Unidades
+      { label: NAV_TEXTS.snackBars, href: ROUTES.snackBars, icon: ICONS.entities.snackBar, roles: ["admin", "manager"] }, // Lanchonetes
     ],
   },
 
@@ -29,7 +29,7 @@ export const SIDEBAR_MENU: MenuGroup[] = [
     label: NAV_TEXTS.usersAndAccess,
     roles: ["admin"],
     items: [
-      { label: NAV_TEXTS.users, href: ROUTES.users, icon: UserGroup03Icon, roles: ["admin"] }, // Usuários
+      { label: NAV_TEXTS.users, href: ROUTES.users, icon: ICONS.users.all, roles: ["admin"] }, // Usuários
     ],
   },
 ]

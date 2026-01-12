@@ -1,10 +1,10 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { ICONS } from "@/constants/icons"
 import { IMAGES } from "@/constants/images"
 import { UNITS_TEXTS } from "@/constants/texts/units.texts"
 import { useUnits } from "@/hooks/queries/units/unit.queries"
-import { Add01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { toast } from "sonner"
 import EmptyState from "../feedback/EmptyState"
@@ -33,7 +33,7 @@ export default function UnitCardList() {
           mode="create"
           trigger={
             <Button>
-              <HugeiconsIcon icon={Add01Icon} />
+              <HugeiconsIcon icon={ICONS.actions.create} />
               {UNITS_TEXTS.actions.add}
             </Button>
           }

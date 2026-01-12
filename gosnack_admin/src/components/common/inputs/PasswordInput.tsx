@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { ICONS } from "@/constants/icons"
 import { AUTH_TEXTS } from "@/constants/texts/auth.texts"
 import { cn } from "@/lib/utils"
-import { ViewIcon, ViewOffSlashIcon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { useState } from "react"
 
@@ -49,7 +49,7 @@ export default function PasswordInput({ isSignUp, className, ...props }: React.C
             aria-label={label}
           >
             {/* Ícone */}
-            <HugeiconsIcon icon={isVisible ? ViewIcon : ViewOffSlashIcon} />
+            <HugeiconsIcon icon={isVisible ? ICONS.auth.password.show : ICONS.auth.password.hide} />
           </Button>
         </TooltipTrigger>
         {/* Texto do tooltip */}

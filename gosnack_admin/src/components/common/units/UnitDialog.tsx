@@ -3,12 +3,12 @@
 import UnitForm from "@/components/forms/UnitForm"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { ICONS } from "@/constants/icons"
 import { MAIN_TEXTS } from "@/constants/texts/main.texts"
 import { UNITS_TEXTS } from "@/constants/texts/units.texts"
 import { useCreateUnit, useUpdateUnit } from "@/hooks/queries/units/unit.mutations"
 import { UnitModel } from "@/types/domain/unit.types"
 import { FormMode } from "@/types/form.types"
-import { Loading03Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { ReactNode, useState } from "react"
 
@@ -70,7 +70,7 @@ export default function UnitDialog({ mode, unit, trigger, onSuccess }: Props) {
           {/* Botão de enviar */}
           <Button type="submit" form={formId} disabled={isSubmitting}>
             {/* Ícone de carregamento */}
-            {isSubmitting && <HugeiconsIcon icon={Loading03Icon} className="animate-spin" />}
+            {isSubmitting && <HugeiconsIcon icon={ICONS.actions.loading} className="animate-spin" />}
 
             {isCreate ? MAIN_TEXTS.actions.create : MAIN_TEXTS.actions.save}
           </Button>

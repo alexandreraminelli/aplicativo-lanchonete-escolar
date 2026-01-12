@@ -3,11 +3,11 @@
 import EmptyState from "@/components/common/feedback/EmptyState"
 import FullScreenLoaderCircle from "@/components/common/loader/FullScreenLoaderCircle"
 import { Button } from "@/components/ui/button"
+import { ICONS } from "@/constants/icons"
 import { IMAGES } from "@/constants/images"
 import { ROUTES } from "@/constants/navigation/routes"
 import { MAIN_TEXTS } from "@/constants/texts/main.texts"
 import { useRequiredAuth } from "@/hooks/auth/useRequiredAuth"
-import { Home09Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import Link from "next/link"
 import PrivateLayout from "./(private)/layout"
@@ -26,7 +26,7 @@ export default function NotFoundPage() {
         {/* Voltar pro início */}
         <Button size="lg" asChild>
           <Link href={ROUTES.home}>
-            <HugeiconsIcon icon={Home09Icon} />
+            <HugeiconsIcon icon={ICONS.pages.home} />
             {MAIN_TEXTS.actions.backToHome}
           </Link>
         </Button>

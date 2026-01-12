@@ -3,10 +3,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar"
 import { Skeleton } from "@/components/ui/skeleton"
+import { ICONS } from "@/constants/icons"
 import { AUTH_TEXTS } from "@/constants/texts/auth.texts"
 import { signOutUser } from "@/lib/firebase/auth/auth"
 import { UserModel } from "@/types/users/user.model"
-import { ArrowRight01Icon, ArrowUp01Icon, LogoutSquare01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 /** Botão no sidebar que mostra o nome do usuário e opções de rotas para gerenciar a conta. */
@@ -30,7 +30,7 @@ export default function NavUser() {
               <UserTile userData={userData!} />
 
               {/* Seta */}
-              <HugeiconsIcon icon={isMobile ? ArrowUp01Icon : ArrowRight01Icon} className="ml-auto size-4" />
+              <HugeiconsIcon icon={isMobile ? ICONS.arrows.up : ICONS.arrows.right} className="ml-auto size-4" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
 
@@ -51,7 +51,7 @@ export default function NavUser() {
                 signOutUser()
               }}
             >
-              <HugeiconsIcon icon={LogoutSquare01Icon} /> {/* Ícone */}
+              <HugeiconsIcon icon={ICONS.auth.logout} /> {/* Ícone */}
               {AUTH_TEXTS.signOut} {/* Texto */}
             </DropdownMenuItem>
           </DropdownMenuContent>

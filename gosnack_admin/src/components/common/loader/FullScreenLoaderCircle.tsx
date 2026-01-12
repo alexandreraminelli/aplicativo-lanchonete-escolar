@@ -1,4 +1,4 @@
-import { Loading03Icon } from "@hugeicons/core-free-icons"
+import { ICONS } from "@/constants/icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 /**
@@ -7,7 +7,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 export default function FullScreenLoaderCircle() {
   return (
     <div className="w-full h-full flex items-center justify-center">
-      <HugeiconsIcon icon={Loading03Icon} className="animate-spin size-10" />
+      <HugeiconsIcon icon={ICONS.actions.loading} className="animate-spin size-10" />
     </div>
   )
 }
