@@ -3,7 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { ICONS } from "@/constants/icons"
 import { MAIN_TEXTS } from "@/constants/texts/main.texts"
 import { UnitModel } from "@/types/domain/unit.types"
-import { HugeiconsIcon } from "@hugeicons/react"
+import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react"
 import { ClassValue } from "clsx"
 
 /** Props de `UnitCard`. */
@@ -17,6 +17,21 @@ interface Props {
 
 /** Card de unidades. */
 export default function UnitCard({ unit }: Props) {
+  const unitInfo: { label: string; value: string; icon: IconSvgElement }[] = [
+    // ID
+    {
+      label: MAIN_TEXTS.id,
+      value: unit.id,
+      icon: ICONS.id,
+    },
+    // Quantidade de Lanchonetes
+    {
+      label: MAIN_TEXTS.entities.snackBars,
+      value: "10", // TODO: obter quantidade de lanchonetes
+      icon: ICONS.entities.snackBar,
+    },
+  ]
+
   return (
     <Card className="justify-between">
       <CardHeader>
@@ -24,24 +39,21 @@ export default function UnitCard({ unit }: Props) {
         <CardTitle className="text-lg font-semibold">{unit.name}</CardTitle>
       </CardHeader>
 
-      <CardContent className="space-y-2 text-base">
-        {/* ID */}
-        <div className="flex items-center gap-2">
-          <HugeiconsIcon icon={ICONS.id} />
-          <p>
-            <strong>ID: </strong>
-            {unit.id}
-          </p>
-        </div>
-
-        {/* Quantidade de lanchonetes */}
-        <div className="flex items-center gap-2">
-          <HugeiconsIcon icon={ICONS.entities.snackBar} />
-          <p>
-            <strong>Lanchonetes: </strong> {10}
-            {/* TODO: obter quantidade de lanchonetes */}
-          </p>
-        </div>
+      <CardContent>
+        {/* Informações da unidade */}
+        <dl className="space-y-2 text-base">
+          {unitInfo.map((info, index) => (
+            <div key={index} className="flex items-center gap-2">
+              {/* Ícone */}
+              <HugeiconsIcon icon={info.icon} className="size-5" />
+              {/* Texto */}
+              <p className="truncate text-ellipsis *:inline">
+                <dt className="font-bold">{`${info.label}: `}</dt>
+                <dd>{info.value}</dd>
+              </p>
+            </div>
+          ))}
+        </dl>
       </CardContent>
 
       <CardFooter className="flex *:flex-1 gap-2.5">

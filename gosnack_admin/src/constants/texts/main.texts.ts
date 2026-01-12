@@ -24,6 +24,17 @@ export const MAIN_TEXTS = {
     backToHome: "Voltar para Início",
   },
 
+  // Entidades
+  entities: {
+    unit: "Unidade",
+    units: "Unidades",
+
+    snackBar: "Lanchonete",
+    snackBars: "Lanchonetes",
+  },
+
+  id: "ID",
+
   // Página 404
   notFound: {
     title: "404: Página Não Encontrada",
