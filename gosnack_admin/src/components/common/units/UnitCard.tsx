@@ -5,6 +5,7 @@ import { MAIN_TEXTS } from "@/constants/texts/main.texts"
 import { UnitModel } from "@/types/domain/unit.types"
 import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react"
 import { ClassValue } from "clsx"
+import UnitDialog from "./UnitDialog"
 
 /** Props de `UnitCard`. */
 interface Props {
@@ -58,10 +59,16 @@ export default function UnitCard({ unit }: Props) {
 
       <CardFooter className="flex *:flex-1 gap-2.5">
         {/* Botão de editar */}
-        <Button variant="outline">
-          <HugeiconsIcon icon={ICONS.actions.edit} />
-          {MAIN_TEXTS.actions.edit}
-        </Button>
+        <UnitDialog
+          mode="edit"
+          unit={unit}
+          trigger={
+            <Button variant="outline">
+              <HugeiconsIcon icon={ICONS.actions.edit} />
+              {MAIN_TEXTS.actions.edit}
+            </Button>
+          }
+        />
 
         {/* Botão de excluir */}
         <Button variant="destructive">

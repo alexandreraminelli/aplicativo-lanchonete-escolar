@@ -1,7 +1,11 @@
 "use client"
 
+import { FieldGroup } from "@/components/ui/field"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
 import { UNITS_TEXTS } from "@/constants/texts/units.texts"
 import { useCreateUnit, useUpdateUnit } from "@/hooks/queries/units/unit.mutations"
+import { useCheckUnitName } from "@/hooks/queries/units/unit.queries"
 import { cn } from "@/lib/utils"
 import { UnitInputModel, UnitModel } from "@/types/domain/unit.types"
 import { FormMode } from "@/types/form.types"
@@ -9,13 +13,9 @@ import { unitSchema } from "@/utils/validation/schemas/unitSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ClassValue } from "clsx"
 import { useState } from "react"
-import { SubmitHandler, useForm } from "react-hook-form"
+import { SubmitHandler, useForm, useWatch } from "react-hook-form"
 import { toast } from "sonner"
 import z from "zod"
-import { FieldGroup } from "../ui/field"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
-import { Input } from "../ui/input"
-import { useCheckUnitName } from "@/hooks/queries/units/unit.queries"
 
 /** Tipagem dos dados do form. */
 type UnitFormData = z.infer<typeof unitSchema>
@@ -44,7 +44,7 @@ export default function UnitForm({ mode, className, unit, id, onSuccess, ...prop
   const updateMutation = useUpdateUnit()
 
   /** Valores originais para comparação e destaque das alterações. */
-  const [originalValues, setOriginalValues] = useState(() => ({
+  const [originalValues] = useState(() => ({
     name: unit?.name || "",
   }))
 
@@ -54,10 +54,29 @@ export default function UnitForm({ mode, className, unit, id, onSuccess, ...prop
     defaultValues: originalValues, // valores iniciais
   })
 
+  /** Hook para observar valores dos campos. */
+  const watched = useWatch<UnitFormData>({ control: form.control })
+
   // Verificar se já existe unidade com o mesmo nome
   /** Observador do campo nome. */
-  const nameValue = form.watch("name")
+  const nameValue = watched.name ?? ""
   const { data: existingUnit } = useCheckUnitName(nameValue, isCreate ? undefined : unit?.id)
+
+  /** Função para verificar se um campo foi alterado. */
+  const isFieldChanged = (fieldName: keyof typeof originalValues) => {
+    // Comparar valor atual com o original
+    return watched?.[fieldName] !== originalValues[fieldName]
+  }
+  /** Função para obter classes CSS para campos alterados. */
+  const getFieldClasses = (fieldName: keyof typeof originalValues): ClassValue => {
+    if (mode === "create") return "" // não afetar campos no form de criação
+    return isFieldChanged(fieldName) ? "ring-2 ring-primary border-primary bg-primary/10" : ""
+  }
+  /** Função para obter classes CSS para label de campos alterados. */
+  const getLabelClasses = (fieldName: keyof typeof originalValues): ClassValue => {
+    if (mode === "create") return "" // não afetar campos no form de criação
+    return isFieldChanged(fieldName) ? "text-primary" : ""
+  }
 
   /** Função executada ao submeter o formulário. */
   const handleSubmit: SubmitHandler<UnitFormData> = (data) => {
@@ -109,15 +128,23 @@ export default function UnitForm({ mode, className, unit, id, onSuccess, ...prop
         {...props}
       >
         <FieldGroup>
+          {/* Campo ID (read only) */}
+          {unit && (
+            <div className="space-y-2">
+              <FormLabel>{UNITS_TEXTS.fields.id}</FormLabel>
+              <Input value={unit.id} readOnly />
+            </div>
+          )}
+
           {/* Campo Nome */}
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{UNITS_TEXTS.fields.name}</FormLabel>
+                <FormLabel className={cn(getLabelClasses(field.name))}>{UNITS_TEXTS.fields.name}</FormLabel>
                 <FormControl>
-                  <Input type="text" placeholder={UNITS_TEXTS.placeholder.name} {...field} />
+                  <Input type="text" placeholder={UNITS_TEXTS.placeholder.name} className={cn(getFieldClasses(field.name))} {...field} />
                 </FormControl>
                 {existingUnit && <FormMessage>{UNITS_TEXTS.error.duplicateName.message}</FormMessage>}
                 <FormMessage />

@@ -16,6 +16,7 @@ export const UNITS_TEXTS = {
 
   fields: {
     name: "Nome da unidade",
+    id: "ID da unidade",
   },
 
   validation: {
