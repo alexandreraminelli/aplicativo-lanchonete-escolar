@@ -10,6 +10,13 @@ export const UNITS_TEXTS = {
     delete: "Excluir Unidade",
   },
 
+  confirm: {
+    delete: {
+      title: "Tem certeza que deseja excluir esta unidade?",
+      message: (name: string) => `Tem certeza que deseja excluir a unidade "${name}"? Esta ação não pode ser desfeita.`,
+    },
+  },
+
   placeholder: {
     name: "Ex: Santo André, São Bernardo do Campo - Rudge Ramos",
   },
@@ -43,6 +50,8 @@ export const UNITS_TEXTS = {
 
     update: "Unidade salva com sucesso!",
     updateDescription: (name: string) => `Unidade "${name}" atualizada com sucesso.`,
+
+    delete: "Unidade excluída com sucesso!",
   },
 
   error: {
@@ -57,5 +66,6 @@ export const UNITS_TEXTS = {
       message: "Já existe uma unidade com esse nome. Escolha um nome diferente.",
     },
     update: "Não foi possível atualizar a unidade.",
+    delete: "Não foi possível excluir a unidade.",
   },
 } as const

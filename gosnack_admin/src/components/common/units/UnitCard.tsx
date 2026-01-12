@@ -5,6 +5,7 @@ import { MAIN_TEXTS } from "@/constants/texts/main.texts"
 import { UnitModel } from "@/types/domain/unit.types"
 import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react"
 import { ClassValue } from "clsx"
+import DeleteUnitButton from "./DeleteUnitButton"
 import UnitDialog from "./UnitDialog"
 
 /** Props de `UnitCard`. */
@@ -71,10 +72,7 @@ export default function UnitCard({ unit }: Props) {
         />
 
         {/* Botão de excluir */}
-        <Button variant="destructive">
-          <HugeiconsIcon icon={ICONS.actions.delete} />
-          {MAIN_TEXTS.actions.delete}
-        </Button>
+        <DeleteUnitButton unit={unit} />
       </CardFooter>
     </Card>
   )
