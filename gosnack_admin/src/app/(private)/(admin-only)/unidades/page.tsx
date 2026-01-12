@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function UnitsPage() {
   return (
     <section className="space-y-4">
-      <header className="flex flex-col md:flex-row gap-4 justify-between items-center">
+      <header className="flex flex-col sm:flex-row gap-4 justify-between items-center">
         <h2 className="font-semibold text-3xl">{UNITS_TEXTS.mainPage.title}</h2>
 
         {/* Botão de adicionar unidade */}

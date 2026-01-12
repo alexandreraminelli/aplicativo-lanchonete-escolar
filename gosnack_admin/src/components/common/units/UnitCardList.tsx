@@ -44,7 +44,7 @@ export default function UnitCardList() {
 
   // Cards de unidade
   return (
-    <section className="">
+    <section className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {units.map((unit) => (
         <UnitCard key={unit.id} unit={unit} />
       ))}
