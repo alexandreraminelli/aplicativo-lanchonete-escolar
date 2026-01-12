@@ -1,7 +1,7 @@
 import { firestore } from "@/lib/firebase/clientApp"
 import { FirestoreCollections } from "@/lib/firebase/firestore/collections"
 import { UnitModel } from "@/types/domain/unit.types"
-import { addDoc, collection, deleteDoc, doc, DocumentData, getDoc, getDocs, query, QueryDocumentSnapshot, updateDoc, where } from "firebase/firestore"
+import { addDoc, collection, deleteDoc, doc, DocumentData, getDoc, getDocs, orderBy, query, QueryDocumentSnapshot, updateDoc, where } from "firebase/firestore"
 
 /** Repositório para operações CRUD na coleção de unidades escolares. */
 export class UnitRepository {
@@ -31,9 +31,10 @@ export class UnitRepository {
     return this.fromFirestore(snapshot)
   }
 
-  /** Obter uma lista de todas as unidades escolares. */
+  /** Obtém uma lista de todas as unidades escolares. */
   static async findAll(): Promise<UnitModel[]> {
-    const snapshot = await getDocs(this.collectionRef)
+    // Obter unidade e ordenar pelo nome
+    const snapshot = await getDocs(query(this.collectionRef, orderBy("name", "asc")))
 
     return snapshot.docs.map(this.fromFirestore)
   }
