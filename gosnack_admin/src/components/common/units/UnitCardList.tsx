@@ -9,6 +9,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { toast } from "sonner"
 import EmptyState from "../feedback/EmptyState"
 import UnitCard from "./UnitCard"
+import UnitCardListSkeleton from "./UnitCardList.skeleton"
 import UnitDialog from "./UnitDialog"
 
 /** Lista de cards de unidades escolares. */
@@ -50,10 +51,4 @@ export default function UnitCardList() {
       ))}
     </section>
   )
-}
-
-/** Skeleton de carregamento do `UnitCardList`. */
-function UnitCardListSkeleton() {
-  // TODO: Implementar skeleton
-  return <p>Loading...</p>
 }
