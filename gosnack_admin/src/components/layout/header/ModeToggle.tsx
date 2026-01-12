@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { ICONS } from "@/constants/icons"
+import { MAIN_TEXTS } from "@/constants/texts/main.texts"
 import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react"
 import { useTheme } from "next-themes"
 
@@ -19,10 +20,9 @@ export function ModeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme()
 
   const themeOptions: ThemeOptionType[] = [
-    // TODO: Usar constantes de textos
-    { label: "Sistema", value: "system", icon: ICONS.theme.system },
-    { label: "Claro", value: "light", icon: ICONS.theme.light },
-    { label: "Escuro", value: "dark", icon: ICONS.theme.dark },
+    { label: MAIN_TEXTS.theme.system, value: "system", icon: ICONS.theme.system },
+    { label: MAIN_TEXTS.theme.light, value: "light", icon: ICONS.theme.light },
+    { label: MAIN_TEXTS.theme.dark, value: "dark", icon: ICONS.theme.dark },
   ]
 
   return (

@@ -4,6 +4,15 @@ export const MAIN_TEXTS = {
   appName: "GoSnack Admin",
   collegeName: "Colégio Logoipsum",
 
+  // Acesso negado
+  accessDenied: {
+    title: "Acesso Negado",
+    message: {
+      paragraph1: "Você não tem permissão para acessar esta página.",
+      paragraph2: "Se você acredita que isso é um erro, entre em contato com o administrador do sistema.",
+    },
+  },
+
   // Botões de ação
   actions: {
     create: "Criar",
@@ -24,12 +33,9 @@ export const MAIN_TEXTS = {
     },
   },
 
-  // Acesso negado
-  accessDenied: {
-    title: "Acesso Negado",
-    message: {
-      paragraph1: "Você não tem permissão para acessar esta página.",
-      paragraph2: "Se você acredita que isso é um erro, entre em contato com o administrador do sistema.",
-    },
+  theme: {
+    light: "Claro",
+    dark: "Escuro",
+    system: "Sistema",
   },
 } as const
