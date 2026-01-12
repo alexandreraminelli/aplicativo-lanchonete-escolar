@@ -3,7 +3,7 @@ import { auth, firestore } from "@/lib/firebase/clientApp"
 import { UserModel } from "@/types/users/user.model"
 import { AuthError, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth"
 import { doc, setDoc, Timestamp } from "firebase/firestore"
-import { FirestoreCollections } from "../firestore/collections"
+import { FirestoreRootCollections } from "../firestore/collections"
 import { SignInInput, SignUpInput } from "./authInput.types"
 import { getAuthErrorMessage } from "./errors/get-auth-error-message"
 
@@ -22,7 +22,7 @@ export async function signUpUser({ email, password, firstName, lastName, role }:
     await setDoc(
       doc(
         firestore, // instância do serviço Firestore
-        FirestoreCollections.USERS, // nome da coleção
+        FirestoreRootCollections.USERS, // nome da coleção
         userCredential.user.uid // UID do documento
       ),
       // Dados a serem salvos:

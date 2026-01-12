@@ -1,7 +1,7 @@
 "use client"
 
 import { auth, firestore } from "@/lib/firebase/clientApp"
-import { FirestoreCollections } from "@/lib/firebase/firestore/collections"
+import { FirestoreRootCollections } from "@/lib/firebase/firestore/collections"
 import { UserModel } from "@/types/users/user.model"
 import { onAuthStateChanged, User } from "firebase/auth"
 import { doc, getDoc } from "firebase/firestore"
@@ -39,7 +39,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         // Se houver usuário autenticado, buscar dados adicionais no Firestore
         try {
           // Obter DocumentReference do usuário
-          const docRef = doc(firestore, FirestoreCollections.USERS, currentUser.uid)
+          const docRef = doc(firestore, FirestoreRootCollections.USERS, currentUser.uid)
           // Usar DocumentReferente para obter o documento do snapshot
           const docSnap = await getDoc(docRef)
 

@@ -1,12 +1,12 @@
 import { firestore } from "@/lib/firebase/clientApp"
-import { FirestoreCollections } from "@/lib/firebase/firestore/collections"
+import { FirestoreRootCollections } from "@/lib/firebase/firestore/collections"
 import { UnitModel } from "@/types/domain/unit.types"
 import { addDoc, collection, deleteDoc, doc, DocumentData, getDoc, getDocs, orderBy, query, QueryDocumentSnapshot, updateDoc, where } from "firebase/firestore"
 
 /** Repositório para operações CRUD na coleção de unidades escolares. */
 export class UnitRepository {
   /** Referência da coleção de unidades. */
-  private static collectionRef = collection(firestore, FirestoreCollections.UNITS)
+  private static collectionRef = collection(firestore, FirestoreRootCollections.UNITS)
 
   /** Cria um novo documento de unidade escolar no Firestore. */
   static async create(data: Omit<UnitModel, "id">) {
