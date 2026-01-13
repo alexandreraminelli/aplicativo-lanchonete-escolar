@@ -26,9 +26,12 @@ function BreadcrumbLinkNext({ children, ...props }: ComponentProps<typeof Link>)
 /** Lista de itens reutilizáveis do breadcrumb. */
 const breadcrumbItems = {
   homeLink: (
-    <BreadcrumbItem>
-      <BreadcrumbLinkNext href={ROUTES.home}>{NAV_TEXTS.home}</BreadcrumbLinkNext>
-    </BreadcrumbItem>
+    <>
+      <BreadcrumbItem>
+        <BreadcrumbLinkNext href={ROUTES.home}>{NAV_TEXTS.home}</BreadcrumbLinkNext>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+    </>
   ),
 }
 
@@ -44,9 +47,17 @@ const breadcrumbByRoute: Record<string, ReactNode> = {
   [ROUTES.units]: (
     <BreadcrumbList>
       {breadcrumbItems.homeLink}
-      <BreadcrumbSeparator />
       <BreadcrumbItem>
         <BreadcrumbPage>{NAV_TEXTS.units}</BreadcrumbPage>
+      </BreadcrumbItem>
+    </BreadcrumbList>
+  ),
+  // Lanchonetes
+  [ROUTES.snackBars]: (
+    <BreadcrumbList>
+      {breadcrumbItems.homeLink}
+      <BreadcrumbItem>
+        <BreadcrumbPage>{NAV_TEXTS.snackBars}</BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>
   ),
