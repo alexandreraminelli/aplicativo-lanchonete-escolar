@@ -3,7 +3,7 @@ import { DocumentData, getDoc, getDocs, orderBy, query, QueryDocumentSnapshot } 
 import { firestorePaths } from "../paths"
 
 /** Repositório para operações CRUD na coleção de unidades escolares. */
-export class UnitRepository {
+export class UserRepository {
   /** Referência da coleção de usuários. */
   private static get collectionRef() {
     return firestorePaths.users()
