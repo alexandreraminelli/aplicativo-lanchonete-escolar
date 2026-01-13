@@ -1,3 +1,4 @@
+import HeaderWithTitleAndButton from "@/components/common/layout/headers/HeaderWithTitleAndButton"
 import UnitCardList from "@/components/common/units/UnitCardList"
 import UnitDialog from "@/components/common/units/UnitDialog"
 import { Button } from "@/components/ui/button"
@@ -18,9 +19,8 @@ export const metadata: Metadata = {
 export default function UnitsPage() {
   return (
     <section className="space-y-4">
-      <header className="flex flex-col sm:flex-row gap-4 justify-between items-center">
-        <h2 className="font-semibold text-3xl">{UNITS_TEXTS.mainPage.title}</h2>
-
+      {/* Header */}
+      <HeaderWithTitleAndButton title={UNITS_TEXTS.mainPage.title}>
         {/* Botão de adicionar unidade */}
         <UnitDialog
           mode="create"
@@ -31,7 +31,7 @@ export default function UnitsPage() {
             </Button>
           }
         />
-      </header>
+      </HeaderWithTitleAndButton>
 
       {/* Lista de unidades */}
       <main>
