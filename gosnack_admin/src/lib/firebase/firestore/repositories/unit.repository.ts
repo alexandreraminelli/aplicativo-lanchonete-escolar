@@ -5,7 +5,9 @@ import { firestorePaths } from "../paths"
 /** Repositório para operações CRUD na coleção de unidades escolares. */
 export class UnitRepository {
   /** Referência da coleção de unidades. */
-  private static collectionRef = firestorePaths.units()
+  private static get collectionRef() {
+    return firestorePaths.units()
+  }
 
   /** Cria um novo documento de unidade escolar no Firestore. */
   static async create(data: Omit<UnitModel, "id">) {
