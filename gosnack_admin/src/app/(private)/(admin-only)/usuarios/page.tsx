@@ -1,4 +1,5 @@
 import HeaderWithTitleAndButton from "@/components/common/layout/headers/HeaderWithTitleAndButton"
+import UsersList from "@/components/common/users/UsersList"
 import { Button } from "@/components/ui/button"
 import { ICONS } from "@/constants/icons"
 import { USERS_TEXTS } from "@/constants/texts/users.texts"
@@ -16,6 +17,11 @@ export default function UsersPage() {
           {USERS_TEXTS.actions.create}
         </Button>
       </HeaderWithTitleAndButton>
+
+      {/* Lista de usuários */}
+      <main>
+        <UsersList />
+      </main>
     </section>
   )
 }
