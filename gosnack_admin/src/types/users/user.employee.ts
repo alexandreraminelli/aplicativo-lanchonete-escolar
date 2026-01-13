@@ -6,5 +6,5 @@ export interface EmployeeUser extends BaseUser {
   role: "employee"
 
   /** Lanchonete onde o funcionário trabalha. */
-  snackBarRef: DocumentReference
+  cafeteriaRef: DocumentReference
 }

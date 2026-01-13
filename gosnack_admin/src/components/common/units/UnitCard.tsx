@@ -28,9 +28,9 @@ export default function UnitCard({ unit }: Props) {
     },
     // Quantidade de Lanchonetes
     {
-      label: MAIN_TEXTS.entities.snackBars,
+      label: MAIN_TEXTS.entities.cafeterias,
       value: "10", // TODO: obter quantidade de lanchonetes
-      icon: ICONS.entities.snackBar,
+      icon: ICONS.entities.cafeteria,
     },
   ]
 

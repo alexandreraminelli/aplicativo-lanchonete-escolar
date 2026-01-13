@@ -29,7 +29,7 @@ export const ICONS = {
 
   entities: {
     unit: SchoolIcon,
-    snackBar: Restaurant02Icon,
+    cafeteria: Restaurant02Icon,
   },
 
   id: HashtagIcon,

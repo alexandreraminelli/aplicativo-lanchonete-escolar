@@ -23,9 +23,9 @@ export const FirestoreRootCollections = {
 export const FirestoreSubCollections = {
   // Subcoleções de "units/{unitId}/..."
 
+  /** Coleção de lanchonetes. */
+  CAFETERIAS: "cafeterias",
+
   /** Coleção de produtos e pratos do cardápio. */
   PRODUCTS: "products",
-
-  /** Coleção de lanchonetes. */
-  SNACK_BARS: "snackBars",
 } as const

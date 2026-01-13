@@ -29,8 +29,8 @@ export const MAIN_TEXTS = {
     unit: "Unidade",
     units: "Unidades",
 
-    snackBar: "Lanchonete",
-    snackBars: "Lanchonetes",
+    cafeteria: "Lanchonete",
+    cafeterias: "Lanchonetes",
   },
 
   id: "ID",
@@ -44,6 +44,7 @@ export const MAIN_TEXTS = {
     },
   },
 
+  // Opções de tema
   theme: {
     light: "Claro",
     dark: "Escuro",

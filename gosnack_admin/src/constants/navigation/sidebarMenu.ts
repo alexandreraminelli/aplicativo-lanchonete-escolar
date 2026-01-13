@@ -16,11 +16,11 @@ export const SIDEBAR_MENU: MenuGroup[] = [
 
   // Unidades e lanchonetes
   {
-    label: NAV_TEXTS.unitsAndSnackBars,
+    label: NAV_TEXTS.unitsAndCafeterias,
     roles: ["admin"],
     items: [
       { label: NAV_TEXTS.units, href: ROUTES.units, icon: ICONS.entities.unit, roles: ["admin"] }, // Unidades
-      { label: NAV_TEXTS.snackBars, href: ROUTES.snackBars, icon: ICONS.entities.snackBar, roles: ["admin"] }, // Lanchonetes
+      { label: NAV_TEXTS.cafeterias, href: ROUTES.cafeterias, icon: ICONS.entities.cafeteria, roles: ["admin"] }, // Lanchonetes
     ],
   },
 

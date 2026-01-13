@@ -7,9 +7,9 @@ export const NAV_TEXTS = {
   home: "Início",
 
   // Unidades e Lanchonetes
-  unitsAndSnackBars: "Unidades e Lanchonetes",
+  unitsAndCafeterias: "Unidades e Lanchonetes",
   units: "Unidades",
-  snackBars: "Lanchonetes",
+  cafeterias: "Lanchonetes",
 
   // Usuários e Acessos
   usersAndAccess: "Usuários e Acessos",

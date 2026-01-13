@@ -53,11 +53,11 @@ const breadcrumbByRoute: Record<string, ReactNode> = {
     </BreadcrumbList>
   ),
   // Lanchonetes
-  [ROUTES.snackBars]: (
+  [ROUTES.cafeterias]: (
     <BreadcrumbList>
       {breadcrumbItems.homeLink}
       <BreadcrumbItem>
-        <BreadcrumbPage>{NAV_TEXTS.snackBars}</BreadcrumbPage>
+        <BreadcrumbPage>{NAV_TEXTS.cafeterias}</BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>
   ),

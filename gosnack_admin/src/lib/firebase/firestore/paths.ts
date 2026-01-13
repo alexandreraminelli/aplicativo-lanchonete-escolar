@@ -17,8 +17,8 @@ export const firestorePaths = {
   // Subcoleções:
 
   /** Instância da subcoleção de lanchonetes de uma unidade escolar específica. */
-  snackBars: (unitId: string) => collection(firestore, FirestoreRootCollections.UNITS, unitId, FirestoreSubCollections.SNACK_BARS),
+  cafeterias: (unitId: string) => collection(firestore, FirestoreRootCollections.UNITS, unitId, FirestoreSubCollections.CAFETERIAS),
 
   /** Instância da subcoleção de produtos de uma lanchonete específica. */
-  products: (unitId: string, snackBarId: string) => collection(firestore, FirestoreRootCollections.UNITS, unitId, FirestoreSubCollections.SNACK_BARS, snackBarId, FirestoreSubCollections.PRODUCTS),
+  products: (unitId: string, cafeteriaId: string) => collection(firestore, FirestoreRootCollections.UNITS, unitId, FirestoreSubCollections.CAFETERIAS, cafeteriaId, FirestoreSubCollections.PRODUCTS),
 }

@@ -6,5 +6,5 @@ export interface ManagerUser extends BaseUser {
   role: "manager"
 
   /** Lanchonete gerenciada pelo gerente. */
-  snackBarRef: DocumentReference
+  cafeteriaRef: DocumentReference
 }
