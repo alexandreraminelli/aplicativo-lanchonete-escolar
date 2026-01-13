@@ -33,6 +33,11 @@ export const MAIN_TEXTS = {
     cafeterias: "Lanchonetes",
   },
 
+  // Erros
+  error: {
+    tryAgain: "Tente novamente mais tarde.",
+  },
+
   id: "ID",
 
   // Página 404
