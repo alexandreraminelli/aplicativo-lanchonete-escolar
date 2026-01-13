@@ -61,4 +61,14 @@ const breadcrumbByRoute: Record<string, ReactNode> = {
       </BreadcrumbItem>
     </BreadcrumbList>
   ),
+
+  // Usuários
+  [ROUTES.users]: (
+    <BreadcrumbList>
+      {breadcrumbItems.homeLink}
+      <BreadcrumbItem>
+        <BreadcrumbPage>{NAV_TEXTS.users}</BreadcrumbPage>
+      </BreadcrumbItem>
+    </BreadcrumbList>
+  ),
 }
