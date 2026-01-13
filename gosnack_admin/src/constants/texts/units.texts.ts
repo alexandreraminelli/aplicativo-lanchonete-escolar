@@ -54,6 +54,8 @@ export const UNITS_TEXTS = {
     delete: "Unidade excluída com sucesso!",
   },
 
+  quant: (count: number) => `Total de unidades: ${count}`,
+
   error: {
     getUnits: {
       title: "Não foi possível carregar as unidades.",
