@@ -4,6 +4,7 @@ import { SIDEBAR_MENU } from "@/constants/navigation/sidebarMenu"
 import { HugeiconsIcon } from "@hugeicons/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import NavSidebarSkeleton from "./NavSidebar.skeleton"
 
 /** Menu de navegação do sidebar. */
 export default function NavSidebar() {
@@ -11,22 +12,13 @@ export default function NavSidebar() {
 
   const { userData, loading } = useAuth() // dados do usuário
 
-  // TODO: Skeleton durante carregamento
+  // Skeleton durante carregamento
   if (loading || !userData) {
-    return <p>Carregando dados</p>
+    return <NavSidebarSkeleton />
   }
 
   return (
     <>
-      {/* Destinos em comum */}
-      {/* <SidebarGroup>
-        <SidebarGroupLabel>{NAV_TEXTS.overview}</SidebarGroupLabel>
-        <SidebarGroupContent>
-          <SidebarMenu>
-            
-          </SidebarMenu>
-        </SidebarGroupContent>
-      </SidebarGroup> */}
       {SIDEBAR_MENU.map((group, index) => {
         if (group.roles.includes(userData.role)) {
           return (
