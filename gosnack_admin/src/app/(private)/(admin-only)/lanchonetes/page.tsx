@@ -1,3 +1,4 @@
+import CafeteriaCardList from "@/components/common/cafeterias/CafeteriaCardList"
 import { Button } from "@/components/ui/button"
 import { ICONS } from "@/constants/icons"
 import { CAFETERIA_TEXTS } from "@/constants/texts/cafeteria.texts"
@@ -17,6 +18,11 @@ export default function CafeteriasPage() {
           {CAFETERIA_TEXTS.actions.add}
         </Button>
       </header>
+
+      <main>
+        {/* Lista de lanchonetes */}
+        <CafeteriaCardList />
+      </main>
     </section>
   )
 }
