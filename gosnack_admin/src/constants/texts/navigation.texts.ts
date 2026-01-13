@@ -14,6 +14,8 @@ export const NAV_TEXTS = {
   // Usuários e Acessos
   usersAndAccess: "Usuários e Acessos",
   users: "Usuários",
+  addUser: "Adicionar Usuário",
+
   admins: "Administradores",
   managers: "Gerentes",
   employees: "Funcionários",

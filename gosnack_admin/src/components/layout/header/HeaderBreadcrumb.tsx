@@ -33,6 +33,14 @@ const breadcrumbItems = {
       <BreadcrumbSeparator />
     </>
   ),
+  usersLink: (
+    <>
+      <BreadcrumbItem>
+        <BreadcrumbLinkNext href={ROUTES.users}>{NAV_TEXTS.users}</BreadcrumbLinkNext>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+    </>
+  ),
 }
 
 /** Lista de componentes de breadcrumb para cada rota. */
@@ -68,6 +76,17 @@ const breadcrumbByRoute: Record<string, ReactNode> = {
       {breadcrumbItems.homeLink}
       <BreadcrumbItem>
         <BreadcrumbPage>{NAV_TEXTS.users}</BreadcrumbPage>
+      </BreadcrumbItem>
+    </BreadcrumbList>
+  ),
+
+  // Adicionar Usuários
+  [ROUTES.addUsers]: (
+    <BreadcrumbList>
+      {breadcrumbItems.homeLink}
+      {breadcrumbItems.usersLink}
+      <BreadcrumbItem>
+        <BreadcrumbPage>{NAV_TEXTS.addUser}</BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>
   ),

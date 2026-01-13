@@ -2,8 +2,10 @@ import HeaderWithTitleAndButton from "@/components/common/layout/headers/HeaderW
 import UsersList from "@/components/common/users/UsersList"
 import { Button } from "@/components/ui/button"
 import { ICONS } from "@/constants/icons"
+import { ROUTES } from "@/constants/navigation/routes"
 import { USERS_TEXTS } from "@/constants/texts/users.texts"
 import { HugeiconsIcon } from "@hugeicons/react"
+import Link from "next/link"
 
 /** Página para gerenciar usuários. */
 export default function UsersPage() {
@@ -12,9 +14,11 @@ export default function UsersPage() {
       {/* Header */}
       <HeaderWithTitleAndButton title={USERS_TEXTS.management}>
         {/* Botão de adicionar usuário */}
-        <Button>
-          <HugeiconsIcon icon={ICONS.actions.create} />
-          {USERS_TEXTS.actions.create}
+        <Button asChild>
+          <Link href={ROUTES.addUsers}>
+            <HugeiconsIcon icon={ICONS.actions.create} />
+            {USERS_TEXTS.actions.create}
+          </Link>
         </Button>
       </HeaderWithTitleAndButton>
 

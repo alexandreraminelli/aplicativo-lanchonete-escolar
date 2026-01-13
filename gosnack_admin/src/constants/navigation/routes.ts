@@ -13,6 +13,8 @@ export const ROUTES = {
 
   // Usuários e Acessos
   users: "/usuarios",
+  addUsers: "/usuarios/adicionar",
+
   admins: `/usuarios/administradores`,
   managers: "/usuarios/gerentes",
   employees: "/usuarios/funcionários",
