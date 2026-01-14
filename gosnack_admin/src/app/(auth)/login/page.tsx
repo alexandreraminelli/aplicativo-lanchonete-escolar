@@ -35,7 +35,7 @@ export default function LoginPage() {
                 <LoginFormHeader />
 
                 {/* Formulário de login */}
-                <AuthForm type="sign-in" />
+                <AuthForm mode="sign-in" />
               </main>
 
               {/* Imagem */}

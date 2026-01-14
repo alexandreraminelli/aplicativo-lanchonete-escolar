@@ -33,13 +33,13 @@ type FormData = SignUpFormData | SignInFormData
 /** Props para o `AuthForm`. */
 interface Props {
   /** Tipo de formulário: criar conta ou login. */
-  type: "sign-up" | "sign-in"
+  mode: "sign-up" | "sign-in"
   /** Classes CSS adicionais. */
   className?: ClassValue
 }
 
 /** Formulário de autenticação. */
-export default function AuthForm({ type, className, ...props }: Props) {
+export default function AuthForm({ mode: type, className, ...props }: Props) {
   const router = useRouter() // Hook de navegação do Next.js
 
   /** Se o formulário é de cadastro. */

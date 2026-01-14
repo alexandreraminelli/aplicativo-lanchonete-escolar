@@ -6,7 +6,7 @@ export default function AddUserPage() {
     <div>
       Adicionar Usuário
       {/* Form de cadastro */}
-      <AuthForm type="sign-up" />
+      <AuthForm mode="sign-up" />
     </div>
   )
 }
