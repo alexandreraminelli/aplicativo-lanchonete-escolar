@@ -6,6 +6,7 @@ import { PAGE_METADATA } from "@/constants/metadata"
 import { Metadata } from "next"
 import Image from "next/image"
 import AuthForm from "../../../components/forms/AuthForm"
+import { AUTH_TEXTS } from "@/constants/texts/auth.texts"
 
 /** Metadados da página de login. */
 export const metadata: Metadata = {
@@ -26,13 +27,16 @@ export default function LoginPage() {
 
       {/* Card Central */}
       <div className="w-full max-w-sm md:max-w-4xl">
-        <main className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6">
           <Card className="overflow-hidden p-0">
             <CardContent className="grid p-0 md:grid-cols-2">
-              {/* TODO: Header com logo e ModeToggle */}
+              <main className="p-6 md:p-8 space-y-6">
+                {/* Header */}
+                <LoginFormHeader />
 
-              {/* Formulário de login */}
-              <AuthForm type="sign-in" className="p-6 md:p-8" />
+                {/* Formulário de login */}
+                <AuthForm type="sign-in" />
+              </main>
 
               {/* Imagem */}
               <aside className="bg-muted relative hidden md:block">
@@ -46,7 +50,7 @@ export default function LoginPage() {
               </aside>
             </CardContent>
           </Card>
-        </main>
+        </div>
       </div>
     </div>
   )
@@ -58,6 +62,16 @@ function LoginHeader() {
     <header className="flex flex-row items-center gap-8">
       <Logo />
       <ModeToggle />
+    </header>
+  )
+}
+
+/** Cabeçalho do formulário de autenticação. */
+function LoginFormHeader() {
+  return (
+    <header className="flex flex-col items-center gap-2 text-center">
+      <h1 className="text-2xl font-bold">{AUTH_TEXTS.loginTitle}</h1>
+      <p className="text-muted-foreground text-balance">{AUTH_TEXTS.loginSubtitle}</p>
     </header>
   )
 }

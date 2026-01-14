@@ -100,9 +100,6 @@ export default function AuthForm({ type, className, ...props }: Props) {
         {...props}
       >
         <FieldGroup>
-          {/* Header */}
-          <AuthFormHeader />
-
           {/* Campo Nome */}
           {isSignUp && (
             <FormField
@@ -208,16 +205,6 @@ export default function AuthForm({ type, className, ...props }: Props) {
         </FieldGroup>
       </form>
     </Form>
-  )
-}
-
-/** Cabeçalho do formulário de autenticação. */
-function AuthFormHeader() {
-  return (
-    <header className="flex flex-col items-center gap-2 text-center">
-      <h1 className="text-2xl font-bold">{AUTH_TEXTS.loginTitle}</h1>
-      <p className="text-muted-foreground text-balance">{AUTH_TEXTS.loginSubtitle}</p>
-    </header>
   )
 }
 
