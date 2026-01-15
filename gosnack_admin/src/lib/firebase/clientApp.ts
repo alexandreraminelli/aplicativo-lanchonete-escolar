@@ -2,6 +2,7 @@ import config from "@/lib/config"
 import { FirebaseOptions, initializeApp } from "firebase/app"
 import { getAuth } from "firebase/auth"
 import { getFirestore } from "firebase/firestore"
+import { getFunctions } from "firebase/functions"
 
 /**
  * Configuração do Firebase.
@@ -25,3 +26,5 @@ export const firebaseApp = initializeApp(FirebaseConfig)
 export const auth = getAuth(firebaseApp)
 /** Instância do serviço Firestore. */
 export const firestore = getFirestore(firebaseApp)
+/** Instância do serviço Cloud Functions. */
+export const functions = getFunctions(firebaseApp)
