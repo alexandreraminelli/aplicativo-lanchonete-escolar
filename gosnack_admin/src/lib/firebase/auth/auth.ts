@@ -32,6 +32,7 @@ export async function signUpUser({ email, password, firstName, lastName, role }:
         role,
         email,
         createdAt: Timestamp.now(),
+        updatedAt: Timestamp.now(),
         isActive: true,
       } as UserModel
     )
