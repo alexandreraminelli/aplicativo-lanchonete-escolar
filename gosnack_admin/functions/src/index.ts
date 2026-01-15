@@ -6,4 +6,5 @@ setGlobalOptions({
 })
 
 // Exportar cloud functions
+export * from "./users/create-user.function"
 export * from "./users/users.functions"
