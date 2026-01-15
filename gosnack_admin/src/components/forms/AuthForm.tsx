@@ -9,8 +9,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ICONS } from "@/constants/icons"
 import { ROUTES } from "@/constants/navigation/routes"
 import { AUTH_TEXTS } from "@/constants/texts/auth.texts"
-import { signInUser, signUpUser } from "@/lib/firebase/auth/auth"
+import { signInUser } from "@/lib/firebase/auth/auth"
 import { SignInInput, SignUpInput } from "@/lib/firebase/auth/authInput.types"
+import { createUser } from "@/lib/firebase/functions/users.functions"
 import { cn } from "@/lib/utils"
 import { USER_ROLES } from "@/types/users/user.types"
 import { signInSchema, signUpSchema } from "@/utils/validation/schemas/authSchema"
@@ -65,7 +66,7 @@ export default function AuthForm({ mode: type, className, ...props }: Props) {
     try {
       if (isSignUp) {
         // Cadastro
-        const result = await signUpUser(data as SignUpInput)
+        const result = await createUser(data as SignUpInput)
 
         if (result.success) {
           // Cadastro bem-sucedido
