@@ -1,3 +1,5 @@
+import { UserRole } from "./user.types"
+
 /**
  * Tipagem dos itens da lista de usuários.
  */
@@ -9,7 +11,7 @@ export interface UserListItem {
   /** E-mail do usuário. */
   email: string
   /** Papel do usuário. */
-  role: string
+  role: UserRole
   /** Se o usuário está ativo ou não. */
   isActive: boolean
 }

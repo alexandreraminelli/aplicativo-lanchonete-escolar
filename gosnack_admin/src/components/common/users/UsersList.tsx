@@ -1,5 +1,7 @@
 "use client"
 
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { AUTH_TEXTS } from "@/constants/texts/auth.texts"
 import { USERS_TEXTS } from "@/constants/texts/users.texts"
 import { useUsers } from "@/hooks/queries/users/user.queries"
 import { toast } from "sonner"
@@ -23,17 +25,30 @@ export default function UsersList() {
       <p className="text-muted-foreground mb-4">{USERS_TEXTS.quant(users.length)}</p>
 
       {/* Tabela de usuários */}
-      <section>
-        {users.map((user) => (
-          <div className="bg-muted border-2 m-5 p-4 rounded-2xl" key={user.id}>
-            <p>
-              {user.firstName} {user.lastName}
-            </p>
-            <p>{user.email}</p>
-            <p>Papel: {user.role}</p>
-          </div>
-        ))}
-      </section>
+      <Table>
+        {/* Cabeçalho */}
+        <TableHeader>
+          <TableRow>
+            <TableHead>{AUTH_TEXTS.fields.name}</TableHead>
+            <TableHead>{AUTH_TEXTS.fields.email}</TableHead>
+            <TableHead>{AUTH_TEXTS.fields.role}</TableHead>
+            <TableHead>{AUTH_TEXTS.fields.status.label}</TableHead>
+          </TableRow>
+        </TableHeader>
+
+        {/* Lista */}
+        <TableBody>
+          {users.map((user) => (
+            <TableRow key={user.uid}>
+              <TableCell>{user.fullName}</TableCell>
+              <TableCell>{user.email}</TableCell>
+              <TableCell>{AUTH_TEXTS.roles[user.role]}</TableCell>
+              {/* TODO: usar badge */}
+              <TableCell>{user.isActive ? AUTH_TEXTS.fields.status.active : AUTH_TEXTS.fields.status.inactive}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </>
   )
 }
