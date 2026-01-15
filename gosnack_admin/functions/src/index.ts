@@ -4,3 +4,6 @@ import { setGlobalOptions } from "firebase-functions"
 setGlobalOptions({
   maxInstances: 10, // Número máximo de instâncias da função
 })
+
+// Exportar cloud functions
+export * from "./users/users.functions"
