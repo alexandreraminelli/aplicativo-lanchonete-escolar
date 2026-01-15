@@ -1,10 +1,11 @@
+import { UserRepository } from "@/lib/firebase/firestore/repositories/users.repository"
+import { UserListItem } from "@/types/users/user.list-item"
 import { useQuery } from "@tanstack/react-query"
 import { userKeys } from "./user.keys"
-import { UserRepository } from "@/lib/firebase/firestore/repositories/users.repository"
 
 /** Hook para buscar todos os usuários. */
 export function useUsers() {
-  return useQuery({
+  return useQuery<UserListItem[]>({
     queryKey: userKeys.all,
     queryFn: async () => UserRepository.findAll(),
   })

@@ -1,6 +1,7 @@
 import { UserModel } from "@/types/users/user.model"
 import { DocumentData, getDoc, getDocs, orderBy, query, QueryDocumentSnapshot } from "firebase/firestore"
 import { firestorePaths } from "../paths"
+import { UserListItem } from "@/types/users/user.list-item"
 
 /** Repositório para operações CRUD na coleção de unidades escolares. */
 export class UserRepository {
@@ -9,12 +10,26 @@ export class UserRepository {
     return firestorePaths.users()
   }
 
-  /** Busca todos os usuários. */
-  static async findAll(): Promise<UserModel[]> {
+  /**
+   * Busca todos os usuários.
+   *
+   * @returns Lista de usuários em uma tipagem adequada para listagem em tabelas.
+   */
+  static async findAll(): Promise<UserListItem[]> {
     // Obter usuários e ordenar pelo nome
     const snapshot = await getDocs(query(this.collectionRef, orderBy("firstName", "asc")))
 
-    return snapshot.docs.map(this.fromFirestore)
+    return snapshot.docs.map((doc) => {
+      const data = doc.data() as UserModel
+
+      return {
+        uid: doc.id,
+        fullName: `${data.firstName} ${data.lastName}`.trim(),
+        email: data.email,
+        role: data.role,
+        isActive: data.isActive,
+      }
+    })
   }
 
   /** Converter documento do Firestore em `UserModel`. */
