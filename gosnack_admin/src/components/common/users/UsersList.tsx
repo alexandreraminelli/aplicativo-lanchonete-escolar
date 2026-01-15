@@ -1,5 +1,6 @@
 "use client"
 
+import { Badge } from "@/components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { AUTH_TEXTS } from "@/constants/texts/auth.texts"
 import { USERS_TEXTS } from "@/constants/texts/users.texts"
@@ -43,8 +44,11 @@ export default function UsersList() {
               <TableCell>{user.fullName}</TableCell>
               <TableCell>{user.email}</TableCell>
               <TableCell>{AUTH_TEXTS.roles[user.role]}</TableCell>
-              {/* TODO: usar badge */}
-              <TableCell>{user.isActive ? AUTH_TEXTS.fields.status.active : AUTH_TEXTS.fields.status.inactive}</TableCell>
+
+              {/* Badge de status (ativo ou inativo) */}
+              <TableCell>
+                <Badge variant={user.isActive ? "secondary" : "destructive"}>{user.isActive ? AUTH_TEXTS.fields.status.active : AUTH_TEXTS.fields.status.inactive}</Badge>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
