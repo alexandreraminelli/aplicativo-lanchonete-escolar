@@ -10,6 +10,7 @@ export const ROUTES = {
   // Unidades e Lanchonetes
   units: "/unidades",
   cafeterias: "/lanchonetes",
+  newCafeteria: "/lanchonetes/adicionar",
 
   // Usuários e Acessos
   users: "/usuarios",

@@ -2,8 +2,10 @@ import CafeteriaCardList from "@/components/common/cafeterias/CafeteriaCardList"
 import HeaderWithTitleAndButton from "@/components/common/layout/headers/HeaderWithTitleAndButton"
 import { Button } from "@/components/ui/button"
 import { ICONS } from "@/constants/icons"
+import { ROUTES } from "@/constants/navigation/routes"
 import { CAFETERIA_TEXTS } from "@/constants/texts/cafeteria.texts"
 import { HugeiconsIcon } from "@hugeicons/react"
+import Link from "next/link"
 
 /** Página de lanchonetes. */
 export default function CafeteriasPage() {
@@ -12,9 +14,11 @@ export default function CafeteriasPage() {
       {/* Header */}
       <HeaderWithTitleAndButton title={CAFETERIA_TEXTS.management} icon={ICONS.entities.cafeteria}>
         {/* Botão de adicionar lanchonete */}
-        <Button>
-          <HugeiconsIcon icon={ICONS.actions.create} />
-          {CAFETERIA_TEXTS.actions.add}
+        <Button asChild>
+          <Link href={ROUTES.newCafeteria}>
+            <HugeiconsIcon icon={ICONS.actions.create} />
+            {CAFETERIA_TEXTS.actions.add}
+          </Link>
         </Button>
       </HeaderWithTitleAndButton>
 

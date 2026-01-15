@@ -1,5 +1,6 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
 import { ROUTES } from "@/constants/navigation/routes"
+import { CAFETERIA_TEXTS } from "@/constants/texts/cafeteria.texts"
 import { NAV_TEXTS } from "@/constants/texts/navigation.texts"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -29,6 +30,15 @@ const breadcrumbItems = {
     <>
       <BreadcrumbItem>
         <BreadcrumbLinkNext href={ROUTES.home}>{NAV_TEXTS.home}</BreadcrumbLinkNext>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+    </>
+  ),
+
+  cafeteriasLink: (
+    <>
+      <BreadcrumbItem>
+        <BreadcrumbLinkNext href={ROUTES.cafeterias}>{NAV_TEXTS.cafeterias}</BreadcrumbLinkNext>
       </BreadcrumbItem>
       <BreadcrumbSeparator />
     </>
@@ -66,6 +76,15 @@ const breadcrumbByRoute: Record<string, ReactNode> = {
       {breadcrumbItems.homeLink}
       <BreadcrumbItem>
         <BreadcrumbPage>{NAV_TEXTS.cafeterias}</BreadcrumbPage>
+      </BreadcrumbItem>
+    </BreadcrumbList>
+  ),
+  [ROUTES.newCafeteria]: (
+    <BreadcrumbList>
+      {breadcrumbItems.homeLink}
+      {breadcrumbItems.cafeteriasLink}
+      <BreadcrumbItem>
+        <BreadcrumbPage>{CAFETERIA_TEXTS.actions.add}</BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>
   ),
