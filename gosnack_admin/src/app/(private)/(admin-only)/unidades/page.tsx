@@ -20,7 +20,7 @@ export default function UnitsPage() {
   return (
     <section className="space-y-4">
       {/* Header */}
-      <HeaderWithTitleAndButton title={UNITS_TEXTS.mainPage.title}>
+      <HeaderWithTitleAndButton title={UNITS_TEXTS.mainPage.title} icon={ICONS.entities.unit}>
         {/* Botão de adicionar unidade */}
         <UnitDialog
           mode="create"

@@ -10,7 +10,7 @@ export default function CafeteriasPage() {
   return (
     <section className="space-y-4">
       {/* Header */}
-      <HeaderWithTitleAndButton title={CAFETERIA_TEXTS.management}>
+      <HeaderWithTitleAndButton title={CAFETERIA_TEXTS.management} icon={ICONS.entities.cafeteria}>
         {/* Botão de adicionar lanchonete */}
         <Button>
           <HugeiconsIcon icon={ICONS.actions.create} />

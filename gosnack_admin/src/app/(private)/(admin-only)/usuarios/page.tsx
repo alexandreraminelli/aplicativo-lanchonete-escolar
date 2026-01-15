@@ -12,7 +12,7 @@ export default function UsersPage() {
   return (
     <section className="space-y-4">
       {/* Header */}
-      <HeaderWithTitleAndButton title={USERS_TEXTS.management}>
+      <HeaderWithTitleAndButton title={USERS_TEXTS.management} icon={ICONS.users.all}>
         {/* Botão de adicionar usuário */}
         <Button asChild>
           <Link href={ROUTES.addUsers}>
