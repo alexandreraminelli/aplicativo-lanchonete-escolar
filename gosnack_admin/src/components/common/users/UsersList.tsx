@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { AUTH_TEXTS } from "@/constants/texts/auth.texts"
+import { MAIN_TEXTS } from "@/constants/texts/main.texts"
 import { USERS_TEXTS } from "@/constants/texts/users.texts"
 import { useUsers } from "@/hooks/queries/users/user.queries"
 import { toast } from "sonner"
@@ -30,7 +31,7 @@ export default function UsersList() {
         {/* Cabeçalho */}
         <TableHeader>
           <TableRow>
-            <TableHead>{AUTH_TEXTS.fields.name}</TableHead>
+            <TableHead>{MAIN_TEXTS.fields.name}</TableHead>
             <TableHead>{AUTH_TEXTS.fields.email}</TableHead>
             <TableHead>{AUTH_TEXTS.fields.role}</TableHead>
             <TableHead>{AUTH_TEXTS.fields.status.label}</TableHead>

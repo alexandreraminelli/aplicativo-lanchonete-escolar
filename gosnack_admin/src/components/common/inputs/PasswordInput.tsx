@@ -19,7 +19,7 @@ export default function PasswordInput({ isSignUp, className, ...props }: React.C
   const [isVisible, setIsVisible] = useState(false)
 
   /** Rótulo do botão. */
-  const label = isVisible ? AUTH_TEXTS.hidePassword : AUTH_TEXTS.showPassword
+  const label = isVisible ? AUTH_TEXTS.actions.password.hide : AUTH_TEXTS.actions.password.show
 
   /** Função para alternar a visibilidade da senha. */
   const handleToggleVisibility = (e: React.MouseEvent<HTMLButtonElement>) => {

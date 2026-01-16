@@ -70,7 +70,7 @@ export default function AuthForm({ mode: type, className, ...props }: Props) {
 
         if (result.success) {
           // Cadastro bem-sucedido
-          toast.success(AUTH_TEXTS.signUpSuccess) // notificação
+          toast.success(AUTH_TEXTS.success.signUp) // notificação
           form.reset() // limpar form
         } else {
           throw result.message // Problema no cadastro
@@ -81,7 +81,7 @@ export default function AuthForm({ mode: type, className, ...props }: Props) {
 
         if (result.success) {
           // Login bem-sucedido
-          toast.success(AUTH_TEXTS.signInSuccess) // notificação
+          toast.success(AUTH_TEXTS.success.signIn) // notificação
           router.push(ROUTES.home) // redirecionamento
         } else {
           throw result.message // Problema no login
@@ -89,7 +89,7 @@ export default function AuthForm({ mode: type, className, ...props }: Props) {
       }
     } catch (error) {
       // Mensagem de erro
-      toast.error(AUTH_TEXTS.errorTitle, { description: error instanceof Error ? error.message : String(error) })
+      toast.error(AUTH_TEXTS.error.title, { description: error instanceof Error ? error.message : String(error) })
     }
   }
 
@@ -201,7 +201,7 @@ export default function AuthForm({ mode: type, className, ...props }: Props) {
             {form.formState.isSubmitting && <HugeiconsIcon icon={ICONS.actions.loading} className="animate-spin" />} {/* Ícone de carregamento */}
             {/* Ícone + Texto */}
             <HugeiconsIcon icon={ICONS.auth.login} />
-            {isSignUp ? AUTH_TEXTS.signUpSubmit : AUTH_TEXTS.loginSubmit}
+            {isSignUp ? AUTH_TEXTS.actions.submit.signUp : AUTH_TEXTS.actions.submit.login}
           </Button>
         </FieldGroup>
       </form>
@@ -213,7 +213,7 @@ export default function AuthForm({ mode: type, className, ...props }: Props) {
 function ForgotPasswordButton() {
   return (
     <Button type="button" variant="link" className="text-sm p-0 h-fit">
-      <Link href={ROUTES.forgotPassword}>{AUTH_TEXTS.forgotPassword}</Link>
+      <Link href={ROUTES.forgotPassword}>{AUTH_TEXTS.actions.forgotPassword}</Link>
     </Button>
   )
 }

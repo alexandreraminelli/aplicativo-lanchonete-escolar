@@ -16,8 +16,8 @@ export default function LoginPage() {
     <main className="space-y-6">
       {/* Header */}
       <header className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold">{AUTH_TEXTS.loginTitle}</h1>
-        <p className="text-muted-foreground text-balance">{AUTH_TEXTS.loginSubtitle}</p>
+        <h1 className="text-2xl font-bold">{AUTH_TEXTS.loginHeader.loginTitle}</h1>
+        <p className="text-muted-foreground text-balance">{AUTH_TEXTS.loginHeader.loginSubtitle}</p>
       </header>
 
       {/* Formulário de login */}

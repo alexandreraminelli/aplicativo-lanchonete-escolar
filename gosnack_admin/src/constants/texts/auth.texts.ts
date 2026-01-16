@@ -2,6 +2,30 @@ import { UserRole } from "@/types/users/user.types"
 
 /** Constantes de textos para autenticação. */
 export const AUTH_TEXTS = {
+  // Botões de ação
+  actions: {
+    forgotPassword: "Esqueceu a senha?",
+    password: {
+      hide: "Ocultar senha",
+      show: "Mostrar senha",
+    },
+    signOut: "Sair",
+    submit: {
+      login: "Entrar",
+      signUp: "Criar Usuário",
+    },
+  },
+
+  // Formato do e-mail
+  emailFormat: "nome.sobrenome@colegioipsum.edu.br",
+
+  // Mensagens de erro sem detalhes
+  error: {
+    title: "Erro na Autenticação",
+    signIn: "Ocorreu um erro e não foi possível realizar o login. Tente novamente mais tarde.",
+    signUp: "Ocorreu um erro e não foi possível criar o novo usuário. Tente novamente mais tarde.",
+  },
+
   // Campos do usuário.
   fields: {
     // Nome e sobrenome
@@ -18,10 +42,7 @@ export const AUTH_TEXTS = {
     status: { label: "Status", active: "Ativo", inactive: "Inativo" },
   },
 
-  /* Formato do e-mail */
-  emailFormat: "nome.sobrenome@colegioipsum.edu.br",
-
-  /* Papéis dos usuários */
+  // Papeis do usuário
   roles: {
     client: "Cliente",
     employee: "Funcionário da Lanchonete",
@@ -29,40 +50,44 @@ export const AUTH_TEXTS = {
     admin: "Administrador",
   } satisfies Record<UserRole, string>,
 
-  /* Botões de ação */
-  forgotPassword: "Esqueceu a senha?",
-  loginSubmit: "Entrar",
-  signUpSubmit: "Criar Conta",
+  // Cabeçalho do login
+  loginHeader: {
+    loginTitle: "GoSnack: Painel de Controle",
+    loginSubtitle: "Acesse o sistema para gerenciar pedidos e produtos.",
+  },
 
-  hidePassword: "Ocultar senha",
-  showPassword: "Mostrar senha",
+  // Operação bem-sucedida
+  success: {
+    signIn: "Login realizado com sucesso! Bem-vindo de volta.",
+    signUp: "Usuário criado com sucesso!",
+  },
 
-  signOut: "Sair",
+  // Mensagens de validação
+  validation: {
+    email: {
+      required: "O e-mail é obrigatório.",
+    },
+    name: {
+      firstName: {
+        required: "O nome é obrigatório.",
+      },
+      lastName: {
+        required: "O sobrenome é obrigatório.",
+      },
+    },
+    password: {
+      required: "A senha é obrigatória.",
 
-  myAccount: "Minha Conta",
+      digit: "A senha deve conter pelo menos um número.",
+      length: "A senha deve ter pelo menos 8 caracteres.",
+      specialChar: "A senha deve conter pelo menos um caractere especial.",
 
-  /* Login Page */
-  loginTitle: "GoSnack: Painel de Controle",
-  loginSubtitle: "Acesse o sistema para gerenciar pedidos e produtos.",
+      lowerCase: "A senha deve conter letras minúsculas.",
+      upperCase: "A senha deve conter letras maiúsculas.",
+    },
 
-  /* Mensagens de validação. */
-  firstNameRequired: "O nome é obrigatório.",
-  lastNameRequired: "O sobrenome é obrigatório.",
-  emailRequired: "O e-mail é obrigatório.",
-  roleRequired: "Selecione um tipo de usuário.",
-
-  passwordRequired: "A senha é obrigatória.",
-  passwordLength: "A senha deve ter pelo menos 8 caracteres.",
-  passwordCase: "A senha deve conter letras maiúsculas e minúsculas.",
-  passwordDigit: "A senha deve conter pelo menos um número.",
-  passwordSpecialChar: "A senha deve conter pelo menos um caractere especial.",
-
-  /* Mensagens de operações bem-sucedida. */
-  signUpSuccess: "Conta criada com sucesso! Essa conta já pode ser usada para fazer login.",
-  signInSuccess: "Login realizado com sucesso!",
-
-  /* Mensagens de erro genéricas */
-  errorTitle: "Erro na Autenticação",
-  signUpError: "Ocorreu um erro e não foi possível criar a conta. Tente novamente mais tarde.",
-  signInError: "Ocorreu um erro e não foi possível realizar o login. Tente novamente mais tarde.",
+    role: {
+      required: "Selecione um tipo de usuário.",
+    },
+  },
 } as const

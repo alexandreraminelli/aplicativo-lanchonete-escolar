@@ -52,7 +52,7 @@ export default function NavUser() {
               }}
             >
               <HugeiconsIcon icon={ICONS.auth.logout} /> {/* Ícone */}
-              {AUTH_TEXTS.signOut} {/* Texto */}
+              {AUTH_TEXTS.actions.signOut} {/* Texto */}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

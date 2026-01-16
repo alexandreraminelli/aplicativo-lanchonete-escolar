@@ -16,7 +16,7 @@ export async function signInUser({ email, password }: SignInInput) {
     return { success: true, userId: userCredential.user.uid }
   } catch (error) {
     // Retornar mensagem de erro
-    const message = getAuthErrorMessage(error as AuthError, AUTH_TEXTS.signInError)
+    const message = getAuthErrorMessage(error as AuthError, AUTH_TEXTS.error.signIn)
     return { success: false, message: message }
   }
 }
