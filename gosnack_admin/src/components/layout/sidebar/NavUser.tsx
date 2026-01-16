@@ -2,12 +2,12 @@ import { useAuth } from "@/components/providers/auth-provider"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar"
-import { Skeleton } from "@/components/ui/skeleton"
 import { ICONS } from "@/constants/icons"
 import { AUTH_TEXTS } from "@/constants/texts/auth.texts"
 import { signOutUser } from "@/lib/firebase/auth/auth"
 import { UserModel } from "@/types/users/user.model"
 import { HugeiconsIcon } from "@hugeicons/react"
+import NavUserSkeleton from "./NavUser.skeleton"
 
 /** Botão no sidebar que mostra o nome do usuário e opções de rotas para gerenciar a conta. */
 export default function NavUser() {
@@ -36,49 +36,17 @@ export default function NavUser() {
 
           {/* Opções ao clicar no botão de usuário */}
           <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg" side={isMobile ? "top" : "right"} align="end" sideOffset={4}>
+            {/* Avatar, nome e e-mail */}
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <UserTile userData={userData!} />
               </div>
             </DropdownMenuLabel>
-
+            {/* Opções */}
             <DropdownMenuSeparator />
-
-            {/* Botão de logout */}
-            <DropdownMenuItem
-              variant="destructive"
-              onClick={() => {
-                signOutUser()
-              }}
-            >
-              <HugeiconsIcon icon={ICONS.auth.logout} /> {/* Ícone */}
-              {AUTH_TEXTS.actions.signOut} {/* Texto */}
-            </DropdownMenuItem>
+            <SignOutButton /> {/* Botão de logout */}
           </DropdownMenuContent>
         </DropdownMenu>
-      </SidebarMenuItem>
-    </SidebarMenu>
-  )
-}
-
-/** Skeleton do `NavUser`. */
-function NavUserSkeleton() {
-  return (
-    <SidebarMenu>
-      <SidebarMenuItem>
-        <SidebarMenuButton size="lg" disabled>
-          {/* Avatar skeleton */}
-          <Skeleton className="size-8 rounded-lg" />
-
-          {/* Text skeleton */}
-          <div className="grid flex-1 gap-1">
-            <Skeleton className="h-4 w-24" />
-            <Skeleton className="h-3 w-32" />
-          </div>
-
-          {/* Icon skeleton */}
-          <Skeleton className="ml-auto size-4" />
-        </SidebarMenuButton>
       </SidebarMenuItem>
     </SidebarMenu>
   )
@@ -103,5 +71,20 @@ function UserTile({ userData }: { userData: UserModel }) {
         <span className="truncate text-xs">{userData?.email}</span>
       </div>
     </>
+  )
+}
+
+/** Botão de logout. */
+function SignOutButton() {
+  return (
+    <DropdownMenuItem
+      variant="destructive"
+      onClick={() => {
+        signOutUser()
+      }}
+    >
+      <HugeiconsIcon icon={ICONS.auth.logout} /> {/* Ícone */}
+      {AUTH_TEXTS.actions.signOut} {/* Texto */}
+    </DropdownMenuItem>
   )
 }
