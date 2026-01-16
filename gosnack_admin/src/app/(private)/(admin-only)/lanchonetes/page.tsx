@@ -5,7 +5,13 @@ import { ICONS } from "@/constants/icons"
 import { ROUTES } from "@/constants/navigation/routes"
 import { CAFETERIA_TEXTS } from "@/constants/texts/cafeteria.texts"
 import { HugeiconsIcon } from "@hugeicons/react"
+import { Metadata } from "next"
 import Link from "next/link"
+
+/** Metadados da página de lanchonetes. */
+export const metadata: Metadata = {
+  title: CAFETERIA_TEXTS.management,
+}
 
 /** Página de lanchonetes. */
 export default function CafeteriasPage() {

@@ -5,7 +5,13 @@ import { ICONS } from "@/constants/icons"
 import { ROUTES } from "@/constants/navigation/routes"
 import { USERS_TEXTS } from "@/constants/texts/users.texts"
 import { HugeiconsIcon } from "@hugeicons/react"
+import { Metadata } from "next"
 import Link from "next/link"
+
+/** Metadados da página de usuários. */
+export const metadata: Metadata = {
+  title: USERS_TEXTS.management,
+}
 
 /** Página para gerenciar usuários. */
 export default function UsersPage() {

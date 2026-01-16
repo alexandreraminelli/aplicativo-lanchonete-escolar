@@ -1,7 +1,13 @@
 import AuthForm from "@/components/forms/AuthForm"
 import { IMAGES } from "@/constants/images"
-import { NAV_TEXTS } from "@/constants/texts/navigation.texts"
+import { USERS_TEXTS } from "@/constants/texts/users.texts"
+import { Metadata } from "next"
 import Image from "next/image"
+
+/** Metadados da página de adicionar usuário. */
+export const metadata: Metadata = {
+  title: USERS_TEXTS.actions.create,
+}
 
 /** Página de adicionar novo usuário. */
 export default function AddUserPage() {
@@ -9,7 +15,7 @@ export default function AddUserPage() {
     <div className="flex flex-row gap-10 justify-around">
       {/* Form de cadastro */}
       <main className="space-y-6 w-full max-w-xl">
-        <h2 className="font-semibold text-3xl md:text-4xl text-center md:text-start">{NAV_TEXTS.addUser}</h2>
+        <h2 className="font-semibold text-3xl md:text-4xl text-center md:text-start">{USERS_TEXTS.actions.create}</h2>
         <AuthForm mode="sign-up" />
       </main>
 
