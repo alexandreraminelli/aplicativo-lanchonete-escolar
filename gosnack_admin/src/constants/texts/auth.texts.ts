@@ -3,12 +3,10 @@ import { UserRole } from "@/types/users/user.types"
 /** Constantes de textos para autenticação. */
 export const AUTH_TEXTS = {
   // Campos do usuário.
-  // TODO: refatorar para serem acessados por meio de fields
   fields: {
     // Nome e sobrenome
     firstName: "Primeiro nome",
     lastName: "Sobrenome",
-    name: "Nome",
     fullName: "Nome completo",
 
     // Credenciais
@@ -19,11 +17,6 @@ export const AUTH_TEXTS = {
     role: "Tipo de usuário",
     status: { label: "Status", active: "Ativo", inactive: "Inativo" },
   },
-  email: "E-mail",
-  password: "Senha",
-  firstName: "Primeiro nome",
-  lastName: "Sobrenome",
-  role: "Tipo de usuário",
 
   /* Formato do e-mail */
   emailFormat: "nome.sobrenome@colegioipsum.edu.br",

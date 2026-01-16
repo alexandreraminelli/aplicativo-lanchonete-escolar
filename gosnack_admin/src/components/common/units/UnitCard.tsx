@@ -22,7 +22,7 @@ export default function UnitCard({ unit }: Props) {
   const unitInfo: { label: string; value: string; icon: IconSvgElement }[] = [
     // ID
     {
-      label: MAIN_TEXTS.id,
+      label: MAIN_TEXTS.fields.id,
       value: unit.id,
       icon: ICONS.id,
     },

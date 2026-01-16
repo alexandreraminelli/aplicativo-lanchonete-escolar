@@ -1,7 +1,9 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
 import { ROUTES } from "@/constants/navigation/routes"
 import { CAFETERIA_TEXTS } from "@/constants/texts/cafeteria.texts"
+import { MAIN_TEXTS } from "@/constants/texts/main.texts"
 import { NAV_TEXTS } from "@/constants/texts/navigation.texts"
+import { USERS_TEXTS } from "@/constants/texts/users.texts"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ComponentProps, ReactNode } from "react"
@@ -29,7 +31,7 @@ const breadcrumbItems = {
   homeLink: (
     <>
       <BreadcrumbItem>
-        <BreadcrumbLinkNext href={ROUTES.home}>{NAV_TEXTS.home}</BreadcrumbLinkNext>
+        <BreadcrumbLinkNext href={ROUTES.home}>{NAV_TEXTS.mainPages.home}</BreadcrumbLinkNext>
       </BreadcrumbItem>
       <BreadcrumbSeparator />
     </>
@@ -38,7 +40,7 @@ const breadcrumbItems = {
   cafeteriasLink: (
     <>
       <BreadcrumbItem>
-        <BreadcrumbLinkNext href={ROUTES.cafeterias}>{NAV_TEXTS.cafeterias}</BreadcrumbLinkNext>
+        <BreadcrumbLinkNext href={ROUTES.cafeterias}>{MAIN_TEXTS.entities.cafeterias}</BreadcrumbLinkNext>
       </BreadcrumbItem>
       <BreadcrumbSeparator />
     </>
@@ -46,7 +48,7 @@ const breadcrumbItems = {
   usersLink: (
     <>
       <BreadcrumbItem>
-        <BreadcrumbLinkNext href={ROUTES.users}>{NAV_TEXTS.users}</BreadcrumbLinkNext>
+        <BreadcrumbLinkNext href={ROUTES.users}>{MAIN_TEXTS.entities.users}</BreadcrumbLinkNext>
       </BreadcrumbItem>
       <BreadcrumbSeparator />
     </>
@@ -58,7 +60,7 @@ const breadcrumbByRoute: Record<string, ReactNode> = {
   // Home
   [ROUTES.home]: (
     <BreadcrumbList>
-      <BreadcrumbPage>{NAV_TEXTS.home}</BreadcrumbPage>
+      <BreadcrumbPage>{NAV_TEXTS.mainPages.home}</BreadcrumbPage>
     </BreadcrumbList>
   ),
   // Unidades
@@ -66,7 +68,7 @@ const breadcrumbByRoute: Record<string, ReactNode> = {
     <BreadcrumbList>
       {breadcrumbItems.homeLink}
       <BreadcrumbItem>
-        <BreadcrumbPage>{NAV_TEXTS.units}</BreadcrumbPage>
+        <BreadcrumbPage>{MAIN_TEXTS.entities.units}</BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>
   ),
@@ -75,7 +77,7 @@ const breadcrumbByRoute: Record<string, ReactNode> = {
     <BreadcrumbList>
       {breadcrumbItems.homeLink}
       <BreadcrumbItem>
-        <BreadcrumbPage>{NAV_TEXTS.cafeterias}</BreadcrumbPage>
+        <BreadcrumbPage>{MAIN_TEXTS.entities.cafeterias}</BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>
   ),
@@ -94,7 +96,7 @@ const breadcrumbByRoute: Record<string, ReactNode> = {
     <BreadcrumbList>
       {breadcrumbItems.homeLink}
       <BreadcrumbItem>
-        <BreadcrumbPage>{NAV_TEXTS.users}</BreadcrumbPage>
+        <BreadcrumbPage>{MAIN_TEXTS.entities.users}</BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>
   ),
@@ -105,7 +107,7 @@ const breadcrumbByRoute: Record<string, ReactNode> = {
       {breadcrumbItems.homeLink}
       {breadcrumbItems.usersLink}
       <BreadcrumbItem>
-        <BreadcrumbPage>{NAV_TEXTS.addUser}</BreadcrumbPage>
+        <BreadcrumbPage>{USERS_TEXTS.actions.create}</BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>
   ),

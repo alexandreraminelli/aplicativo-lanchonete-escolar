@@ -108,7 +108,7 @@ export default function AuthForm({ mode: type, className, ...props }: Props) {
               name="firstName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{AUTH_TEXTS.firstName}</FormLabel>
+                  <FormLabel>{AUTH_TEXTS.fields.firstName}</FormLabel>
                   <FormControl>
                     <Input type="text" autoComplete="name" {...field} />
                   </FormControl>
@@ -125,7 +125,7 @@ export default function AuthForm({ mode: type, className, ...props }: Props) {
               name="lastName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{AUTH_TEXTS.lastName}</FormLabel>
+                  <FormLabel>{AUTH_TEXTS.fields.lastName}</FormLabel>
                   <FormControl>
                     <Input type="text" autoComplete="family-name" {...field} />
                   </FormControl>
@@ -141,7 +141,7 @@ export default function AuthForm({ mode: type, className, ...props }: Props) {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{AUTH_TEXTS.email}</FormLabel>
+                <FormLabel>{AUTH_TEXTS.fields.email}</FormLabel>
                 <FormControl>
                   <Input type="email" placeholder={AUTH_TEXTS.emailFormat} autoComplete="email" {...field} />
                 </FormControl>
@@ -157,7 +157,7 @@ export default function AuthForm({ mode: type, className, ...props }: Props) {
             render={({ field }) => (
               <FormItem>
                 <div className="flex items-center justify-between">
-                  <FormLabel>{AUTH_TEXTS.password}</FormLabel>
+                  <FormLabel>{AUTH_TEXTS.fields.password}</FormLabel>
 
                   {/* Botão de esqueceu a senha */}
                   {!isSignUp && <ForgotPasswordButton />}
@@ -177,10 +177,10 @@ export default function AuthForm({ mode: type, className, ...props }: Props) {
               name="role"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{AUTH_TEXTS.role}</FormLabel>
+                  <FormLabel>{AUTH_TEXTS.fields.role}</FormLabel>
                   <Select value={field.value} onValueChange={field.onChange}>
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder={AUTH_TEXTS.role} />
+                      <SelectValue placeholder={AUTH_TEXTS.fields.role} />
                     </SelectTrigger>
                     <SelectContent>
                       {USER_ROLES.map((role) => (

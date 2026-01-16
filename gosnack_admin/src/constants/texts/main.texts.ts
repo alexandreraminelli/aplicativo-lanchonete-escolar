@@ -26,11 +26,14 @@ export const MAIN_TEXTS = {
 
   // Entidades
   entities: {
+    cafeteria: "Lanchonete",
+    cafeterias: "Lanchonetes",
+
     unit: "Unidade",
     units: "Unidades",
 
-    cafeteria: "Lanchonete",
-    cafeterias: "Lanchonetes",
+    user: "Usuário",
+    users: "Usuários",
   },
 
   // Erros
@@ -38,7 +41,16 @@ export const MAIN_TEXTS = {
     tryAgain: "Tente novamente mais tarde.",
   },
 
-  id: "ID",
+  // Campos comuns
+  fields: {
+    id: "ID",
+    name: "Nome",
+    description: "Descrição",
+    status: "Status",
+
+    createdAt: "Criado em",
+    updatedAt: "Atualizado em",
+  },
 
   // Página 404
   notFound: {
