@@ -20,6 +20,7 @@ export const IMAGES = {
   illustrations: {
     accessDenied: `${ILLUSTRATIONS_PATH}/access-denied.svg`,
     addUser: `${ILLUSTRATIONS_PATH}/add-user.svg`,
+    cafeteria: `${ILLUSTRATIONS_PATH}/cafeteria.svg`,
     empty: `${ILLUSTRATIONS_PATH}/empty.svg`,
     notFound: `${ILLUSTRATIONS_PATH}/not-found.svg`,
     schoolUnit: `${ILLUSTRATIONS_PATH}/school-unit.svg`,
