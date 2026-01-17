@@ -12,6 +12,13 @@ export interface CafeteriaModel {
   phones?: string[]
   /** Horários de funcionamento da lanchonete. */
   openingHours: OpeningHours[]
+
+  /** Se a lanchonete está ativa. */
+  isActive: boolean
+  /** Data de criação da lanchonete no sistema. */
+  createdAt: string
+  /** Data da última atualização dos dados da lanchonete. */
+  updatedAt: string
 }
 
 /** Modelo de dados para cadastro de lanchonete. */
