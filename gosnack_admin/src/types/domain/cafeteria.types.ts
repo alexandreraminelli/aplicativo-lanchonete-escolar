@@ -1,4 +1,5 @@
 import { DayOfWeek, TimeSlot } from "@/types/times.types"
+import { Timestamp } from "firebase/firestore"
 
 /** Modelo de dados para lanchonetes. */
 export interface CafeteriaModel {
@@ -16,9 +17,9 @@ export interface CafeteriaModel {
   /** Se a lanchonete está ativa. */
   isActive: boolean
   /** Data de criação da lanchonete no sistema. */
-  createdAt: string
+  createdAt: Timestamp
   /** Data da última atualização dos dados da lanchonete. */
-  updatedAt: string
+  updatedAt: Timestamp
 }
 
 /** Modelo de dados para cadastro de lanchonete. */
