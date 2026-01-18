@@ -1,3 +1,5 @@
+import { required } from "node_modules/zod/v4/core/util.cjs"
+
 /** Constantes de textos para lanchonetes. */
 export const CAFETERIA_TEXTS = {
   management: "Gerenciar Lanchonetes",
@@ -35,6 +37,16 @@ export const CAFETERIA_TEXTS = {
       creating: "Criando lanchonete...",
       updating: "Atualizando lanchonete...",
       deleting: "Excluindo lanchonete...",
+    },
+  },
+
+  validation: {
+    name: {
+      required: "O nome da lanchonete é obrigatório.",
+      min: "O nome da lanchonete deve ter no mínimo 5 caracteres.",
+    },
+    location: {
+      required: "A localização da lanchonete é obrigatória.",
     },
   },
 } as const
