@@ -1,0 +1,267 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // =========================================================================
+    // FUNÇÕES AUXILIARES
+    // =========================================================================
+
+    // Se o usuário está autenticado
+    function isAuthenticated() {
+        return request.auth != null;
+    }
+
+    // Documento do usuário autenticado
+    function userDoc() {
+        return isAuthenticated()
+            ? get(/databases/$(database)/documents/users/$(request.auth.uid))
+            : null;
+    }
+
+    // Papel do usuário
+    function userRole() {
+        return isAuthenticated() && userDoc() != null
+            ? userDoc().data.role
+            : null;
+    }
+
+    // Papéis
+    function isAdmin() {
+        return userRole() == "admin";
+    }
+
+    function isManager() {
+        return userRole() == "manager";
+    }
+
+    function isEmployee() {
+        return userRole() == "employee";
+    }
+
+    // Verifica se o usuário é gerente daquela lanchonete
+    function isManagerOfCafeteria(unitId, cafeteriaId) {
+        return isManager()
+            && userDoc().data.unitId == unitId
+            && userDoc().data.cafeteriaId == cafeteriaId;
+    }
+
+    // Verifica se o usuário é funcionário daquela lanchonete
+    function isEmployeeOfCafeteria(unitId, cafeteriaId) {
+        return isEmployee()
+            && userDoc().data.unitId == unitId
+            && userDoc().data.cafeteriaId == cafeteriaId;
+    }
+
+    // =========================================================================
+    // COLEÇÃO USERS
+    // =========================================================================
+    match /users/{userId} {
+
+      // -- CREATE
+
+      // Cliente cria a própria conta
+      allow create: if isAuthenticated()
+          && request.auth.uid == userId
+          && request.resource.data.role == "client"
+          && request.resource.data.keys().hasOnly([
+              "email",
+              "firstName",
+              "lastName",
+              "role",
+              "createdAt",
+              "updatedAt",
+              "isActive"
+          ]);
+
+      // Admin cria manager
+      allow create: if isAuthenticated()
+          && isAdmin()
+          && request.resource.data.role == "manager"
+          && request.resource.data.keys().hasOnly([
+              "email",
+              "firstName",
+              "lastName",
+              "role",
+              "unitId",
+              "cafeteriaId",
+              "createdBy",
+              "createdAt",
+              "updatedAt",
+              "isActive"
+          ]);
+
+      // Admin cria employee para qualquer lanchonete
+      allow create: if isAuthenticated()
+          && isAdmin()
+          && request.resource.data.role == "employee"
+          && request.resource.data.keys().hasOnly([
+              "email",
+              "firstName",
+              "lastName",
+              "role",
+              "unitId",
+              "cafeteriaId",
+              "createdBy",
+              "createdAt",
+              "updatedAt",
+              "isActive"
+          ]);
+
+
+      // Manager cria employee apenas para sua própria lanchonete
+      allow create: if isAuthenticated()
+          && isManager()
+          && request.resource.data.role == "employee"
+          && request.resource.data.unitId == userDoc().data.unitId
+          && request.resource.data.cafeteriaId == userDoc().data.cafeteriaId
+          && request.resource.data.keys().hasOnly([
+              "email",
+              "firstName",
+              "lastName",
+              "role",
+              "unitId",
+              "cafeteriaId",
+              "createdBy",
+              "createdAt",
+              "updatedAt",
+              "isActive"
+          ]);
+
+      // Admin cria outro admin
+      allow create: if isAuthenticated()
+          && isAdmin()
+          && request.resource.data.role == "admin"
+          && request.resource.data.keys().hasOnly([
+              "email",
+              "firstName",
+              "lastName",
+              "role",
+              "createdBy",
+              "createdAt",
+              "updatedAt",
+              "isActive"
+          ]);
+
+      // -- READ
+
+      // Usuário lê seu próprio documento
+      allow read: if isAuthenticated()
+          && request.auth.uid == userId;
+
+      // Admin lê qualquer usuário
+      allow read: if isAuthenticated()
+          && isAdmin();
+
+      // -- UPDATE
+
+      // Usuário atualiza apenas dados básicos do próprio perfil
+      allow update: if isAuthenticated()
+          && request.auth.uid == userId
+          && request.resource.data.diff(resource.data).changedKeys().hasOnly([
+              "firstName",
+              "lastName",
+              "updatedAt"
+          ]);
+
+      // Admin pode atualizar qualquer usuário
+      allow update: if isAuthenticated()
+          && isAdmin()
+          && request.resource.data.diff(resource.data).changedKeys().hasOnly([
+              "unitId",
+              "cafeteriaId",
+              "updatedAt",
+              "isActive"
+          ]);
+
+      // -- DELETE
+
+      // Nunca deletar usuários
+      allow delete: if false;
+    }
+
+    // =========================================================================
+    // COLEÇÃO UNITS (UNIDADES ESCOLARES)
+    // =========================================================================
+    match /units/{unitId} {
+
+      // -- CREATE
+
+      // Apenas admin cria unidades
+      allow create: if isAuthenticated()
+          && isAdmin()
+          && request.resource.data.keys().hasOnly([
+              "name",
+              "createdAt",
+              "updatedAt",
+              "isActive"
+          ]);
+
+      // -- READ
+
+      // Qualquer usuário autenticado pode ler unidades
+      allow read: if isAuthenticated();
+
+      // -- UPDATE
+
+      // Apenas admin atualiza unidades
+      allow update: if isAuthenticated()
+          && isAdmin()
+          && request.resource.data.diff(resource.data).changedKeys().hasOnly([
+              "name",
+              "updatedAt",
+              "isActive"
+          ]);
+
+      // -- DELETE
+
+      // Não deletar unidades fisicamente
+      allow delete: if false;
+
+      // =========================================================================
+      // SUBCOLEÇÃO CAFETERIAS (LANCHONETES)
+      // =========================================================================
+      match /cafeterias/{cafeteriaId} {
+
+        // -- CREATE
+
+        // Apenas admin cria lanchonetes
+        allow create: if isAuthenticated()
+            && isAdmin()
+            && request.resource.data.keys().hasOnly([
+                "name",
+                "location",
+                "phones",
+                "openingHours",
+                "isActive",
+                "createdAt",
+                "updatedAt"
+            ]);
+
+        // -- READ
+
+        // Qualquer usuário autenticado pode ler lanchonetes
+        allow read: if isAuthenticated();
+
+        // -- UPDATE
+
+        // Admin pode atualizar tudo
+        allow update: if isAuthenticated()
+            && isAdmin();
+
+        // Manager pode atualizar apenas sua própria lanchonete (escopo limitado)
+        allow update: if isAuthenticated()
+            && isManagerOfCafeteria(unitId, cafeteriaId)
+            && request.resource.data.diff(resource.data).changedKeys().hasOnly([
+                "openingHours",
+                "phones",
+                "updatedAt"
+            ]);
+
+        // -- DELETE
+
+        // Nunca deletar lanchonetes fisicamente
+        allow delete: if false;
+      }
+    }
+  }
+}
