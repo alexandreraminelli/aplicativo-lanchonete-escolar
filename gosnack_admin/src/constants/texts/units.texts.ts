@@ -44,6 +44,8 @@ export const UNITS_TEXTS = {
     deleting: "Excluindo unidade...",
   },
 
+  select: "Selecione uma unidade",
+
   success: {
     create: "Unidade criada com sucesso!",
     createDescription: (name: string) => `Unidade "${name}" foi criada com sucesso.`,
