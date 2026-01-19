@@ -82,7 +82,7 @@ export default function UnitForm({ mode, className, unit, id, onSuccess, ...prop
   const handleSubmit: SubmitHandler<UnitFormData> = (data) => {
     // Verificar se já existe unidade com o mesmo nome
     if (existingUnit) {
-      toast.error(UNITS_TEXTS.error.duplicateName.title, { description: UNITS_TEXTS.error.duplicateName.description(data.name) })
+      toast.warning(UNITS_TEXTS.error.duplicateName.title, { description: UNITS_TEXTS.error.duplicateName.description(data.name) })
       return
     }
 
@@ -99,7 +99,7 @@ export default function UnitForm({ mode, className, unit, id, onSuccess, ...prop
           },
           // Erro
           error: UNITS_TEXTS.error.create,
-        }
+        },
       )
     } else {
       // Editar unidade
@@ -114,7 +114,7 @@ export default function UnitForm({ mode, className, unit, id, onSuccess, ...prop
           },
           // Erro
           error: UNITS_TEXTS.error.update,
-        }
+        },
       )
     }
   }
