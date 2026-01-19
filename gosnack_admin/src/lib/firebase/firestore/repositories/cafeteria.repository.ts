@@ -58,7 +58,7 @@ export class CafeteriaRepository {
   }
 
   /** Obter uma lista de todas as lanchonetes de uma unidade. */
-  static async findAll(unitId: string): Promise<CafeteriaModel[]> {
+  static async findAllByUnit(unitId: string): Promise<CafeteriaModel[]> {
     const snapshot = await getDocs(query(this.collectionRef(unitId), orderBy("name", "asc")))
 
     return snapshot.docs.map(this.fromFirestore)
