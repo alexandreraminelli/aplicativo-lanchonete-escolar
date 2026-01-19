@@ -1,5 +1,3 @@
-import { required } from "node_modules/zod/v4/core/util.cjs"
-
 /** Constantes de textos para lanchonetes. */
 export const CAFETERIA_TEXTS = {
   management: "Gerenciar Lanchonetes",
