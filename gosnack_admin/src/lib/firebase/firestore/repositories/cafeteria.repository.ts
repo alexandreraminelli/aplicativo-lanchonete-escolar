@@ -79,15 +79,14 @@ export class CafeteriaRepository {
     await updateDoc(docRef, { ...data, updatedAt: Timestamp.now() })
   }
 
-  /** Desativar uma lanchonete (soft-delete). */
-  static async disable(unitId: string, cafeteriaId: string): Promise<void> {
+  /**
+   * Atualizar status de ativação da lanchonete (soft-delete).
+   *
+   * @param isActive Novo status de ativação.
+   */
+  static async setActiveStatus(unitId: string, cafeteriaId: string, isActive: boolean): Promise<void> {
     const docRef = doc(this.collectionRef(unitId), cafeteriaId)
-    await updateDoc(docRef, { isActive: false })
-  }
 
-  /** Reativar uma lanchonete. */
-  static async enable(unitId: string, cafeteriaId: string): Promise<void> {
-    const docRef = doc(this.collectionRef(unitId), cafeteriaId)
-    await updateDoc(docRef, { isActive: true })
+    await updateDoc(docRef, { isActive: isActive, updatedAt: Timestamp.now() })
   }
 }
