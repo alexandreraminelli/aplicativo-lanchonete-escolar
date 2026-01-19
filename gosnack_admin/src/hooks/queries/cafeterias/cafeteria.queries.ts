@@ -31,14 +31,14 @@ export function useCafeteria(unitId?: string, cafeteriaId?: string) {
  * @param name Nome da lanchonete a ser verificada.
  * @param excludeId ID da lanchonete a ser excluída da verificação (para edições).
  */
-export function useCheckCafeteriaName(unitId: string, name: string, excludeId?: string) {
+export function useCheckCafeteriaName(unitId?: string, name?: string, excludeId?: string) {
   return useQuery({
     queryKey: ["cafeteria", "checkName", name],
 
     queryFn: async () => {
-      if (!name.trim()) return null // Se não houver nome
+      if (!name?.trim()) return null // Se não houver nome
 
-      const existing = await CafeteriaRepository.findByNameInUnit(unitId, name) // Buscar lanchonete pelo nome
+      const existing = await CafeteriaRepository.findByNameInUnit(unitId!, name) // Buscar lanchonete pelo nome
 
       if (existing && existing.id !== excludeId) {
         return existing // Outra lanchonete com mesmo nome existe
@@ -46,7 +46,7 @@ export function useCheckCafeteriaName(unitId: string, name: string, excludeId?: 
         return null // Não existe lanchonete com mesmo nome
       }
     },
-    enabled: !!name.trim() && !!unitId, // só executa se o nome não estiver vazio e o unitId definido
+    enabled: !!name?.trim() && !!unitId, // só executa se o nome não estiver vazio e o unitId definido
     staleTime: 1000 * 60 * 5, // Cache por 5 minutos
   })
 }
