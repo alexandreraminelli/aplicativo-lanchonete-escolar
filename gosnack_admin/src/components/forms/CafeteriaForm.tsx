@@ -1,9 +1,9 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Combobox, ComboboxContent, ComboboxEmpty, ComboboxInput, ComboboxItem, ComboboxList, ComboboxValue } from "@/components/ui/combobox"
 import { FieldGroup } from "@/components/ui/field"
 import { Form, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ICONS } from "@/constants/icons"
 import { CAFETERIA_TEXTS } from "@/constants/texts/cafeteria.texts"
 import { MAIN_TEXTS } from "@/constants/texts/main.texts"
@@ -85,7 +85,7 @@ export default function CafeteriaForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(handleSubmit)} // função para lidar com o envio
-        className="space-y-4"
+        className="space-y-6"
       >
         <FieldGroup>
           {/* Unidade */}
@@ -96,38 +96,19 @@ export default function CafeteriaForm() {
               <FormItem>
                 {/* Label unidade */}
                 <FormLabel>{MAIN_TEXTS.entities.schoolUnit}</FormLabel>
-                {/* Combobox unidade */}
-                <Combobox
-                  value={field.value}
-                  onValueChange={field.onChange}
-                  disabled={isLoadingUnits} // aguardar carregamento das unidades
-                >
-                  {/* Input visível */}
-                  <ComboboxInput placeholder={isLoadingUnits ? UNITS_TEXTS.loading.getting : UNITS_TEXTS.select}>
-                    {/* Nome da unidade selecionada */}
-                    <ComboboxValue>
-                      {(value) => {
-                        const unit = units.find((u) => u.id === value)
-                        return unit?.name ?? ""
-                      }}
-                    </ComboboxValue>
-                  </ComboboxInput>
-                  {/* Dropdown */}
-                  <ComboboxContent>
-                    {units.length === 0 ? (
-                      <ComboboxEmpty>{UNITS_TEXTS.empty.title}</ComboboxEmpty> // se estiver vazio
-                    ) : (
-                      <ComboboxList>
-                        {units.map((unit) => (
-                          <ComboboxItem key={unit.id} value={unit.id}>
-                            {unit.name}
-                          </ComboboxItem>
-                        ))}
-                      </ComboboxList>
-                    )}
-                    {/* Se estiver vazio */}
-                  </ComboboxContent>
-                </Combobox>
+                {/* Select unidade */}
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder={UNITS_TEXTS.actions.select} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {units.map((unit) => (
+                      <SelectItem key={unit.id} value={unit.id}>
+                        {unit.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
                 {/* Mensagem do zod */}
                 <FormMessage />
               </FormItem>

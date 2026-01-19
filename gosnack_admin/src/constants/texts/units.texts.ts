@@ -8,6 +8,9 @@ export const UNITS_TEXTS = {
     add: "Adicionar Unidade",
     edit: "Editar Unidade",
     delete: "Excluir Unidade",
+
+    search: "Pesquisar unidades...",
+    select: "Selecione uma unidade",
   },
 
   confirm: {
@@ -44,8 +47,6 @@ export const UNITS_TEXTS = {
     updating: "Atualizando unidade...",
     deleting: "Excluindo unidade...",
   },
-
-  select: "Selecione uma unidade",
 
   success: {
     create: "Unidade criada com sucesso!",
