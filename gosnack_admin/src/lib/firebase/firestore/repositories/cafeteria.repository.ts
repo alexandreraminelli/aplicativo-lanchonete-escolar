@@ -1,5 +1,5 @@
 import { CafeteriaInputModel, CafeteriaModel } from "@/types/domain/cafeteria.types"
-import { addDoc, doc, DocumentData, getDoc, getDocs, orderBy, query, QueryDocumentSnapshot, Timestamp, updateDoc } from "firebase/firestore"
+import { addDoc, doc, DocumentData, getDoc, getDocs, orderBy, query, QueryDocumentSnapshot, Timestamp, updateDoc, where } from "firebase/firestore"
 import { firestorePaths } from "../paths"
 
 /** Repositório para operações CRUD na subcoleção de lanchonetes no Firestore. */
@@ -62,6 +62,15 @@ export class CafeteriaRepository {
     const snapshot = await getDocs(query(this.collectionRef(unitId), orderBy("name", "asc")))
 
     return snapshot.docs.map(this.fromFirestore)
+  }
+
+  /** Busca uma lanchonete dentro de uma unidade pelo nome. */
+  static async findByNameInUnit(unitId: string, name: string): Promise<CafeteriaModel | null> {
+    const snapshot = await getDocs(query(this.collectionRef(unitId), where("name", "==", name)))
+
+    if (snapshot.empty) return null // se não encontrar o nome
+
+    return this.fromFirestore(snapshot.docs[0])
   }
 
   /** Atualizar o documento de uma lanchonete. */
