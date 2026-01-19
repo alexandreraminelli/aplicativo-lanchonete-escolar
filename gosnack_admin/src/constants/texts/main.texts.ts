@@ -29,6 +29,8 @@ export const MAIN_TEXTS = {
     cafeteria: "Lanchonete",
     cafeterias: "Lanchonetes",
 
+    schoolUnit: "Unidade Escolar",
+    schoolUnits: "Unidades Escolares",
     unit: "Unidade",
     units: "Unidades",
 

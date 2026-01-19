@@ -39,6 +39,7 @@ export const UNITS_TEXTS = {
   },
 
   loading: {
+    getting: "Carregando unidades...",
     creating: "Criando unidade...",
     updating: "Atualizando unidade...",
     deleting: "Excluindo unidade...",

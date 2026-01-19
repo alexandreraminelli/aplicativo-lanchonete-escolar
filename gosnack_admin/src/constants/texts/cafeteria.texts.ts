@@ -32,10 +32,18 @@ export const CAFETERIA_TEXTS = {
     duplicateName: "Já existe uma lanchonete com este nome.",
   },
 
+  fields: {
+    location: "Localização",
+  },
+
   loading: {
     creating: "Criando lanchonete...",
     updating: "Atualizando lanchonete...",
     deleting: "Excluindo lanchonete...",
+  },
+
+  success: {
+    create: "Lanchonete criada com sucesso!",
   },
 
   validation: {
