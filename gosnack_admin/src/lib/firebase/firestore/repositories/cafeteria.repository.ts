@@ -11,7 +11,7 @@ export class CafeteriaRepository {
 
   /** Converter documento do Firestore em `CafeteriaModel`. */
   private static fromFirestore(snapshot: QueryDocumentSnapshot<DocumentData> | Awaited<ReturnType<typeof getDoc>>): CafeteriaModel {
-    const data = snapshot.data() as CafeteriaInputModel
+    const data = snapshot.data() as Omit<CafeteriaModel, "id">
 
     return {
       id: snapshot.id,
@@ -31,8 +31,6 @@ export class CafeteriaRepository {
       openingHours: data.openingHours,
 
       isActive: true,
-      createdAt: now,
-      updatedAt: now,
     } satisfies CafeteriaInputModel
 
     // Adicionar documento à subcoleção
@@ -41,6 +39,8 @@ export class CafeteriaRepository {
     // Retornar o documento criado com o ID gerado
     return {
       id: docRef.id,
+      createdAt: now,
+      updatedAt: now,
       ...cafeteriaData,
     }
   }

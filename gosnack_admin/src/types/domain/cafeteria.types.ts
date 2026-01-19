@@ -23,7 +23,7 @@ export interface CafeteriaModel {
 }
 
 /** Modelo de dados para cadastro de lanchonete. */
-export type CafeteriaInputModel = Omit<CafeteriaModel, "id">
+export type CafeteriaInputModel = Omit<CafeteriaModel, "id" | "createdAt" | "updatedAt">
 
 /** Horário de funcionamento de uma lanchonete. */
 export interface OpeningHours {
