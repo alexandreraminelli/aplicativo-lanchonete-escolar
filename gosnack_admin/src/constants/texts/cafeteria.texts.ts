@@ -34,12 +34,17 @@ export const CAFETERIA_TEXTS = {
 
   fields: {
     location: "Localização",
+    name: "Nome da Lanchonete",
   },
 
   loading: {
     creating: "Criando lanchonete...",
     updating: "Atualizando lanchonete...",
     deleting: "Excluindo lanchonete...",
+  },
+
+  placeholder: {
+    location: "Ex: Pátio Principal, Bloco A, etc.",
   },
 
   success: {

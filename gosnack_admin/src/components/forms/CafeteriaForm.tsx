@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { FieldGroup } from "@/components/ui/field"
-import { Form, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ICONS } from "@/constants/icons"
 import { CAFETERIA_TEXTS } from "@/constants/texts/cafeteria.texts"
@@ -17,6 +17,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { SubmitHandler, useForm, useWatch } from "react-hook-form"
 import { toast } from "sonner"
 import z from "zod"
+import { Input } from "@/components/ui/input"
 
 /** Tipagem dos dados do form de lanchonete. */
 type CafeteriaFormData = z.infer<typeof cafeteriaSchema>
@@ -85,7 +86,7 @@ export default function CafeteriaForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(handleSubmit)} // função para lidar com o envio
-        className="space-y-6"
+        className="space-y-7"
       >
         <FieldGroup>
           {/* Unidade */}
@@ -97,20 +98,54 @@ export default function CafeteriaForm() {
                 {/* Label unidade */}
                 <FormLabel>{MAIN_TEXTS.entities.schoolUnit}</FormLabel>
                 {/* Select unidade */}
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder={UNITS_TEXTS.actions.select} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {units.map((unit) => (
-                      <SelectItem key={unit.id} value={unit.id}>
-                        {unit.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <FormControl>
+                  <Select value={field.value} onValueChange={field.onChange}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder={UNITS_TEXTS.actions.select} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {units.map((unit) => (
+                        <SelectItem key={unit.id} value={unit.id}>
+                          {unit.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </FormControl>
                 {/* Mensagem do zod */}
                 <FormMessage />
+              </FormItem>
+            )}
+          />
+        </FieldGroup>
+
+        <FieldGroup>
+          {/* Nome */}
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{MAIN_TEXTS.fields.name}</FormLabel>
+
+                <FormControl>
+                  <Input type="text" placeholder={CAFETERIA_TEXTS.fields.name} {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          {/* Localização */}
+          <FormField
+            control={form.control}
+            name="location"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{CAFETERIA_TEXTS.fields.location}</FormLabel>
+
+                <FormControl>
+                  <Input type="text" placeholder={CAFETERIA_TEXTS.placeholder.location} {...field} />
+                </FormControl>
               </FormItem>
             )}
           />
