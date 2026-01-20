@@ -35,6 +35,7 @@ export const CAFETERIA_TEXTS = {
   fields: {
     location: "Localização",
     name: "Nome da Lanchonete",
+    openingHours: "Horários de Funcionamento",
   },
 
   loading: {
@@ -58,6 +59,9 @@ export const CAFETERIA_TEXTS = {
     },
     location: {
       required: "A localização da lanchonete é obrigatória.",
+    },
+    openingHours: {
+      invalid: "Horário inválido.",
     },
   },
 } as const

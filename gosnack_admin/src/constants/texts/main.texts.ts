@@ -1,3 +1,5 @@
+import { DayOfWeek } from "@/types/times.types"
+
 /** Constantes de textos principais do app. */
 export const MAIN_TEXTS = {
   // Nome do aplicativo
@@ -68,5 +70,17 @@ export const MAIN_TEXTS = {
     light: "Claro",
     dark: "Escuro",
     system: "Sistema",
+  },
+
+  time: {
+    dayOfWeek: {
+      monday: "Segunda-feira",
+      tuesday: "Terça-feira",
+      wednesday: "Quarta-feira",
+      thursday: "Quinta-feira",
+      friday: "Sexta-feira",
+      saturday: "Sábado",
+      sunday: "Domingo",
+    } satisfies Record<DayOfWeek, string>,
   },
 } as const

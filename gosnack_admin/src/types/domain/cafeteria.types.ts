@@ -1,4 +1,4 @@
-import { DayOfWeek, TimeSlot } from "@/types/times.types"
+import { DayOfWeek } from "@/types/times.types"
 import { Timestamp } from "firebase/firestore"
 
 /** Modelo de dados para lanchonetes. */
@@ -29,8 +29,10 @@ export type CafeteriaInputModel = Omit<CafeteriaModel, "id" | "createdAt" | "upd
 export interface OpeningHours {
   /** Dia da semana. */
   dayOfWeek: DayOfWeek
+  /** Se abre nesse dia da semana. */
+  isOpen: boolean
   /** Horário de abertura (formato HH:mm). */
-  openingTime: TimeSlot
+  openingTime: string
   /** Horário de fechamento (formato HH:mm). */
-  closingTime: TimeSlot
+  closingTime: string
 }

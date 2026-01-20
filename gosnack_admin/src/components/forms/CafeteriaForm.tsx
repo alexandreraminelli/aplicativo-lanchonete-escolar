@@ -18,6 +18,9 @@ import { SubmitHandler, useForm, useWatch } from "react-hook-form"
 import { toast } from "sonner"
 import z from "zod"
 import { Input } from "@/components/ui/input"
+import { DAYS_OF_WEEK } from "@/types/times.types"
+import { OpeningHours } from "@/types/domain/cafeteria.types"
+import { OpeningHoursField } from "../common/cafeterias/OpeningHoursField"
 
 /** Tipagem dos dados do form de lanchonete. */
 type CafeteriaFormData = z.infer<typeof cafeteriaSchema>
@@ -33,14 +36,23 @@ export default function CafeteriaForm() {
   // Buscar unidades para o combobox
   const { data: units = [], isLoading: isLoadingUnits } = useUnits()
 
+  /** Valores iniciais do form. */
+  const defaultValues: CafeteriaFormData = {
+    unitId: "",
+    name: "",
+    location: "",
+    openingHours: DAYS_OF_WEEK.map((day) => ({
+      dayOfWeek: day,
+      isOpen: false,
+      openingTime: "",
+      closingTime: "",
+    })),
+  }
+
   /** Definição do formulário de cafeteria. */
   const form = useForm<CafeteriaFormData>({
     resolver: zodResolver(cafeteriaSchema), // zod schema para validação
-    defaultValues: {
-      unitId: "",
-      name: "",
-      location: "",
-    },
+    defaultValues: defaultValues,
   })
 
   /** Hook para observar valores dos campos. */
@@ -61,6 +73,16 @@ export default function CafeteriaForm() {
       return
     }
 
+    // Obter array de horários de funcionamento
+    const openingHours: OpeningHours[] = data.openingHours
+      .filter((day) => day.isOpen)
+      .map((day) => ({
+        dayOfWeek: day.dayOfWeek,
+        isOpen: day.isOpen,
+        openingTime: day.openingTime ?? "",
+        closingTime: day.closingTime ?? "",
+      }))
+
     // Criar lanchonete
     toast.promise(
       createMutation.mutateAsync({
@@ -68,10 +90,9 @@ export default function CafeteriaForm() {
         data: {
           name: data.name,
           location: data.location,
-
-          // TODO: adicionar campos faltantes
-          openingHours: [],
-          isActive: false,
+          openingHours: openingHours,
+          phones: [], // TODO: adicionar campo de telefones
+          isActive: true,
         },
       }),
       {
@@ -149,6 +170,11 @@ export default function CafeteriaForm() {
               </FormItem>
             )}
           />
+        </FieldGroup>
+
+        <FieldGroup>
+          {/* Horários de funcionamento */}
+          <OpeningHoursField control={form.control} />
         </FieldGroup>
 
         <FieldGroup>
