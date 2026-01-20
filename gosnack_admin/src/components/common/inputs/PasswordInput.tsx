@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { InputGroup, InputGroupButton, InputGroupInput } from "@/components/ui/input-group"
 import { ICONS } from "@/constants/icons"
 import { AUTH_TEXTS } from "@/constants/texts/auth.texts"
 import { cn } from "@/lib/utils"
@@ -29,32 +27,22 @@ export default function PasswordInput({ isSignUp, className, ...props }: React.C
   }
 
   return (
-    <div className={cn("relative", className)}>
-      {/* Campo */}
-      <Input
-        type={isVisible ? "text" : "password"} // alternar visibilidade
+    <InputGroup className={cn(className)}>
+      {/* Input principal */}
+      <InputGroupInput
+        type={isVisible ? "text" : "password"} // visibilidade
         placeholder="********"
         autoComplete={isSignUp ? "new-password" : "current-password"} // semântica
         {...props}
       />
-      {/* Botão */}
-      <Tooltip>
-        <TooltipTrigger asChild className="text-muted-foreground absolute inset-y-0 right-0">
-          <Button
-            // Configuração do botão
-            type="button"
-            variant="ghost"
-            size="icon"
-            onClick={handleToggleVisibility}
-            aria-label={label}
-          >
-            {/* Ícone */}
-            <HugeiconsIcon icon={isVisible ? ICONS.auth.password.show : ICONS.auth.password.hide} />
-          </Button>
-        </TooltipTrigger>
-        {/* Texto do tooltip */}
-        <TooltipContent>{label}</TooltipContent>
-      </Tooltip>
-    </div>
+
+      {/* Botão de mostrar/ocultar */}
+      <InputGroupButton type="button" size="sm" onClick={handleToggleVisibility} aria-label={label}>
+        {/* Ícone */}
+        <HugeiconsIcon icon={isVisible ? ICONS.auth.password.show : ICONS.auth.password.hide} />
+        {/* Texto para acessibilidade */}
+        <span className="sr-only">{label}</span>
+      </InputGroupButton>
+    </InputGroup>
   )
 }
