@@ -4,9 +4,8 @@ import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/for
 import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
 import { CAFETERIA_TEXTS } from "@/constants/texts/cafeteria.texts"
-import { MAIN_TEXTS } from "@/constants/texts/main.texts"
-import { DayOfWeek } from "@/types/times.types"
-import { Control, FieldValues, useFieldArray, useWatch } from "react-hook-form"
+import { OpeningHoursGroup } from "@/types/domain/cafeteria.types"
+import { Control, FieldValues, useWatch } from "react-hook-form"
 
 /**
  * Props do componente de campo de horários de funcionamento.
@@ -19,38 +18,45 @@ type OpeningHoursFieldProps<TFormValues extends FieldValues = FieldValues> = {
  * Componente de campo de horários de funcionamento para formulários de lanchonetes.
  */
 export function OpeningHoursField<TFormValues extends FieldValues>({ control }: OpeningHoursFieldProps<TFormValues>) {
-  /** Hook para manipular array de campos de horários de funcionamento. */
-  const { fields } = useFieldArray({
-    control,
-    name: "openingHours" as never,
-  })
-
   /** Observador do campo. */
   const openingHours = useWatch({
     control,
     name: "openingHours" as never,
   })
 
+  // Se a lanchonete está aberta nos horários
+  const weekdaysOpen = openingHours?.weekdays?.isOpen ?? false
+  const saturdayOpen = openingHours?.saturday?.isOpen ?? false
+
+  const dayPeriods: {
+    value: OpeningHoursGroup
+    label: string
+    isOpen: boolean
+  }[] = [
+    // Dias da semana
+    { value: "weekdays", label: CAFETERIA_TEXTS.openingHours.weekdays, isOpen: weekdaysOpen },
+    // Sábado
+    { value: "saturday", label: CAFETERIA_TEXTS.openingHours.saturday, isOpen: saturdayOpen },
+  ]
+
   return (
     <div className="space-y-4">
       {/* Label */}
       <FormLabel>{CAFETERIA_TEXTS.fields.openingHours}</FormLabel>
 
-      {fields.map((field, index) => {
-        // Obter texto do label
-        const dayOfWeek = openingHours?.[index]?.dayOfWeek as DayOfWeek
-        const dayLabel = MAIN_TEXTS.time.dayOfWeek[dayOfWeek]
-        const isOpen = openingHours?.[index]?.isOpen ?? false
+      {/* Grade de horários de funcionamento */}
+      {dayPeriods.map((day) => {
+        const fieldName = `openingHours.${day.value}`
 
         return (
-          <div key={field.id} className="flex items-center gap-4 rounded-md border p-3">
+          <div key={day.value} className="flex items-center gap-4 rounded-md border p-3">
             {/* Label dia da semana */}
-            <span className="w-28 font-medium">{dayLabel}</span>
+            <span className="w-28 font-medium">{day.label}</span>
 
             {/* Switch aberto/fechado */}
             <FormField
               control={control}
-              name={`openingHours.${index}.isOpen` as never}
+              name={`${fieldName}.isOpen` as never}
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
@@ -63,11 +69,11 @@ export function OpeningHoursField<TFormValues extends FieldValues>({ control }: 
             {/* Horário de abertura */}
             <FormField
               control={control}
-              name={`openingHours.${index}.openingTime` as never}
+              name={`${fieldName}.openingTime` as never}
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input type="time" disabled={!isOpen} {...field} />
+                    <Input type="time" disabled={!day.isOpen} {...field} />
                   </FormControl>
                 </FormItem>
               )}
@@ -79,11 +85,11 @@ export function OpeningHoursField<TFormValues extends FieldValues>({ control }: 
             {/* Horário de fechamento */}
             <FormField
               control={control}
-              name={`openingHours.${index}.closingTime` as never}
+              name={`${fieldName}.closingTime` as never}
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input type="time" disabled={!isOpen} {...field} />
+                    <Input type="time" disabled={!day.isOpen} {...field} />
                   </FormControl>
                 </FormItem>
               )}

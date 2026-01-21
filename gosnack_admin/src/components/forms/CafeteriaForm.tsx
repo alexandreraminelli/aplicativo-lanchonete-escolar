@@ -18,7 +18,6 @@ import { SubmitHandler, useForm, useWatch } from "react-hook-form"
 import { toast } from "sonner"
 import z from "zod"
 import { Input } from "@/components/ui/input"
-import { DAYS_OF_WEEK } from "@/types/times.types"
 import { OpeningHours } from "@/types/domain/cafeteria.types"
 import { OpeningHoursField } from "../common/cafeterias/OpeningHoursField"
 
@@ -41,12 +40,18 @@ export default function CafeteriaForm() {
     unitId: "",
     name: "",
     location: "",
-    openingHours: DAYS_OF_WEEK.map((day) => ({
-      dayOfWeek: day,
-      isOpen: false,
-      openingTime: "",
-      closingTime: "",
-    })),
+    openingHours: {
+      weekdays: {
+        isOpen: true,
+        openingTime: "",
+        closingTime: "",
+      },
+      saturday: {
+        isOpen: false,
+        openingTime: "",
+        closingTime: "",
+      },
+    },
   }
 
   /** Definição do formulário de cafeteria. */
@@ -73,16 +78,6 @@ export default function CafeteriaForm() {
       return
     }
 
-    // Obter array de horários de funcionamento
-    const openingHours: OpeningHours[] = data.openingHours
-      .filter((day) => day.isOpen)
-      .map((day) => ({
-        dayOfWeek: day.dayOfWeek,
-        isOpen: day.isOpen,
-        openingTime: day.openingTime ?? "",
-        closingTime: day.closingTime ?? "",
-      }))
-
     // Criar lanchonete
     toast.promise(
       createMutation.mutateAsync({
@@ -90,7 +85,7 @@ export default function CafeteriaForm() {
         data: {
           name: data.name,
           location: data.location,
-          openingHours: openingHours,
+          openingHours: data.openingHours as OpeningHours,
           phones: [], // TODO: adicionar campo de telefones
           isActive: true,
         },

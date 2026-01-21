@@ -1,4 +1,3 @@
-import { DayOfWeek } from "@/types/times.types"
 import { Timestamp } from "firebase/firestore"
 
 /** Modelo de dados para lanchonetes. */
@@ -12,7 +11,7 @@ export interface CafeteriaModel {
   /** Telefones de contato da lanchonete. */
   phones?: string[]
   /** Horários de funcionamento da lanchonete. */
-  openingHours: OpeningHours[]
+  openingHours: OpeningHours
 
   /** Se a lanchonete está ativa. */
   isActive: boolean
@@ -25,14 +24,23 @@ export interface CafeteriaModel {
 /** Modelo de dados para cadastro de lanchonete. */
 export type CafeteriaInputModel = Omit<CafeteriaModel, "id" | "createdAt" | "updatedAt">
 
-/** Horário de funcionamento de uma lanchonete. */
-export interface OpeningHours {
-  /** Dia da semana. */
-  dayOfWeek: DayOfWeek
-  /** Se abre nesse dia da semana. */
+/** Grupos de dias de funcionamento da lanchonete. */
+export type OpeningHoursGroup = "weekdays" | "saturday"
+
+/** Intervalo de horário. */
+export interface TimeRange {
+  /** Se a lanchonete abre nesse período. */
   isOpen: boolean
   /** Horário de abertura (formato HH:mm). */
   openingTime: string
   /** Horário de fechamento (formato HH:mm). */
   closingTime: string
+}
+
+/** Horários de funcionamento da lanchonete. */
+export interface OpeningHours {
+  /** Segunda a sexta. */
+  weekdays: TimeRange
+  /** Sábado (opcional). */
+  saturday?: TimeRange
 }

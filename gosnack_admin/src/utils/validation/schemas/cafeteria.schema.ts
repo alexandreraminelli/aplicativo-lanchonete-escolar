@@ -1,7 +1,26 @@
 import { CAFETERIA_TEXTS } from "@/constants/texts/cafeteria.texts"
 import { UNITS_TEXTS } from "@/constants/texts/units.texts"
-import { DAYS_OF_WEEK } from "@/types/times.types"
 import z from "zod"
+
+/** Zod schema de intervalo de horário. */
+const timeRangeSchema = z
+  .object({
+    isOpen: z.boolean(),
+    openingTime: z.string().optional(),
+    closingTime: z.string().optional(),
+  })
+  // Se isOpen for true, openingTime and closingTime são obrigatórios e openingTime deve ser menor que closingTime
+  .refine((data) => !data.isOpen || (data.openingTime && data.closingTime && data.openingTime < data.closingTime), {
+    error: CAFETERIA_TEXTS.validation.openingHours.invalidRange,
+  })
+
+/** Zod schema de horários de funcionamento. */
+const openingHoursSchema = z.object({
+  /** Segunda a sexta (obrigatório). */
+  weekdays: timeRangeSchema,
+  /** Sábado (opcional). */
+  saturday: timeRangeSchema.optional(),
+})
 
 /** Zod Schema para o formulário de lanchonetes. */
 export const cafeteriaSchema = z.object({
@@ -15,18 +34,5 @@ export const cafeteriaSchema = z.object({
   location: z.string().nonempty(CAFETERIA_TEXTS.validation.location.required),
 
   /** Validação dos horários de funcionamento. */
-  openingHours: z
-    .array(
-      z.object({
-        dayOfWeek: z.enum(DAYS_OF_WEEK),
-        isOpen: z.boolean(),
-        openingTime: z.string().optional(),
-        closingTime: z.string().optional(),
-      }),
-    )
-    .length(7)
-    // Cada dia que estiver marcado como aberto, deve ter horário de abertura e fechamento (abertura < fechamento)
-    .refine((days) => days.every((day) => !day.isOpen || (day.openingTime && day.closingTime && day.openingTime < day.closingTime)), {
-      message: CAFETERIA_TEXTS.validation.openingHours.invalid,
-    }),
+  openingHours: openingHoursSchema,
 })

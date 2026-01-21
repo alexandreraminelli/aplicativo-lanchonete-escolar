@@ -44,6 +44,11 @@ export const CAFETERIA_TEXTS = {
     deleting: "Excluindo lanchonete...",
   },
 
+  openingHours: {
+    weekdays: "Segunda a Sexta",
+    saturday: "Sábado",
+  },
+
   placeholder: {
     location: "Ex: Pátio Principal, Bloco A, etc.",
   },
@@ -61,7 +66,7 @@ export const CAFETERIA_TEXTS = {
       required: "A localização da lanchonete é obrigatória.",
     },
     openingHours: {
-      invalid: "Horário inválido.",
+      invalidRange: "Horário inválido.",
     },
   },
 } as const
