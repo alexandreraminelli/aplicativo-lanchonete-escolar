@@ -93,9 +93,10 @@ export default function UnitForm({ mode, className, unit, id, onSuccess, ...prop
         {
           loading: UNITS_TEXTS.loading.creating,
           // Sucesso
-          success: (result) => {
-            onSuccess?.(result) // Notificar sucesso com a nova unidade
-            return UNITS_TEXTS.success.create
+          success: (unit) => {
+            onSuccess?.(unit) // Notificar sucesso com a nova unidade
+            const text = UNITS_TEXTS.success.create
+            return { message: text.title, description: text.description(unit.name) }
           },
           // Erro
           error: UNITS_TEXTS.error.create,
