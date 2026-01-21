@@ -1,5 +1,5 @@
 import { CafeteriaInputModel, CafeteriaModel } from "@/types/domain/cafeteria.types"
-import { addDoc, doc, DocumentData, getDoc, getDocs, orderBy, query, QueryDocumentSnapshot, Timestamp, updateDoc, where } from "firebase/firestore"
+import { addDoc, doc, DocumentData, getCountFromServer, getDoc, getDocs, orderBy, query, QueryDocumentSnapshot, Timestamp, updateDoc, where } from "firebase/firestore"
 import { firestorePaths } from "../paths"
 
 /** Repositório para operações CRUD na subcoleção de lanchonetes no Firestore. */
@@ -62,6 +62,12 @@ export class CafeteriaRepository {
     const snapshot = await getDocs(query(this.collectionRef(unitId), orderBy("name", "asc")))
 
     return snapshot.docs.map(this.fromFirestore)
+  }
+
+  /** Obter a quantidade de lanchonetes de uma unidade. */
+  static async countByUnit(unitId: string): Promise<number> {
+    const snapshot = await getCountFromServer(this.collectionRef(unitId))
+    return snapshot.data().count
   }
 
   /** Busca uma lanchonete dentro de uma unidade pelo nome. */

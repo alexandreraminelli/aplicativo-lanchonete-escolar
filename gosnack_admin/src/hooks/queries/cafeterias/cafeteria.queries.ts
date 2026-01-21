@@ -13,6 +13,19 @@ export function useCafeterias(unitId?: string) {
   })
 }
 
+/**
+ * Hook para obter a quantidade de lanchonetes de uma unidade.
+ */
+export function useCafeteriaCount(unitId?: string) {
+  return useQuery({
+    queryKey: cafeteriaKeys.countByUnit(unitId!),
+
+    queryFn: () => CafeteriaRepository.countByUnit(unitId!),
+
+    enabled: !!unitId,
+  })
+}
+
 /** Hook para buscar uma lanchonete específica pelo ID da unidade e lanchonete. */
 export function useCafeteria(unitId?: string, cafeteriaId?: string) {
   return useQuery({

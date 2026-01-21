@@ -7,6 +7,7 @@ import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react"
 import { ClassValue } from "clsx"
 import DeleteUnitButton from "./DeleteUnitButton"
 import UnitDialog from "./UnitDialog"
+import { useCafeteriaCount } from "@/hooks/queries/cafeterias/cafeteria.queries"
 
 /** Props de `UnitCard`. */
 interface Props {
@@ -19,6 +20,9 @@ interface Props {
 
 /** Card de unidades. */
 export default function UnitCard({ unit }: Props) {
+  // Obter contagem de lanchonetes
+  const { data: cafeteriaCount } = useCafeteriaCount(unit.id)
+
   const unitInfo: { label: string; value: string; icon: IconSvgElement }[] = [
     // ID
     {
@@ -29,7 +33,7 @@ export default function UnitCard({ unit }: Props) {
     // Quantidade de Lanchonetes
     {
       label: MAIN_TEXTS.entities.cafeterias,
-      value: "10", // TODO: obter quantidade de lanchonetes
+      value: `${cafeteriaCount ?? "..."}`,
       icon: ICONS.entities.cafeteria,
     },
   ]

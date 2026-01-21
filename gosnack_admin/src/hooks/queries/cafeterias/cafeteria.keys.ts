@@ -6,6 +6,9 @@ export const cafeteriaKeys = {
   /** Chave para o escopo de lanchonetes por unidade. */
   byUnit: (unitId: string) => [...cafeteriaKeys.all, "unit", unitId] as const,
 
+  /** Chave para a quantidade de lanchonetes de uma unidade. */
+  countByUnit: (unitId: string) => [...cafeteriaKeys.byUnit(unitId), "count"] as const,
+
   /** Chave para a lista de lanchonetes por unidade. */
   listByUnit: (unitId: string) => [...cafeteriaKeys.byUnit(unitId), "list"] as const,
 
