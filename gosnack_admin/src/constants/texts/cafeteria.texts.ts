@@ -18,11 +18,7 @@ export const CAFETERIA_TEXTS = {
   },
 
   empty: {
-    title: "Nenhuma lanchonete encontrada",
-    message: {
-      p1: "Ainda não há lanchonetes cadastradas no sistema.",
-      p2: "Clique no botão abaixo para adicionar a primeira lanchonete.",
-    },
+    byUnit: "Esta unidade não possui nenhuma lanchonete cadastrada.",
   },
 
   error: {
