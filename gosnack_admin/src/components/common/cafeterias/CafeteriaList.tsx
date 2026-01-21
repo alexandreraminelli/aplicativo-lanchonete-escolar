@@ -44,7 +44,7 @@ function CafeteriaAccordionItem({ unit }: { unit: UnitModel }) {
       {/* Conteúdo do accordion. */}
       <AccordionContent
         key={loading ? "loading" : "loaded"} // forçar renderização quando terminar carregamento
-        className="py-2"
+        className="py-2 h-fit"
       >
         <UnitCafeteriasList unitId={unit.id} onLoadingChange={setLoading} />
       </AccordionContent>
