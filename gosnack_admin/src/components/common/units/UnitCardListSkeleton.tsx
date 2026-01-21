@@ -1,4 +1,4 @@
-import UnitCardSkeleton from "./UnitCard.skeleton"
+import UnitCardSkeleton from "./UnitCardSkeleton"
 
 /** Skeleton do `UnitCardList`. */
 export default function UnitCardListSkeleton() {

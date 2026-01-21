@@ -7,7 +7,7 @@ import { AUTH_TEXTS } from "@/constants/texts/auth.texts"
 import { signOutUser } from "@/lib/firebase/auth/auth"
 import { UserModel } from "@/types/users/user.model"
 import { HugeiconsIcon } from "@hugeicons/react"
-import NavUserSkeleton from "./NavUser.skeleton"
+import NavUserSkeleton from "./NavUserSkeleton"
 
 /** Botão no sidebar que mostra o nome do usuário e opções de rotas para gerenciar a conta. */
 export default function NavUser() {

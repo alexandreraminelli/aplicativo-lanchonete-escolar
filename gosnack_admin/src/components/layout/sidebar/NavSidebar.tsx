@@ -1,10 +1,10 @@
 import { useAuth } from "@/components/providers/auth-provider"
 import { SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
-import { SIDEBAR_MENU } from "@/constants/navigation/sidebarMenu"
+import { SIDEBAR_MENU } from "@/constants/navigation/sidebar-menu"
 import { HugeiconsIcon } from "@hugeicons/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import NavSidebarSkeleton from "./NavSidebar.skeleton"
+import NavSidebarSkeleton from "./NavSidebarSkeleton"
 
 /** Menu de navegação do sidebar. */
 export default function NavSidebar() {
