@@ -6,6 +6,8 @@ import { useCafeterias } from "@/hooks/queries/cafeterias/cafeteria.queries"
 import { useUnits } from "@/hooks/queries/units/unit.queries"
 import CafeteriaCard from "./CafeteriaCard"
 import { CafeteriaCardListSkeleton, UnitCafeteriasListSkeleton } from "./CafeteriaListSkeleton"
+import { useEffect, useState } from "react"
+import { UnitModel } from "@/types/domain/unit.types"
 
 /**
  * Lista de lanchonetes organizados por unidade.
@@ -21,28 +23,54 @@ export default function CafeteriaCardList() {
   return (
     <Accordion type="multiple">
       {units.map((unit) => (
-        <AccordionItem key={unit.id} value={unit.id}>
-          {/* Nome da unidade */}
-          <AccordionTrigger className="px-2 hover:bg-accent-foreground/10 hover:no-underline items-center">
-            <h3 className="text-lg">{unit.name}</h3>
-          </AccordionTrigger>
-
-          {/* Lista de lanchonetes da unidade. */}
-          <AccordionContent className="py-2">
-            <UnitCafeteriasList unitId={unit.id} />
-          </AccordionContent>
-        </AccordionItem>
+        <CafeteriaAccordionItem key={unit.id} unit={unit} />
       ))}
     </Accordion>
   )
 }
 
+/** Item do accordion. */
+function CafeteriaAccordionItem({ unit }: { unit: UnitModel }) {
+  // estado do carregamento para atualizar altura do AccordionContent
+  const [loading, setLoading] = useState(true)
+
+  return (
+    <AccordionItem value={unit.id}>
+      {/* Nome da unidade */}
+      <AccordionTrigger className="px-2 hover:bg-accent-foreground/10 hover:no-underline items-center">
+        <h3 className="text-lg">{unit.name}</h3>
+      </AccordionTrigger>
+
+      {/* Conteúdo do accordion. */}
+      <AccordionContent
+        key={loading ? "loading" : "loaded"} // forçar renderização quando terminar carregamento
+        className="py-2"
+      >
+        <UnitCafeteriasList unitId={unit.id} onLoadingChange={setLoading} />
+      </AccordionContent>
+    </AccordionItem>
+  )
+}
+
+/**
+ * Props de `UnitCafeteriasList`.
+ */
+interface UnitCafeteriasListProps {
+  unitId: string
+  onLoadingChange: (loading: boolean) => void
+}
+
 /**
  * Lista de cards de lanchonetes de uma unidade.
  */
-function UnitCafeteriasList({ unitId }: { unitId: string }) {
+function UnitCafeteriasList({ unitId, onLoadingChange }: UnitCafeteriasListProps) {
   // Carregar lista de lanchonetes
   const { data: cafeterias = [], isLoading } = useCafeterias(unitId)
+
+  // Estado para atualizar altura do AccordionContent
+  useEffect(() => {
+    onLoadingChange(isLoading)
+  }, [isLoading, onLoadingChange])
 
   if (isLoading) {
     return <UnitCafeteriasListSkeleton />
@@ -53,11 +81,10 @@ function UnitCafeteriasList({ unitId }: { unitId: string }) {
   }
 
   return (
-    <div className="p-3 grid gap-3">
+    <div className="p-3 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {cafeterias.map((cafeteria) => (
         <CafeteriaCard key={cafeteria.id} cafeteria={cafeteria} />
       ))}
     </div>
   )
 }
-6
