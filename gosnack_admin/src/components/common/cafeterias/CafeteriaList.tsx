@@ -77,7 +77,7 @@ function UnitCafeteriasList({ unitId, onLoadingChange }: UnitCafeteriasListProps
   }
 
   if (cafeterias.length === 0) {
-    return <p className="text-center text-muted-foreground">{CAFETERIA_TEXTS.empty.byUnit}</p>
+    return <p className="text-center text-muted-foreground py-10">{CAFETERIA_TEXTS.empty.byUnit}</p>
   }
 
   return (
