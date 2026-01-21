@@ -11,6 +11,7 @@ export const ROUTES = {
   units: "/unidades",
   cafeterias: "/lanchonetes",
   newCafeteria: "/lanchonetes/adicionar",
+  cafeteriaInfo: (cafeteriaId: string) => `/lanchonetes/${cafeteriaId}`,
 
   // Usuários e Acessos
   users: "/usuarios",

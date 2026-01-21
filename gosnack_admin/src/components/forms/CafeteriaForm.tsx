@@ -1,25 +1,27 @@
 "use client"
 
+import { OpeningHoursField } from "@/components/common/cafeterias/OpeningHoursField"
 import { Button } from "@/components/ui/button"
 import { FieldGroup } from "@/components/ui/field"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ICONS } from "@/constants/icons"
+import { ROUTES } from "@/constants/navigation/routes"
 import { CAFETERIA_TEXTS } from "@/constants/texts/cafeteria.texts"
 import { MAIN_TEXTS } from "@/constants/texts/main.texts"
 import { UNITS_TEXTS } from "@/constants/texts/units.texts"
 import { useCreateCafeteria } from "@/hooks/queries/cafeterias/cafeteria.mutations"
 import { useCheckCafeteriaName } from "@/hooks/queries/cafeterias/cafeteria.queries"
 import { useUnits } from "@/hooks/queries/units/unit.queries"
+import { OpeningHours } from "@/types/domain/cafeteria.types"
 import { cafeteriaSchema } from "@/utils/validation/schemas/cafeteria.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { HugeiconsIcon } from "@hugeicons/react"
+import { useRouter } from "next/navigation"
 import { SubmitHandler, useForm, useWatch } from "react-hook-form"
 import { toast } from "sonner"
 import z from "zod"
-import { Input } from "@/components/ui/input"
-import { OpeningHours } from "@/types/domain/cafeteria.types"
-import { OpeningHoursField } from "../common/cafeterias/OpeningHoursField"
 
 /** Tipagem dos dados do form de lanchonete. */
 type CafeteriaFormData = z.infer<typeof cafeteriaSchema>
@@ -27,7 +29,7 @@ type CafeteriaFormData = z.infer<typeof cafeteriaSchema>
 /** Formulário para adicionar uma nova lanchonete. */
 export default function CafeteriaForm() {
   /** Hook de navegação do Next.js. */
-  // const router = useRouter()
+  const router = useRouter()
 
   // Hooks de mutação do React Query
   const createMutation = useCreateCafeteria()
@@ -42,14 +44,14 @@ export default function CafeteriaForm() {
     location: "",
     openingHours: {
       weekdays: {
-        isOpen: true,
-        openingTime: "",
-        closingTime: "",
+        isOpen: false,
+        openingTime: "07:00",
+        closingTime: "18:00",
       },
       saturday: {
         isOpen: false,
-        openingTime: "",
-        closingTime: "",
+        openingTime: "08:00",
+        closingTime: "12:00",
       },
     },
   }
@@ -92,7 +94,19 @@ export default function CafeteriaForm() {
       }),
       {
         loading: CAFETERIA_TEXTS.loading.creating,
-        success: CAFETERIA_TEXTS.success.create,
+        // Sucesso
+        success: (cafeteria) => {
+          form.reset() // limpar formulário
+          return {
+            message: CAFETERIA_TEXTS.success.create.title,
+            description: CAFETERIA_TEXTS.success.create.description(data.name),
+            // Botão de abrir lanchonete
+            action: {
+              label: CAFETERIA_TEXTS.actions.view,
+              onClick: () => router.push(ROUTES.cafeteriaInfo(cafeteria.id)),
+            },
+          }
+        },
         error: CAFETERIA_TEXTS.error.create,
       },
     )

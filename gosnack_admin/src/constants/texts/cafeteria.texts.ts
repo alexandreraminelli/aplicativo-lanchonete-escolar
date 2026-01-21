@@ -6,6 +6,8 @@ export const CAFETERIA_TEXTS = {
     add: "Adicionar Lanchonete",
     edit: "Editar Lanchonete",
     delete: "Excluir Lanchonete",
+
+    view: "Ver Lanchonete",
   },
 
   confirm: {
@@ -54,7 +56,7 @@ export const CAFETERIA_TEXTS = {
   },
 
   success: {
-    create: "Lanchonete criada com sucesso!",
+    create: { title: "Lanchonete criada com sucesso!", description: (name: string) => `A lanchonete "${name}" foi criada com sucesso.` },
   },
 
   validation: {
