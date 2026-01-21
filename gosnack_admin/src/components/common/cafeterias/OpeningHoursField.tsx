@@ -1,9 +1,11 @@
 "use client"
 
+import { Field, FieldContent, FieldGroup, FieldLabel, FieldTitle } from "@/components/ui/field"
 import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
 import { CAFETERIA_TEXTS } from "@/constants/texts/cafeteria.texts"
+import { cn } from "@/lib/utils"
 import { OpeningHoursGroup } from "@/types/domain/cafeteria.types"
 import { Control, FieldValues, useWatch } from "react-hook-form"
 
@@ -40,63 +42,79 @@ export function OpeningHoursField<TFormValues extends FieldValues>({ control }: 
   ]
 
   return (
-    <div className="space-y-4">
+    <FormItem>
       {/* Label */}
       <FormLabel>{CAFETERIA_TEXTS.fields.openingHours}</FormLabel>
 
       {/* Grade de horários de funcionamento */}
-      {dayPeriods.map((day) => {
-        const fieldName = `openingHours.${day.value}`
+      <FieldGroup className="w-full gap-2">
+        {dayPeriods.map((day) => {
+          const fieldName = `openingHours.${day.value}`
+          const switchId = `switch-${day.value}`
 
-        return (
-          <div key={day.value} className="flex items-center gap-4 rounded-md border p-3">
-            {/* Label dia da semana */}
-            <span className="w-28 font-medium">{day.label}</span>
+          return (
+            <FieldLabel
+              key={day.value}
+              htmlFor={switchId}
+              className={cn("", {
+                "border-zinc-600 dark:border-zinc-400 bg-zinc-500/10": day.isOpen,
+              })}
+            >
+              <Field orientation="horizontal">
+                <FieldContent>
+                  {/* Label período */}
+                  <FieldTitle className={cn("mb-2", { "text-muted-foreground": !day.isOpen })}>{day.label}</FieldTitle>
 
-            {/* Switch aberto/fechado */}
-            <FormField
-              control={control}
-              name={`${fieldName}.isOpen` as never}
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Switch checked={field.value} onCheckedChange={field.onChange} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+                  {/* Horários */}
+                  <div className="flex flex-row items-center gap-2">
+                    {/* Horário de abertura */}
+                    <FormField
+                      control={control}
+                      name={`${fieldName}.openingTime` as never}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input type="time" disabled={!day.isOpen} {...field} />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
 
-            {/* Horário de abertura */}
-            <FormField
-              control={control}
-              name={`${fieldName}.openingTime` as never}
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input type="time" disabled={!day.isOpen} {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+                    {/* Separador */}
+                    <span>--</span>
 
-            {/* Separador */}
-            <span>--</span>
+                    {/* Horário de fechamento */}
+                    <FormField
+                      control={control}
+                      name={`${fieldName}.closingTime` as never}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input type="time" disabled={!day.isOpen} {...field} />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                </FieldContent>
 
-            {/* Horário de fechamento */}
-            <FormField
-              control={control}
-              name={`${fieldName}.closingTime` as never}
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input type="time" disabled={!day.isOpen} {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-          </div>
-        )
-      })}
-    </div>
+                {/* Switch aberto/fechado */}
+                <FormField
+                  control={control}
+                  name={`${fieldName}.isOpen` as never}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Switch id={switchId} checked={field.value} onCheckedChange={field.onChange} />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </Field>
+            </FieldLabel>
+          )
+        })}
+      </FieldGroup>
+    </FormItem>
   )
 }
