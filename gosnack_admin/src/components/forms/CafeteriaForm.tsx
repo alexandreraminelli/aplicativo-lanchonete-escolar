@@ -117,7 +117,7 @@ export default function CafeteriaForm() {
                 <FormControl>
                   <Select value={field.value} onValueChange={field.onChange}>
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder={UNITS_TEXTS.actions.select} />
+                      <SelectValue placeholder={isLoadingUnits ? UNITS_TEXTS.loading.getting : UNITS_TEXTS.actions.select} />
                     </SelectTrigger>
                     <SelectContent>
                       {units.map((unit) => (
