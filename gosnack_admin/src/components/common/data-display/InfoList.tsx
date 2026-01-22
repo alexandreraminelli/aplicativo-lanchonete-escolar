@@ -43,7 +43,7 @@ export default function InfoList({ infoList, className }: Props) {
  */
 export function InfoBlock({ label, value, icon }: InfoItemType) {
   return (
-    <div className="flex items-center gap-2">
+    <div className={cn("flex items-center gap-2", { "ms-7": !icon })}>
       {/* Ícone */}
       {icon && <HugeiconsIcon icon={icon} className="size-5" />}
 

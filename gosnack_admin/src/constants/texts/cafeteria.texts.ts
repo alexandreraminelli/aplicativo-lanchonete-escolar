@@ -45,6 +45,8 @@ export const CAFETERIA_TEXTS = {
   openingHours: {
     weekdays: "Segunda a Sexta",
     saturday: "Sábado",
+
+    closed: "Fechado",
   },
 
   placeholder: {

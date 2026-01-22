@@ -41,6 +41,6 @@ export interface TimeRange {
 export interface OpeningHours {
   /** Segunda a sexta. */
   weekdays: TimeRange
-  /** Sábado (opcional). */
-  saturday?: TimeRange
+  /** Sábado. */
+  saturday: TimeRange
 }
