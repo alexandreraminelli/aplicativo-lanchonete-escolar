@@ -1,4 +1,4 @@
-import { Add01Icon, ArrowDown01Icon, ArrowLeft01Icon, ArrowRight01Icon, ArrowUp01Icon, ComputerIcon, Delete02Icon, Edit04Icon, HashtagIcon, Home09Icon, Loading03Icon, LoginSquare01Icon, LogoutSquare01Icon, Moon02Icon, Restaurant02Icon, SchoolIcon, Sun03Icon, UserGroup03Icon, ViewIcon, ViewOffSlashIcon } from "@hugeicons/core-free-icons"
+import { Add01Icon, ArrowDown01Icon, ArrowLeft01Icon, ArrowRight01Icon, ArrowUp01Icon, ComputerIcon, Delete02Icon, Edit04Icon, HashtagIcon, Home09Icon, InformationCircleIcon, Loading03Icon, LoginSquare01Icon, LogoutSquare01Icon, Moon02Icon, Restaurant02Icon, SchoolIcon, Sun03Icon, UserGroup03Icon, ViewIcon, ViewOffSlashIcon } from "@hugeicons/core-free-icons"
 
 /** Ícones usados na aplicação para cada contexto e entidade. */
 export const ICONS = {
@@ -8,6 +8,7 @@ export const ICONS = {
     edit: Edit04Icon,
 
     loading: Loading03Icon,
+    moreDetails: InformationCircleIcon,
   },
 
   arrows: {

@@ -22,6 +22,8 @@ export const MAIN_TEXTS = {
     save: "Salvar",
 
     backToHome: "Voltar para Início",
+
+    moreDetails: "Mais Detalhes",
   },
 
   // Entidades
