@@ -2,12 +2,15 @@
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { CAFETERIA_TEXTS } from "@/constants/texts/cafeteria.texts"
-import { useCafeterias } from "@/hooks/queries/cafeterias/cafeteria.queries"
+import { useCafeteriaCount, useCafeterias } from "@/hooks/queries/cafeterias/cafeteria.queries"
 import { useUnits } from "@/hooks/queries/units/unit.queries"
 import CafeteriaCard from "./CafeteriaCard"
 import { CafeteriaCardListSkeleton, UnitCafeteriasListSkeleton } from "./CafeteriaListSkeleton"
 import { useEffect, useState } from "react"
 import { UnitModel } from "@/types/domain/unit.types"
+import { Badge } from "@/components/ui/badge"
+import { HugeiconsIcon } from "@hugeicons/react"
+import { ICONS } from "@/constants/icons"
 
 /**
  * Lista de lanchonetes organizados por unidade.
@@ -34,11 +37,19 @@ function CafeteriaAccordionItem({ unit }: { unit: UnitModel }) {
   // estado do carregamento para atualizar altura do AccordionContent
   const [loading, setLoading] = useState(true)
 
+  // Obter contagem de lanchonetes
+  const { data: cafeteriaCount } = useCafeteriaCount(unit.id)
+
   return (
     <AccordionItem value={unit.id}>
       {/* Nome da unidade */}
       <AccordionTrigger className="px-2 hover:bg-accent-foreground/10 hover:no-underline items-center">
-        <h3 className="text-lg">{unit.name}</h3>
+        <div className="flex items-center justify-between w-full me-4">
+          <h3 className="text-lg">{unit.name}</h3>
+
+          {/* Quantidade de lanchonetes */}
+          <Badge variant="secondary">{cafeteriaCount ?? <HugeiconsIcon icon={ICONS.actions.loading} className="animate-spin" />}</Badge>
+        </div>
       </AccordionTrigger>
 
       {/* Conteúdo do accordion. */}
