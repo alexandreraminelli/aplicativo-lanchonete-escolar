@@ -103,7 +103,7 @@ export default function CafeteriaForm() {
             // Botão de abrir lanchonete
             action: {
               label: CAFETERIA_TEXTS.actions.view,
-              onClick: () => router.push(ROUTES.cafeteriaInfo(cafeteria.id)),
+              onClick: () => router.push(ROUTES.cafeteriaInfo(data.unitId, cafeteria.id)),
             },
           }
         },

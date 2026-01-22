@@ -12,11 +12,12 @@ import Link from "next/link"
 
 /** Props de `CafeteriaCard`. */
 interface Props {
+  unitId: string
   cafeteria: CafeteriaModel
 }
 
 /** Card de lanchonete. */
-export default function CafeteriaCard({ cafeteria }: Props) {
+export default function CafeteriaCard({ unitId, cafeteria }: Props) {
   /** Informações da cafeteria. */
   const cafeteriaInfos: InfoItemType[] = [
     // Localização
@@ -70,7 +71,7 @@ export default function CafeteriaCard({ cafeteria }: Props) {
       <CardFooter className="*:flex-1">
         {/* Botão de mais informações */}
         <Button variant="secondary" asChild className="no-underline">
-          <Link href={ROUTES.cafeteriaInfo(cafeteria.id)}>
+          <Link href={ROUTES.cafeteriaInfo(unitId, cafeteria.id)}>
             <HugeiconsIcon icon={ICONS.actions.moreDetails} />
             {MAIN_TEXTS.actions.moreDetails}
           </Link>

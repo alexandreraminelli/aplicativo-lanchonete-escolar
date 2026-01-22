@@ -11,7 +11,7 @@ export const ROUTES = {
   units: "/unidades",
   cafeterias: "/lanchonetes",
   newCafeteria: "/lanchonetes/adicionar",
-  cafeteriaInfo: (cafeteriaId: string) => `/lanchonetes/${cafeteriaId}`,
+  cafeteriaInfo: (unitId: string, cafeteriaId: string) => `/lanchonetes/${unitId}/${cafeteriaId}`,
 
   // Usuários e Acessos
   users: "/usuarios",
