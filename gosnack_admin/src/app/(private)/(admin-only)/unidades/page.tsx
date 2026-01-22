@@ -1,6 +1,6 @@
 import HeaderWithTitleAndButton from "@/components/common/layout/headers/HeaderWithTitleAndButton"
-import UnitCardList from "@/components/common/units/UnitCardList"
-import UnitDialog from "@/components/common/units/UnitDialog"
+import UnitCardList from "@/components/common/domain/units/UnitCardList"
+import UnitDialog from "@/components/common/domain/units/UnitDialog"
 import { Button } from "@/components/ui/button"
 import { ICONS } from "@/constants/icons"
 import { PAGE_METADATA } from "@/constants/metadata"

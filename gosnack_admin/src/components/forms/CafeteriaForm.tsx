@@ -1,6 +1,6 @@
 "use client"
 
-import { OpeningHoursField } from "@/components/common/cafeterias/OpeningHoursField"
+import { OpeningHoursField } from "@/components/common/domain/cafeterias/OpeningHoursField"
 import { Button } from "@/components/ui/button"
 import { FieldGroup } from "@/components/ui/field"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"

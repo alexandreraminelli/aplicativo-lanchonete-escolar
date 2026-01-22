@@ -1,5 +1,5 @@
 import HeaderWithTitleAndButton from "@/components/common/layout/headers/HeaderWithTitleAndButton"
-import UsersList from "@/components/common/users/UsersList"
+import UsersList from "@/components/common/domain/users/UsersList"
 import { Button } from "@/components/ui/button"
 import { ICONS } from "@/constants/icons"
 import { ROUTES } from "@/constants/navigation/routes"
