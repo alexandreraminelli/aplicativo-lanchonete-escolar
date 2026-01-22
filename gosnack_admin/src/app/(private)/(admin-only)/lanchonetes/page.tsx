@@ -1,4 +1,4 @@
-import CafeteriaCardList from "@/components/common/domain/cafeterias/CafeteriaList"
+import CafeteriaCardList from "@/components/common/domain/cafeterias/cards/CafeteriaList"
 import HeaderWithTitleAndButton from "@/components/common/layout/headers/HeaderWithTitleAndButton"
 import { Button } from "@/components/ui/button"
 import { ICONS } from "@/constants/icons"
