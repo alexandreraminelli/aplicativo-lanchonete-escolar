@@ -6,6 +6,7 @@ import {
   ArrowRight01Icon,
   ArrowUp01Icon,
   Calendar03Icon,
+  ChefIcon,
   Clock01Icon,
   ComputerIcon,
   Delete02Icon,
@@ -13,9 +14,13 @@ import {
   HashtagIcon,
   Home09Icon,
   InformationCircleIcon,
+  LaborIcon,
   Loading03Icon,
+  Location01Icon,
   LoginSquare01Icon,
   LogoutSquare01Icon,
+  ManagerIcon,
+  MenuRestaurantIcon,
   Moon02Icon,
   Restaurant02Icon,
   SchoolIcon,
@@ -54,9 +59,13 @@ export const ICONS = {
   },
 
   entities: {
-    unit: SchoolIcon,
     cafeteria: Restaurant02Icon,
+    unit: SchoolIcon,
+
+    menu: MenuRestaurantIcon,
   },
+
+  location: Location01Icon,
 
   id: HashtagIcon,
 
@@ -77,5 +86,10 @@ export const ICONS = {
 
   users: {
     all: UserGroup03Icon,
+
+    roles: {
+      manager: ManagerIcon,
+      employee: ChefIcon,
+    },
   },
 } as const

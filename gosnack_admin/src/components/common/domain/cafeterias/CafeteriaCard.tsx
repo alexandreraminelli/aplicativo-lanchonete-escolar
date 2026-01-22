@@ -5,6 +5,7 @@ import { ICONS } from "@/constants/icons"
 import { ROUTES } from "@/constants/navigation/routes"
 import { CAFETERIA_TEXTS } from "@/constants/texts/cafeteria.texts"
 import { MAIN_TEXTS } from "@/constants/texts/main.texts"
+import { USERS_TEXTS } from "@/constants/texts/users.texts"
 import { CafeteriaModel } from "@/types/domain/cafeteria.types"
 import { HugeiconsIcon } from "@hugeicons/react"
 import Link from "next/link"
@@ -17,7 +18,24 @@ interface Props {
 /** Card de lanchonete. */
 export default function CafeteriaCard({ cafeteria }: Props) {
   /** Informações da cafeteria. */
-  const cafeteriaInfos: InfoItemType[] = []
+  const cafeteriaInfos: InfoItemType[] = [
+    // Localização
+    { label: CAFETERIA_TEXTS.fields.location, value: cafeteria.location, icon: ICONS.location },
+
+    // Gerente
+    {
+      label: USERS_TEXTS.roles.manager,
+      value: "", // TODO: obter nome do gerente (se houver)
+      icon: ICONS.users.roles.manager,
+    },
+
+    // Quantidade de itens no cardápio
+    {
+      label: CAFETERIA_TEXTS.info.menuItems,
+      value: "10", // TODO: obter quantidade de itens no cardápio,
+      icon: ICONS.entities.menu,
+    },
+  ]
 
   const weekdaysHours = cafeteria.openingHours.weekdays
   const saturdayHours = cafeteria.openingHours.saturday

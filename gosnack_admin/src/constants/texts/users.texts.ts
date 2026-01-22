@@ -16,4 +16,13 @@ export const USERS_TEXTS = {
   management: "Gerenciar Usuários",
 
   quant: (count: number) => `${count} usuário${count !== 1 ? "s" : ""} no sistema`,
+
+  roles: {
+    admin: "Administrador",
+    admins: "Administradores",
+    manager: "Gerente",
+    managers: "Gerentes",
+    employee: "Funcionário",
+    employees: "Funcionários",
+  },
 } as const

@@ -36,6 +36,10 @@ export const CAFETERIA_TEXTS = {
     openingHours: "Horários de Funcionamento",
   },
 
+  info: {
+    menuItems: "Itens no cardápio",
+  },
+
   loading: {
     creating: "Criando lanchonete...",
     updating: "Atualizando lanchonete...",
