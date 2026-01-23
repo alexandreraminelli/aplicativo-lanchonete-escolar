@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:gosnack_client/utils/constants/content/icons.dart';
 import 'package:gosnack_client/utils/constants/content/image_strings.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:gosnack_client/utils/device/device_utility.dart';
@@ -48,10 +49,7 @@ class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
               // voltar pra página anterior
               Get.back();
             },
-            icon: const HugeIcon(
-              icon: HugeIcons.strokeRoundedArrowLeft01,
-              size: KSizes.xl,
-            ),
+            icon: const HugeIcon(icon: KIcons.arrowLeft, size: KSizes.xl),
           )
         : null;
 

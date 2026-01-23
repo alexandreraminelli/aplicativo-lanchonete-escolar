@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gosnack_client/utils/constants/content/icons.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:gosnack_client/utils/helpers/helper_functions.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -56,11 +57,11 @@ class AppDropdownMenu<T> extends StatelessWidget {
       // -- Ícones de setas
       trailingIcon: const HugeIcon(
         // aberto
-        icon: HugeIcons.strokeRoundedArrowDown01,
+        icon: KIcons.arrowDown,
       ),
       selectedTrailingIcon: const HugeIcon(
         // fechado
-        icon: HugeIcons.strokeRoundedArrowUp01,
+        icon: KIcons.arrowUp,
       ),
     );
   }
