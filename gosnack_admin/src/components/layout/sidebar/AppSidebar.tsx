@@ -11,8 +11,6 @@ export function AppSidebar() {
       {/* Header */}
       <AppSidebarHeader />
 
-      <SidebarSeparator />
-
       {/* Content */}
       <SidebarContent>
         <NavSidebar />
