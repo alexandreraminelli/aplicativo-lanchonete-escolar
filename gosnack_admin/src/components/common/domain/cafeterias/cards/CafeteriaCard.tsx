@@ -29,13 +29,6 @@ export default function CafeteriaCard({ unitId, cafeteria }: Props) {
       value: "", // TODO: obter nome do gerente (se houver)
       icon: ICONS.users.roles.manager,
     },
-
-    // Quantidade de itens no cardápio
-    {
-      label: CAFETERIA_TEXTS.info.menuItems,
-      value: "10", // TODO: obter quantidade de itens no cardápio,
-      icon: ICONS.entities.menu,
-    },
   ]
 
   const weekdaysHours = cafeteria.openingHours.weekdays
@@ -55,7 +48,7 @@ export default function CafeteriaCard({ unitId, cafeteria }: Props) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{cafeteria.name}</CardTitle>
+        <CardTitle className="font-semibold text-lg">{cafeteria.name}</CardTitle>
       </CardHeader>
 
       <CardContent className="space-y-2">
