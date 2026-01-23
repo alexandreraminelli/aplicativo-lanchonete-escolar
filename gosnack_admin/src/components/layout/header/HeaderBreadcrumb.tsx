@@ -1,114 +1,66 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
-import { ROUTES } from "@/constants/navigation/routes"
-import { CAFETERIA_TEXTS } from "@/constants/texts/cafeteria.texts"
+import { extractParams, matchBreadcrumb } from "@/constants/navigation/breadcrumb.utils"
 import { MAIN_TEXTS } from "@/constants/texts/main.texts"
-import { NAV_TEXTS } from "@/constants/texts/navigation.texts"
-import { USERS_TEXTS } from "@/constants/texts/users.texts"
+import { useCafeteriaName } from "@/hooks/queries/cafeterias/cafeteria.queries"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ComponentProps, ReactNode } from "react"
 
-/** Breadcrumb do header. */
+/**
+ * Breadcrumb do Header.
+ */
 export default function HeaderBreadcrumb() {
-  const pathname = usePathname() // obter o caminho atual
-  // Obter breadcrumb correspondente ao caminho
-  const content = breadcrumbByRoute[pathname] ?? <></>
+  /** Rota atual. */
+  const pathname = usePathname()
 
-  return <Breadcrumb className="max-sm:hidden">{content}</Breadcrumb>
-}
+  /** Correspondência do breadcrumb para a rota atual. */
+  const match = matchBreadcrumb(pathname)
+  /** Parâmetros da rota (opcional). */
+  const { unitId, cafeteriaId } = match ? extractParams(match.match, ["unitId", "cafeteriaId"]) : { unitId: undefined, cafeteriaId: undefined }
 
-/** BreadcrumbLink com o componente Link do Next.js */
-function BreadcrumbLinkNext({ children, ...props }: ComponentProps<typeof Link>) {
+  const cafeteriaName = useCafeteriaName(unitId, cafeteriaId)
+
+  if (!match) return null
+
+  /** Itens do breadcrumb. */
+  const { config } = match
+
   return (
-    <BreadcrumbLink asChild>
-      <Link {...props}>{children}</Link>
-    </BreadcrumbLink>
+    <Breadcrumb className="max-sm:hidden">
+      <BreadcrumbList>
+        {/* Construir segmento do breadcrumb */}
+        {config.segments.map((segment, index) => {
+          // Se o segmento for o último
+          const isLast = index === config.segments.length - 1
+
+          // Rótulo e link do segmento
+          const params = { unitId: unitId ?? "", cafeteriaId: cafeteriaId ?? "" }
+          let label = typeof segment.label === "function" ? segment.label(params) : segment.label
+          const resolvedHref = typeof segment.href === "function" ? segment.href(params) : segment.href
+
+          // Resolver labels dinâmicos
+          if (label === "__CAFETERIA_NAME__") {
+            label = cafeteriaName ?? MAIN_TEXTS.entities.cafeteria
+          }
+
+          return (
+            <>
+              <BreadcrumbItem key={index}>
+                {!isLast && resolvedHref ? (
+                  // Item com link
+                  <BreadcrumbLink asChild>
+                    <Link href={resolvedHref}>{label}</Link>
+                  </BreadcrumbLink>
+                ) : (
+                  <BreadcrumbPage>{label}</BreadcrumbPage>
+                )}
+              </BreadcrumbItem>
+
+              {/* Separator (exceto no último) */}
+              {!isLast && <BreadcrumbSeparator />}
+            </>
+          )
+        })}
+      </BreadcrumbList>
+    </Breadcrumb>
   )
-}
-
-/** Lista de itens reutilizáveis do breadcrumb. */
-const breadcrumbItems = {
-  homeLink: (
-    <>
-      <BreadcrumbItem>
-        <BreadcrumbLinkNext href={ROUTES.home}>{NAV_TEXTS.mainPages.home}</BreadcrumbLinkNext>
-      </BreadcrumbItem>
-      <BreadcrumbSeparator />
-    </>
-  ),
-
-  cafeteriasLink: (
-    <>
-      <BreadcrumbItem>
-        <BreadcrumbLinkNext href={ROUTES.cafeterias}>{MAIN_TEXTS.entities.cafeterias}</BreadcrumbLinkNext>
-      </BreadcrumbItem>
-      <BreadcrumbSeparator />
-    </>
-  ),
-  usersLink: (
-    <>
-      <BreadcrumbItem>
-        <BreadcrumbLinkNext href={ROUTES.users}>{MAIN_TEXTS.entities.users}</BreadcrumbLinkNext>
-      </BreadcrumbItem>
-      <BreadcrumbSeparator />
-    </>
-  ),
-}
-
-/** Lista de componentes de breadcrumb para cada rota. */
-const breadcrumbByRoute: Record<string, ReactNode> = {
-  // Home
-  [ROUTES.home]: (
-    <BreadcrumbList>
-      <BreadcrumbPage>{NAV_TEXTS.mainPages.home}</BreadcrumbPage>
-    </BreadcrumbList>
-  ),
-  // Unidades
-  [ROUTES.units]: (
-    <BreadcrumbList>
-      {breadcrumbItems.homeLink}
-      <BreadcrumbItem>
-        <BreadcrumbPage>{MAIN_TEXTS.entities.units}</BreadcrumbPage>
-      </BreadcrumbItem>
-    </BreadcrumbList>
-  ),
-  // Lanchonetes
-  [ROUTES.cafeterias]: (
-    <BreadcrumbList>
-      {breadcrumbItems.homeLink}
-      <BreadcrumbItem>
-        <BreadcrumbPage>{MAIN_TEXTS.entities.cafeterias}</BreadcrumbPage>
-      </BreadcrumbItem>
-    </BreadcrumbList>
-  ),
-  [ROUTES.newCafeteria]: (
-    <BreadcrumbList>
-      {breadcrumbItems.homeLink}
-      {breadcrumbItems.cafeteriasLink}
-      <BreadcrumbItem>
-        <BreadcrumbPage>{CAFETERIA_TEXTS.actions.add}</BreadcrumbPage>
-      </BreadcrumbItem>
-    </BreadcrumbList>
-  ),
-
-  // Usuários
-  [ROUTES.users]: (
-    <BreadcrumbList>
-      {breadcrumbItems.homeLink}
-      <BreadcrumbItem>
-        <BreadcrumbPage>{MAIN_TEXTS.entities.users}</BreadcrumbPage>
-      </BreadcrumbItem>
-    </BreadcrumbList>
-  ),
-
-  // Adicionar Usuários
-  [ROUTES.addUsers]: (
-    <BreadcrumbList>
-      {breadcrumbItems.homeLink}
-      {breadcrumbItems.usersLink}
-      <BreadcrumbItem>
-        <BreadcrumbPage>{USERS_TEXTS.actions.create}</BreadcrumbPage>
-      </BreadcrumbItem>
-    </BreadcrumbList>
-  ),
 }

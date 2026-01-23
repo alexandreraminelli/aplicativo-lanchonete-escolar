@@ -38,6 +38,14 @@ export function useCafeteria(unitId?: string, cafeteriaId?: string) {
 }
 
 /**
+ * Hook para obter o nome de uma lanchonete pelo seu ID.
+ */
+export function useCafeteriaName(unitId?: string, cafeteriaId?: string) {
+  const { data } = useCafeteria(unitId, cafeteriaId)
+  return data?.name
+}
+
+/**
  * Hook para verificar se já existe uma lanchonete com o mesmo nome dentro de uma unidade.
  *
  * @param unitId ID da unidade escolar.
