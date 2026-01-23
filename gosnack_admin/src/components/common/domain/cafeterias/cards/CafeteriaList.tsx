@@ -92,7 +92,7 @@ function UnitCafeteriasList({ unitId, onLoadingChange }: UnitCafeteriasListProps
   }
 
   return (
-    <div className="p-3 grid gap-4 grid-cols-[repeat(auto-fit,minmax(var(--container-2xs),1fr))]">
+    <div className="p-3 grid gap-4 grid-cols-[repeat(auto-fill,minmax(var(--container-2xs),1fr))]">
       {cafeterias.map((cafeteria) => (
         <CafeteriaCard key={cafeteria.id} unitId={unitId} cafeteria={cafeteria} />
       ))}
