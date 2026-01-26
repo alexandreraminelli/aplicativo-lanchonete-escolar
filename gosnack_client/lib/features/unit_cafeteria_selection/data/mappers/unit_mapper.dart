@@ -1,5 +1,5 @@
+import 'package:gosnack_client/features/unit_cafeteria_selection/data/models/unit_model.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/unit.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/models/unit_model.dart';
 
 /// Utilitário para converter modelo de domínio [Unit] para modelo de
 /// dados [UnitModel] e vice-versa.
