@@ -31,4 +31,23 @@ class CafeteriaFirestoreDataSource {
         .map((doc) => CafeteriaModel.fromFirestore(doc.data(), doc.id))
         .toList();
   }
+
+  /// Obter um documento específico da subcoleção de lanchonetes de uma unidade.
+  Future<CafeteriaModel?> getCafeteriaById(
+    String unitId,
+    String cafeteriaId,
+  ) async {
+    // Realizar consulta no Firestore
+    final doc = await _db
+        .collection(FirestoreCollections.units)
+        .doc(unitId)
+        .collection(FirestoreCollections.cafeterias)
+        .doc(cafeteriaId)
+        .get();
+
+    // Verificar se o documento existe
+    if (!doc.exists) return null;
+    // Mapear documento para modelo
+    return CafeteriaModel.fromFirestore(doc.data()!, doc.id);
+  }
 }
