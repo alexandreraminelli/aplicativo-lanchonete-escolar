@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gosnack_client/common/widgets/inputs/dropdown_menu.dart';
 import 'package:gosnack_client/common/widgets/text/section_header.dart';
-import 'package:gosnack_client/features/onboarding/controllers/onboarding_controller.dart';
+import 'package:gosnack_client/features/onboarding/presentation/controllers/onboarding_controller.dart';
 import 'package:gosnack_client/utils/constants/content/text_strings.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:gosnack_client/utils/constants/styles/spacing.dart';

@@ -4,7 +4,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:gosnack_client/features/onboarding/screens/onboarding.dart';
+import 'package:gosnack_client/features/onboarding/presentation/screens/onboarding.dart';
 
 /// Repositório de autenticação do Firebase.
 /// Responsável por gerenciar o login, logout e estado de autenticação do usuário.

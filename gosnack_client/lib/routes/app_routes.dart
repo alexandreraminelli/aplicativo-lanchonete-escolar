@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:gosnack_client/features/onboarding/screens/onboarding.dart';
+import 'package:gosnack_client/features/onboarding/presentation/screens/onboarding.dart';
 import 'package:gosnack_client/routes/routes.dart';
 
 /// Configuração das rotas da aplicação.
