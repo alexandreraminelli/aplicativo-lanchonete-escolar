@@ -1,5 +1,6 @@
 include: package:flutter_lints/flutter.yaml
 
+# Configurações personalizadas de linting para o projeto
 linter:
   rules:
     avoid_print: false # evita prints
@@ -17,12 +18,15 @@ linter:
     use_full_hex_values_for_flutter_colors: true # obriga usar formato completo da cor (com alpha)
     use_key_in_widget_constructors: true # recomenda usar 'key' em construtores de widgets
     avoid_positional_boolean_parameters: true # evita parâmetros booleanos posicionais (recomendado usar nomeados)
+    prefer_single_quotes: true # recomenda aspas simples
+
     # Recomendar 'const' sempre que possível
     prefer_const_constructors: true
     prefer_const_constructors_in_immutables: true
     prefer_const_declarations: true
     prefer_const_literals_to_create_immutables: true
     unnecessary_const: true # evita 'const' desnecessários
+
 
 #
 # Additional information about this file can be found at
