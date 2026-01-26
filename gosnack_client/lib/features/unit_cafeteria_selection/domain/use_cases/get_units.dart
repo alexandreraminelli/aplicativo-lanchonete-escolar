@@ -2,9 +2,9 @@ import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/interfaces/unit_repository.dart';
 
 /// Use Case para obter todas as unidades escolares do repositório.
-class GetUnits {
+class GetUnitsUseCase {
   // -- Public Constructor -------------------------------------------------- //
-  GetUnits(this.repository);
+  GetUnitsUseCase(this.repository);
 
   // -- Instance Variables -------------------------------------------------- //
 

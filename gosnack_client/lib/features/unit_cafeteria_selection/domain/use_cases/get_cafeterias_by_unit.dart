@@ -3,9 +3,9 @@ import 'package:gosnack_client/features/unit_cafeteria_selection/domain/interfac
 
 /// Use Case para obter todas as lanchonetes de uma unidade escolar específica
 /// no repositório.
-class GetCafeteriasByUnit {
+class GetCafeteriasByUnitUseCase {
   // -- Public Constructor -------------------------------------------------- //
-  GetCafeteriasByUnit(this.repository);
+  GetCafeteriasByUnitUseCase(this.repository);
 
   // -- Instance Variables -------------------------------------------------- //
 
