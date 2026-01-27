@@ -4,6 +4,7 @@ import 'package:gosnack_client/common/widgets/inputs/dropdown_menu.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/cafeteria.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/unit.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/controllers/unit_cafeteria_selection_controller.dart';
+import 'package:gosnack_client/utils/constants/content/texts/main_texts.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 
 /// Widget com formulário para selecionar a unidade e lanchonete.
@@ -32,7 +33,7 @@ class UnitCafeteriaSelector extends GetView<UnitCafeteriaSelectionController> {
           children: [
             // -- Dropdown de unidades
             AppDropdownMenu<Unit>(
-              label: 'Unidade', // TODO: usar constante de texto
+              label: KMainTexts.unit,
               // Lista de unidades
               dropdownMenuEntries: controller.units
                   .map(
@@ -49,7 +50,7 @@ class UnitCafeteriaSelector extends GetView<UnitCafeteriaSelectionController> {
 
             // -- Dropdown de lanchonetes
             AppDropdownMenu<Cafeteria>(
-              label: 'Lanchonete', // TODO: usar constante de texto
+              label: KMainTexts.cafeteria,
               // Desabilitar se nenhuma unidade selecionada ou está carregando
               enabled:
                   controller.selectedUnit.value != null &&
