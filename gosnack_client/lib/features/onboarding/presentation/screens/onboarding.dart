@@ -5,7 +5,7 @@ import 'package:gosnack_client/common/widgets/appbar/main_appbar.dart';
 import 'package:gosnack_client/features/onboarding/presentation/controllers/onboarding_controller.dart';
 import 'package:gosnack_client/features/onboarding/presentation/texts/onboarding_texts.dart';
 import 'package:gosnack_client/features/onboarding/presentation/widgets/onboarding_buttons.dart';
-import 'package:gosnack_client/features/onboarding/presentation/widgets/onboarding_form_unit_and_snackbar.dart';
+import 'package:gosnack_client/features/onboarding/presentation/widgets/onboarding_form.dart';
 import 'package:gosnack_client/features/onboarding/presentation/widgets/onboarding_page.dart';
 import 'package:gosnack_client/features/onboarding/presentation/widgets/onboarding_page_indicator.dart';
 import 'package:gosnack_client/utils/constants/content/animations_strings.dart';
@@ -51,7 +51,7 @@ class OnBoardingScreen extends StatelessWidget {
         ),
 
         // -- Form de Unidade e Lanchonete
-        OnBoardingFormUnitAndSnackbar(),
+        OnBoardingForm(),
       ],
     );
 

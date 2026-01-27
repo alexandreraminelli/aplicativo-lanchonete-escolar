@@ -6,9 +6,9 @@ import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:gosnack_client/utils/constants/styles/spacing.dart';
 
 /// Formulário no final do OnBoarding para selecionar uma unidade e lanchonete.
-class OnBoardingFormUnitAndSnackbar extends StatelessWidget {
+class OnBoardingForm extends StatelessWidget {
   // -- Public Constructor -------------------------------------------------- //
-  const OnBoardingFormUnitAndSnackbar({super.key});
+  const OnBoardingForm({super.key});
 
   // -- Build Method -------------------------------------------------------- //
   @override
