@@ -11,10 +11,11 @@ class AppDropdownMenu<T> extends StatelessWidget {
     required this.dropdownMenuEntries,
     required this.label,
     this.enabled = true,
+    this.onSelected,
     super.key,
   });
 
-  // -- Public Instance Variables ------------------------------------------- //
+  // -- DropdownMenu Attributes --------------------------------------------- //
 
   /// Lista de itens DropdownMenuEntry.
   final List<DropdownMenuEntry<T>> dropdownMenuEntries;
@@ -22,6 +23,10 @@ class AppDropdownMenu<T> extends StatelessWidget {
   /// Se o Dropdown Menu está habilitado.
   final bool enabled;
 
+  /// Callback chamado quando um item é selecionado.
+  final ValueChanged<T?>? onSelected;
+
+  // -- Public Instance Variables ------------------------------------------- //
   /// Rótulo do Dropdown Menu.
   final String label;
 
@@ -49,11 +54,12 @@ class AppDropdownMenu<T> extends StatelessWidget {
 
       label: Text(label), // rótulo
       width: double.infinity, // largura total
-
+      //
+      // -- Parâmetros repassados
+      dropdownMenuEntries: dropdownMenuEntries, // itens do menu
       enabled: enabled, // se está habilitado
-      // -- Itens do menu
-      dropdownMenuEntries: dropdownMenuEntries,
-
+      onSelected: onSelected,
+      //
       // -- Ícones de setas
       trailingIcon: const HugeIcon(
         // aberto
