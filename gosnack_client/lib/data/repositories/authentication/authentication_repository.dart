@@ -5,6 +5,7 @@ import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:gosnack_client/features/onboarding/presentation/screens/onboarding.dart';
+import 'package:gosnack_client/routes/routes.dart';
 
 /// Repositório de autenticação do Firebase.
 /// Responsável por gerenciar o login, logout e estado de autenticação do usuário.
@@ -46,6 +47,6 @@ class AuthenticationRepository extends GetxController {
   ///   - **E-mail verificado:** tela inicial do app.
   Future<void> screenRedirect() async {
     // TODO: implementar lógica de redirecionamento
-    Get.offAll(() => const OnBoardingScreen());
+    Get.offAllNamed(KRoutes.onBoarding);
   }
 }
