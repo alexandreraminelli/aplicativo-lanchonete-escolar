@@ -3,12 +3,12 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/state_manager.dart';
 import 'package:gosnack_client/common/widgets/appbar/main_appbar.dart';
 import 'package:gosnack_client/features/onboarding/presentation/controllers/onboarding_controller.dart';
+import 'package:gosnack_client/features/onboarding/presentation/texts/onboarding_texts.dart';
 import 'package:gosnack_client/features/onboarding/presentation/widgets/onboarding_buttons.dart';
 import 'package:gosnack_client/features/onboarding/presentation/widgets/onboarding_form_unit_and_snackbar.dart';
 import 'package:gosnack_client/features/onboarding/presentation/widgets/onboarding_page.dart';
 import 'package:gosnack_client/features/onboarding/presentation/widgets/onboarding_page_indicator.dart';
 import 'package:gosnack_client/utils/constants/content/animations_strings.dart';
-import 'package:gosnack_client/utils/constants/content/text_strings.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 
 /// **Tela de OnBoarding (Boas-Vindas)**.
@@ -36,19 +36,20 @@ class OnBoardingScreen extends StatelessWidget {
         // -- Páginas de OnBoarding
         OnBoardingPage(
           animation: KAnimations.servingDome,
-          title: KTexts.onBoardingTitle1,
-          subTitle: KTexts.onBoardingSubTitle1,
+          title: KOnBoardingTexts.onBoardingTitle1,
+          subTitle: KOnBoardingTexts.onBoardingSubTitle1,
         ),
         OnBoardingPage(
           animation: KAnimations.customerMenuOptions,
-          title: KTexts.onBoardingTitle2,
-          subTitle: KTexts.onBoardingSubTitle2,
+          title: KOnBoardingTexts.onBoardingTitle2,
+          subTitle: KOnBoardingTexts.onBoardingSubTitle2,
         ),
         OnBoardingPage(
           animation: KAnimations.pickingUpOrder,
-          title: KTexts.onBoardingTitle3,
-          subTitle: KTexts.onBoardingSubTitle3,
+          title: KOnBoardingTexts.onBoardingTitle3,
+          subTitle: KOnBoardingTexts.onBoardingSubTitle3,
         ),
+
         // -- Form de Unidade e Lanchonete
         OnBoardingFormUnitAndSnackbar(),
       ],

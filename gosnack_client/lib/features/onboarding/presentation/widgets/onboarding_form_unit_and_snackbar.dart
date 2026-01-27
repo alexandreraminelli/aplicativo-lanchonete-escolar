@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gosnack_client/common/widgets/text/section_header.dart';
+import 'package:gosnack_client/features/onboarding/presentation/texts/onboarding_texts.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/widgets/unit_cafeteria_selector.dart';
-import 'package:gosnack_client/utils/constants/content/text_strings.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:gosnack_client/utils/constants/styles/spacing.dart';
 
@@ -17,8 +17,8 @@ class OnBoardingFormUnitAndSnackbar extends StatelessWidget {
 
     /// Cabeçalho do formulário.
     const formHeader = SectionHeader(
-      title: KTexts.onBoardingFormTitle,
-      subtitle: KTexts.onBoardingFormSubtitle,
+      title: KOnBoardingTexts.onBoardingFormTitle,
+      subtitle: KOnBoardingTexts.onBoardingFormSubtitle,
     );
 
     // -- Widget principal
