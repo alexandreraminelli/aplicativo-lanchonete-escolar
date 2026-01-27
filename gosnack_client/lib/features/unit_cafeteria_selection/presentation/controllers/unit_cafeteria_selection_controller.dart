@@ -12,6 +12,7 @@ class UnitCafeteriaSelectionController extends GetxController {
   final GetCafeteriasByUnitUseCase _getCafeteriasByUnit;
 
   // -- Public Constructor -------------------------------------------------- //
+
   UnitCafeteriaSelectionController(this._getUnits, this._getCafeteriasByUnit);
 
   // -- State Variables ----------------------------------------------------- //
