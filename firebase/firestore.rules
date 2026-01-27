@@ -198,8 +198,8 @@ service cloud.firestore {
 
       // -- READ
 
-      // Qualquer usuário autenticado pode ler unidades
-      allow read: if isAuthenticated();
+      // Qualquer usuário pode ler unidades
+      allow read: if true;
 
       // -- UPDATE
 
@@ -239,8 +239,8 @@ service cloud.firestore {
 
         // -- READ
 
-        // Qualquer usuário autenticado pode ler lanchonetes
-        allow read: if isAuthenticated();
+        // Qualquer usuário pode ler lanchonetes
+        allow read: if true;
 
         // -- UPDATE
 
