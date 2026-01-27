@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/state_manager.dart';
 import 'package:gosnack_client/features/onboarding/presentation/controllers/onboarding_controller.dart';
 import 'package:gosnack_client/utils/constants/content/icons.dart';
 import 'package:gosnack_client/utils/constants/content/texts/main_texts.dart';
@@ -8,15 +9,13 @@ import 'package:hugeicons/hugeicons.dart';
 
 /// Botões de próxima página e continuar na OnBoarding Screen.
 /// Exibe o botão de próxima página ou o botão de continuar na última.
-class OnBoardingButtons extends StatelessWidget {
+class OnBoardingButtons extends GetView<OnBoardingController> {
   // -- Public Constructor -------------------------------------------------- //
   const OnBoardingButtons({super.key});
 
   // -- Build Method -------------------------------------------------------- //
   @override
   Widget build(BuildContext context) {
-    final controller = OnBoardingController.instance;
-
     // -- Widgets internos
 
     /// Botão de avançar para a próxima página.
@@ -37,12 +36,12 @@ class OnBoardingButtons extends StatelessWidget {
     );
 
     /// Botão de continuar para a tela de login.
-    final continueButton = SizedBox(
+    const continueButton = SizedBox(
       width: double.infinity, // width full
       child: ElevatedButton(
         // TODO: ir para a tela de login (quando for estiver preenchido)
         onPressed: null,
-        child: const Text(KMainTexts.continueT),
+        child: Text(KMainTexts.continueT),
       ),
     );
 
