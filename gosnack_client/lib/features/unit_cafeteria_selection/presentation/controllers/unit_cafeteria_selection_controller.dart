@@ -44,7 +44,7 @@ class UnitCafeteriaSelectionController extends GetxController {
   Future<void> loadUnits() async {
     try {
       isLoadingUnits.value = true; // sinalizar início do carregamento
-      units.value = await _getUnits(); // obter unidades
+      units.assignAll(await _getUnits());
     } finally {
       isLoadingUnits.value = false; // sinalizar fim do carregamento
     }
@@ -71,7 +71,7 @@ class UnitCafeteriaSelectionController extends GetxController {
   Future<void> loadCafeterias(String unitId) async {
     try {
       isLoadingCafeterias.value = true; // sinalizar início do carregamento
-      cafeterias.value = await _getCafeteriasByUnit(unitId);
+      cafeterias.assignAll(await _getCafeteriasByUnit(unitId));
     } finally {
       isLoadingCafeterias.value = false; // sinalizar fim do carregamento
     }

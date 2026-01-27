@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:gosnack_client/common/widgets/inputs/dropdown_menu.dart';
+import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/cafeteria.dart';
+import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/unit.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/controllers/unit_cafeteria_selection_controller.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 
@@ -17,43 +19,60 @@ class UnitCafeteriaSelector extends GetView<UnitCafeteriaSelectionController> {
     // TODO: criar skeleton
     const loading = Center(child: CircularProgressIndicator());
 
-    // -- Unit Dropdown
-    const unitDropdown = AppDropdownMenu(
-      label: 'Unidade', // TODO: usar constante de texto
-      dropdownMenuEntries: [
-        DropdownMenuEntry(value: 'unit1', label: 'Unidade 1'),
-        DropdownMenuEntry(value: 'unit2', label: 'Unidade 2'),
-        DropdownMenuEntry(value: 'unit3', label: 'Unidade 3'),
-        DropdownMenuEntry(value: 'unit4', label: 'Unidade 4'),
-      ],
-    );
-
-    // -- Cafeteria Dropdown
-    const cafeteriaDropdown = AppDropdownMenu(
-      label: 'Lanchonete', // TODO: usar constante de texto
-      enabled: false,
-      dropdownMenuEntries: [
-        DropdownMenuEntry(value: "snackbar1", label: "Lanchonete 1"),
-        DropdownMenuEntry(value: "snackbar2", label: "Lanchonete 2"),
-        DropdownMenuEntry(value: "snackbar3", label: "Lanchonete 3"),
-      ],
-    );
-
-    // -- Formulário com os dropdowns
-    const form = Form(
-      child: Column(
-        spacing: KSizes.spacingBtwFields,
-        children: [unitDropdown, cafeteriaDropdown],
-      ),
-    );
-
     // -- Widget principal
     return Obx(() {
       if (controller.isLoadingUnits.value) {
         return loading; // Loading
-      } else {
-        return form; // Formulário
       }
+
+      // -- Formulário
+      return Form(
+        child: Column(
+          spacing: KSizes.spacingBtwFields,
+          children: [
+            // -- Dropdown de unidades
+            AppDropdownMenu<Unit>(
+              label: 'Unidade', // TODO: usar constante de texto
+              // Lista de unidades
+              dropdownMenuEntries: controller.units
+                  .map(
+                    (unit) => DropdownMenuEntry(value: unit, label: unit.name),
+                  )
+                  .toList(),
+              // Callback ao selecionar
+              onSelected: (unit) {
+                if (unit != null) {
+                  controller.selectUnit(unit);
+                }
+              },
+            ),
+
+            // -- Dropdown de lanchonetes
+            AppDropdownMenu<Cafeteria>(
+              label: 'Lanchonete', // TODO: usar constante de texto
+              // Desabilitar se nenhuma unidade selecionada ou está carregando
+              enabled:
+                  controller.selectedUnit.value != null &&
+                  !controller.isLoadingCafeterias.value,
+              // Lista de lanchonetes
+              dropdownMenuEntries: controller.cafeterias
+                  .map(
+                    (cafeteria) => DropdownMenuEntry(
+                      value: cafeteria,
+                      label: cafeteria.name,
+                    ),
+                  )
+                  .toList(),
+              // Callback ao selecionar
+              onSelected: (cafeteria) {
+                if (cafeteria != null) {
+                  controller.selectCafeteria(cafeteria);
+                }
+              },
+            ),
+          ],
+        ),
+      );
     });
   }
 }
