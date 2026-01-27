@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/state_manager.dart';
 import 'package:gosnack_client/features/onboarding/presentation/controllers/onboarding_controller.dart';
+import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/controllers/unit_cafeteria_selection_controller.dart';
+import 'package:gosnack_client/routes/routes.dart';
 import 'package:gosnack_client/utils/constants/content/icons.dart';
 import 'package:gosnack_client/utils/constants/content/texts/main_texts.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
@@ -16,9 +20,10 @@ class OnBoardingButtons extends GetView<OnBoardingController> {
   // -- Build Method -------------------------------------------------------- //
   @override
   Widget build(BuildContext context) {
-    // -- Widgets internos
+    // -- Controlador
+    final unitController = Get.find<UnitCafeteriaSelectionController>();
 
-    /// Botão de avançar para a próxima página.
+    /// -- Botão de avançar para a próxima página.
     final nextButton = Row(
       mainAxisAlignment: MainAxisAlignment.end, // no final da página
       children: [
@@ -35,17 +40,23 @@ class OnBoardingButtons extends GetView<OnBoardingController> {
       ],
     );
 
-    /// Botão de continuar para a tela de login.
-    const continueButton = SizedBox(
-      width: double.infinity, // width full
-      child: ElevatedButton(
-        // TODO: ir para a tela de login (quando for estiver preenchido)
-        onPressed: null,
-        child: Text(KMainTexts.continueT),
-      ),
-    );
-
     // -- Widget principal
-    return Obx(() => controller.isLastPage ? continueButton : nextButton);
+    return Obx(() {
+      // Antes da última página: botão de próximo
+      if (!controller.isLastPage) return nextButton;
+
+      // -- Botão de continuar
+      return SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          onPressed: unitController.isSelectionComplete
+              // ir pra tela de login
+              ? () => Get.offAllNamed(KRoutes.signin)
+              // desabilitar quando ainda não selecionar
+              : null,
+          child: const Text(KMainTexts.continueT),
+        ),
+      );
+    });
   }
 }

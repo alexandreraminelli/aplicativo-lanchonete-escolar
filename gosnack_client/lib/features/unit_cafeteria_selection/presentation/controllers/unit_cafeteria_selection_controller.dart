@@ -29,6 +29,12 @@ class UnitCafeteriaSelectionController extends GetxController {
   final RxBool isLoadingUnits = false.obs;
   final RxBool isLoadingCafeterias = false.obs;
 
+  // -- Getters ------------------------------------------------------------- //
+
+  /// Verifica se há uma unidade e lanchonete selecionados.
+  bool get isSelectionComplete =>
+      selectedUnit.value != null && selectedCafeteria.value != null;
+
   // -- Lifecycle Methods --------------------------------------------------- //
 
   /// Método chamado quando o controlador é inicializado.

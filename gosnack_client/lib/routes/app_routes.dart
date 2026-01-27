@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:gosnack_client/features/authentication/presentation/screens/login_screen.dart';
 import 'package:gosnack_client/features/onboarding/presentation/screens/onboarding.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/bindings/unit_cafeteria_selection_binding.dart';
 import 'package:gosnack_client/routes/routes.dart';
@@ -15,6 +16,8 @@ class AppRoutes {
     ),
 
     // -- Authentication ---------------------------------------------------- //
+    // Login
+    GetPage(name: KRoutes.signin, page: () => const LoginScreen()),
 
     // -- Main Screens ------------------------------------------------------ //
   ];
