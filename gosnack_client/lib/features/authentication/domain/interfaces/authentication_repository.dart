@@ -21,7 +21,7 @@ abstract class AuthenticationRepository {
   Future<void> logout();
 
   /// Verifica se o usuário está autenticado.
-  Future<void> isAuthenticated();
+  bool isAuthenticated();
 
   // -- OnBoarding ---------------------------------------------------------- //
 
