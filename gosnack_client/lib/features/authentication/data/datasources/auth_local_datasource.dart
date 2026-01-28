@@ -1,0 +1,31 @@
+import 'package:get_storage/get_storage.dart';
+
+/// DataSource local para armazenamento de informações de autenticação.
+class AuthLocalDatasource {
+  // -- GetStorage Keys ----------------------------------------------------- //
+
+  /// Chave do GetStorage com o booleano de se é a primeira vez que o
+  /// usuário está acessando o app.
+  static const String _keyFirstTime = 'isFirstTime';
+
+  // -- Private Instance Variables ------------------------------------------ //
+
+  /// Instância do GetStorage para armazenamento local.
+  final GetStorage _storage;
+
+  // -- Public Constructor -------------------------------------------------- //
+
+  AuthLocalDatasource(this._storage);
+
+  // -- Public Methods ------------------------------------------------------ //
+
+  /// Verifica se é a primeira vez que o app é aberto.
+  bool isFirstTime() {
+    return _storage.read(_keyFirstTime) ?? true;
+  }
+
+  /// Marca que o usuário já abriu o app e passou pelo onboarding.
+  Future<void> setFirstTimeFalse() async {
+    await _storage.write(_keyFirstTime, false);
+  }
+}
