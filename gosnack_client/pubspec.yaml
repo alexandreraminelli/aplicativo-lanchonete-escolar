@@ -6,7 +6,7 @@ publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: ^3.9.2
+  sdk: ^3.9.2 # Versão mínima do SDK Dart
 
 # Dependências do projeto
 dependencies:
@@ -46,7 +46,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 # Pacotes do Flutter
 flutter:
