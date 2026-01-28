@@ -4,6 +4,8 @@ import 'package:gosnack_client/features/authentication/domain/use_cases/check_au
 import 'package:gosnack_client/features/authentication/domain/use_cases/screen_redirect_usecase.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/signin_usecase.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/signout_usecase.dart';
+import 'package:gosnack_client/routes/routes.dart';
+import 'package:logger/logger.dart';
 
 /// Controlador responsável por gerenciar o estado de autenticação na
 /// camada de apresentação.
@@ -14,6 +16,10 @@ class AuthController extends GetxController {
   final LoginUseCase _loginUseCase;
   final LogoutUseCase _logoutUseCase;
   final CheckAuthenticationStatusUsecase _checkAuthenticationStatusUseCase;
+
+  // -- Private Instance Variables ------------------------------------------ //
+
+  final Logger _logger = Logger();
 
   // -- Public Constructor -------------------------------------------------- //
 
@@ -30,16 +36,25 @@ class AuthController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    FlutterNativeSplash.remove(); // Remove a splash screen nativa
-    screenRedirect(); // Redireciona para a tela apropriada
+
+    FlutterNativeSplash.remove(); // Remove a splash screen imediatamente
+
+    // Redirecionar para a tela apropriada de forma assíncrona
+    Future.microtask(() => screenRedirect());
   }
 
   /// -- Public Methods ----------------------------------------------------- //
 
   /// Redireciona para a tela apropriada com base no estado de autenticação.
   Future<void> screenRedirect() async {
-    final route = _screenRedirectUseCase();
-    Get.offAllNamed(route);
+    try {
+      final route = _screenRedirectUseCase();
+      Get.offAllNamed(route);
+    } catch (e) {
+      // Em caso de erro, ir para o login
+      _logger.e('Erro ao redirecionar tela: $e');
+      await Get.offAllNamed(KRoutes.signin);
+    }
   }
 
   /// Efetua o login do usuário com as credenciais fornecidas.

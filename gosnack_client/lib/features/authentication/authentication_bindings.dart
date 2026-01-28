@@ -35,9 +35,9 @@ class AuthenticationBindings extends Bindings {
     Get.lazyPut(() => LogoutUseCase(Get.find()));
     Get.lazyPut(() => ScreenRedirectUseCase(Get.find()));
 
-    // -- Injetar Controller
-    Get.lazyPut(
-      () => AuthController(
+    // -- Injetar Controller (Get.put para inicialização imediata)
+    Get.put(
+      AuthController(
         Get.find<ScreenRedirectUseCase>(),
         Get.find<LoginUseCase>(),
         Get.find<LogoutUseCase>(),
