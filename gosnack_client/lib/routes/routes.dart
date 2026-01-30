@@ -1,5 +1,5 @@
 /// Constantes de rotas da aplicação.
-class KRoutes {
+abstract final class KRoutes {
   // -- OnBoarding ---------------------------------------------------------- //
   static const onBoarding = '/boas-vindas';
 
