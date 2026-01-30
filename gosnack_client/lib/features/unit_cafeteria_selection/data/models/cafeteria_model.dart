@@ -1,35 +1,22 @@
+import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/cafeteria_entity.dart';
 import 'package:gosnack_client/utils/constants/firestore/fields/cafeteria_fields.dart';
 
-/// Modelo de lanchonetes para mapear dados do Firestore.
-class CafeteriaModel {
-  // -- Public Variables ---------------------------------------------------- //
-
-  /// ID da lanchonete no Firestore.
-  final String id;
-
-  /// Nome da lanchonete.
-  final String name;
-
-  /// Localização da lanchonete dentro da escola.
-  final String location;
-
-  /// Telefones de contato da lanchonete.
-  final List<String> phones;
-
-  /// TODO: Horários de funcionamento da lanchonete.
-
+/// Modelo de dados que representa uma lanchonete.
+///
+/// Estende [CafeteriaEntity] para incluir métodos de conversão.
+class CafeteriaModel extends CafeteriaEntity {
   // -- Public Constructor -------------------------------------------------- //
 
   const CafeteriaModel({
-    required this.id,
-    required this.name,
-    required this.location,
-    this.phones = const [],
+    required super.id,
+    required super.name,
+    required super.location,
+    super.phones = const [],
   });
 
   // -- Named Constructors -------------------------------------------------- //
 
-  /// Cria uma instância de [CafeteriaModel] a partir de dados do Firestore.
+  /// Converte os dados do Firestore em uma instância de [CafeteriaModel].
   factory CafeteriaModel.fromFirestore(Map<String, dynamic> data, String id) {
     return CafeteriaModel(
       id: id,

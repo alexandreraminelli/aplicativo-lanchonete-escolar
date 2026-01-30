@@ -1,22 +1,17 @@
+import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/unit_entity.dart';
 import 'package:gosnack_client/utils/constants/firestore/fields/unit_fields.dart';
 
-/// Modelo de unidades escolares para mapear dados do Firestore.
-class UnitModel {
-  // -- Public Variables ---------------------------------------------------- //
-
-  /// ID da unidade no Firestore.
-  final String id;
-
-  /// Nome da unidade escolar.
-  final String name;
-
+/// Modelo de dados que representa uma unidade escolar.
+///
+/// Estende [UnitEntity] para incluir métodos de conversão.
+class UnitModel extends UnitEntity {
   // -- Public Constructor -------------------------------------------------- //
 
-  const UnitModel({required this.id, required this.name});
+  const UnitModel({required super.id, required super.name});
 
   // -- Named Constructors -------------------------------------------------- //
 
-  /// Cria uma instância de [UnitModel] a partir de dados do Firestore.
+  /// Converte os dados do Firestore em uma instância de [UnitModel].
   factory UnitModel.fromFirestore(Map<String, dynamic> data, String id) {
     return UnitModel(id: id, name: data[UnitFields.name] ?? '');
   }
