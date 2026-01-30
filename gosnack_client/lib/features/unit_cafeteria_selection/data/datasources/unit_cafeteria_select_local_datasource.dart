@@ -89,4 +89,14 @@ class UnitCafeteriaSelectLocalDatasource {
       _logger.e('Erro ao salvar selectedCafeteriaId', error: e);
     }
   }
+
+  /// Limpar as seleções locais de unidade e lanchonete.
+  Future<void> clearSelections() async {
+    try {
+      await _storage.remove(_keySelectedUnitId);
+      await _storage.remove(_keySelectedCafeteriaId);
+    } catch (e) {
+      _logger.e('Erro ao limpar seleções', error: e);
+    }
+  }
 }

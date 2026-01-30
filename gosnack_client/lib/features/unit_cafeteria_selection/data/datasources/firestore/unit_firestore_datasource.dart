@@ -18,7 +18,7 @@ class UnitFirestoreDataSource {
 
   /// Obter todos os documentos da coleção de unidades escolares.
   Future<List<UnitModel>> getAllUnits() async {
-    // Realizar consulta ao Firestore
+    // Realizar consulta no Firestore
     final snapshot = await _db
         .collection(FirestoreCollections.units)
         .orderBy(UnitFields.name)
@@ -28,5 +28,18 @@ class UnitFirestoreDataSource {
     return snapshot.docs
         .map((doc) => UnitModel.fromFirestore(doc.data(), doc.id))
         .toList();
+  }
+
+  /// Obtêm uma unidade escolar pelo seu ID.
+  Future<UnitModel?> getUnitById(String unitId) async {
+    // Realizar consulta no Firestore
+    final doc = await _db
+        .collection(FirestoreCollections.units)
+        .doc(unitId)
+        .get();
+    // Verificar se o documento existe
+    if (!doc.exists) return null;
+    // Mapear documento para modelo
+    return UnitModel.fromFirestore(doc.data()!, doc.id);
   }
 }
