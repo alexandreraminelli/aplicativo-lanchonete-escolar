@@ -6,8 +6,8 @@ import 'package:gosnack_client/features/unit_cafeteria_selection/data/repositori
 import 'package:gosnack_client/features/unit_cafeteria_selection/data/repositories/unit_repository_impl.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/interfaces/cafeteria_repository.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/interfaces/unit_repository.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/get_cafeterias_by_unit.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/get_units.dart';
+import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/get_cafeterias_by_unit_usecase.dart';
+import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/get_units_usecase.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/controllers/unit_cafeteria_selection_controller.dart';
 
 /// Binding para injeção de dependências do módulo de seleção de
