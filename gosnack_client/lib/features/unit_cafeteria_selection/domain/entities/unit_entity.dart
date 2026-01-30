@@ -1,8 +1,5 @@
 /// Entidade que representa uma unidade escolar.
-class Unit {
-  // -- Public Constructor -------------------------------------------------- //
-  const Unit({required this.id, required this.name});
-
+class UnitEntity {
   // -- Public Instance Variables ------------------------------------------- //
 
   /// ID da unidade no Firestore.
@@ -10,4 +7,7 @@ class Unit {
 
   /// Nome da unidade escolar.
   final String name;
+
+  // -- Public Constructor -------------------------------------------------- //
+  const UnitEntity({required this.id, required this.name});
 }

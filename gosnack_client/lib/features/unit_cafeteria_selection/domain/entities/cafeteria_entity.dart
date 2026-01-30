@@ -1,13 +1,5 @@
 /// Entidade que representa uma lanchonete.
-class Cafeteria {
-  // -- Public Constructor -------------------------------------------------- //
-  const Cafeteria({
-    required this.id,
-    required this.name,
-    required this.location,
-    this.phones = const [],
-  });
-
+class CafeteriaEntity {
   // -- Public Instance Variables ------------------------------------------- //
 
   /// ID da lanchonete no Firestore.
@@ -23,4 +15,12 @@ class Cafeteria {
   final List<String> phones;
 
   /// TODO: Horários de funcionamento da lanchonete.
+
+  // -- Public Constructor -------------------------------------------------- //
+  const CafeteriaEntity({
+    required this.id,
+    required this.name,
+    required this.location,
+    this.phones = const [],
+  });
 }

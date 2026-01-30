@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/cafeteria.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/unit.dart';
+import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/cafeteria_entity.dart';
+import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/unit_entity.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/get_cafeterias_by_unit_usecase.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/get_units_usecase.dart';
 
@@ -18,12 +18,12 @@ class UnitCafeteriaSelectionController extends GetxController {
   // -- State Variables ----------------------------------------------------- //
 
   // -- Listas Observáveis
-  final RxList<Unit> units = <Unit>[].obs;
-  final RxList<Cafeteria> cafeterias = <Cafeteria>[].obs;
+  final RxList<UnitEntity> units = <UnitEntity>[].obs;
+  final RxList<CafeteriaEntity> cafeterias = <CafeteriaEntity>[].obs;
 
   // -- Entidades selecionadas
-  final Rx<Unit?> selectedUnit = Rx<Unit?>(null);
-  final Rx<Cafeteria?> selectedCafeteria = Rx<Cafeteria?>(null);
+  final Rx<UnitEntity?> selectedUnit = Rx<UnitEntity?>(null);
+  final Rx<CafeteriaEntity?> selectedCafeteria = Rx<CafeteriaEntity?>(null);
 
   // -- Status de carregamento
   final RxBool isLoadingUnits = false.obs;
@@ -57,7 +57,7 @@ class UnitCafeteriaSelectionController extends GetxController {
   }
 
   /// Atualizar unidade selecionada e carregar suas lanchonetes.
-  Future<void> selectUnit(Unit unit) async {
+  Future<void> selectUnit(UnitEntity unit) async {
     // Atualizar estados
     selectedUnit.value = unit; // Atualizar estado de seleção
     selectedCafeteria.value = null; // Limpar seleção de lanchonete
@@ -67,7 +67,7 @@ class UnitCafeteriaSelectionController extends GetxController {
   }
 
   /// Atualizar lanchonete selecionada.
-  void selectCafeteria(Cafeteria cafeteria) {
+  void selectCafeteria(CafeteriaEntity cafeteria) {
     selectedCafeteria.value = cafeteria;
   }
 

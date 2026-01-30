@@ -1,4 +1,4 @@
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/cafeteria.dart';
+import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/cafeteria_entity.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/interfaces/cafeteria_repository.dart';
 
 /// Use Case para obter todas as lanchonetes de uma unidade escolar específica
@@ -16,7 +16,7 @@ class GetCafeteriasByUnitUseCase {
 
   /// Executa o Use Case para obter todas as lanchonetes de uma unidade
   /// escolar específica.
-  Future<List<Cafeteria>> call(String unitId) {
+  Future<List<CafeteriaEntity>> call(String unitId) {
     return repository.getCafeteriasByUnitId(unitId);
   }
 }

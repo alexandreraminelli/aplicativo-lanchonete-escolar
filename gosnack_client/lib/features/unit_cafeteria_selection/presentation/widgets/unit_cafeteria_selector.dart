@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:gosnack_client/common/widgets/inputs/dropdown_menu.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/cafeteria.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/unit.dart';
+import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/cafeteria_entity.dart';
+import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/unit_entity.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/controllers/unit_cafeteria_selection_controller.dart';
 import 'package:gosnack_client/utils/constants/content/texts/main_texts.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
@@ -32,7 +32,7 @@ class UnitCafeteriaSelector extends GetView<UnitCafeteriaSelectionController> {
           spacing: KSizes.spacingBtwFields,
           children: [
             // -- Dropdown de unidades
-            AppDropdownMenu<Unit>(
+            AppDropdownMenu<UnitEntity>(
               label: KMainTexts.unit,
               // Lista de unidades
               dropdownMenuEntries: controller.units
@@ -49,7 +49,7 @@ class UnitCafeteriaSelector extends GetView<UnitCafeteriaSelectionController> {
             ),
 
             // -- Dropdown de lanchonetes
-            AppDropdownMenu<Cafeteria>(
+            AppDropdownMenu<CafeteriaEntity>(
               label: KMainTexts.cafeteria,
               // Desabilitar se nenhuma unidade selecionada ou está carregando
               enabled:
