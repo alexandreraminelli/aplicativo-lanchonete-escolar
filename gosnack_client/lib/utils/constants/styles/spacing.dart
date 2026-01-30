@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 
 /// Contantes de espaçamentos EdgeInsets para padding e margin.
-class KSpacing {
-  KSpacing._(); // Construtor privado para evitar instanciação
-
+abstract final class KSpacing {
   // -- Todos os Cantos --- ------------------------------------------------- //
   static const EdgeInsets allXs = EdgeInsets.all(KSizes.xs);
   static const EdgeInsets allSm = EdgeInsets.all(KSizes.sm);

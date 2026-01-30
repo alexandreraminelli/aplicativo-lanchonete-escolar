@@ -1,9 +1,7 @@
 import 'package:hugeicons/hugeicons.dart';
 
 /// Constantes dos ícones do Hugeicons usados na aplicação para cada contexto.
-class KIcons {
-  KIcons._(); // evitar instanciação
-
+abstract final class KIcons {
   // -- Actions ------------------------------------------------------------- //
   // -- CRUD
   static const create = HugeIcons.strokeRoundedAdd01;

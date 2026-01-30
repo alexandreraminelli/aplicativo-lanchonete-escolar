@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// Constantes das cores utilizadas na aplicação.
-class KColors {
-  KColors._(); // Construtor privado para evitar instanciação
-
+abstract final class KColors {
   // -- Shade scales --------------------------------------------------------- //
-
-  // Primary
+  // -- Primary
   static const Color primary50 = Color(0xFFFFF9ED);
   static const Color primary100 = Color(0xFFFFF2D4);
   static const Color primary200 = Color(0xFFFFE0A9);
@@ -18,7 +15,7 @@ class KColors {
   static const Color primary800 = Color(0xFF9C4210);
   static const Color primary900 = Color(0xFF7D3811);
 
-  // Zinc
+  // -- Zinc
   static const Color zinc50 = Color(0xFFFAFAFA);
   static const Color zinc100 = Color(0xFFF4F4F5);
   static const Color zinc200 = Color(0xFFE4E4E7);
@@ -30,7 +27,7 @@ class KColors {
   static const Color zinc800 = Color(0xFF27272A);
   static const Color zinc900 = Color(0xFF18181B);
 
-  // Success
+  // -- Success
   static const Color success50 = Color(0xFFE8FAF0);
   static const Color success100 = Color(0xFFD1F4E0);
   static const Color success200 = Color(0xFFA2E9C1);
@@ -42,7 +39,7 @@ class KColors {
   static const Color success800 = Color(0xFF095028);
   static const Color success900 = Color(0xFF052814);
 
-  // Warning
+  // -- Warning
   static const Color warning50 = Color(0xFFFEFCE8);
   static const Color warning100 = Color(0xFFFDEDD3);
   static const Color warning200 = Color(0xFFFBDBA7);
@@ -54,7 +51,7 @@ class KColors {
   static const Color warning800 = Color(0xFF62420E);
   static const Color warning900 = Color(0xFF312107);
 
-  // Danger
+  // -- Danger
   static const Color danger50 = Color(0xFFFEE7EF);
   static const Color danger100 = Color(0xFFFDD0DF);
   static const Color danger200 = Color(0xFFFAA0BF);
@@ -71,14 +68,17 @@ class KColors {
   static const Color black = Colors.black;
 
   static const Color primary = primary500;
-  static const Color success = success500;
-  static const Color warning = warning500;
-  static const Color danger = danger500;
-
   static const Color primaryForeground = Colors.white;
+
   static const Color secondaryForeground = Colors.white;
+
+  static const Color success = success500;
   static const Color successForeground = Colors.black;
+
+  static const Color warning = warning500;
   static const Color warningForeground = Colors.black;
+
+  static const Color danger = danger500;
   static const Color dangerForeground = Colors.white;
 
   // -- Content scale ------------------------------------------------------- //

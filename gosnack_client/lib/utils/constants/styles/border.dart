@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 
 /// Constantes de estilo para bordas.
-class KBorder {
-  KBorder._(); // evitar instanciação
-
+abstract final class KBorder {
+  // -- Border Width -------------------------------------------------------- //
   static const double defaultWidth = 2.0;
 
   // -- Border Radius ------------------------------------------------------- //

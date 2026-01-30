@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 
 /// Instâncias pré-definidas de formatos.
-class KShape {
-  KShape._(); // evitar instanciação
-
-  // -- Cantos arredondados ------------------------------------------------- //
+abstract final class KShape {
+  // -- Containers com Border Radius ---------------------------------------- //
   static final borderRadiusSm = RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(KSizes.radiusSm),
   );

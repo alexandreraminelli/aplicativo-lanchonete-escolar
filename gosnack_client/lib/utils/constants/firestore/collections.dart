@@ -1,5 +1,5 @@
 /// Nomes das coleções raiz do Firestore.
-abstract class FirestoreCollections {
+abstract final class FirestoreCollections {
   // -- Root Collections ---------------------------------------------------- //
 
   /// Coleção de categorias.

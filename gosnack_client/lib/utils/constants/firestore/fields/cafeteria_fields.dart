@@ -1,5 +1,5 @@
 /// Campos da subcoleção de lanchonetes no Firestore.
-abstract class CafeteriaFields {
+abstract final class CafeteriaFields {
   static const String name = 'name';
 
   static const String location = 'location';
