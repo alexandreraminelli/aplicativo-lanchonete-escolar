@@ -3,6 +3,8 @@ import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/unit_entity.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/get_cafeterias_by_unit_usecase.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/get_units_usecase.dart';
+import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/select_unit_and_cafeteria_usecase.dart';
+import 'package:logger/logger.dart';
 
 /// Controlador de estado para seleção de unidade e lanchonete.
 class UnitCafeteriaSelectionController extends GetxController {
@@ -10,10 +12,19 @@ class UnitCafeteriaSelectionController extends GetxController {
 
   final GetUnitsUseCase _getUnits;
   final GetCafeteriasByUnitUseCase _getCafeteriasByUnit;
+  final SelectUnitAndCafeteriaUseCase _selectUnitAndCafeteriaUseCase;
+
+  // -- Private Instance Variables ------------------------------------------ //
+
+  final Logger _logger = Logger();
 
   // -- Public Constructor -------------------------------------------------- //
 
-  UnitCafeteriaSelectionController(this._getUnits, this._getCafeteriasByUnit);
+  UnitCafeteriaSelectionController(
+    this._getUnits,
+    this._getCafeteriasByUnit,
+    this._selectUnitAndCafeteriaUseCase,
+  );
 
   // -- State Variables ----------------------------------------------------- //
 
@@ -51,6 +62,8 @@ class UnitCafeteriaSelectionController extends GetxController {
     try {
       isLoadingUnits.value = true; // sinalizar início do carregamento
       units.assignAll(await _getUnits());
+    } catch (e) {
+      _logger.e('Erro ao carregar unidades: $e');
     } finally {
       isLoadingUnits.value = false; // sinalizar fim do carregamento
     }
@@ -69,6 +82,19 @@ class UnitCafeteriaSelectionController extends GetxController {
   /// Atualizar lanchonete selecionada.
   void selectCafeteria(CafeteriaEntity cafeteria) {
     selectedCafeteria.value = cafeteria;
+  }
+
+  /// Salva os IDs da unidade e lanchonete selecionadas localmente.
+  Future<void> saveSelections() async {
+    // Verificar se a seleção está completa
+    if (!isSelectionComplete) {
+      throw Exception('Seleção de unidade e lanchonete incompleta.');
+    } else {
+      await _selectUnitAndCafeteriaUseCase.call(
+        unitId: selectedUnit.value!.id,
+        cafeteriaId: selectedCafeteria.value!.id,
+      );
+    }
   }
 
   // -- Private Methods ----------------------------------------------------- //

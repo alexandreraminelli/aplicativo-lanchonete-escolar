@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_instance/get_instance.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/state_manager.dart';
 import 'package:gosnack_client/features/onboarding/presentation/controllers/onboarding_controller.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/controllers/unit_cafeteria_selection_controller.dart';
-import 'package:gosnack_client/routes/routes.dart';
 import 'package:gosnack_client/utils/constants/content/icons.dart';
 import 'package:gosnack_client/utils/constants/content/texts/main_texts.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
@@ -21,7 +18,8 @@ class OnBoardingButtons extends GetView<OnBoardingController> {
   @override
   Widget build(BuildContext context) {
     // -- Controlador
-    final unitController = Get.find<UnitCafeteriaSelectionController>();
+    final unitCafeteriaController =
+        Get.find<UnitCafeteriaSelectionController>();
 
     /// -- Botão de avançar para a próxima página.
     final nextButton = Row(
@@ -49,9 +47,9 @@ class OnBoardingButtons extends GetView<OnBoardingController> {
       return SizedBox(
         width: double.infinity,
         child: ElevatedButton(
-          onPressed: unitController.isSelectionComplete
+          onPressed: unitCafeteriaController.isSelectionComplete
               // ir pra tela de login
-              ? () => Get.offAllNamed(KRoutes.signin)
+              ? () => controller.finishOnBoarding()
               // desabilitar quando ainda não selecionar
               : null,
           child: const Text(KMainTexts.continueT),

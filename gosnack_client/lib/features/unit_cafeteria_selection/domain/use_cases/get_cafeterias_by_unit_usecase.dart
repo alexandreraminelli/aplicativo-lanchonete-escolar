@@ -1,5 +1,5 @@
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/cafeteria_entity.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/interfaces/cafeteria_repository.dart';
+import 'package:gosnack_client/features/unit_cafeteria_selection/domain/interfaces/unit_cafeteria_repository.dart';
 
 /// Use Case para obter todas as lanchonetes de uma unidade escolar específica
 /// no repositório.
@@ -9,8 +9,7 @@ class GetCafeteriasByUnitUseCase {
 
   // -- Instance Variables -------------------------------------------------- //
 
-  /// Repositório de lanchonetes.
-  final CafeteriaRepository repository;
+  final UnitCafeteriaRepository repository;
 
   // -- Public Methods ------------------------------------------------------ //
 

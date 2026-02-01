@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:gosnack_client/features/authentication/presentation/screens/login_screen.dart';
 import 'package:gosnack_client/features/onboarding/presentation/screens/onboarding.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/bindings/unit_cafeteria_selection_binding.dart';
+import 'package:gosnack_client/features/unit_cafeteria_selection/unit_cafeteria_selection_binding.dart';
 import 'package:gosnack_client/routes/routes.dart';
 
 /// Configuração das rotas da aplicação.
