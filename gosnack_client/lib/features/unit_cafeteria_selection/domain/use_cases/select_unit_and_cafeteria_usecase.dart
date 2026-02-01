@@ -4,7 +4,6 @@ import 'package:gosnack_client/features/unit_cafeteria_selection/domain/interfac
 class SelectUnitAndCafeteriaUseCase {
   // -- Instance Variables -------------------------------------------------- //
 
-  /// Repositório .
   final UnitCafeteriaRepository _repository;
 
   // -- Public Constructor -------------------------------------------------- //

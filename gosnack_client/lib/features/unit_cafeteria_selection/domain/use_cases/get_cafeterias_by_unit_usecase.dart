@@ -4,18 +4,19 @@ import 'package:gosnack_client/features/unit_cafeteria_selection/domain/interfac
 /// Use Case para obter todas as lanchonetes de uma unidade escolar específica
 /// no repositório.
 class GetCafeteriasByUnitUseCase {
-  // -- Public Constructor -------------------------------------------------- //
-  GetCafeteriasByUnitUseCase(this.repository);
-
   // -- Instance Variables -------------------------------------------------- //
 
-  final UnitCafeteriaRepository repository;
+  final UnitCafeteriaRepository _repository;
+
+  // -- Public Constructor -------------------------------------------------- //
+
+  GetCafeteriasByUnitUseCase(this._repository);
 
   // -- Public Methods ------------------------------------------------------ //
 
   /// Executa o Use Case para obter todas as lanchonetes de uma unidade
   /// escolar específica.
   Future<List<CafeteriaEntity>> call(String unitId) {
-    return repository.getCafeteriasByUnitId(unitId);
+    return _repository.getCafeteriasByUnitId(unitId);
   }
 }
