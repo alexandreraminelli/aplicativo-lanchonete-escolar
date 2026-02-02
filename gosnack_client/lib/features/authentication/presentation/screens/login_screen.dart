@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/instance_manager.dart';
 import 'package:gosnack_client/common/widgets/appbar/main_appbar.dart';
 import 'package:gosnack_client/common/widgets/text/section_header.dart';
 import 'package:gosnack_client/features/authentication/presentation/texts/auth_texts.dart';
 import 'package:gosnack_client/features/authentication/presentation/widgets/login_form.dart';
+import 'package:gosnack_client/routes/routes.dart';
 import 'package:gosnack_client/utils/constants/content/icons.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:gosnack_client/utils/constants/styles/spacing.dart';
@@ -22,11 +25,10 @@ class LoginScreen extends StatelessWidget {
     final createAccountButton = SizedBox(
       width: double.infinity,
       child: FilledButton.icon(
-        onPressed: () {
-          // TODO: abrir tela de Criar Conta
-        },
         label: const Text(AuthTexts.createAccount),
         icon: const HugeIcon(icon: KIcons.create),
+        // abrir tela de criar conta
+        onPressed: () => Get.toNamed(KRoutes.signup),
       ),
     );
 
@@ -50,12 +52,10 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             children: [
               // -- Header
-              const Padding(
+              const SectionHeader(
+                title: AuthTexts.loginPageTitle,
+                subtitle: AuthTexts.loginPageSubtitle,
                 padding: KSpacing.verticalLg,
-                child: SectionHeader(
-                  title: AuthTexts.loginPageTitle,
-                  subtitle: AuthTexts.loginPageSubtitle,
-                ),
               ),
 
               // -- Form
