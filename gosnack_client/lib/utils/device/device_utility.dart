@@ -40,13 +40,13 @@ class DeviceUtils {
   }
 
   /// Obter a largura da tela do dispositivo.
-  static double getScreenHeight() {
-    return MediaQuery.of(Get.context!).size.height;
+  static double getScreenHeight(BuildContext context) {
+    return MediaQuery.of(context).size.height;
   }
 
   /// Obter a altura da tela do dispositivo.
-  static double getScreenWidth() {
-    return MediaQuery.of(Get.context!).size.width;
+  static double getScreenWidth(BuildContext context) {
+    return MediaQuery.of(context).size.width;
   }
 
   /// Obter a densidade de pixels do dispositivo.
@@ -55,8 +55,8 @@ class DeviceUtils {
   }
 
   /// Obter a altura da barra de status do dispositivo.
-  static double getStatusBarHeight() {
-    return MediaQuery.of(Get.context!).padding.top;
+  static double getStatusBarHeight(BuildContext context) {
+    return MediaQuery.of(context).padding.top;
   }
 
   /// Obter a altura da barra de navegação inferior do dispositivo.
@@ -76,8 +76,8 @@ class DeviceUtils {
   }
 
   /// Verificar se o teclado virtual está visível.
-  static Future<bool> isKeyboardVisible() async {
-    final viewInsets = View.of(Get.context!).viewInsets;
+  static Future<bool> isKeyboardVisible(BuildContext context) async {
+    final viewInsets = View.of(context).viewInsets;
     return viewInsets.bottom > 0;
   }
 

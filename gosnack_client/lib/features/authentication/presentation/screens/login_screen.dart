@@ -9,6 +9,7 @@ import 'package:gosnack_client/routes/routes.dart';
 import 'package:gosnack_client/utils/constants/content/icons.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:gosnack_client/utils/constants/styles/spacing.dart';
+import 'package:gosnack_client/utils/device/device_utility.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 /// Widget da tela de login.
@@ -45,29 +46,42 @@ class LoginScreen extends StatelessWidget {
 
     // -- Main Widget
     return Scaffold(
+      // -- AppBar
       appBar: const MainAppbar(),
+      // -- Body
       body: SingleChildScrollView(
-        child: Padding(
-          padding: KSpacing.horizontalScreenPadding,
-          child: Column(
-            children: [
-              // -- Header
-              const SectionHeader(
-                title: AuthTexts.loginPageTitle,
-                subtitle: AuthTexts.loginPageSubtitle,
-                padding: KSpacing.verticalLg,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight:
+                DeviceUtils.getScreenHeight(context) -
+                DeviceUtils.getAppBarHeight() -
+                DeviceUtils.getStatusBarHeight(context),
+          ),
+
+          child: IntrinsicHeight(
+            child: Padding(
+              padding: KSpacing.horizontalScreenPadding,
+              child: Column(
+                children: [
+                  // -- Header
+                  const SectionHeader(
+                    title: AuthTexts.loginPageTitle,
+                    subtitle: AuthTexts.loginPageSubtitle,
+                    padding: KSpacing.verticalLg,
+                  ),
+
+                  // -- Form
+                  const LoginForm(),
+
+                  // -- Footer
+                  const Spacer(),
+                  createAccountButton,
+                  const SizedBox(height: KSizes.spacingBtwItems),
+                  guestLoginButton,
+                  const SizedBox(height: KSizes.spacingBtwSections),
+                ],
               ),
-
-              // -- Form
-              const LoginForm(),
-
-              const SizedBox(height: KSizes.spacingBtwSections),
-
-              // -- Footer
-              createAccountButton,
-              const SizedBox(height: KSizes.spacingBtwItems),
-              guestLoginButton,
-            ],
+            ),
           ),
         ),
       ),
