@@ -26,6 +26,7 @@ abstract final class KIcons {
   // -- Users Fields
   static const email = HugeIcons.strokeRoundedMail01;
   static const password = HugeIcons.strokeRoundedLockPassword;
+  static const name = HugeIcons.strokeRoundedIdentityCard;
 
   // -- Entities ------------------------------------------------------------ //
   // -- Unidades e Lanchonetes

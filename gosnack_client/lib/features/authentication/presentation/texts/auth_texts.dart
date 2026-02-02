@@ -5,9 +5,17 @@ abstract final class AuthTexts {
   static const String loginPageSubtitle =
       'Entre com uma conta de estudante ou professor para fazer pedidos, acompanhar o cardápio e aproveitar suas vantagens na lanchonete.';
 
+  // -- Signup Screen ------------------------------------------------------- //
+  static const String signupPageTitle = 'Crie sua conta no Gosnack';
+  static const String signupPageSubtitle =
+      'Crie sua conta de estudante ou professor para fazer pedidos, acompanhar o cardápio e aproveitar todas as vantagens da lanchonete.';
+
   // -- Fields -------------------------------------------------------------- //
   static const String email = 'E-mail acadêmico';
   static const String password = 'Senha';
+
+  static const String firstName = 'Primeiro nome';
+  static const String lastName = 'Sobrenome';
 
   // -- Actions ------------------------------------------------------------- //
   static const String login = 'Entrar';
