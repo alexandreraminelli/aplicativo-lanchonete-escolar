@@ -17,7 +17,7 @@ class SectionHeader extends StatelessWidget {
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      spacing: KSizes.xs, // gap
+      spacing: KSizes.sm, // gap
       children: [
         // -- Título
         Text(

@@ -23,6 +23,10 @@ abstract final class KIcons {
   static const showPassword = HugeIcons.strokeRoundedView;
   static const hidePassword = HugeIcons.strokeRoundedViewOffSlash;
 
+  // -- Users Fields
+  static const email = HugeIcons.strokeRoundedMail01;
+  static const password = HugeIcons.strokeRoundedLockPassword;
+
   // -- Entities ------------------------------------------------------------ //
   // -- Unidades e Lanchonetes
   static const unit = HugeIcons.strokeRoundedSchool;

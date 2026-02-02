@@ -23,7 +23,10 @@ abstract final class KSizes {
   static const double horizontalScreenPadding = md;
 
   // -- Spacing Between Elements -------------------------------------------- //
-  static const double spacingBtwFields = 20.0;
+
+  static const double spacingBtwFields = md;
+  static const double spacingBtwItems = md;
+  static const double spacingBtwSections = xl;
 
   // -- Border Radius ------------------------------------------------------- //
   static const double radiusSm = 8.0;

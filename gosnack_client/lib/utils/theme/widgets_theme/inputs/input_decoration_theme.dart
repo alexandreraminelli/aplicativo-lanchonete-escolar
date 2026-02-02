@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:gosnack_client/utils/constants/styles/border.dart';
 import 'package:gosnack_client/utils/constants/styles/colors.dart';
+import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:gosnack_client/utils/constants/styles/spacing.dart';
 
 /// Tema utilizado nos elementos de input do Material.
 class AppInputDecorationTheme {
   AppInputDecorationTheme._(); // evitar instanciação
+
+  // -- Private Variables --------------------------------------------------- //
+  static const iconConstraints = BoxConstraints(
+    minWidth: KSizes.xl2,
+    minHeight: KSizes.leadingLg,
+  );
+
+  // -- Private Methods ----------------------------------------------------- //
 
   /// BorderSide com espessura definida e cor personalizada.
   static BorderSide _borderSide({required Color color}) => BorderSide(
@@ -18,6 +27,8 @@ class AppInputDecorationTheme {
     borderRadius: KBorder.borderRadiusLg, // cantos arredondados
     borderSide: _borderSide(color: color),
   );
+
+  // -- Base Theme ---------------------------------------------------------- //
 
   /// Tema base de InputDecorationTheme com propriedades compartilhadas no modo claro e escuro.
   static InputDecorationThemeData _base({
@@ -81,6 +92,7 @@ class AppInputDecorationTheme {
       // label
       labelStyle: labelTextStyle,
       floatingLabelStyle: labelTextStyle,
+      floatingLabelAlignment: FloatingLabelAlignment.start,
       // -- Texto do valor
       hintStyle: textStyleColor,
 
@@ -88,8 +100,13 @@ class AppInputDecorationTheme {
       // Cor dos ícones
       prefixIconColor: foregroundColor,
       suffixIconColor: foregroundColor,
+      // Tamanho dos ícones
+      prefixIconConstraints: iconConstraints,
+      suffixIconConstraints: iconConstraints,
     );
   }
+
+  // -- Light Theme --------------------------------------------------------- //
 
   /// Tema de input para o modo claro.
   static final InputDecorationThemeData light = _base(
@@ -100,6 +117,8 @@ class AppInputDecorationTheme {
     textColor: KColors.zinc700,
     disabledTextColor: KColors.zinc400,
   );
+
+  // -- Dark Theme ---------------------------------------------------------- //
 
   /// Tema de input para o modo escuro.
   static final InputDecorationThemeData dark = _base(
