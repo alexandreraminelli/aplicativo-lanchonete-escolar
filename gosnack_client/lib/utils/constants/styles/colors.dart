@@ -68,18 +68,18 @@ abstract final class KColors {
   static const Color black = Colors.black;
 
   static const Color primary = primary500;
-  static const Color primaryForeground = Colors.white;
+  static const Color primaryForeground = black;
 
-  static const Color secondaryForeground = Colors.white;
+  static const Color secondaryForeground = white;
 
   static const Color success = success500;
-  static const Color successForeground = Colors.black;
+  static const Color successForeground = black;
 
   static const Color warning = warning500;
-  static const Color warningForeground = Colors.black;
+  static const Color warningForeground = black;
 
   static const Color danger = danger500;
-  static const Color dangerForeground = Colors.white;
+  static const Color dangerForeground = white;
 
   // -- Content scale ------------------------------------------------------- //
   static const Color content1light = white;
