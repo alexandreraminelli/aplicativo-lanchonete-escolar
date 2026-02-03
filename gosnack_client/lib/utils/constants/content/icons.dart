@@ -8,7 +8,11 @@ abstract final class KIcons {
   static const edit = HugeIcons.strokeRoundedEdit04;
   static const delete = HugeIcons.strokeRoundedDelete02;
 
+  // -- Status -------------------------------------------------------------- //
   static const info = HugeIcons.strokeRoundedInformationCircle;
+  static const success = HugeIcons.strokeRoundedCheckmarkCircle02;
+  static const warning = HugeIcons.strokeRoundedAlert02;
+  static const error = HugeIcons.strokeRoundedMultiplicationSignCircle;
 
   // -- Arrows -------------------------------------------------------------- //
   static const arrowLeft = HugeIcons.strokeRoundedArrowLeft01;

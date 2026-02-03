@@ -1,28 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:gosnack_client/utils/constants/styles/colors.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:gosnack_client/utils/constants/styles/spacing.dart';
 
 /// Utilitário para exibir notificações de SnackBar e Toast.
 class AppToasts {
-  // -- Private Static Variables -------------------------------------------- //
-
-  // Comportamento da SnackBar
-  static const _position = SnackPosition.TOP;
-  static const _duration = Duration(seconds: 3);
-
-  static const _titleTextStyle = TextStyle(
-    fontSize: KSizes.fontSm,
-    fontWeight: FontWeight.w500,
-  );
-
-  // -- Public Methods ------------------------------------------------------ //
-
-  /// Oculta a SnackBar atualmente exibida.
-  static void hideSnackBar(BuildContext context) {
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-  }
+  /// Duração padrão da SnackBar.
+  static const _duration = Duration(seconds: 5);
 
   /// Exibe um toast
   static void customToast(BuildContext context, {required String message}) {
