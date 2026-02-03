@@ -3,14 +3,12 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
-import 'package:get/route_manager.dart';
 import 'package:get/state_manager.dart';
-import 'package:gosnack_client/utils/popups/toasts.dart';
 
 /// Utilitário para gerenciar o status de conectividade da rede.
 /// Fornece métodos para verificar e lidar com mudanças de conectividade.
 class NetworkManager extends GetxController {
-  // -- Instância Singleton
+  /// Instância singleton do NetworkManager.
   static NetworkManager get instance => Get.find();
 
   // -- Private Instances Variables ----------------------------------------- //
@@ -25,47 +23,56 @@ class NetworkManager extends GetxController {
   final RxList<ConnectivityResult> _connectionStatus =
       <ConnectivityResult>[].obs;
 
-  // -- Public Override Methods --------------------------------------------- //
+  // -- Lifecycle Methods --------------------------------------------------- //
 
-  // Iniciar monitoramento de conectividade
+  // Iniciar monitoramento da conectividade
   @override
   void onInit() {
     super.onInit();
+    _initializeConnectivityListener();
+  }
+
+  // Cancela a assinatura de monitoramento de conectividade.
+  @override
+  void onClose() {
+    _connectivitySubscription.cancel();
+    super.onClose();
+  }
+
+  // -- Getters ------------------------------------------------------------- //
+
+  /// Obtém o status atual de conectividade.
+  List<ConnectivityResult> get connectionStatus => _connectionStatus;
+
+  /// Verifica se está offiline.
+  bool get isOffline => _connectionStatus.contains(ConnectivityResult.none);
+
+  ///Verifica se está online.
+  bool get isOnline => !isOffline;
+
+  // -- Private Methods ----------------------------------------------------- //
+
+  /// Inicializa o listener para mudanças de conectividade.
+  void _initializeConnectivityListener() {
     _connectivitySubscription = _connectivity.onConnectivityChanged.listen(
       _updateConnectionStatus,
     );
   }
 
-  // Cancelar assinatura da conectividade ativa.
-  @override
-  void onClose() {
-    super.onClose();
-    _connectivitySubscription.cancel();
-  }
-
-  /// -- Private Methods ---------------------------------------------------- //
-
-  /// Atualiza o status de conectividade com base nos resultados fornecidos.
-  Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
+  /// Atualiza o status de conectividade.
+  void _updateConnectionStatus(List<ConnectivityResult> result) {
     _connectionStatus.value = result;
-    if (result.contains(ConnectivityResult.none)) {
-      // Se não houver conexão: mensagem de aviso
-      // TODO: substituir por toast de error
-      AppToasts.customToast(Get.context!, message: "No Internet Connection");
-    }
   }
 
   /// -- Public Methods ----------------------------------------------------- //
 
   /// Verifica se o dispositivo está conectado à internet.
+  ///
+  /// Retorna `true` se estiver conectado, `false` caso contrário.
   Future<bool> isConnected() async {
     try {
       final result = await _connectivity.checkConnectivity();
-      if (result.any((element) => element == ConnectivityResult.none)) {
-        return false; // Sem conexão
-      } else {
-        return true; // Com conexão
-      }
+      return !result.contains(ConnectivityResult.none);
     } on PlatformException catch (_) {
       return false;
     }
