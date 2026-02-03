@@ -12,7 +12,7 @@ import 'package:gosnack_client/features/authentication/domain/use_cases/signout_
 import 'package:gosnack_client/features/authentication/presentation/controllers/auth_controller.dart';
 
 /// Bindings para injeção de dependências no módulo de autenticação.
-class AuthenticationBindings extends Bindings {
+class AuthenticationBinding extends Bindings {
   @override
   void dependencies() {
     // -- Injetar Data Sources

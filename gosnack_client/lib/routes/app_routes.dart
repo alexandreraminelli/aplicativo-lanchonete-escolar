@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:gosnack_client/features/authentication/presentation/bindings/authentication_bindings.dart';
+import 'package:gosnack_client/features/authentication/presentation/bindings/signup_binding.dart';
 import 'package:gosnack_client/features/authentication/presentation/screens/login_screen.dart';
 import 'package:gosnack_client/features/authentication/presentation/screens/signup_screen.dart';
 import 'package:gosnack_client/features/onboarding/presentation/screens/onboarding.dart';
@@ -20,7 +22,11 @@ class AppRoutes {
     // Login
     GetPage(name: KRoutes.signin, page: () => const LoginScreen()),
     // Criar Conta
-    GetPage(name: KRoutes.signup, page: () => const SignUpScreen()),
+    GetPage(
+      name: KRoutes.signup,
+      page: () => const SignUpScreen(),
+      bindings: [AuthenticationBinding(), SignUpBinding()],
+    ),
 
     // -- Main Screens ------------------------------------------------------ //
   ];
