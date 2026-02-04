@@ -39,6 +39,10 @@ abstract final class KIcons {
 
   static const location = HugeIcons.strokeRoundedLocation01;
 
+  // -- Errors and Warnings ------------------------------------------------- //
+
+  static const noInternet = HugeIcons.strokeRoundedNoInternet;
+
   // -- Screens ------------------------------------------------------------- //
   static const home = HugeIcons.strokeRoundedHome09;
   static const menu = HugeIcons.strokeRoundedMenuRestaurant;

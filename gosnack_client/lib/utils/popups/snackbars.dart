@@ -89,6 +89,7 @@ abstract class AppSnackBars {
   static void showSuccessSnackBar({
     required String title,
     required String message,
+    List<List<dynamic>> icon = KIcons.success,
 
     String? buttonText,
     Function()? buttonOnPressed,
@@ -96,7 +97,7 @@ abstract class AppSnackBars {
     showSnackBar(
       title: title,
       message: message,
-      icon: KIcons.success,
+      icon: icon,
 
       buttonText: buttonText,
       buttonOnPressed: buttonOnPressed,
@@ -110,6 +111,7 @@ abstract class AppSnackBars {
   static void showWarningSnackBar({
     required String title,
     required String message,
+    List<List<dynamic>> icon = KIcons.warning,
 
     String? buttonText,
     Function()? buttonOnPressed,
@@ -117,7 +119,7 @@ abstract class AppSnackBars {
     showSnackBar(
       title: title,
       message: message,
-      icon: KIcons.warning,
+      icon: icon,
 
       buttonText: buttonText,
       buttonOnPressed: buttonOnPressed,
@@ -131,6 +133,7 @@ abstract class AppSnackBars {
   static void showErrorSnackBar({
     required String title,
     required String message,
+    List<List<dynamic>> icon = KIcons.error,
 
     String? buttonText,
     Function()? buttonOnPressed,
@@ -138,7 +141,7 @@ abstract class AppSnackBars {
     showSnackBar(
       title: title,
       message: message,
-      icon: KIcons.error,
+      icon: icon,
 
       buttonText: buttonText,
       buttonOnPressed: buttonOnPressed,
