@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gosnack_client/features/authentication/domain/entities/user_entity.dart';
+import 'package:gosnack_client/utils/constants/firestore/fields/user_fields.dart';
 
 /// Modelo de dados que representa um usuário autenticado.
 ///
@@ -10,6 +11,9 @@ class UserModel extends UserEntity {
   const UserModel({
     required super.id,
     required super.email,
+    required super.firstName,
+    required super.lastName,
+
     required super.isEmailVerified,
   });
 
@@ -21,6 +25,21 @@ class UserModel extends UserEntity {
       id: user.uid,
       email: user.email ?? '',
       isEmailVerified: user.emailVerified,
+      // valores apenas no Firestore:
+      firstName: '',
+      lastName: '',
+    );
+  }
+
+  /// Cria um [UserModel] a partir dos dados do Firestore.
+  factory UserModel.fromFirestore(Map<String, dynamic> data, String uid) {
+    return UserModel(
+      id: uid,
+      email: data[UserFields.email] ?? '',
+      firstName: data[UserFields.firstName] ?? '',
+      lastName: data[UserFields.lastName] ?? '',
+      // valores apenas do Auth:
+      isEmailVerified: false,
     );
   }
 
@@ -28,6 +47,12 @@ class UserModel extends UserEntity {
 
   /// Converte o modelo [UserModel] para a entidade de domínio [UserEntity].
   UserEntity toEntity() {
-    return UserEntity(id: id, email: email, isEmailVerified: isEmailVerified);
+    return UserEntity(
+      id: id,
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+      isEmailVerified: isEmailVerified,
+    );
   }
 }
