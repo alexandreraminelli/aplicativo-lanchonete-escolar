@@ -17,6 +17,14 @@ abstract class AuthenticationRepository {
     required String password,
   });
 
+  /// Registra um novo usuário com e-mail, senha, nome e sobrenome.
+  Future<UserEntity> signUpWithEmailAndPassword({
+    required String email,
+    required String password,
+    required String firstName,
+    required String lastName,
+  });
+
   /// Efetua logout do usuário atual.
   Future<void> logout();
 
