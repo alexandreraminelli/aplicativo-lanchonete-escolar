@@ -39,7 +39,7 @@ export const AUTH_TEXTS = {
 
     // Informações adicionais
     role: "Tipo de usuário",
-    status: { label: "Status", active: "Ativo", inactive: "Inativo" },
+    status: { label: "Status", active: "Ativo", inactive: "Desativado" },
   },
 
   // Papeis do usuário

@@ -48,7 +48,6 @@ export const createUser = onCall(async (request) => {
     firstName,
     lastName,
     role,
-    isActive: true,
     createdBy: requesterUid,
     createdAt: FieldValue.serverTimestamp(),
     updatedAt: FieldValue.serverTimestamp(),

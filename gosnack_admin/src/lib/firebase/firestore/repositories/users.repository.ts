@@ -2,6 +2,7 @@ import { UserModel } from "@/types/users/user.model"
 import { DocumentData, getDoc, getDocs, orderBy, query, QueryDocumentSnapshot } from "firebase/firestore"
 import { firestorePaths } from "../paths"
 import { UserListItem } from "@/types/users/user.list-item"
+import { auth } from "@/lib/firebase/clientApp"
 
 /** Repositório para operações CRUD na coleção de unidades escolares. */
 export class UserRepository {
@@ -11,25 +12,32 @@ export class UserRepository {
   }
 
   /**
-   * Busca todos os usuários.
+   * Busca todos os usuários usando Admin SDK via API Route.
+   * Combina dados do Firebase Auth com dados do Firestore.
    *
    * @returns Lista de usuários em uma tipagem adequada para listagem em tabelas.
    */
   static async findAll(): Promise<UserListItem[]> {
-    // Obter usuários e ordenar pelo nome
-    const snapshot = await getDocs(query(this.collectionRef, orderBy("firstName", "asc")))
+    const currentUser = auth.currentUser
 
-    return snapshot.docs.map((doc) => {
-      const data = doc.data() as UserModel
+    if (!currentUser) {
+      throw new Error("Usuário não autenticado")
+    }
 
-      return {
-        uid: doc.id,
-        fullName: `${data.firstName} ${data.lastName}`.trim(),
-        email: data.email,
-        role: data.role,
-        isActive: data.isActive,
-      }
+    const token = await currentUser.getIdToken()
+
+    // Chamar API Route que usa Admin SDK
+    const response = await fetch("/api/users", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
+
+    if (!response.ok) {
+      throw new Error("Erro ao buscar usuários")
+    }
+
+    return response.json()
   }
 
   /** Converter documento do Firestore em `UserModel`. */

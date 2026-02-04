@@ -18,8 +18,6 @@ export interface BaseUser {
 
   /** Papel do usuário. */
   role: UserRole
-  /** Se o usuário está ativo ou não. */
-  isActive: boolean
 
   /** Data de criação da conta. */
   createdAt: Timestamp

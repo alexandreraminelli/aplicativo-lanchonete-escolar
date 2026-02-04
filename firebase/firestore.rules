@@ -70,7 +70,6 @@ service cloud.firestore {
               "role",
               "createdAt",
               "updatedAt",
-              "isActive"
           ]);
 
       // Admin cria manager
@@ -87,7 +86,6 @@ service cloud.firestore {
               "createdBy",
               "createdAt",
               "updatedAt",
-              "isActive"
           ]);
 
       // Admin cria employee para qualquer lanchonete
@@ -104,7 +102,6 @@ service cloud.firestore {
               "createdBy",
               "createdAt",
               "updatedAt",
-              "isActive"
           ]);
 
 
@@ -124,7 +121,6 @@ service cloud.firestore {
               "createdBy",
               "createdAt",
               "updatedAt",
-              "isActive"
           ]);
 
       // Admin cria outro admin
@@ -139,7 +135,6 @@ service cloud.firestore {
               "createdBy",
               "createdAt",
               "updatedAt",
-              "isActive"
           ]);
 
       // -- READ
@@ -160,7 +155,7 @@ service cloud.firestore {
           && request.resource.data.diff(resource.data).changedKeys().hasOnly([
               "firstName",
               "lastName",
-              "updatedAt"
+              "updatedAt",
           ]);
 
       // Admin pode atualizar qualquer usuário
@@ -170,7 +165,6 @@ service cloud.firestore {
               "unitId",
               "cafeteriaId",
               "updatedAt",
-              "isActive"
           ]);
 
       // -- DELETE
