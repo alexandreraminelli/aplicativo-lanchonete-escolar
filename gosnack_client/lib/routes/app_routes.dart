@@ -3,6 +3,7 @@ import 'package:gosnack_client/features/authentication/presentation/bindings/aut
 import 'package:gosnack_client/features/authentication/presentation/bindings/signup_binding.dart';
 import 'package:gosnack_client/features/authentication/presentation/screens/login_screen.dart';
 import 'package:gosnack_client/features/authentication/presentation/screens/signup_screen.dart';
+import 'package:gosnack_client/features/authentication/presentation/screens/verify_email_screen.dart';
 import 'package:gosnack_client/features/home/presentation/screens/home_screen.dart';
 import 'package:gosnack_client/features/onboarding/presentation/screens/onboarding.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/unit_cafeteria_selection_binding.dart';
@@ -28,6 +29,8 @@ class AppRoutes {
       page: () => const SignUpScreen(),
       bindings: [AuthenticationBinding(), SignUpBinding()],
     ),
+    // Verificar e-mail
+    GetPage(name: KRoutes.verifyEmail, page: () => const VerifyEmailScreen()),
 
     // -- Main Screens ------------------------------------------------------ //
     // Home
