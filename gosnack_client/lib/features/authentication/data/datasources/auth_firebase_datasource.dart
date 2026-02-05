@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:gosnack_client/utils/exceptions/firebase_exception.dart';
+import 'package:gosnack_client/utils/logging/logger.dart';
 
 /// Datasource remoto que obtêm os dados de autenticação do Firebase Auth
 /// e do Firestore.
@@ -25,24 +27,71 @@ class AuthFirebaseDatasource {
     required String email,
     required String password,
   }) async {
-    // Realizar login e retornar credenciais
-    final userCredential = await _auth.signInWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
-    return userCredential.user!;
+    try {
+      // Realizar login e retornar credenciais
+      final userCredential = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      // Sucesso
+      LoggerHelp.info(
+        'Usuário logado com sucesso: ${userCredential.user?.uid}',
+      );
+      return userCredential.user!;
+    } on FirebaseException catch (e) {
+      LoggerHelp.error(
+        'Erro ao efetuar login: Código: ${e.code}, Mensagem: ${e.message}',
+      );
+      throw AppFirebaseException(e.code);
+    } catch (e) {
+      LoggerHelp.error('Erro ao efetuar login: $e');
+      throw AppFirebaseException('unknown');
+    }
   }
 
   /// Cadastra um novo usuário no Firebase Auth com e-mail e senha.
-  Future<User> registerWithEmailAndPassword(
-    // TODO: adicionar parâmetros
-  ) {
-    // TODO: implementar criação de conta
-    throw UnimplementedError();
+  Future<UserCredential> registerWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      // Criar conta no Firebase Auth
+      final userCredential = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      // Sucesso
+      LoggerHelp.info(
+        'Usuário registrado com sucesso: ${userCredential.user?.uid}',
+      );
+      return userCredential;
+    } on FirebaseException catch (e) {
+      // Erro do Firebase
+      LoggerHelp.error(
+        'Erro ao registrar usuário: Código: ${e.code}, Mensagem: ${e.message}',
+      );
+      throw AppFirebaseException(e.code);
+    } catch (e) {
+      // Outros erros
+      LoggerHelp.error('Erro ao registrar usuário: $e');
+      throw AppFirebaseException('unknown');
+    }
   }
 
   /// Efetua o logout do Firebase Auth.
   Future<void> logout() async {
-    await _auth.signOut();
+    try {
+      await _auth.signOut();
+    } on FirebaseException catch (e) {
+      // Erro do Firebase
+      LoggerHelp.error(
+        'Erro ao efetuar logout: Código: ${e.code}, Mensagem: ${e.message}',
+      );
+      throw AppFirebaseException(e.code);
+    } catch (e) {
+      // Outros erros
+      LoggerHelp.error('Erro ao efetuar logout: $e');
+      throw AppFirebaseException('unknown');
+    }
   }
 }
