@@ -21,20 +21,21 @@ class ScreenRedirectUseCase {
   /// - **Usuário autenticado**:
   ///   - **E-mail não verificado:** tela de verificação de e-mail.
   ///   - **E-mail verificado:** tela inicial do app.
-  String call() {
+  Future<String> call() async {
     if (_repository.isFirstTime()) {
-      return KRoutes.onBoarding; // Tela de boas-vindas
-    } else if (!_repository.isAuthenticated()) {
-      return KRoutes.signin; // Tela de login
+      return KRoutes.onBoarding; // Tela de boas-vindas (Onboarding)
     } else {
       // Obter usuário
-      final user = _repository.getCurrentUser();
+      final user = await _repository.getCurrentUser();
 
-      // Verificar e-mail
-      if (user != null && !user.isEmailVerified) {
-        return KRoutes.verifyEmail; // Tela de verificação de e-mail
+      if (user == null) {
+        return KRoutes.signin; // Tela de login
       } else {
-        return KRoutes.home; // Tela inicial do app
+        if (user.emailVerified) {
+          return KRoutes.home; // Tela inicial do app
+        } else {
+          return KRoutes.verifyEmail; // Tela de verificação de e-mail
+        }
       }
     }
   }
