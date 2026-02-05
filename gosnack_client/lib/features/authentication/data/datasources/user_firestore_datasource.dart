@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gosnack_client/features/authentication/data/models/user_model.dart';
 import 'package:gosnack_client/utils/constants/content/texts/error_texts.dart';
 import 'package:gosnack_client/utils/constants/firestore/collections.dart';
+import 'package:gosnack_client/utils/constants/firestore/fields/user_fields.dart';
 import 'package:gosnack_client/utils/exceptions/firebase_exception.dart';
 import 'package:gosnack_client/utils/logging/logger.dart';
 
@@ -54,12 +55,20 @@ class UserFirestoreDatasource {
 
   /// Adiciona os dados do novo usuário no Firestore.
   Future<void> addUser(UserModel user) async {
+    // Montar dados do usuário
+    final userMap = <String, dynamic>{
+      ...user.toFirestore(),
+      UserFields.role: 'client',
+      UserFields.createdAt: FieldValue.serverTimestamp(),
+      UserFields.updatedAt: FieldValue.serverTimestamp(),
+    };
+
     try {
       // Salvar dados do usuário usuário no Firestore
       await _db
           .collection(FirestoreCollections.users)
           .doc(user.id)
-          .set(user.toFirestore());
+          .set(userMap);
 
       // Sucesso
       LoggerHelp.info(

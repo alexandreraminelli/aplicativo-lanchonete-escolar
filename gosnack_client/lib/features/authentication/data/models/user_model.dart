@@ -46,6 +46,10 @@ class UserModel extends UserEntity {
 
   /// Converte o modelo [UserModel] para um Map compatível com o Firestore.
   Map<String, dynamic> toFirestore() {
-    return {};
+    return {
+      UserFields.email: email,
+      UserFields.firstName: firstName,
+      UserFields.lastName: lastName,
+    };
   }
 }
