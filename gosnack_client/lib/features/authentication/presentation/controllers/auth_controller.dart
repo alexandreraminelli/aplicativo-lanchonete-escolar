@@ -5,7 +5,7 @@ import 'package:gosnack_client/features/authentication/domain/use_cases/screen_r
 import 'package:gosnack_client/features/authentication/domain/use_cases/signin_usecase.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/signout_usecase.dart';
 import 'package:gosnack_client/routes/routes.dart';
-import 'package:logger/logger.dart';
+import 'package:gosnack_client/utils/logging/logger.dart';
 
 /// Controlador responsável por gerenciar o estado de autenticação na
 /// camada de apresentação.
@@ -16,10 +16,6 @@ class AuthController extends GetxController {
   final LoginUseCase _loginUseCase;
   final LogoutUseCase _logoutUseCase;
   final CheckAuthenticationStatusUsecase _checkAuthenticationStatusUseCase;
-
-  // -- Private Instance Variables ------------------------------------------ //
-
-  final Logger _logger = Logger();
 
   // -- Public Constructor -------------------------------------------------- //
 
@@ -52,7 +48,7 @@ class AuthController extends GetxController {
       Get.offAllNamed(route);
     } catch (e) {
       // Em caso de erro, ir para o login
-      _logger.e('Erro ao redirecionar tela: $e');
+      LoggerHelp.error('Erro ao redirecionar tela: $e');
       await Get.offAllNamed(KRoutes.signin);
     }
   }

@@ -1,5 +1,5 @@
 import 'package:get_storage/get_storage.dart';
-import 'package:logger/logger.dart';
+import 'package:gosnack_client/utils/logging/logger.dart';
 
 /// DataSource local para armazenar a unidade e lanchonete selecionada.
 class UnitCafeteriaSelectLocalDatasource {
@@ -14,7 +14,6 @@ class UnitCafeteriaSelectLocalDatasource {
   // -- Private Instance Variables ------------------------------------------ //
 
   final GetStorage _storage;
-  final Logger _logger = Logger();
 
   // -- Public Constructor -------------------------------------------------- //
 
@@ -30,7 +29,7 @@ class UnitCafeteriaSelectLocalDatasource {
     try {
       return _storage.read(_keySelectedUnitId);
     } catch (e) {
-      _logger.e('Erro ao ler selectedUnitId', error: e);
+      LoggerHelp.error('Erro ao ler selectedUnitId', error: e);
       return null;
     }
   }
@@ -41,7 +40,7 @@ class UnitCafeteriaSelectLocalDatasource {
     try {
       return _storage.read(_keySelectedCafeteriaId);
     } catch (e) {
-      _logger.e('Erro ao ler selectedCafeteriaId', error: e);
+      LoggerHelp.error('Erro ao ler selectedCafeteriaId', error: e);
       return null;
     }
   }
@@ -53,7 +52,7 @@ class UnitCafeteriaSelectLocalDatasource {
     try {
       return getSelectedUnitId() != null;
     } catch (e) {
-      _logger.e('Erro ao verificar unidade selecionada', error: e);
+      LoggerHelp.error('Erro ao verificar unidade selecionada', error: e);
       return false;
     }
   }
@@ -63,7 +62,7 @@ class UnitCafeteriaSelectLocalDatasource {
     try {
       return getSelectedCafeteriaId() != null;
     } catch (e) {
-      _logger.e('Erro ao verificar lanchonete selecionada', error: e);
+      LoggerHelp.error('Erro ao verificar lanchonete selecionada', error: e);
       return false;
     }
   }
@@ -74,9 +73,9 @@ class UnitCafeteriaSelectLocalDatasource {
   Future<void> saveSelectedUnitId(String unitId) async {
     try {
       await _storage.write(_keySelectedUnitId, unitId);
-      _logger.i('Unidade selecionada salva: $unitId');
+      LoggerHelp.info('Unidade selecionada salva: $unitId');
     } catch (e) {
-      _logger.e('Erro ao salvar selectedUnitId', error: e);
+      LoggerHelp.error('Erro ao salvar selectedUnitId', error: e);
     }
   }
 
@@ -84,9 +83,9 @@ class UnitCafeteriaSelectLocalDatasource {
   Future<void> saveSelectedCafeteriaId(String cafeteriaId) async {
     try {
       await _storage.write(_keySelectedCafeteriaId, cafeteriaId);
-      _logger.i('Lanchonete selecionada salva: $cafeteriaId');
+      LoggerHelp.info('Lanchonete selecionada salva: $cafeteriaId');
     } catch (e) {
-      _logger.e('Erro ao salvar selectedCafeteriaId', error: e);
+      LoggerHelp.error('Erro ao salvar selectedCafeteriaId', error: e);
     }
   }
 
@@ -96,7 +95,7 @@ class UnitCafeteriaSelectLocalDatasource {
       await _storage.remove(_keySelectedUnitId);
       await _storage.remove(_keySelectedCafeteriaId);
     } catch (e) {
-      _logger.e('Erro ao limpar seleções', error: e);
+      LoggerHelp.error('Erro ao limpar seleções', error: e);
     }
   }
 }

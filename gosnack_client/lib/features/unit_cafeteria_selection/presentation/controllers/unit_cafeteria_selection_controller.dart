@@ -4,7 +4,7 @@ import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/get_cafeterias_by_unit_usecase.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/get_units_usecase.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/select_unit_and_cafeteria_usecase.dart';
-import 'package:logger/logger.dart';
+import 'package:gosnack_client/utils/logging/logger.dart';
 
 /// Controlador de estado para seleção de unidade e lanchonete.
 class UnitCafeteriaSelectionController extends GetxController {
@@ -13,10 +13,6 @@ class UnitCafeteriaSelectionController extends GetxController {
   final GetUnitsUseCase _getUnits;
   final GetCafeteriasByUnitUseCase _getCafeteriasByUnit;
   final SelectUnitAndCafeteriaUseCase _selectUnitAndCafeteriaUseCase;
-
-  // -- Private Instance Variables ------------------------------------------ //
-
-  final Logger _logger = Logger();
 
   // -- Public Constructor -------------------------------------------------- //
 
@@ -63,7 +59,7 @@ class UnitCafeteriaSelectionController extends GetxController {
       isLoadingUnits.value = true; // sinalizar início do carregamento
       units.assignAll(await _getUnits());
     } catch (e) {
-      _logger.e('Erro ao carregar unidades: $e');
+      LoggerHelp.error('Erro ao carregar unidades: $e');
     } finally {
       isLoadingUnits.value = false; // sinalizar fim do carregamento
     }

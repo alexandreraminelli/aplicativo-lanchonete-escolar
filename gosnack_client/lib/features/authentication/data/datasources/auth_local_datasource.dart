@@ -1,4 +1,5 @@
 import 'package:get_storage/get_storage.dart';
+import 'package:gosnack_client/utils/logging/logger.dart';
 import 'package:logger/logger.dart';
 
 /// DataSource local para armazenamento de informações de autenticação.
@@ -13,8 +14,6 @@ class AuthLocalDatasource {
 
   /// Instância do GetStorage para armazenamento local.
   final GetStorage _storage;
-
-  final Logger _logger = Logger();
 
   // -- Public Constructor -------------------------------------------------- //
 
@@ -37,7 +36,7 @@ class AuthLocalDatasource {
     try {
       await _storage.write(_keyFirstTime, false);
     } catch (e) {
-      _logger.e('Erro ao salvar isFirstTime', error: e);
+      LoggerHelp.error('Erro ao salvar isFirstTime', error: e);
     }
   }
 }

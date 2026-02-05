@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/controllers/unit_cafeteria_selection_controller.dart';
 import 'package:gosnack_client/routes/routes.dart';
+import 'package:gosnack_client/utils/constants/content/texts/error_texts.dart';
+import 'package:gosnack_client/utils/logging/logger.dart';
+import 'package:gosnack_client/utils/popups/snackbars.dart';
 import 'package:logger/logger.dart';
 
 /// Controlador para a tela de onboarding.
@@ -75,9 +78,11 @@ class OnBoardingController extends GetxController {
       // Ir para a tela de login
       Get.offAllNamed(KRoutes.signin);
     } catch (e) {
-      _logger.e('Erro ao finalizar o onboarding: $e');
-      // TODO: Usar AppToasts
-      Get.snackbar('Erro', 'Não foi possível finalizar o onboarding: $e');
+      LoggerHelp.error('Erro ao finalizar o onboarding: $e');
+      AppSnackBars.showErrorSnackBar(
+        title: ErrorTexts.genericErrorMessage,
+        message: '',
+      );
     }
   }
 }

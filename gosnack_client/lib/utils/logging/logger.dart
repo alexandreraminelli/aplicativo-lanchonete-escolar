@@ -28,12 +28,12 @@ class LoggerHelp {
   // -- Public Static Methods ----------------------------------------------- //
 
   /// Log de debug (desenvolvimento).
-  static void debug(dynamic message, [dynamic error, StackTrace? stackTrace]) {
+  static void debug(dynamic message, {dynamic error, StackTrace? stackTrace}) {
     _logger.d(message, error: error, stackTrace: stackTrace);
   }
 
   /// Log informativo.
-  static void info(dynamic message, [dynamic error, StackTrace? stackTrace]) {
+  static void info(dynamic message, {dynamic error, StackTrace? stackTrace}) {
     _logger.i(message, error: error, stackTrace: stackTrace);
   }
 
@@ -47,22 +47,22 @@ class LoggerHelp {
   }
 
   /// Log de erro.
-  static void error(dynamic message, [dynamic error, StackTrace? stackTrace]) {
-    _logger.e(message, error: error, stackTrace: stackTrace);
+  static void error(dynamic message, {dynamic error, StackTrace? stackTrace}) {
+    LoggerHelp.error(message, error: error, stackTrace: stackTrace);
   }
 
   /// Log de erro fatal.
-  static void fatal(dynamic message, [dynamic error, StackTrace? stackTrace]) {
+  static void fatal(dynamic message, {dynamic error, StackTrace? stackTrace}) {
     _logger.f(message, error: error, stackTrace: stackTrace);
   }
 
   /// Log de requisição HTTP.
-  static void request(String method, String url, [Map<String, dynamic>? data]) {
+  static void request(String method, String url, {Map<String, dynamic>? data}) {
     _logger.i('[$method] $url${data != null ? '\nData: $data' : ''}');
   }
 
   /// Log de resposta HTTP.
-  static void response(int statusCode, String url, [dynamic data]) {
+  static void response(int statusCode, String url, {dynamic data}) {
     _logger.i('[$statusCode] $url${data != null ? '\nResponse: $data' : ''}');
   }
 }
