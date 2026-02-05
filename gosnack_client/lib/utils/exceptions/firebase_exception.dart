@@ -12,6 +12,7 @@ class AppFirebaseException implements Exception {
     'user-not-found': 'Não encontramos uma conta com esse e-mail.',
     'wrong-password': 'Senha incorreta. Tente novamente.',
     'email-already-exists': 'Este e-mail já está cadastrado.',
+    'email-already-in-use': 'Este e-mail já está cadastrado.',
     'operation-not-allowed': 'Este método de login está desativado no momento.',
 
     // Erros de token
@@ -85,4 +86,14 @@ class AppFirebaseException implements Exception {
 
   @override
   String toString() => code;
+
+  // -- Static Methods ----------------------------------------------------- //
+
+  /// Extrai a mensagem de erro de forma segura.
+  static String getErrorMessage(dynamic error) {
+    if (error is AppFirebaseException) {
+      return error.message;
+    }
+    return error.toString();
+  }
 }
