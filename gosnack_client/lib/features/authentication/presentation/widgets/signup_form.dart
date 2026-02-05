@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/state_manager.dart';
+import 'package:gosnack_client/features/authentication/presentation/controllers/signup_controller.dart';
 import 'package:gosnack_client/features/authentication/presentation/texts/auth_texts.dart';
+import 'package:gosnack_client/features/authentication/presentation/validators/auth_validators.dart';
 import 'package:gosnack_client/utils/constants/content/icons.dart';
 import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 import 'package:hugeicons/hugeicons.dart';
 
-class SignUpForm extends StatelessWidget {
+class SignUpForm extends GetView<SignUpController> {
   // -- Public Constructor -------------------------------------------------- //
 
   const SignUpForm({super.key});
@@ -22,6 +25,10 @@ class SignUpForm extends StatelessWidget {
       // keyboard config:
       keyboardType: TextInputType.name,
       textInputAction: TextInputAction.next,
+      // controller:
+      controller: controller.firstName,
+      validator: (String? value) =>
+          AuthValidators.validateName(NamePart.firstName, value),
     );
 
     // -- Last Name Field
@@ -33,6 +40,10 @@ class SignUpForm extends StatelessWidget {
       // keyboard config:
       keyboardType: TextInputType.name,
       textInputAction: TextInputAction.next,
+      // controller:
+      controller: controller.lastName,
+      validator: (String? value) =>
+          AuthValidators.validateName(NamePart.lastName, value),
     );
 
     // -- Email Field
@@ -44,6 +55,9 @@ class SignUpForm extends StatelessWidget {
       // keyboard config:
       keyboardType: TextInputType.emailAddress,
       textInputAction: TextInputAction.next,
+      // controller:
+      controller: controller.email,
+      validator: (String? value) => AuthValidators.validateEmail(value),
     );
 
     // -- Password Field
@@ -55,6 +69,9 @@ class SignUpForm extends StatelessWidget {
       // keyboard config:
       keyboardType: TextInputType.visiblePassword,
       textInputAction: TextInputAction.done,
+      // controller:
+      controller: controller.password,
+      validator: (String? value) => AuthValidators.validatePassword(value),
     );
 
     // -- Submit Button
@@ -64,14 +81,13 @@ class SignUpForm extends StatelessWidget {
         label: const Text(AuthTexts.createAccount),
         icon: const HugeIcon(icon: KIcons.create),
 
-        onPressed: () {
-          // TODO: criar conta
-        },
+        onPressed: () => controller.signUp(), // submeter form e criar conta
       ),
     );
 
     // -- Main Widget
     return Form(
+      key: controller.signupFormKey, // Chave do formulário
       child: Column(
         children: [
           // -- Fields
@@ -86,6 +102,7 @@ class SignUpForm extends StatelessWidget {
           ),
           const SizedBox(height: KSizes.xl),
           submitButton, // Botão de enviar
+          const SizedBox(height: KSizes.xl),
         ],
       ),
     );
