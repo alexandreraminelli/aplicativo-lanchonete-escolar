@@ -48,7 +48,7 @@ class AuthController extends GetxController {
   /// Redireciona para a tela apropriada com base no estado de autenticação.
   Future<void> screenRedirect() async {
     try {
-      final route = _screenRedirectUseCase();
+      final route = await _screenRedirectUseCase();
       Get.offAllNamed(route);
     } catch (e) {
       // Em caso de erro, ir para o login

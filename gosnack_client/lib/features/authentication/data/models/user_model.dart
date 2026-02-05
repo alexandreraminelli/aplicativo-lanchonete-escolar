@@ -19,27 +19,15 @@ class UserModel extends UserEntity {
 
   // -- Named Constructors -------------------------------------------------- //
 
-  /// Cria um [UserModel] a partir de um [User] do Firebase.
-  factory UserModel.fromFirebaseUser(User user) {
+  /// Cria um [UserModel] a partir do [User] do Firebase Auth
+  /// e dos dados adicionais do Firestore.
+  factory UserModel.fromAuthAndFirestore(User user, Map<String, dynamic> data) {
     return UserModel(
       id: user.uid,
       email: user.email ?? '',
-      isEmailVerified: user.emailVerified,
-      // valores apenas no Firestore:
-      firstName: '',
-      lastName: '',
-    );
-  }
-
-  /// Cria um [UserModel] a partir dos dados do Firestore.
-  factory UserModel.fromFirestore(Map<String, dynamic> data, String uid) {
-    return UserModel(
-      id: uid,
-      email: data[UserFields.email] ?? '',
       firstName: data[UserFields.firstName] ?? '',
-      lastName: data[UserFields.lastName] ?? '',
-      // valores apenas do Auth:
-      isEmailVerified: false,
+      lastName: data[UserFields.lastName],
+      isEmailVerified: user.emailVerified,
     );
   }
 
@@ -54,5 +42,10 @@ class UserModel extends UserEntity {
       lastName: lastName,
       isEmailVerified: isEmailVerified,
     );
+  }
+
+  /// Converte o modelo [UserModel] para um Map compatível com o Firestore.
+  Map<String, dynamic> toFirestore() {
+    return {};
   }
 }

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gosnack_client/features/authentication/domain/entities/user_entity.dart';
 
 /// Interface com o contrato do repositório de autenticação.
@@ -9,7 +10,7 @@ abstract class AuthenticationRepository {
 
   /// Obtém o usuário autenticado atualmente.
   /// Retorna `null` se não houver.
-  UserEntity? getCurrentUser();
+  Future<User?> getCurrentUser();
 
   /// Efetua login com e-mail e senha.
   Future<UserEntity> loginWithEmailAndPassword({
