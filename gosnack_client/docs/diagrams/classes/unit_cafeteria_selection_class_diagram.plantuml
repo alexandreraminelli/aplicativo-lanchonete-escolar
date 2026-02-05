@@ -1,0 +1,167 @@
+@startuml
+' UML 2.5 Class Diagram - Unit Cafeteria Selection Feature
+
+skinparam linetype ortho
+
+package "unit_cafeteria_selection.domain" {
+  package "entities" {
+    class UnitEntity {
+      +id: String
+      +name: String
+    }
+
+    class CafeteriaEntity {
+      +id: String
+      +name: String
+      +location: String
+      +phones: List<String>
+    }
+  }
+
+  package "interfaces" {
+    interface UnitCafeteriaRepository {
+      +getAllUnits(): List<UnitEntity>
+      +getCafeteriasByUnitId(unitId: String): List<CafeteriaEntity>
+      +getCafeteriaById(unitId: String, cafeteriaId: String): CafeteriaEntity?
+      +saveSelection(unitId: String, cafeteriaId: String): void
+      +getSelectedUnit(): UnitEntity?
+      +getSelectedCafeteria(): CafeteriaEntity?
+      +clearSelection(): void
+    }
+  }
+
+  package "use_cases" {
+    class GetUnitsUseCase {
+      +call(): List<UnitEntity>
+    }
+
+    class GetCafeteriasByUnitUseCase {
+      +call(unitId: String): List<CafeteriaEntity>
+    }
+
+    class SelectUnitAndCafeteriaUseCase {
+      +call(unitId: String, cafeteriaId: String): void
+    }
+  }
+}
+
+package "unit_cafeteria_selection.data" {
+  package "datasources" {
+    class UnitCafeteriaSelectLocalDatasource {
+      +getSelectedUnitId(): String?
+      +getSelectedCafeteriaId(): String?
+      +isUnitSelected(): bool
+      +isCafeteriaSelected(): bool
+      +saveSelectedUnitId(unitId: String): void
+      +saveSelectedCafeteriaId(cafeteriaId: String): void
+      +clearSelections(): void
+    }
+
+    package "firestore" {
+      class UnitFirestoreDataSource {
+        +getAllUnits(): List<UnitModel>
+        +getUnitById(unitId: String): UnitModel?
+      }
+
+      class CafeteriaFirestoreDataSource {
+        +getAllCafeteriasByUnit(unitId: String): List<CafeteriaModel>
+        +getCafeteriaById(unitId: String, cafeteriaId: String): CafeteriaModel?
+      }
+    }
+  }
+
+  package "models" {
+    class UnitModel {
+      +UnitModel(id: String, name: String)
+      +fromFirestore(data: Map<String, dynamic>, id: String): UnitModel
+    }
+
+    class CafeteriaModel {
+      +CafeteriaModel(id: String, name: String, location: String, phones: List<String>)
+      +fromFirestore(data: Map<String, dynamic>, id: String): CafeteriaModel
+    }
+  }
+
+  package "mappers" {
+    class UnitMapper <<utility>> {
+      +toEntity(model: UnitModel): UnitEntity
+    }
+
+    class CafeteriaMapper <<utility>> {
+      +toEntity(model: CafeteriaModel): CafeteriaEntity
+    }
+  }
+
+  package "repositories" {
+    class UnitCafeteriaRepositoryImpl {
+      +getAllUnits(): List<UnitEntity>
+      +getCafeteriasByUnitId(unitId: String): List<CafeteriaEntity>
+      +getCafeteriaById(unitId: String, cafeteriaId: String): CafeteriaEntity?
+      +saveSelection(unitId: String, cafeteriaId: String): void
+      +getSelectedUnit(): UnitEntity?
+      +getSelectedCafeteria(): CafeteriaEntity?
+      +clearSelection(): void
+    }
+  }
+}
+
+package "unit_cafeteria_selection.presentation" {
+  package "controllers" {
+    class UnitCafeteriaSelectionController {
+      +loadUnits(): void
+      +selectUnit(unit: UnitEntity): void
+      +selectCafeteria(cafeteria: CafeteriaEntity): void
+      +saveSelections(): void
+    }
+  }
+
+  package "widgets" {
+    class UnitCafeteriaSelector {
+      +build(context: BuildContext): Widget
+    }
+  }
+}
+
+package "unit_cafeteria_selection" {
+  class UnitCafeteriaSelectionBinding {
+    +dependencies(): void
+  }
+}
+
+UnitModel --|> UnitEntity
+CafeteriaModel --|> CafeteriaEntity
+
+UnitCafeteriaRepositoryImpl ..|> UnitCafeteriaRepository
+
+UnitCafeteriaRepositoryImpl o-- UnitFirestoreDataSource
+UnitCafeteriaRepositoryImpl o-- CafeteriaFirestoreDataSource
+UnitCafeteriaRepositoryImpl o-- UnitCafeteriaSelectLocalDatasource
+
+UnitFirestoreDataSource ..> UnitModel
+CafeteriaFirestoreDataSource ..> CafeteriaModel
+
+UnitMapper ..> UnitModel
+UnitMapper ..> UnitEntity
+CafeteriaMapper ..> CafeteriaModel
+CafeteriaMapper ..> CafeteriaEntity
+
+GetUnitsUseCase ..> UnitCafeteriaRepository
+GetCafeteriasByUnitUseCase ..> UnitCafeteriaRepository
+SelectUnitAndCafeteriaUseCase ..> UnitCafeteriaRepository
+
+UnitCafeteriaSelectionController ..> GetUnitsUseCase
+UnitCafeteriaSelectionController ..> GetCafeteriasByUnitUseCase
+UnitCafeteriaSelectionController ..> SelectUnitAndCafeteriaUseCase
+
+UnitCafeteriaSelector ..> UnitCafeteriaSelectionController
+
+UnitCafeteriaSelectionBinding ..> UnitCafeteriaSelectLocalDatasource
+UnitCafeteriaSelectionBinding ..> UnitFirestoreDataSource
+UnitCafeteriaSelectionBinding ..> CafeteriaFirestoreDataSource
+UnitCafeteriaSelectionBinding ..> UnitCafeteriaRepositoryImpl
+UnitCafeteriaSelectionBinding ..> GetUnitsUseCase
+UnitCafeteriaSelectionBinding ..> GetCafeteriasByUnitUseCase
+UnitCafeteriaSelectionBinding ..> SelectUnitAndCafeteriaUseCase
+UnitCafeteriaSelectionBinding ..> UnitCafeteriaSelectionController
+
+@enduml

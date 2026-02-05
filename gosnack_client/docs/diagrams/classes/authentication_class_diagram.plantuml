@@ -1,0 +1,208 @@
+@startuml
+' UML 2.5 Class Diagram - Authentication Feature
+
+skinparam linetype ortho
+
+package authentication.domain {
+  package "entities" {
+    class UserEntity {
+      +id: String
+      +email: String
+      +firstName: String
+      +lastName: String
+      +isEmailVerified: bool
+    }
+  }
+
+  package "interfaces" {
+    interface AuthenticationRepository {
+      +getCurrentUser(): User?
+      +loginWithEmailAndPassword(email: String, password: String): UserEntity
+      +signUpWithEmailAndPassword(email: String, password: String, firstName: String, lastName: String): UserEntity
+      +logout(): void
+      +isAuthenticated(): bool
+      +isFirstTime(): bool
+      +setFirstTimeFalse(): void
+    }
+  }
+
+  package "use_cases" {
+    class SignUpUseCase {
+      +call(email: String, password: String, firstName: String, lastName: String): UserEntity?
+    }
+
+    class LoginUseCase {
+      +call(email: String, password: String): UserEntity
+    }
+
+    class LogoutUseCase {
+      +call(): void
+    }
+
+    class ScreenRedirectUseCase {
+      +call(): String
+    }
+
+    class CheckAuthenticationStatusUsecase {
+      +call(): bool
+    }
+  }
+}
+
+package authentication.data {
+  package "datasources" {
+    class AuthFirebaseDatasource {
+      +getCurrentFirebaseUser(): User?
+      +loginWithEmailAndPassword(email: String, password: String): User
+      +registerWithEmailAndPassword(email: String, password: String): UserCredential
+      +logout(): void
+    }
+
+    class UserFirestoreDatasource {
+      +getUserById(userId: String): Map<String, dynamic>?
+      +addUser(user: UserModel): void
+    }
+
+    class AuthLocalDatasource {
+      +isFirstTime(): bool
+      +setFirstTimeFalse(): void
+    }
+  }
+
+  package "models" {
+    class UserModel {
+      +UserModel(id: String, email: String, firstName: String, lastName: String, isEmailVerified: bool)
+      +fromAuthAndFirestore(user: User, data: Map<String, dynamic>): UserModel
+      +toEntity(): UserEntity
+      +toFirestore(): Map<String, dynamic>
+    }
+  }
+
+  package "repositories" {
+    class AuthenticationRepositoryImpl {
+      +getCurrentUser(): User?
+      +loginWithEmailAndPassword(email: String, password: String): UserEntity
+      +signUpWithEmailAndPassword(email: String, password: String, firstName: String, lastName: String): UserEntity
+      +logout(): void
+      +isAuthenticated(): bool
+      +isFirstTime(): bool
+      +setFirstTimeFalse(): void
+    }
+  }
+}
+
+package authentication.presentation {
+  package "controllers" {
+    class AuthController {
+      +screenRedirect(): void
+      +login(email: String, password: String): void
+      +logout(): void
+      +isAuthenticated(): bool
+    }
+
+    class SignUpController {
+      +signUp(): void
+    }
+
+    class LoginController
+  }
+
+  package "bindings" {
+    class AuthenticationBinding {
+      +dependencies(): void
+    }
+
+    class SignUpBinding {
+      +dependencies(): void
+    }
+  }
+
+  package "validators" {
+    enum NamePart {
+      firstName
+      lastName
+    }
+
+    class AuthValidators <<utility>> {
+      +validateName(part: NamePart, value: String?): String?
+      +validateEmail(value: String?): String?
+      +validatePassword(value: String?): String?
+    }
+  }
+
+  package "texts" {
+    class AuthTexts <<utility>>
+    class AuthValidationTexts <<utility>>
+    class AuthSuccessTexts <<utility>>
+    class AuthErrorTexts <<utility>>
+  }
+
+  package "widgets" {
+    class LoginForm {
+      +build(context: BuildContext): Widget
+    }
+
+    class SignUpForm {
+      +build(context: BuildContext): Widget
+    }
+  }
+
+  package "screens" {
+    class LoginScreen {
+      +build(context: BuildContext): Widget
+    }
+
+    class SignUpScreen {
+      +build(context: BuildContext): Widget
+    }
+
+    class VerifyEmailScreen {
+      +build(context: BuildContext): Widget
+    }
+  }
+}
+
+UserModel --|> UserEntity
+AuthenticationRepositoryImpl ..|> AuthenticationRepository
+
+AuthenticationRepositoryImpl o-- AuthFirebaseDatasource
+AuthenticationRepositoryImpl o-- UserFirestoreDatasource
+AuthenticationRepositoryImpl o-- AuthLocalDatasource
+
+UserFirestoreDatasource ..> UserModel
+
+SignUpUseCase ..> AuthenticationRepository
+LoginUseCase ..> AuthenticationRepository
+LogoutUseCase ..> AuthenticationRepository
+ScreenRedirectUseCase ..> AuthenticationRepository
+CheckAuthenticationStatusUsecase ..> AuthenticationRepository
+
+AuthController ..> ScreenRedirectUseCase
+AuthController ..> LoginUseCase
+AuthController ..> LogoutUseCase
+AuthController ..> CheckAuthenticationStatusUsecase
+
+SignUpController ..> SignUpUseCase
+
+SignUpForm ..> SignUpController
+LoginForm ..> LoginController
+
+SignUpScreen ..> SignUpForm
+LoginScreen ..> LoginForm
+
+AuthValidators ..> AuthValidationTexts
+
+AuthenticationBinding ..> AuthFirebaseDatasource
+AuthenticationBinding ..> AuthLocalDatasource
+AuthenticationBinding ..> UserFirestoreDatasource
+AuthenticationBinding ..> AuthenticationRepositoryImpl
+AuthenticationBinding ..> CheckAuthenticationStatusUsecase
+AuthenticationBinding ..> LoginUseCase
+AuthenticationBinding ..> LogoutUseCase
+AuthenticationBinding ..> ScreenRedirectUseCase
+AuthenticationBinding ..> AuthController
+
+SignUpBinding ..> SignUpUseCase
+SignUpBinding ..> SignUpController
+
+@enduml
