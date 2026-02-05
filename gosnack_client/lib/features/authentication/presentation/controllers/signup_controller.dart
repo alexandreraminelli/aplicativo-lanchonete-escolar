@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/signup_usecase.dart';
+import 'package:gosnack_client/features/authentication/presentation/controllers/auth_controller.dart';
 import 'package:gosnack_client/features/authentication/presentation/texts/auth_error_texts.dart';
 import 'package:gosnack_client/features/authentication/presentation/texts/auth_success_texts.dart';
 import 'package:gosnack_client/utils/exceptions/firebase_exception.dart';
@@ -15,9 +16,13 @@ class SignUpController extends GetxController {
 
   final SignUpUseCase _signUpUseCase;
 
+  // -- Others Controllers -------------------------------------------------- //
+
+  final AuthController _authController;
+
   // -- Public Constructor -------------------------------------------------- //
 
-  SignUpController(this._signUpUseCase);
+  SignUpController(this._signUpUseCase, this._authController);
 
   // -- Form Controllers ---------------------------------------------------- //
 
@@ -49,6 +54,7 @@ class SignUpController extends GetxController {
       );
 
       // Em caso de sucesso:
+      await _authController.screenRedirect(); // redirecionar usuário
       LoggerHelp.info('Usuário cadastrado com sucesso: ${user?.id}');
       AppSnackBars.showSuccessSnackBar(
         title: AuthSuccessTexts.signupSuccessTitle,

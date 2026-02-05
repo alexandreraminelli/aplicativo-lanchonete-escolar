@@ -10,6 +10,8 @@ class SignUpBinding extends Bindings {
     Get.lazyPut<SignUpUseCase>(() => SignUpUseCase(Get.find()));
 
     // -- Controllers
-    Get.lazyPut<SignUpController>(() => SignUpController(Get.find()));
+    Get.lazyPut<SignUpController>(
+      () => SignUpController(Get.find(), Get.find()),
+    );
   }
 }
