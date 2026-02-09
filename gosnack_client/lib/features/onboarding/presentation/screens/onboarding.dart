@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_instance/get_instance.dart';
 import 'package:get/state_manager.dart';
 import 'package:gosnack_client/common/widgets/appbar/main_appbar.dart';
 import 'package:gosnack_client/features/onboarding/presentation/controllers/onboarding_controller.dart';
@@ -15,15 +14,13 @@ import 'package:gosnack_client/utils/constants/styles/sizes.dart';
 ///
 /// Exibida quando o usuário abre o aplicativo pela primeira vez.
 /// Fornece uma rápida visão geral dos principais recursos e funcionalidades do aplicativo.
-class OnBoardingScreen extends StatelessWidget {
+class OnBoardingScreen extends GetView<OnBoardingController> {
   // -- Public Constructor -------------------------------------------------- //
   const OnBoardingScreen({super.key});
 
   // -- Build Method -------------------------------------------------------- //
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(OnBoardingController());
-
     // -- Widgets internos
 
     /// Carousel de página de onboarding.

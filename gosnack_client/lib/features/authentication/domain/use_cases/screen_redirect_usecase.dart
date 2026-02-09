@@ -1,4 +1,5 @@
 import 'package:gosnack_client/features/authentication/domain/interfaces/authentication_repository.dart';
+import 'package:gosnack_client/features/onboarding/domain/interfaces/onboarding_repository.dart';
 import 'package:gosnack_client/routes/routes.dart';
 
 /// UseCase responsável por determinar para qual tela redirecionar o usuário
@@ -7,11 +8,14 @@ class ScreenRedirectUseCase {
   // -- Private Instance Variables ------------------------------------------ //
 
   /// Repositório de autenticação.
-  final AuthenticationRepository _repository;
+  final AuthenticationRepository _authRepository;
+
+  /// Repositório de onboarding.
+  final OnBoardingRepository _onBoardingRepository;
 
   // -- Public Constructor -------------------------------------------------- //
 
-  ScreenRedirectUseCase(this._repository);
+  ScreenRedirectUseCase(this._authRepository, this._onBoardingRepository);
 
   // -- Public Methods ------------------------------------------------------ //
 
@@ -22,11 +26,11 @@ class ScreenRedirectUseCase {
   ///   - **E-mail não verificado:** tela de verificação de e-mail.
   ///   - **E-mail verificado:** tela inicial do app.
   Future<String> call() async {
-    if (_repository.isFirstTime()) {
+    if (_onBoardingRepository.isFirstTime()) {
       return KRoutes.onBoarding; // Tela de boas-vindas (Onboarding)
     } else {
       // Obter usuário
-      final user = await _repository.getCurrentUser();
+      final user = await _authRepository.getCurrentUser();
 
       if (user == null) {
         return KRoutes.signin; // Tela de login

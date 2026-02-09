@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:gosnack_client/features/authentication/presentation/bindings/authentication_bindings.dart';
+import 'package:gosnack_client/features/onboarding/presentation/bindings/onboarding_binding.dart';
 import 'package:gosnack_client/utils/helpers/network_manager.dart';
 
 /// Bindings gerais da aplicação.
@@ -12,6 +13,7 @@ class GeneralBindings extends Bindings {
   void dependencies() {
     Get.put(NetworkManager()); // Gerenciador de rede
 
+    OnBoardingBinding().dependencies(); // Bindings de onboarding
     AuthenticationBinding().dependencies(); // Bindings de autenticação
   }
 }

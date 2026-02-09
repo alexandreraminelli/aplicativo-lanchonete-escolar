@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gosnack_client/features/authentication/data/datasources/auth_firebase_datasource.dart';
-import 'package:gosnack_client/features/authentication/data/datasources/auth_local_datasource.dart';
 import 'package:gosnack_client/features/authentication/data/datasources/user_firestore_datasource.dart';
 import 'package:gosnack_client/features/authentication/data/models/user_model.dart';
 import 'package:gosnack_client/features/authentication/domain/entities/user_entity.dart';
@@ -13,14 +12,12 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   // -- Datasources
   final AuthFirebaseDatasource _remoteAuthDatasource;
   final UserFirestoreDatasource _removeFirestoreDatasource;
-  final AuthLocalDatasource _localDatasource;
 
   // -- Public Constructor -------------------------------------------------- //
 
   AuthenticationRepositoryImpl(
     this._remoteAuthDatasource,
     this._removeFirestoreDatasource,
-    this._localDatasource,
   );
 
   // -- Public Override Methods --------------------------------------------- //
@@ -34,16 +31,6 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     } catch (e) {
       rethrow; // Propagar erro
     }
-  }
-
-  @override
-  bool isFirstTime() {
-    return _localDatasource.isFirstTime();
-  }
-
-  @override
-  Future<void> setFirstTimeFalse() async {
-    await _localDatasource.setFirstTimeFalse();
   }
 
   @override

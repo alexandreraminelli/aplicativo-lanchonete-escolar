@@ -6,8 +6,6 @@ import 'package:gosnack_client/features/authentication/domain/entities/user_enti
 /// Define os métodos que devem ser implementados para a autenticação
 /// do usuário.
 abstract class AuthenticationRepository {
-  // -- Authentication ------------------------------------------------------ //
-
   /// Obtém o usuário autenticado atualmente.
   /// Retorna `null` se não houver.
   Future<User?> getCurrentUser();
@@ -31,12 +29,4 @@ abstract class AuthenticationRepository {
 
   /// Verifica se o usuário está autenticado.
   bool isAuthenticated();
-
-  // -- OnBoarding ---------------------------------------------------------- //
-
-  /// Verifica se o usuário já passou pela tela de onboarding (boas-vindas).
-  bool isFirstTime();
-
-  /// Marca que o usuário já passou pela tela de onboarding (boas-vindas).
-  Future<void> setFirstTimeFalse();
 }

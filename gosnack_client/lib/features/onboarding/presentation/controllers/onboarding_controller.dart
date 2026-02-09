@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gosnack_client/features/onboarding/domain/use_cases/complete_onboarding_usecase.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/controllers/unit_cafeteria_selection_controller.dart';
 import 'package:gosnack_client/routes/routes.dart';
 import 'package:gosnack_client/utils/constants/content/texts/error_texts.dart';
 import 'package:gosnack_client/utils/logging/logger.dart';
 import 'package:gosnack_client/utils/popups/snackbars.dart';
-import 'package:logger/logger.dart';
 
 /// Controlador para a tela de onboarding.
 class OnBoardingController extends GetxController {
+  // -- Use Cases Variables ------------------------------------------------- //
+
+  final CompleteOnboardingUseCase _completeOnboardingUseCase;
+
   // -- Public Instance Variables ------------------------------------------- //
 
   /// Controlador de página para o PageView.
@@ -17,15 +21,13 @@ class OnBoardingController extends GetxController {
 
   // -- Private Instance Variables ------------------------------------------ //
 
-  final Logger _logger = Logger();
-
   /// Controlador de seleção de unidade e lanchonete.
   final UnitCafeteriaSelectionController _selectionController =
       Get.find<UnitCafeteriaSelectionController>();
 
   // -- Public Constructor -------------------------------------------------- //
 
-  OnBoardingController();
+  OnBoardingController(this._completeOnboardingUseCase);
 
   // -- State Variables ----------------------------------------------------- //
 
@@ -73,7 +75,8 @@ class OnBoardingController extends GetxController {
       // Salvar as seleções de unidade e lanchonetes
       await _selectionController.saveSelections();
 
-      // TODO: Marcar o OnBoarding como concluído
+      // Marcar o OnBoarding como concluído
+      await _completeOnboardingUseCase.call();
 
       // Ir para a tela de login
       Get.offAllNamed(KRoutes.signin);

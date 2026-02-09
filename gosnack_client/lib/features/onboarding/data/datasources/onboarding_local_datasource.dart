@@ -1,9 +1,8 @@
 import 'package:get_storage/get_storage.dart';
 import 'package:gosnack_client/utils/logging/logger.dart';
-import 'package:logger/logger.dart';
 
-/// DataSource local para armazenamento de informações de autenticação.
-class AuthLocalDatasource {
+/// DataSource local para armazenamento de informações do OnBoarding.
+class OnBoardingLocalDatasource {
   // -- GetStorage Keys ----------------------------------------------------- //
 
   /// Chave do GetStorage com o booleano de se é a primeira vez que o
@@ -17,7 +16,7 @@ class AuthLocalDatasource {
 
   // -- Public Constructor -------------------------------------------------- //
 
-  AuthLocalDatasource(this._storage);
+  OnBoardingLocalDatasource(this._storage);
 
   // -- Public Methods ------------------------------------------------------ //
 
