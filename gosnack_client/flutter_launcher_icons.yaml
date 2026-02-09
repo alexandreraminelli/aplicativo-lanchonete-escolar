@@ -1,0 +1,21 @@
+# Configurações para o pacote flutter_launcher_icons
+# Gera ícones de aplicativo para Android e iOS a partir de uma imagem base
+flutter_launcher_icons:
+  image_path: "assets/logos/favicon.png" # Caminho para a imagem base
+
+  # Ícone para Android
+  android: true
+  min_sdk_android: 21
+
+  # Ícone para iOS
+  ios: true
+  remove_alpha_ios: true
+
+  # Outras plataformas:
+  web:
+    generate: false
+  windows:
+    generate: false
+  macos:
+    generate: false
+

@@ -17,10 +17,13 @@ dependencies:
   get: ^4.7.2 # Gerenciamento de estado reativo e navegação
   get_storage: ^2.1.1 # Armazenamento de dados localmente
 
+  # App Branding
+  flutter_launcher_icons: ^0.14.4 # Ícones de aplicativo para Android e iOS
+  flutter_native_splash: ^2.4.7 # Splash Screen (tela de carregamento) nativa
+
   # Widgets e elementos de UI
   cached_network_image: ^3.4.1 # Armazena imagens da internet em cache
   carousel_slider: ^5.1.1 # Carrousel de Widgets
-  flutter_native_splash: ^2.4.7 # Splash Screen (tela de carregamento) nativa
   flutter_rating_bar: ^4.0.1 # Avaliação por estrelas
   flutter_svg: ^2.2.3 # Renderizar arquivos SVG
   hugeicons: ^1.1.1 # Ícones

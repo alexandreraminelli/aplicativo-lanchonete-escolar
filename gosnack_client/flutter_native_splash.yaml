@@ -13,7 +13,7 @@ flutter_native_splash:
   color_dark: "#000000"
 
   # Logo
-  image: assets/logos/favicon.png
+  image: assets/logos/splash/splash_icon.png
 
   # Branding
   branding: assets/logos/splash/branding_black.png
