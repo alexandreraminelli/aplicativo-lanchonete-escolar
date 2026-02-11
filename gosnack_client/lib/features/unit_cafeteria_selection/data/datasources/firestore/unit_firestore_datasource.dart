@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/data/models/unit_model.dart';
-import 'package:gosnack_client/utils/constants/firestore/collections.dart';
-import 'package:gosnack_client/utils/constants/firestore/fields/unit_fields.dart';
+import 'package:gosnack_client/core/config/firestore/collections.dart';
+import 'package:gosnack_client/core/config/firestore/fields/unit_fields.dart';
 
 /// Data Source da coleção de unidades escolares no Firestore.
 class UnitFirestoreDataSource {

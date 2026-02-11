@@ -4,7 +4,7 @@ import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/get_cafeterias_by_unit_usecase.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/get_units_usecase.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/select_unit_and_cafeteria_usecase.dart';
-import 'package:gosnack_client/utils/logging/logger.dart';
+import 'package:gosnack_client/core/logging/logger.dart';
 
 /// Controlador de estado para seleção de unidade e lanchonete.
 class UnitCafeteriaSelectionController extends GetxController {

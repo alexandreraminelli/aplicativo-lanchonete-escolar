@@ -4,11 +4,11 @@ import 'package:gosnack_client/features/authentication/domain/use_cases/signup_u
 import 'package:gosnack_client/features/authentication/presentation/controllers/auth_controller.dart';
 import 'package:gosnack_client/features/authentication/presentation/texts/auth_error_texts.dart';
 import 'package:gosnack_client/features/authentication/presentation/texts/auth_success_texts.dart';
-import 'package:gosnack_client/utils/exceptions/firebase_exception.dart';
-import 'package:gosnack_client/utils/exceptions/no_internet_exception.dart';
-import 'package:gosnack_client/utils/logging/logger.dart';
-import 'package:gosnack_client/utils/popups/common_snackbars.dart';
-import 'package:gosnack_client/utils/popups/snackbars.dart';
+import 'package:gosnack_client/core/errors/firebase_exception.dart';
+import 'package:gosnack_client/core/errors/no_internet_exception.dart';
+import 'package:gosnack_client/core/logging/logger.dart';
+import 'package:gosnack_client/core/widgets/feedback/messages/common_snackbars.dart';
+import 'package:gosnack_client/core/widgets/feedback/snackbars.dart';
 
 /// Controlador do formulário de criar conta.
 class SignUpController extends GetxController {

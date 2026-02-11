@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:gosnack_client/routes/app_routes.dart';
-import 'package:gosnack_client/utils/bindings/general_bindings.dart';
-import 'package:gosnack_client/utils/constants/styles/colors.dart';
-import 'package:gosnack_client/utils/theme/theme.dart';
+import 'package:gosnack_client/core/routing/app_routes.dart';
+import 'package:gosnack_client/core/di/app_bindings.dart';
+import 'package:gosnack_client/core/constants/styles/colors.dart';
+import 'package:gosnack_client/core/theme/theme.dart';
 
 /// Widget raiz da aplicação.
 /// Define temas, rotas e bindings globais.
 class App extends StatelessWidget {
   // -- Public Constructor -------------------------------------------------- //
+
   const App({super.key});
 
   // -- Private Static Variables -------------------------------------------- //

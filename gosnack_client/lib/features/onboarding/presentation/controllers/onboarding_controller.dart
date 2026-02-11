@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gosnack_client/features/onboarding/domain/use_cases/complete_onboarding_usecase.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/controllers/unit_cafeteria_selection_controller.dart';
-import 'package:gosnack_client/routes/routes.dart';
-import 'package:gosnack_client/utils/constants/content/texts/error_texts.dart';
-import 'package:gosnack_client/utils/logging/logger.dart';
-import 'package:gosnack_client/utils/popups/snackbars.dart';
+import 'package:gosnack_client/core/routing/routes.dart';
+import 'package:gosnack_client/core/resources/strings/error_texts.dart';
+import 'package:gosnack_client/core/logging/logger.dart';
+import 'package:gosnack_client/core/widgets/feedback/snackbars.dart';
 
 /// Controlador para a tela de onboarding.
 class OnBoardingController extends GetxController {

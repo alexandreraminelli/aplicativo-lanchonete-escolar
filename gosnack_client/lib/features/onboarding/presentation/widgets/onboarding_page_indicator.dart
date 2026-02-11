@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:gosnack_client/features/onboarding/presentation/controllers/onboarding_controller.dart';
-import 'package:gosnack_client/utils/constants/styles/colors.dart';
-import 'package:gosnack_client/utils/constants/styles/sizes.dart';
-import 'package:gosnack_client/utils/helpers/helper_functions.dart';
+import 'package:gosnack_client/core/constants/styles/colors.dart';
+import 'package:gosnack_client/core/constants/styles/sizes.dart';
+import 'package:gosnack_client/core/utils/helper_functions.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 /// Indicador de página para o OnBoarding.

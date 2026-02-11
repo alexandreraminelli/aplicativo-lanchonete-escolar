@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gosnack_client/features/authentication/presentation/controllers/login_controller.dart';
 import 'package:gosnack_client/features/authentication/presentation/texts/auth_texts.dart';
-import 'package:gosnack_client/utils/constants/content/icons.dart';
-import 'package:gosnack_client/utils/constants/styles/sizes.dart';
+import 'package:gosnack_client/core/resources/icons/icons.dart';
+import 'package:gosnack_client/core/constants/styles/sizes.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 /// Formulário de login.

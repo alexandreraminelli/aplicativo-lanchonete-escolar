@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:gosnack_client/utils/exceptions/firebase_exception.dart';
-import 'package:gosnack_client/utils/logging/logger.dart';
+import 'package:gosnack_client/core/errors/firebase_exception.dart';
+import 'package:gosnack_client/core/logging/logger.dart';
 
 /// Datasource remoto que obtêm os dados de autenticação do Firebase Auth
 /// e do Firestore.

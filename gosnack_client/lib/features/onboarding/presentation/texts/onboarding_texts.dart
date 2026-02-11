@@ -1,9 +1,9 @@
-import 'package:gosnack_client/utils/constants/content/texts/main_texts.dart';
+import 'package:gosnack_client/core/resources/strings/main_texts.dart';
 
 /// Constantes de textos usados na tela de onboarding.
 abstract final class KOnBoardingTexts {
   // -- Page 1 -------------------------------------------------------------- //
-  static const String onBoardingTitle1 = 'Bem-vindo ao ${KMainTexts.appName}';
+  static const String onBoardingTitle1 = 'Bem-vindo ao ${MainTexts.appName}';
   static const String onBoardingSubTitle1 =
       'O jeito mais rápido e fácil de pedir seus lanches dentro do colégio. Evite filas e aproveite seus intervalos ao máximo!';
 

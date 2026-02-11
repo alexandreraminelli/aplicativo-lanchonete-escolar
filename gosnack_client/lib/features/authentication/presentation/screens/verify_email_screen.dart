@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gosnack_client/common/widgets/appbar/main_appbar.dart';
+import 'package:gosnack_client/core/widgets/appbar/main_appbar.dart';
 
 /// Tela para verificação de e-mail.
 class VerifyEmailScreen extends StatelessWidget {

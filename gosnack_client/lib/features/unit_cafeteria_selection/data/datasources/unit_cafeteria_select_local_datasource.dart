@@ -1,5 +1,5 @@
 import 'package:get_storage/get_storage.dart';
-import 'package:gosnack_client/utils/logging/logger.dart';
+import 'package:gosnack_client/core/logging/logger.dart';
 
 /// DataSource local para armazenar a unidade e lanchonete selecionada.
 class UnitCafeteriaSelectLocalDatasource {

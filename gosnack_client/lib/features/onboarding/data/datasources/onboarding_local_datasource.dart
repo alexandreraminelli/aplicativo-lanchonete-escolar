@@ -1,5 +1,5 @@
 import 'package:get_storage/get_storage.dart';
-import 'package:gosnack_client/utils/logging/logger.dart';
+import 'package:gosnack_client/core/logging/logger.dart';
 
 /// DataSource local para armazenamento de informações do OnBoarding.
 class OnBoardingLocalDatasource {

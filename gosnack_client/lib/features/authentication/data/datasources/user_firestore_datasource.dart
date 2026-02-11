@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gosnack_client/features/authentication/data/models/user_model.dart';
-import 'package:gosnack_client/utils/constants/content/texts/error_texts.dart';
-import 'package:gosnack_client/utils/constants/firestore/collections.dart';
-import 'package:gosnack_client/utils/constants/firestore/fields/user_fields.dart';
-import 'package:gosnack_client/utils/exceptions/firebase_exception.dart';
-import 'package:gosnack_client/utils/logging/logger.dart';
+import 'package:gosnack_client/core/resources/strings/error_texts.dart';
+import 'package:gosnack_client/core/config/firestore/collections.dart';
+import 'package:gosnack_client/core/config/firestore/fields/user_fields.dart';
+import 'package:gosnack_client/core/errors/firebase_exception.dart';
+import 'package:gosnack_client/core/logging/logger.dart';
 
 /// Data Source da coleção de usuários no Firestore.
 class UserFirestoreDatasource {

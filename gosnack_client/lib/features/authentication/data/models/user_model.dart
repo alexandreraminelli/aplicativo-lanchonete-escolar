@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gosnack_client/features/authentication/domain/entities/user_entity.dart';
-import 'package:gosnack_client/utils/constants/firestore/fields/user_fields.dart';
+import 'package:gosnack_client/core/config/firestore/fields/user_fields.dart';
 
 /// Modelo de dados que representa um usuário autenticado.
 ///

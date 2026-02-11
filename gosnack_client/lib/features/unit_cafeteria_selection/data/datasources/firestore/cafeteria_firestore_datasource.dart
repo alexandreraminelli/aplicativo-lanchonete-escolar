@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/data/models/cafeteria_model.dart';
-import 'package:gosnack_client/utils/constants/firestore/collections.dart';
-import 'package:gosnack_client/utils/constants/firestore/fields/cafeteria_fields.dart';
+import 'package:gosnack_client/core/config/firestore/collections.dart';
+import 'package:gosnack_client/core/config/firestore/fields/cafeteria_fields.dart';
 
 /// Data Source da coleção de cafeterias no Firestore.
 class CafeteriaFirestoreDataSource {

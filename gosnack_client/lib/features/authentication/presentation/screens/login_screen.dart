@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/instance_manager.dart';
-import 'package:gosnack_client/common/widgets/appbar/main_appbar.dart';
-import 'package:gosnack_client/common/widgets/text/section_header.dart';
+import 'package:gosnack_client/core/widgets/appbar/main_appbar.dart';
+import 'package:gosnack_client/core/widgets/text/section_header.dart';
 import 'package:gosnack_client/features/authentication/presentation/texts/auth_texts.dart';
 import 'package:gosnack_client/features/authentication/presentation/widgets/login_form.dart';
-import 'package:gosnack_client/routes/routes.dart';
-import 'package:gosnack_client/utils/constants/content/icons.dart';
-import 'package:gosnack_client/utils/constants/styles/sizes.dart';
-import 'package:gosnack_client/utils/constants/styles/spacing.dart';
-import 'package:gosnack_client/utils/device/device_utility.dart';
+import 'package:gosnack_client/core/routing/routes.dart';
+import 'package:gosnack_client/core/resources/icons/icons.dart';
+import 'package:gosnack_client/core/constants/styles/sizes.dart';
+import 'package:gosnack_client/core/constants/styles/spacing.dart';
+import 'package:gosnack_client/core/utils/device_utility.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 /// Widget da tela de login.

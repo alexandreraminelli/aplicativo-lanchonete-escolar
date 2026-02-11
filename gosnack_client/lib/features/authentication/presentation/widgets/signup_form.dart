@@ -3,8 +3,8 @@ import 'package:get/state_manager.dart';
 import 'package:gosnack_client/features/authentication/presentation/controllers/signup_controller.dart';
 import 'package:gosnack_client/features/authentication/presentation/texts/auth_texts.dart';
 import 'package:gosnack_client/features/authentication/presentation/validators/auth_validators.dart';
-import 'package:gosnack_client/utils/constants/content/icons.dart';
-import 'package:gosnack_client/utils/constants/styles/sizes.dart';
+import 'package:gosnack_client/core/resources/icons/icons.dart';
+import 'package:gosnack_client/core/constants/styles/sizes.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 class SignUpForm extends GetView<SignUpController> {

@@ -1,7 +1,7 @@
 import 'package:gosnack_client/features/authentication/domain/entities/user_entity.dart';
 import 'package:gosnack_client/features/authentication/domain/interfaces/authentication_repository.dart';
-import 'package:gosnack_client/utils/exceptions/no_internet_exception.dart';
-import 'package:gosnack_client/utils/helpers/network_manager.dart';
+import 'package:gosnack_client/core/errors/no_internet_exception.dart';
+import 'package:gosnack_client/core/network/network_manager.dart';
 
 /// Use Case para registrar um novo usuário.
 class SignUpUseCase {

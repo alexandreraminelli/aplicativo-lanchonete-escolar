@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gosnack_client/utils/constants/styles/sizes.dart';
-import 'package:gosnack_client/utils/constants/styles/spacing.dart';
+import 'package:gosnack_client/core/constants/styles/sizes.dart';
+import 'package:gosnack_client/core/constants/styles/spacing.dart';
 import 'package:lottie/lottie.dart';
 
 /// Página de onboarding com animação, título e subtítulo.

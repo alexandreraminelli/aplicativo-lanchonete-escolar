@@ -4,8 +4,8 @@ import 'package:gosnack_client/features/authentication/domain/use_cases/check_au
 import 'package:gosnack_client/features/authentication/domain/use_cases/screen_redirect_usecase.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/signin_usecase.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/signout_usecase.dart';
-import 'package:gosnack_client/routes/routes.dart';
-import 'package:gosnack_client/utils/logging/logger.dart';
+import 'package:gosnack_client/core/routing/routes.dart';
+import 'package:gosnack_client/core/logging/logger.dart';
 
 /// Controlador responsável por gerenciar o estado de autenticação na
 /// camada de apresentação.

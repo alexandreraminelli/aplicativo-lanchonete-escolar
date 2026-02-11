@@ -3,9 +3,9 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/state_manager.dart';
 import 'package:gosnack_client/features/onboarding/presentation/controllers/onboarding_controller.dart';
 import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/controllers/unit_cafeteria_selection_controller.dart';
-import 'package:gosnack_client/utils/constants/content/icons.dart';
-import 'package:gosnack_client/utils/constants/content/texts/main_texts.dart';
-import 'package:gosnack_client/utils/constants/styles/sizes.dart';
+import 'package:gosnack_client/core/resources/icons/icons.dart';
+import 'package:gosnack_client/core/resources/strings/main_texts.dart';
+import 'package:gosnack_client/core/constants/styles/sizes.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 /// Botões de próxima página e continuar na OnBoarding Screen.
@@ -52,7 +52,7 @@ class OnBoardingButtons extends GetView<OnBoardingController> {
               ? () => controller.finishOnBoarding()
               // desabilitar quando ainda não selecionar
               : null,
-          child: const Text(KMainTexts.continueT),
+          child: const Text(MainTexts.continueT),
         ),
       );
     });
