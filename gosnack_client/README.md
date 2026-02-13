@@ -73,7 +73,7 @@ gosnack_client/
 | `pubspec.lock`                | Arquivo gerado automaticamente que fixa as versões exatas das dependências instaladas.                                                                                    |
 | `pubspec.yaml`                | Arquivo principal do projeto: define dependências, assets, fonts e configurações gerais do Flutter.                                                                       |
 
-<img src="docs/diagrams/architecture/application-modular-architecture-diagram.png" alt="Diagrama de Arquitetura Modular da Aplicação" />
+<img src="docs/diagrams/architecture/application-modular-architecture-diagram.png" alt="Diagrama de Arquitetura Modular da Aplicação" width="800" />
 
 ### Pasta `assets/`
 
@@ -200,7 +200,81 @@ gosnack_client/lib/core/
 Cada funcionalidade é organizada por módulo independente seguindo a estrutura:
 
 ```bash
+gosnack_client/lib/features/
+├── [feature_a]/
+│   ├── domain/
+│   │   ├── entities/
+│   │   ├── repositories/
+│   │   └── use_cases/
+│   ├── data/
+│   │   ├── datasources/
+│   │   │   ├── local/
+│   │   │   └── remote/
+│   │   ├── models/
+│   │   ├── mappers/
+│   │   └── repositories/
+│   └── presentation/
+│       ├── bindings/
+│       ├── controllers/
+│       ├── screens/
+│       ├── texts/
+│       ├── validators/
+│       └── widgets/
+├── [feature_b]/
+│   └── ...
+└── ...
 
 ```
 
-<img src="docs/diagrams/architecture/feature-module-architecture-diagram.png" alt="Diagrama de Arquitetura do Módulo de Funcionalidade" />
+<!-- Descrição das camadas -->
+
+#### Camadas do Módulo de Funcionalidade
+
+**Direção de Dependências:**
+Presentation → Domain ← Data
+
+- A camada Domain não depende de nenhuma outra.
+- A camada Data depende apenas do Domain.
+- A camada Presentation depende apenas do Domain.
+
+<img src="docs/diagrams/architecture/feature-module-architecture-diagram.png" alt="Diagrama de Arquitetura do Módulo de Funcionalidade" width="800" />
+
+##### Camada de Domínio (Domain Layer)
+
+Contém o **núcleo da regra de negócio** da funcionalidade.
+Não possui dependência de frameworks, UI ou fontes de dados externas.
+Define os modelos de negócio da funcionalidade, contratos e casos de uso que representam as operações da feature.
+
+| Path                   | Descrição                                                                                     |
+| :--------------------- | :-------------------------------------------------------------------------------------------- |
+| `domain/entities/`     | Entidades de negócio puras, independentes de infraestrutura e frameworks.                     |
+| `domain/repositories/` | Interfaces (contratos) que definem as operações de acesso a dados necessárias para a feature. |
+| `domain/use_cases/`    | Casos de uso que encapsulam ações e fluxos de negócio, orquestrando entidades e repositórios. |
+
+##### Camada de Dados (Data Layer)
+
+Responsável pela **implementação do acesso a dados** e pela comunicação com fontes de dados externas e internas.
+Implementa os contratos definidos na camada de domínio e realiza a conversão entre formatos externos (JSON, Firestore, etc) e os modelos da aplicação.
+
+| Path                       | Descrição                                                                                                |
+| :------------------------- | :------------------------------------------------------------------------------------------------------- |
+| `data/datasources/`        | Fontes de dados utilizadas pela feature.                                                                 |
+| `data/datasources/local/`  | Implementações de fontes de dados locais (cache, armazenamento local, preferências, etc).                |
+| `data/datasources/remote/` | Integrações remotas (Firebase, APIs REST, serviços externos).                                            |
+| `data/models/`             | Modelos de dados (DTOs) utilizados para serialização e desserialização de dados provenientes das fontes. |
+| `data/mappers/`            | Conversores entre Models (Data layer) e Entities (Domain layer).                                         |
+| `data/repositories/`       | Implementações concretas dos contratos definidos em `domain/repositories/`                               |
+
+##### Camada de Apresentação (Presentation Layer)
+
+Responsável pela **interface do usuário (UI) e gerenciamento de estado**.
+Consome os casos de uso da camada de domínio e coordena a interação entre UI e lógica de negócio.
+
+| Path                        | Descrição                                                                                       |
+| :-------------------------- | :---------------------------------------------------------------------------------------------- |
+| `presentation/bindings/`    | Configuração de injeção de dependências da feature (GetX Bindings).                             |
+| `presentation/controllers/` | Controladores responsáveis pelo gerenciamento de estado e orquestração entre UI e casos de uso. |
+| `presentation/screens/`     | Telas (pages) que compõem a interface do usuário da feature.                                    |
+| `presentation/widgets/`     | Widgets de UI reutilizáveis específicos da feature.                                             |
+| `presentation/validators/`  | Validações de formulários e entradas de usuário.                                                |
+| `presentation/texts/`       | Textos estáticos específicos da feature (títulos, mensagens, etc).                              |
