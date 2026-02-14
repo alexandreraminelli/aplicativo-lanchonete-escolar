@@ -2,6 +2,69 @@
 
 <!-- TODO: Introdução -->
 
+<!-- ----------------------------------------------------------------------- -->
+
+## 🚀 Como Executar o Projeto
+
+### Preparar o ambiente
+
+1. [Instale o Flutter](https://docs.flutter.dev/install) seguindo as instruções oficiais para o seu sistema operacional.
+
+2. Verifique se o Flutter está corretamente instalado e configurado:
+
+```bash
+flutter doctor
+```
+
+3. Configure uma plataforma para executar o aplicativo seguindo as [instruções na documentação do Flutter](https://docs.flutter.dev/platform-integration#setup). Conecte um dispositivo físico ou configure um emulador. <br>
+   O projeto é configurado para Android e iOS. Outras plataformas (web e desktop) podem exigir configurações adicionais.
+
+### Clonar o repositório
+
+1. Clone este repositório:
+
+```bash
+git clone https://github.com/alexandreraminelli/aplicativo-lanchonete-escolar.git
+```
+
+2. Navegue até o diretório do aplicativo cliente:
+
+```bash
+cd aplicativo-lanchonete-escolar/gosnack_client
+```
+
+3. Instale as dependências:
+
+```bash
+flutter pub get
+```
+
+### Configurações adicionais
+
+- **Firebase:** Configure as credenciais do Firebase para o projeto seguindo as instruções da [documentação do Firebase](https://firebase.google.com/docs/flutter/setup). Certifique-se de ter o arquivo `google-services.json` (Android) e `GoogleService-Info.plist` (iOS) corretamente configurados no projeto.
+
+### Compilar e executar o aplicativo
+
+**Modo debug (desenvolvimento):** permite Hot Reload e Hot Restart, exibe logs detalhados e mantém verificações de debug ativas. Possui menor performance e não é otimizado para uso em produção.
+
+```bash
+flutter run
+```
+
+**Modo profile:** executa o aplicativo com performance próxima ao modo release, mas com instrumentação para análise. Útil para medir desempenho, identificar quedas de FPS, consumo de CPU/memória e analisar o comportamento do Flutter DevTools. Não possui Hot Reload.
+
+```bash
+flutter run --profile
+```
+
+**Modo release (produção):** versão totalmente otimizada, sem logs de debug ou verificações de desenvolvimento. Oferece a melhor performance e é a configuração utilizada para distribuição nas lojas de aplicativos (Play Store e App Store) e para testes finais em ambiente real.
+
+```bash
+flutter run --release
+```
+
+<!-- ----------------------------------------------------------------------- -->
+
 ## ✨ Funcionalidades
 
 <!-- Status: ⬜ Não iniciado | 🚧 Em desenvolvimento | ✅ Implementado -->
@@ -15,9 +78,7 @@
 | Pedidos               | `orders/`                | ⬜ Não iniciado       |
 | Avaliação             | `reviews/`               | ⬜ Não iniciado       |
 
-## 🚀 Como Executar o Projeto
-
-<!-- TODO: Como executar o projeto -->
+<!-- ----------------------------------------------------------------------- -->
 
 ## 📁 Project Structure
 
