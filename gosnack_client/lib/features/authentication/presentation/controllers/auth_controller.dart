@@ -2,7 +2,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/check_authentication_status_usecase.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/screen_redirect_usecase.dart';
-import 'package:gosnack_client/features/authentication/domain/use_cases/signin_usecase.dart';
+import 'package:gosnack_client/features/authentication/domain/use_cases/login_usecase.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/signout_usecase.dart';
 import 'package:gosnack_client/core/routing/routes.dart';
 import 'package:gosnack_client/core/logging/logger.dart';

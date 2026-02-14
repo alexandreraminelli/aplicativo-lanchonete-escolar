@@ -6,5 +6,6 @@ abstract final class AuthSuccessTexts {
       'Verifique o e-mail de confirmação enviado.';
 
   // -- Sign-in Success ----------------------------------------------------- //
-  static const String signinSuccessTitle = 'Login realizado com sucesso';
+  static const String loginSuccessTitle = 'Login realizado com sucesso';
+  static const loginSuccessMessage = 'Bem-vindo de volta!';
 }

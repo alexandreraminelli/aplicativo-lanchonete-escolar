@@ -54,12 +54,12 @@ class SignUpController extends GetxController {
       );
 
       // Em caso de sucesso:
-      await _authController.screenRedirect(); // redirecionar usuário
       LoggerHelp.info('Usuário cadastrado com sucesso: ${user?.id}');
       AppSnackBars.showSuccessSnackBar(
         title: AuthSuccessTexts.signupSuccessTitle,
         message: AuthSuccessTexts.signupSuccessMessage,
       );
+      await _authController.screenRedirect(); // redirecionar usuário
     } on NoInternetException {
       CommonSnackBars.showNoInternetSnackBar(); // Sem Internet
     } catch (e) {

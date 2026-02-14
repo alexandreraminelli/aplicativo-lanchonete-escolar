@@ -7,7 +7,7 @@ import 'package:gosnack_client/features/authentication/data/repositories/authent
 import 'package:gosnack_client/features/authentication/domain/repositories/authentication_repository.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/check_authentication_status_usecase.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/screen_redirect_usecase.dart';
-import 'package:gosnack_client/features/authentication/domain/use_cases/signin_usecase.dart';
+import 'package:gosnack_client/features/authentication/domain/use_cases/login_usecase.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/signout_usecase.dart';
 import 'package:gosnack_client/features/authentication/presentation/controllers/auth_controller.dart';
 
