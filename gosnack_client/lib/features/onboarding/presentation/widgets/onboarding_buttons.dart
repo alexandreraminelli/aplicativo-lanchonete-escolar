@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/state_manager.dart';
 import 'package:gosnack_client/features/onboarding/presentation/controllers/onboarding_controller.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/controllers/unit_cafeteria_selection_controller.dart';
+import 'package:gosnack_client/features/cafeteria_selection/presentation/controllers/unit_cafeteria_selection_controller.dart';
 import 'package:gosnack_client/core/resources/icons/icons.dart';
 import 'package:gosnack_client/core/resources/strings/main_texts.dart';
 import 'package:gosnack_client/core/constants/styles/sizes.dart';

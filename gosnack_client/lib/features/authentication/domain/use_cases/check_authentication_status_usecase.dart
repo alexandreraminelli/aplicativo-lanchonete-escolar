@@ -1,4 +1,4 @@
-import 'package:gosnack_client/features/authentication/domain/interfaces/authentication_repository.dart';
+import 'package:gosnack_client/features/authentication/domain/repositories/authentication_repository.dart';
 
 /// UseCase para verificar o status de autenticação do usuário.
 class CheckAuthenticationStatusUsecase {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:gosnack_client/core/widgets/inputs/dropdown_menu.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/cafeteria_entity.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/unit_entity.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/controllers/unit_cafeteria_selection_controller.dart';
+import 'package:gosnack_client/features/cafeteria_selection/domain/entities/cafeteria_entity.dart';
+import 'package:gosnack_client/features/cafeteria_selection/domain/entities/unit_entity.dart';
+import 'package:gosnack_client/features/cafeteria_selection/presentation/controllers/unit_cafeteria_selection_controller.dart';
 import 'package:gosnack_client/core/resources/strings/main_texts.dart';
 import 'package:gosnack_client/core/constants/styles/sizes.dart';
 

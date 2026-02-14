@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gosnack_client/core/widgets/text/section_header.dart';
 import 'package:gosnack_client/features/onboarding/presentation/texts/onboarding_texts.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/widgets/unit_cafeteria_selector.dart';
+import 'package:gosnack_client/features/cafeteria_selection/presentation/widgets/unit_cafeteria_selector.dart';
 import 'package:gosnack_client/core/constants/styles/sizes.dart';
 import 'package:gosnack_client/core/constants/styles/spacing.dart';
 

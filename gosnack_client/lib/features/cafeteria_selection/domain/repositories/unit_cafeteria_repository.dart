@@ -1,5 +1,5 @@
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/cafeteria_entity.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/unit_entity.dart';
+import 'package:gosnack_client/features/cafeteria_selection/domain/entities/cafeteria_entity.dart';
+import 'package:gosnack_client/features/cafeteria_selection/domain/entities/unit_entity.dart';
 
 /// Interface com o contrato do repositório de unidades e lanchonetes.
 ///

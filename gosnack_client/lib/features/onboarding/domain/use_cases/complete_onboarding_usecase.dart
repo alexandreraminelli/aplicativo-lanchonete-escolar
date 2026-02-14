@@ -1,4 +1,4 @@
-import 'package:gosnack_client/features/onboarding/domain/interfaces/onboarding_repository.dart';
+import 'package:gosnack_client/features/onboarding/domain/repositories/onboarding_repository.dart';
 
 /// UseCase para completar o processo de onboarding.
 class CompleteOnboardingUseCase {

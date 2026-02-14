@@ -1,11 +1,11 @@
-import 'package:gosnack_client/features/unit_cafeteria_selection/data/datasources/firestore/cafeteria_firestore_datasource.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/data/datasources/firestore/unit_firestore_datasource.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/data/datasources/unit_cafeteria_select_local_datasource.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/data/mappers/cafeteria_mapper.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/data/mappers/unit_mapper.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/cafeteria_entity.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/unit_entity.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/interfaces/unit_cafeteria_repository.dart';
+import 'package:gosnack_client/features/cafeteria_selection/data/datasources/remote/cafeteria_firestore_datasource.dart';
+import 'package:gosnack_client/features/cafeteria_selection/data/datasources/remote/unit_firestore_datasource.dart';
+import 'package:gosnack_client/features/cafeteria_selection/data/datasources/local/unit_cafeteria_local_datasource.dart';
+import 'package:gosnack_client/features/cafeteria_selection/data/mappers/cafeteria_mapper.dart';
+import 'package:gosnack_client/features/cafeteria_selection/data/mappers/unit_mapper.dart';
+import 'package:gosnack_client/features/cafeteria_selection/domain/entities/cafeteria_entity.dart';
+import 'package:gosnack_client/features/cafeteria_selection/domain/entities/unit_entity.dart';
+import 'package:gosnack_client/features/cafeteria_selection/domain/repositories/unit_cafeteria_repository.dart';
 
 /// Implementação concreta do repositório de unidades e lanchonetes.
 class UnitCafeteriaRepositoryImpl implements UnitCafeteriaRepository {

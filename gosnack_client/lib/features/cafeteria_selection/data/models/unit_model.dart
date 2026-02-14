@@ -1,4 +1,4 @@
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/unit_entity.dart';
+import 'package:gosnack_client/features/cafeteria_selection/domain/entities/unit_entity.dart';
 import 'package:gosnack_client/core/config/firestore/fields/unit_fields.dart';
 
 /// Modelo de dados que representa uma unidade escolar.

@@ -1,5 +1,5 @@
-import 'package:gosnack_client/features/onboarding/data/datasources/onboarding_local_datasource.dart';
-import 'package:gosnack_client/features/onboarding/domain/interfaces/onboarding_repository.dart';
+import 'package:gosnack_client/features/onboarding/data/datasources/local/onboarding_local_datasource.dart';
+import 'package:gosnack_client/features/onboarding/domain/repositories/onboarding_repository.dart';
 
 /// Implementação concreta do repositório de onboarding.
 class OnBoardingRepositoryImpl implements OnBoardingRepository {

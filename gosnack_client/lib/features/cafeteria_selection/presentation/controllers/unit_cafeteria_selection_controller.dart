@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/cafeteria_entity.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/unit_entity.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/get_cafeterias_by_unit_usecase.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/get_units_usecase.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/use_cases/select_unit_and_cafeteria_usecase.dart';
+import 'package:gosnack_client/features/cafeteria_selection/domain/entities/cafeteria_entity.dart';
+import 'package:gosnack_client/features/cafeteria_selection/domain/entities/unit_entity.dart';
+import 'package:gosnack_client/features/cafeteria_selection/domain/use_cases/get_cafeterias_by_unit_usecase.dart';
+import 'package:gosnack_client/features/cafeteria_selection/domain/use_cases/get_units_usecase.dart';
+import 'package:gosnack_client/features/cafeteria_selection/domain/use_cases/select_cafeteria_usecase.dart';
 import 'package:gosnack_client/core/logging/logger.dart';
 
 /// Controlador de estado para seleção de unidade e lanchonete.
@@ -12,7 +12,7 @@ class UnitCafeteriaSelectionController extends GetxController {
 
   final GetUnitsUseCase _getUnits;
   final GetCafeteriasByUnitUseCase _getCafeteriasByUnit;
-  final SelectUnitAndCafeteriaUseCase _selectUnitAndCafeteriaUseCase;
+  final SelectCafeteriaUseCase _selectUnitAndCafeteriaUseCase;
 
   // -- Public Constructor -------------------------------------------------- //
 

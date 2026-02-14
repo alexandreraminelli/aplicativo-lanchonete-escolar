@@ -8,7 +8,7 @@ import 'package:gosnack_client/features/authentication/presentation/screens/veri
 import 'package:gosnack_client/features/home/presentation/screens/home_screen.dart';
 import 'package:gosnack_client/features/onboarding/presentation/bindings/onboarding_binding.dart';
 import 'package:gosnack_client/features/onboarding/presentation/screens/onboarding_screen.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/presentation/bindings/unit_cafeteria_selection_binding.dart';
+import 'package:gosnack_client/features/cafeteria_selection/presentation/bindings/unit_cafeteria_selection_binding.dart';
 
 /// Configuração das rotas da aplicação.
 class AppRoutes {

@@ -1,5 +1,5 @@
-import 'package:gosnack_client/features/unit_cafeteria_selection/data/models/cafeteria_model.dart';
-import 'package:gosnack_client/features/unit_cafeteria_selection/domain/entities/cafeteria_entity.dart';
+import 'package:gosnack_client/features/cafeteria_selection/data/models/cafeteria_model.dart';
+import 'package:gosnack_client/features/cafeteria_selection/domain/entities/cafeteria_entity.dart';
 
 /// Utilitário para converter modelo de domínio [CafeteriaEntity] para modelo de
 /// dados [CafeteriaModel] e vice-versa.

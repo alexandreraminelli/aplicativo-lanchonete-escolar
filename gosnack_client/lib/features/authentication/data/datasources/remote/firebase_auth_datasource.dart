@@ -4,7 +4,7 @@ import 'package:gosnack_client/core/logging/logger.dart';
 
 /// Datasource remoto que obtêm os dados de autenticação do Firebase Auth
 /// e do Firestore.
-class AuthFirebaseDatasource {
+class FirebaseAuthDatasource {
   // -- Private Instance Variables ------------------------------------------ //
 
   /// Instância do Firebase Auth para realizar operações de autenticação.
@@ -12,7 +12,7 @@ class AuthFirebaseDatasource {
 
   // -- Public Constructor -------------------------------------------------- //
 
-  AuthFirebaseDatasource(this._auth);
+  FirebaseAuthDatasource(this._auth);
 
   // -- Public Methods ------------------------------------------------------ //
 

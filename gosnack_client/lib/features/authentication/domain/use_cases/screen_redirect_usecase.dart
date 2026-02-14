@@ -1,5 +1,5 @@
-import 'package:gosnack_client/features/authentication/domain/interfaces/authentication_repository.dart';
-import 'package:gosnack_client/features/onboarding/domain/interfaces/onboarding_repository.dart';
+import 'package:gosnack_client/features/authentication/domain/repositories/authentication_repository.dart';
+import 'package:gosnack_client/features/onboarding/domain/repositories/onboarding_repository.dart';
 import 'package:gosnack_client/core/routing/routes.dart';
 
 /// UseCase responsável por determinar para qual tela redirecionar o usuário

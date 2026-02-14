@@ -1,16 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:gosnack_client/features/authentication/data/datasources/auth_firebase_datasource.dart';
-import 'package:gosnack_client/features/authentication/data/datasources/user_firestore_datasource.dart';
+import 'package:gosnack_client/features/authentication/data/datasources/remote/firebase_auth_datasource.dart';
+import 'package:gosnack_client/features/authentication/data/datasources/remote/user_firestore_datasource.dart';
 import 'package:gosnack_client/features/authentication/data/models/user_model.dart';
 import 'package:gosnack_client/features/authentication/domain/entities/user_entity.dart';
-import 'package:gosnack_client/features/authentication/domain/interfaces/authentication_repository.dart';
+import 'package:gosnack_client/features/authentication/domain/repositories/authentication_repository.dart';
 
 /// Implementação concreta do repositório de autenticação.
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
   // -- Private Instance Variables ------------------------------------------ //
 
   // -- Datasources
-  final AuthFirebaseDatasource _remoteAuthDatasource;
+  final FirebaseAuthDatasource _remoteAuthDatasource;
   final UserFirestoreDatasource _removeFirestoreDatasource;
 
   // -- Public Constructor -------------------------------------------------- //
