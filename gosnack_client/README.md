@@ -2,9 +2,22 @@
 
 <!-- TODO: Introdução -->
 
-<!-- TODO: Como executar o projeto -->
+## ✨ Funcionalidades
 
----
+<!-- Status: ⬜ Não iniciado | 🚧 Em desenvolvimento | ✅ Implementado -->
+
+| Funcionalidade        | Pasta em `lib/features/` | Status                |
+| :-------------------- | :----------------------- | :-------------------- |
+| Autenticação          | `authentication/`        | 🚧 Em desenvolvimento |
+| Seleção de lanchonete | `cafeteria_selection/`   | 🚧 Em desenvolvimento |
+| Cardápio              | `menu/`                  | ⬜ Não iniciado       |
+| Onboarding            | `onboarding/`            | ✅ Implementado       |
+| Pedidos               | `orders/`                | ⬜ Não iniciado       |
+| Avaliação             | `reviews/`               | ⬜ Não iniciado       |
+
+## 🚀 Como Executar o Projeto
+
+<!-- TODO: Como executar o projeto -->
 
 ## 📁 Project Structure
 
