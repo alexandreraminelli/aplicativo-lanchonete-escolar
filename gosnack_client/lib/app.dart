@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:gosnack_client/core/routing/app_routes.dart';
 import 'package:gosnack_client/core/di/app_bindings.dart';
-import 'package:gosnack_client/core/constants/styles/colors.dart';
+import 'package:gosnack_client/core/routing/app_routes.dart';
 import 'package:gosnack_client/core/theme/theme.dart';
+import 'package:gosnack_client/core/widgets/feedback/loading/full_screen_loader.dart';
 
 /// Widget raiz da aplicação.
 /// Define temas, rotas e bindings globais.
@@ -11,13 +11,6 @@ class App extends StatelessWidget {
   // -- Public Constructor -------------------------------------------------- //
 
   const App({super.key});
-
-  // -- Private Static Variables -------------------------------------------- //
-
-  /// Tela de carregamento enquanto decide qual tela inicial exibir.
-  static const _loadingScreen = Center(
-    child: CircularProgressIndicator(color: KColors.primary),
-  );
 
   // -- Build Method -------------------------------------------------------- //
   @override
@@ -35,7 +28,7 @@ class App extends StatelessWidget {
       getPages: AppRoutes.pages,
 
       // Tela de carregamento até decidir qual tela mostrar
-      home: const Scaffold(body: _loadingScreen),
+      home: const Scaffold(body: FullScreenLoader()),
     );
   }
 }
