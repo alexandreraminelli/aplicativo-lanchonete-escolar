@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gosnack_client/core/widgets/feedback/loading/small_loading_indicator.dart';
 import 'package:gosnack_client/features/authentication/presentation/controllers/login_controller.dart';
 import 'package:gosnack_client/features/authentication/presentation/texts/auth_texts.dart';
 import 'package:gosnack_client/core/resources/icons/icons.dart';
@@ -44,12 +45,20 @@ class LoginForm extends GetView<LoginController> {
     );
 
     // -- Submit Button
-    final submitButton = SizedBox(
-      width: double.infinity,
-      child: ElevatedButton.icon(
-        onPressed: () => controller.login(), // efetuar login
-        label: const Text(AuthTexts.login),
-        icon: const HugeIcon(icon: KIcons.login),
+    final submitButton = Obx(
+      () => SizedBox(
+        width: double.infinity,
+        child: ElevatedButton.icon(
+          label: const Text(AuthTexts.login),
+          // Ícone e loading
+          icon: controller.isSubmitting.value
+              ? const SmallLoadingIndicator()
+              : const HugeIcon(icon: KIcons.login),
+
+          onPressed: controller.isSubmitting.value
+              ? null // desabilitar durante envio
+              : () => controller.login(), // efetuar login
+        ),
       ),
     );
 

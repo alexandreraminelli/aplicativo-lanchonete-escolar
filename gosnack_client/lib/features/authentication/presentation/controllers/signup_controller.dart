@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
+import 'package:gosnack_client/core/errors/firebase_exception.dart';
+import 'package:gosnack_client/core/errors/no_internet_exception.dart';
+import 'package:gosnack_client/core/logging/logger.dart';
+import 'package:gosnack_client/core/utils/device_utility.dart';
+import 'package:gosnack_client/core/widgets/feedback/messages/common_snackbars.dart';
+import 'package:gosnack_client/core/widgets/feedback/snackbars.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/signup_usecase.dart';
 import 'package:gosnack_client/features/authentication/presentation/controllers/auth_controller.dart';
 import 'package:gosnack_client/features/authentication/presentation/texts/auth_error_texts.dart';
 import 'package:gosnack_client/features/authentication/presentation/texts/auth_success_texts.dart';
-import 'package:gosnack_client/core/errors/firebase_exception.dart';
-import 'package:gosnack_client/core/errors/no_internet_exception.dart';
-import 'package:gosnack_client/core/logging/logger.dart';
-import 'package:gosnack_client/core/widgets/feedback/messages/common_snackbars.dart';
-import 'package:gosnack_client/core/widgets/feedback/snackbars.dart';
 
 /// Controlador do formulário de criar conta.
 class SignUpController extends GetxController {
@@ -35,11 +36,21 @@ class SignUpController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
 
+  // -- State Variables ----------------------------------------------------- //
+
+  /// Se o cadastro está em andamento.
+  final isSubmitting = false.obs;
+
   // -- Public Methods ------------------------------------------------------ //
 
   /// Realizar o cadastro do usuário.
   Future<void> signUp() async {
+    DeviceUtils.hideKeyboard(); // recolher teclado
     try {
+      // Evitar múltiplos envios
+      if (isSubmitting.value) return;
+      isSubmitting.value = true;
+
       // Validar formulário
       if (!signupFormKey.currentState!.validate()) {
         return;
@@ -67,6 +78,8 @@ class SignUpController extends GetxController {
         title: AuthErrorTexts.signUpErrorTitle,
         message: AppFirebaseException.getErrorMessage(e),
       );
+    } finally {
+      isSubmitting.value = false; // Resetar estado de envio
     }
   }
 }

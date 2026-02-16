@@ -9,8 +9,12 @@ import 'package:url_launcher/url_launcher_string.dart';
 /// Utilitário para operações relacionadas ao dispositivo.
 class DeviceUtils {
   /// Esconder o teclado virtual  .
-  static void hideKeyboard(BuildContext context) {
-    FocusScope.of(context).requestFocus(FocusNode());
+  static void hideKeyboard([BuildContext? context]) {
+    if (context != null) {
+      FocusScope.of(context).requestFocus(FocusNode());
+    } else {
+      FocusManager.instance.primaryFocus?.unfocus();
+    }
   }
 
   /// Alterar a cor da barra de status.

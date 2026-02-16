@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:gosnack_client/core/errors/firebase_exception.dart';
 import 'package:gosnack_client/core/errors/no_internet_exception.dart';
 import 'package:gosnack_client/core/logging/logger.dart';
+import 'package:gosnack_client/core/utils/device_utility.dart';
 import 'package:gosnack_client/core/widgets/feedback/messages/common_snackbars.dart';
 import 'package:gosnack_client/core/widgets/feedback/snackbars.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/login_usecase.dart';
@@ -33,12 +34,20 @@ class LoginController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
 
+  // -- State Variables ----------------------------------------------------- //
+
+  /// Se o login está em andamento.
+  final isSubmitting = false.obs;
+
   // -- Public Methods ------------------------------------------------------ //
 
   /// Realizar o login do usuário.
   Future<void> login() async {
+    DeviceUtils.hideKeyboard(); // recolher teclado
     try {
-      // TODO: Exibir loading
+      // Evitar múltiplos envios
+      if (isSubmitting.value) return;
+      isSubmitting.value = true;
 
       // Validar formulário
       if (!loginFormKey.currentState!.validate()) {
@@ -65,6 +74,8 @@ class LoginController extends GetxController {
         title: AuthErrorTexts.loginErrorTitle,
         message: AppFirebaseException.getErrorMessage(e),
       );
+    } finally {
+      isSubmitting.value = false; // Resetar estado de envio
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
+import 'package:gosnack_client/core/widgets/feedback/loading/small_loading_indicator.dart';
 import 'package:gosnack_client/features/authentication/presentation/controllers/signup_controller.dart';
 import 'package:gosnack_client/features/authentication/presentation/texts/auth_texts.dart';
 import 'package:gosnack_client/features/authentication/presentation/validators/auth_validators.dart';
@@ -75,13 +76,20 @@ class SignUpForm extends GetView<SignUpController> {
     );
 
     // -- Submit Button
-    final submitButton = SizedBox(
-      width: double.infinity,
-      child: ElevatedButton.icon(
-        label: const Text(AuthTexts.createAccount),
-        icon: const HugeIcon(icon: KIcons.create),
+    final submitButton = Obx(
+      () => SizedBox(
+        width: double.infinity,
+        child: ElevatedButton.icon(
+          label: const Text(AuthTexts.createAccount),
+          // Ícone e loading
+          icon: controller.isSubmitting.value
+              ? const SmallLoadingIndicator()
+              : const HugeIcon(icon: KIcons.create),
 
-        onPressed: () => controller.signUp(), // submeter form e criar conta
+          onPressed: controller.isSubmitting.value
+              ? null // desabilitar durante envio
+              : () => controller.signUp(), // submeter form e criar conta
+        ),
       ),
     );
 
