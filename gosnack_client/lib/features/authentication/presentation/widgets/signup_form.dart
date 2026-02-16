@@ -6,6 +6,7 @@ import 'package:gosnack_client/features/authentication/presentation/texts/auth_t
 import 'package:gosnack_client/features/authentication/presentation/validators/auth_validators.dart';
 import 'package:gosnack_client/core/resources/icons/icons.dart';
 import 'package:gosnack_client/core/constants/styles/sizes.dart';
+import 'package:gosnack_client/features/authentication/presentation/widgets/password_field.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 class SignUpForm extends GetView<SignUpController> {
@@ -62,18 +63,7 @@ class SignUpForm extends GetView<SignUpController> {
     );
 
     // -- Password Field
-    final passwordField = TextFormField(
-      decoration: const InputDecoration(
-        labelText: AuthTexts.password,
-        prefixIcon: HugeIcon(icon: KIcons.password),
-      ),
-      // keyboard config:
-      keyboardType: TextInputType.visiblePassword,
-      textInputAction: TextInputAction.done,
-      // controller:
-      controller: controller.password,
-      validator: (String? value) => AuthValidators.validatePassword(value),
-    );
+    final passwordField = PasswordField(fieldController: controller.password);
 
     // -- Submit Button
     final submitButton = Obx(
