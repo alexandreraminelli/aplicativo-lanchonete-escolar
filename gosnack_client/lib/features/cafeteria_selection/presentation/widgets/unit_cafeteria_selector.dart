@@ -50,6 +50,9 @@ class UnitCafeteriaSelector extends GetView<UnitCafeteriaSelectionController> {
 
             // -- Dropdown de lanchonetes
             AppDropdownMenu<CafeteriaEntity>(
+              // Chave única para forçar reconstrução quando a unidade mudar, garantindo que a lista de lanchonetes seja atualizada
+              key: ValueKey(controller.selectedUnit.value?.id ?? 'no-unit'),
+
               label: MainTexts.cafeteria,
               // Desabilitar se nenhuma unidade selecionada ou está carregando
               enabled:
