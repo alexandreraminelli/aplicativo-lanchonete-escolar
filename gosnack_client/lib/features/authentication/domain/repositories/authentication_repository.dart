@@ -32,4 +32,7 @@ abstract class AuthenticationRepository {
 
   /// Reenvia o e-mail de verificação para o usuário.
   Future<void> resendVerificationEmail();
+
+  /// Recarrega os dados do usuário autenticado.
+  Future<void> reloadCurrentUser();
 }

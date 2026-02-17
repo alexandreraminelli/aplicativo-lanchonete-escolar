@@ -6,6 +6,11 @@ abstract final class AuthErrorTexts {
   // -- Login Errors -------------------------------------------------------- //
   static const String loginErrorTitle = 'Erro ao Realizar Login';
 
+  // -- Email Not Verified -------------------------------------------------- //
+  static const String emailNotVerifiedTitle = 'E-mail Não Verificado';
+  static const String emailNotVerifiedMessage =
+      'Seu e-mail ainda não foi verificado. Por favor, verifique sua caixa de entrada e a pasta de spam para encontrar o e-mail de verificação.';
+
   // -- Resend Email Errors ------------------------------------------------- //
   static const String resendEmailErrorTitle = 'Erro ao Reenviar E-mail';
   static String resendEmailErrorMessage(String email) =>

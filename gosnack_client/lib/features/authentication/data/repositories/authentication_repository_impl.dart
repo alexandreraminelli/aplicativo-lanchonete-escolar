@@ -98,4 +98,14 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   Future<void> resendVerificationEmail() {
     return _remoteAuthDatasource.resendVerificationEmail();
   }
+
+  @override
+  Future<void> reloadCurrentUser() async {
+    try {
+      // Recarregar os dados do usuário do Firebase Auth
+      await _remoteAuthDatasource.reloadCurrentUser();
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

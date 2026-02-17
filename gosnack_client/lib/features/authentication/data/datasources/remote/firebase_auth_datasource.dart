@@ -117,4 +117,26 @@ class FirebaseAuthDatasource {
       throw AppFirebaseException('unknown');
     }
   }
+
+  /// Recarrega os dados do usuário autenticado do Firebase Auth.
+  ///
+  /// Útil para sincronizar dados locais com os dados remotos,
+  /// especialmente o status de verificação de e-mail.
+  Future<void> reloadCurrentUser() async {
+    try {
+      final currentUser = _auth.currentUser;
+      if (currentUser == null) {
+        throw Exception('Nenhum usuário autenticado');
+      }
+      await currentUser.reload();
+    } on FirebaseException catch (e) {
+      LoggerHelp.error(
+        'Erro ao recarregar usuário atual: Código: ${e.code}, Mensagem: ${e.message}',
+      );
+      throw AppFirebaseException(e.code);
+    } catch (e) {
+      LoggerHelp.error('Erro ao recarregar usuário atual: $e');
+      throw AppFirebaseException('unknown');
+    }
+  }
 }

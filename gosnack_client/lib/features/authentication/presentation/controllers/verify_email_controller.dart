@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:gosnack_client/core/logging/logger.dart';
+import 'package:gosnack_client/core/resources/icons/icons.dart';
+import 'package:gosnack_client/core/routing/routes.dart';
 import 'package:gosnack_client/core/widgets/feedback/popups/snackbars.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/resend_verify_email_usecase.dart';
 import 'package:gosnack_client/features/authentication/presentation/controllers/auth_controller.dart';
@@ -45,6 +47,21 @@ class VerifyEmailController extends GetxController {
     }
   }
 
+  /// Verifica se o e-mail do usuário foi verificado.
+  Future<bool> _isEmailVerified() async {
+    try {
+      // Recarregar usuário para obter status atualizado
+      await _authController.reloadCurrentUser();
+
+      final user = await _authController.getCurrentUser();
+      if (user == null) return false;
+      return user.emailVerified;
+    } catch (e) {
+      LoggerHelp.error('Erro ao verificar status de verificação do e-mail: $e');
+      return false;
+    }
+  }
+
   // -- Public Methods ------------------------------------------------------ //
 
   /// Reenvia o e-mail de verificação para o usuário.
@@ -71,7 +88,15 @@ class VerifyEmailController extends GetxController {
 
   /// Redireciona o usuário para a tela de e-mail verificado, caso o e-mail já tenha sido verificado.
   Future<void> checkEmailVerified() async {
-    // TODO: Implementar método
+    if (await _isEmailVerified()) {
+      Get.offNamed(KRoutes.emailVerified);
+    } else {
+      AppSnackBars.showSnackBar(
+        title: AuthErrorTexts.emailNotVerifiedTitle,
+        message: AuthErrorTexts.emailNotVerifiedMessage,
+        icon: KIcons.email,
+      );
+    }
   }
 
   /// Redireciona o usuário para a tela inicial.

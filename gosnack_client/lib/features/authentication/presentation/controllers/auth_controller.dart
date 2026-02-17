@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
+import 'package:gosnack_client/core/logging/logger.dart';
+import 'package:gosnack_client/core/routing/routes.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/check_authentication_status_usecase.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/get_current_user_usecase.dart';
+import 'package:gosnack_client/features/authentication/domain/use_cases/reload_current_user_usecase.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/screen_redirect_usecase.dart';
-import 'package:gosnack_client/features/authentication/domain/use_cases/login_usecase.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/signout_usecase.dart';
-import 'package:gosnack_client/core/routing/routes.dart';
-import 'package:gosnack_client/core/logging/logger.dart';
 
 /// Controlador responsável por gerenciar o estado de autenticação na
 /// camada de apresentação.
@@ -15,19 +15,19 @@ class AuthController extends GetxController {
   // -- Use Cases ----------------------------------------------------------- //
 
   final ScreenRedirectUseCase _screenRedirectUseCase;
-  final LoginUseCase _loginUseCase;
   final LogoutUseCase _logoutUseCase;
   final CheckAuthenticationStatusUsecase _checkAuthenticationStatusUseCase;
   final GetCurrentUserUseCase _getCurrentUserUseCase;
+  final ReloadCurrentUserUseCase _reloadCurrentUserUseCase;
 
   // -- Public Constructor -------------------------------------------------- //
 
   AuthController(
     this._screenRedirectUseCase,
-    this._loginUseCase,
     this._logoutUseCase,
     this._checkAuthenticationStatusUseCase,
     this._getCurrentUserUseCase,
+    this._reloadCurrentUserUseCase,
   );
 
   // -- Lifecycle Methods --------------------------------------------------- //
@@ -67,19 +67,6 @@ class AuthController extends GetxController {
     }
   }
 
-  /// Efetua o login do usuário com as credenciais fornecidas.
-  ///
-  /// Em caso de sucesso, redireciona para a tela apropriada.
-  Future<void> login(String email, String password) async {
-    try {
-      await _loginUseCase(email: email, password: password);
-      await screenRedirect();
-    } catch (e) {
-      // TODO: usar constantes de texto
-      Get.snackbar('Erro', 'Falha ao fazer login: $e');
-    }
-  }
-
   /// Efetua o logout do usuário e redireciona para a tela apropriada.
   Future<void> logout() async {
     try {
@@ -94,5 +81,15 @@ class AuthController extends GetxController {
   /// Verifica se o usuário está autenticado.
   bool isAuthenticated() {
     return _checkAuthenticationStatusUseCase();
+  }
+
+  /// Recarregar os dados do usuário autenticado do Firebase Auth
+  /// para obter informações atualizadas.
+  Future<void> reloadCurrentUser() async {
+    try {
+      await _reloadCurrentUserUseCase();
+    } catch (e) {
+      LoggerHelp.error('Erro ao recarregar usuário atual: $e');
+    }
   }
 }

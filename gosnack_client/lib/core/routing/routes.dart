@@ -8,6 +8,7 @@ abstract final class KRoutes {
   static const signup = '/cadastro';
 
   static const verifyEmail = '/verificar-email';
+  static const emailVerified = '/email-verificado';
 
   static const forgetPassword = '/esqueci-a-senha';
   static const resetPassword = '/redefinir-senha';
