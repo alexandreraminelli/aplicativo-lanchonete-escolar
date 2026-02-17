@@ -5,7 +5,7 @@ import 'package:gosnack_client/features/cafeteria_selection/presentation/control
 import 'package:gosnack_client/core/routing/routes.dart';
 import 'package:gosnack_client/core/resources/strings/error_texts.dart';
 import 'package:gosnack_client/core/logging/logger.dart';
-import 'package:gosnack_client/core/widgets/feedback/snackbars.dart';
+import 'package:gosnack_client/core/widgets/feedback/popups/snackbars.dart';
 
 /// Controlador para a tela de onboarding.
 class OnBoardingController extends GetxController {

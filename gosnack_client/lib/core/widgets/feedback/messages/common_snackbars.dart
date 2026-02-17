@@ -1,6 +1,6 @@
 import 'package:gosnack_client/core/resources/icons/icons.dart';
 import 'package:gosnack_client/core/resources/strings/error_texts.dart';
-import 'package:gosnack_client/core/widgets/feedback/snackbars.dart';
+import 'package:gosnack_client/core/widgets/feedback/popups/snackbars.dart';
 
 /// Chamadas de SnackBars frequentemente usadas na aplicação.
 abstract final class CommonSnackBars {

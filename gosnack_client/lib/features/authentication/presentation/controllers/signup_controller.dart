@@ -5,7 +5,7 @@ import 'package:gosnack_client/core/errors/no_internet_exception.dart';
 import 'package:gosnack_client/core/logging/logger.dart';
 import 'package:gosnack_client/core/utils/device_utility.dart';
 import 'package:gosnack_client/core/widgets/feedback/messages/common_snackbars.dart';
-import 'package:gosnack_client/core/widgets/feedback/snackbars.dart';
+import 'package:gosnack_client/core/widgets/feedback/popups/snackbars.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/signup_usecase.dart';
 import 'package:gosnack_client/features/authentication/presentation/controllers/auth_controller.dart';
 import 'package:gosnack_client/features/authentication/presentation/texts/auth_error_texts.dart';
