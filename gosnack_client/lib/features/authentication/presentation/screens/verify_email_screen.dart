@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:gosnack_client/core/constants/enums.dart';
-import 'package:gosnack_client/core/constants/styles/sizes.dart';
 import 'package:gosnack_client/core/constants/styles/spacing.dart';
 import 'package:gosnack_client/core/resources/images/animations_paths.dart';
 import 'package:gosnack_client/core/widgets/appbar/main_appbar.dart';
@@ -63,10 +62,7 @@ class VerifyEmailScreen extends GetView<VerifyEmailController> {
             imagePath: KAnimations.verifyEmail,
 
             // -- Botões de ação
-            body: Column(
-              spacing: KSizes.spacingBtwItems,
-              children: [continueButton, resendButton],
-            ),
+            body: [continueButton, resendButton],
           ),
         ),
       ),

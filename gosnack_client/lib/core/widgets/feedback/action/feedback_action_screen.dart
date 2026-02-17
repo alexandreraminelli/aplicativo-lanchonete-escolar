@@ -23,9 +23,9 @@ class FeedbackActionScreen extends StatelessWidget {
   /// Tipo da imagem a ser exibida (estática ou animação).
   final ImageType imageType;
 
-  /// Widget opcional para exibir abaixo do título e subtítulo.
+  /// Widgets opcionais exibidos abaixo do título e subtítulo.
   /// Exemplos: botões de ação, links, etc.
-  final Widget? body;
+  final List<Widget> body;
 
   // -- Public Constructor -------------------------------------------------- //
 
@@ -34,7 +34,7 @@ class FeedbackActionScreen extends StatelessWidget {
     this.subtitle,
     this.imagePath,
     this.imageType = ImageType.staticImage,
-    this.body,
+    this.body = const [],
     super.key,
   });
 
@@ -64,7 +64,7 @@ class FeedbackActionScreen extends StatelessWidget {
           SectionHeader(title: title, subtitle: subtitle),
 
           // -- Body
-          ?body,
+          Column(spacing: KSizes.spacingBtwItems, children: body),
         ],
       ),
     );
