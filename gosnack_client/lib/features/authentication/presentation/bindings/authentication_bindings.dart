@@ -6,8 +6,9 @@ import 'package:gosnack_client/features/authentication/data/datasources/remote/u
 import 'package:gosnack_client/features/authentication/data/repositories/authentication_repository_impl.dart';
 import 'package:gosnack_client/features/authentication/domain/repositories/authentication_repository.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/check_authentication_status_usecase.dart';
-import 'package:gosnack_client/features/authentication/domain/use_cases/screen_redirect_usecase.dart';
+import 'package:gosnack_client/features/authentication/domain/use_cases/get_current_user_usecase.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/login_usecase.dart';
+import 'package:gosnack_client/features/authentication/domain/use_cases/screen_redirect_usecase.dart';
 import 'package:gosnack_client/features/authentication/domain/use_cases/signout_usecase.dart';
 import 'package:gosnack_client/features/authentication/presentation/controllers/auth_controller.dart';
 
@@ -35,15 +36,17 @@ class AuthenticationBinding extends Bindings {
     Get.lazyPut(() => CheckAuthenticationStatusUsecase(Get.find()));
     Get.lazyPut(() => LoginUseCase(Get.find()));
     Get.lazyPut(() => LogoutUseCase(Get.find()));
+    Get.lazyPut(() => GetCurrentUserUseCase(Get.find()));
     Get.lazyPut(() => ScreenRedirectUseCase(Get.find(), Get.find()));
 
     // -- Injetar Controller (Get.put para inicialização imediata)
     Get.put(
       AuthController(
-        Get.find<ScreenRedirectUseCase>(),
-        Get.find<LoginUseCase>(),
-        Get.find<LogoutUseCase>(),
-        Get.find<CheckAuthenticationStatusUsecase>(),
+        Get.find(),
+        Get.find(),
+        Get.find(),
+        Get.find(),
+        Get.find(),
       ),
     );
   }

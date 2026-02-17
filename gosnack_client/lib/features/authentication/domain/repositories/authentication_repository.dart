@@ -29,4 +29,7 @@ abstract class AuthenticationRepository {
 
   /// Verifica se o usuário está autenticado.
   bool isAuthenticated();
+
+  /// Reenvia o e-mail de verificação para o usuário.
+  Future<void> resendVerificationEmail();
 }

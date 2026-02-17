@@ -94,4 +94,27 @@ class FirebaseAuthDatasource {
       throw AppFirebaseException('unknown');
     }
   }
+
+  /// Reenvia o e-mail de verificação para o usuário autenticado.
+  Future<void> resendVerificationEmail() async {
+    try {
+      // Obter o usuário autenticado
+      final user = _auth.currentUser;
+      if (user == null) {
+        throw AppFirebaseException('no-user');
+      }
+      // Reenviar e-mail de verificação
+      await user.sendEmailVerification();
+      // Sucesso
+      LoggerHelp.info('E-mail de verificação reenviado para: ${user.email}');
+    } on FirebaseException catch (e) {
+      LoggerHelp.error(
+        'Erro ao reenviar e-mail de verificação: Código: ${e.code}, Mensagem: ${e.message}',
+      );
+      throw AppFirebaseException(e.code);
+    } catch (e) {
+      LoggerHelp.error('Erro ao reenviar e-mail de verificação: $e');
+      throw AppFirebaseException('unknown');
+    }
+  }
 }

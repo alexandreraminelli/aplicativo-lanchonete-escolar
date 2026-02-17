@@ -93,4 +93,9 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     // Verifica se há um usuário autenticado
     return _remoteAuthDatasource.getCurrentFirebaseUser() != null;
   }
+
+  @override
+  Future<void> resendVerificationEmail() {
+    return _remoteAuthDatasource.resendVerificationEmail();
+  }
 }
