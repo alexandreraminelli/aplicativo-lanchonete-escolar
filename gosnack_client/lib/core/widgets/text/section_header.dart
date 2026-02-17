@@ -3,18 +3,25 @@ import 'package:gosnack_client/core/constants/styles/sizes.dart';
 
 /// Cabeçalho de seção com título e subtítulo.
 class SectionHeader extends StatelessWidget {
+  // -- Public Instance Variables ------------------------------------------- //
+
+  /// Título da seção.
+  final String title;
+
+  /// Subtítulo da seção (opcional).
+  final String? subtitle;
+
+  /// Espaçamento interno ao redor do conteúdo do cabeçalho.
+  final EdgeInsetsGeometry padding;
+
   // -- Public Constructor -------------------------------------------------- //
+
   const SectionHeader({
     required this.title,
-    required this.subtitle,
+    this.subtitle,
     this.padding = EdgeInsets.zero,
     super.key,
   });
-
-  // -- Public Instance Variables ------------------------------------------- //
-  final String title;
-  final String subtitle;
-  final EdgeInsetsGeometry padding;
 
   // -- Build Method -------------------------------------------------------- //
   @override
@@ -36,11 +43,12 @@ class SectionHeader extends StatelessWidget {
             ),
           ),
           // -- Subtítulo
-          Text(
-            subtitle,
-            textAlign: TextAlign.center,
-            style: textTheme.bodyMedium,
-          ),
+          if (subtitle != null)
+            Text(
+              subtitle!,
+              textAlign: TextAlign.center,
+              style: textTheme.bodyMedium,
+            ),
         ],
       ),
     );

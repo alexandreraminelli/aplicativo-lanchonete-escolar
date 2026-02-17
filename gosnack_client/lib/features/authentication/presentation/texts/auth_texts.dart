@@ -23,4 +23,18 @@ abstract final class AuthTexts {
   static const String guestLogin = 'Entrar como convidado';
 
   static const String forgotPassword = 'Esqueci minha senha';
+
+  // -- Verify Email Screens ------------------------------------------------ //
+
+  static const String verifyEmailTitle = 'Verifique seu e-mail';
+  static String verifyEmailSubtitle(String email) =>
+      'Enviamos um link de confirmação para o e-mail $email. Acesse sua caixa de entrada e clique no link para ativar sua conta.';
+
+  static const String resendVerificationEmail =
+      'Reenviar e-mail de verificação';
+  static const String emailAlreadyVerified = 'Já verifiquei meu e-mail';
+
+  static const String verifiedEmailTitle = 'E-mail verificado com sucesso';
+  static const String verifiedEmailSubtitle =
+      'Sua conta foi ativada. Agora você pode acessar o GoSnack e realizar seus pedidos. Aproveite!';
 }
