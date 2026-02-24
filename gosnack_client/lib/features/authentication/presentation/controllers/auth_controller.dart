@@ -40,7 +40,10 @@ class AuthController extends GetxController {
     FlutterNativeSplash.remove(); // Remove a splash screen imediatamente
 
     // Redirecionar para a tela apropriada de forma assíncrona
-    Future.microtask(() => screenRedirect());
+    Future.microtask(() {
+      LoggerHelp.info('AuthController.onReady: iniciando screenRedirect');
+      screenRedirect();
+    });
   }
 
   /// -- Public Methods ----------------------------------------------------- //
@@ -48,8 +51,19 @@ class AuthController extends GetxController {
   /// Redireciona para a tela apropriada com base no estado de autenticação.
   Future<void> screenRedirect() async {
     try {
+      LoggerHelp.info(
+        'AuthController.screenRedirect: iniciando redirecionamento',
+      );
       final route = await _screenRedirectUseCase();
-      Get.offAllNamed(route);
+      LoggerHelp.info(
+        'AuthController.screenRedirect: rota determinada: $route',
+      );
+
+      // Usar offAllNamed para limpar a stack de rotas e ir para a nova rota
+      await Get.offAllNamed(route);
+      LoggerHelp.info(
+        'AuthController.screenRedirect: navegação concluída para $route',
+      );
     } catch (e) {
       // Em caso de erro, ir para o login
       LoggerHelp.error('Erro ao redirecionar tela: $e');
